@@ -43,6 +43,7 @@ int main() {
     input = cppflow::cast(input, TF_UINT8, TF_FLOAT);
     input = cppflow::expand_dims(input, 0);
     cppflow::model model(std::string(MODEL_PATH));
+    auto opts = model.get_operations();
     auto output = model(input);
 
     std::cout << "It's a tiger cat: " << cppflow::arg_max(output, 1)

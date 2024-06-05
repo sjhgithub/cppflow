@@ -253,7 +253,28 @@ inline std::vector<tensor> model::operator()(
 }
 
 inline tensor model::operator()(const tensor& input) {
-  return (*this)({{"serving_default_input_1", input}},
+    std::string opNameInput;    
+    //or run cmd line: saved_model_cli show --dir ./model/ --all
+	/*size_t pos = 0;
+    TF_Operation* oper;
+    while ((oper = TF_GraphNextOperation(this->graph.get(), &pos)) != nullptr) {
+        std::string opType = TF_OperationOpType(oper);
+        std::string opName = TF_OperationName(oper);
+        if (opType == "Placeholder") {
+            opType = "[I] " + opType;
+            if (opNameInput.size() == 0) {
+                opNameInput = opName;
+            }
+        }
+        else {
+            opType = "[ ] " + opType;
+        }
+        std::cout << opType << ": " << opName << "\n";
+    }*/
+    if (opNameInput.size() == 0) {
+        opNameInput = "serving_default_input_1";
+    }
+    return (*this)({{opNameInput, input}},
                  {"StatefulPartitionedCall"})[0];
 }
 

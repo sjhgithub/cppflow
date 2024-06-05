@@ -39,5 +39,8 @@ import tensorflow as tf
 
 model = tf.keras.applications.EfficientNetB0()
 
+model.summary()
+
 # Export the model to a SavedModel
-model.save('model', save_format='tf')
+model.export('./model/')
+model.save('./model/model.keras')

@@ -40,3 +40,5 @@ libtensorflow
 
 # Downloaded model
 examples/efficientnet/model
+/build64
+/install64
