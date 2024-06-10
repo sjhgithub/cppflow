@@ -44,6 +44,7 @@ namespace cppflow {
 
 inline bool status_check(TF_Status* status) {
   if (TF_GetCode(status) != TF_OK) {
+	std::cout << "status_check failed: " << TF_Message(status) << std::endl;
     throw std::runtime_error(TF_Message(status));
   }
   return true;

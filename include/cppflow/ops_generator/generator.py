@@ -63,9 +63,9 @@ class Attribute:
         self.name = self.attr.name
 
 
-        if self.attr.type == 'func':
-            raise Exception('Passing functions as arguments is '
-                            'not yet supported')
+        #if self.attr.type == 'func':
+            #raise Exception('Passing functions as arguments is '
+                            #'not yet supported')
 
         # List attributes are defined as 'list(attr)''
         self.type, self.islist = ((self.attr.type, False)
@@ -93,6 +93,7 @@ class Attribute:
         cpptype = {
             'shape' : 'const std::vector<int64_t>&',
             'int'   : 'int64_t',
+            'func'  : 'int64_t',
             'float' : 'float',
             'string': 'const std::string&',
             'type'  : 'datatype', # Refers to cppflow::datatype
@@ -114,6 +115,7 @@ class Attribute:
             self.type not in ['shape', 'tensor']):
             cppdefault = '=' + {
                 'int'    : str(self.attr.default_value.i),
+                'func'   : str(self.attr.default_value.i),
                 'bool'   : str(self.attr.default_value.b).lower(),
                 'string' : '"' + str(self.attr.default_value.s)[2:-1] + '"',
                 'float'  : ('{:.4e}'.format(self.attr.default_value.f)
@@ -142,6 +144,7 @@ class Attribute:
                             TFE_OpSetAttrStringList(op.get(), "{orig:}", reinterpret_cast<const void *const *>({0}.data()), {0}_sizes.data(), static_cast<int>({0}.size()));
                             ''',
                 'int'    : 'TFE_OpSetAttrIntList(op.get(), "{orig:}", {0}.data(), static_cast<int>({0}.size()));',
+                'func'   : 'TFE_OpSetAttrIntList(op.get(), "{orig:}", {0}.data(), static_cast<int>({0}.size()));',
                 'float'  : 'TFE_OpSetAttrFloatList(op.get(), "{orig:}", {0}.data(), static_cast<int>({0}.size()));',
                 'bool'   : 'TFE_OpSetAttrBoolList(op.get(), "{orig:}", std::vector<unsigned char>({0}.begin(), {0}.end()).data(), {0}.size());',
                 'type'   : 'TFE_OpSetAttrTypeList(op.get(), "{orig:}", reinterpret_cast<const enum TF_DataType *>({0}.data()), static_cast<int>({0}.size()));',
@@ -163,6 +166,7 @@ class Attribute:
                           status_check(context::get_status());
                            ''',
                 'int'   : 'TFE_OpSetAttrInt(op.get(), "{orig:}", {0});',
+                'func'  : 'TFE_OpSetAttrInt(op.get(), "{orig:}", {0});',
                 'float' : 'TFE_OpSetAttrFloat(op.get(), "{orig:}", {0});',
                 'string': 'TFE_OpSetAttrString(op.get(), "{orig:}", (void*) {0}.c_str(), {0}.size());',
                 'type'  : 'TFE_OpSetAttrType(op.get(), "{orig:}", {0});',
@@ -195,8 +199,8 @@ class Operation:
         self.op = op
 
         # More than one output?
-        if len(self.op.output_arg) != 1:
-            raise Exception('More than one or no output not yet supported')
+        #if len(self.op.output_arg) != 1:
+            #raise Exception('More than one or no output not yet supported')
 
         self.inputs = [inp for inp in op.input_arg]
 
@@ -230,11 +234,10 @@ class Operation:
             {}
 
             // Execute Op
-            int num_outputs_op = 1;
-            TFE_TensorHandle* res[1] = {{nullptr}};
+            int num_outputs_op = {};
+            {}
             TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
-            status_check(context::get_status());
-            return tensor(res[0]);
+            status_check(context::get_status());{}
         }}
         ''')
 
@@ -251,12 +254,25 @@ class Operation:
             status_check(context::get_status());
         ''').replace('\n', '\n    ')
 
+        output_arg_len = len(self.op.output_arg)
         # Return type of the function
-        out = 'tensor' if len(self.op.output_arg) else 'void'
+        out = 'tensor' if output_arg_len == 1 else 'std::vector<tensor>' if output_arg_len > 1 else 'void'
 
         # snake_case name of the operation
-        snk = (re.sub(r'(?<!^)(?=[A-Z])', '_', self.op.name).lower()
-               .replace('const', 'const_tensor'))
+        snk = re.sub(r'(?<!^)(?=[A-Z])', '_', self.op.name).lower()
+        snk = snk.replace('const', 'const_tensor')
+        if snk == "assert":
+            snk = "tfe_assert"
+        elif snk == "if":
+            snk = "tfe_if"
+        elif snk == "switch":
+            snk = "tfe_switch"
+        elif snk == "case":
+            snk = "tfe_case"
+        elif snk == "for":
+            snk = "tfe_for"
+        elif snk == "while":
+            snk = "tfe_while"
 
         # Required input arguments
         inp = ', '.join([
@@ -285,7 +301,20 @@ class Operation:
         atr_code = '\n    '.join(a.code() for a in self.attr_list
                                  if len(a.code()))
 
-        return template.format('', out, snk, inp, atr, opn, inp_code, atr_code)
+        if(output_arg_len==0):
+            return_code = ''
+            output_arg_code = 'TFE_TensorHandle* res[1] = {nullptr};'
+        else:
+            output_arg_intval = ','.join(['nullptr'] * output_arg_len)
+            output_arg_code = f'TFE_TensorHandle* res[{output_arg_len}] = {{ {output_arg_intval} }};'
+            if(output_arg_len==1):
+                return_code = '\n    return tensor(res[0]);'
+            else:
+                res = ''
+                for resinx in range(output_arg_len):
+                    res += f'tensor(res[{resinx}]),'
+                return_code = f'\n    return {{ {res} }};'
+        return template.format('', out, snk, inp, atr, opn, inp_code, atr_code, output_arg_len, output_arg_code, return_code)
 
 
 
@@ -354,10 +383,14 @@ namespace cppflow {{
 ops_code = ''
 
 num_ops = 0
+num_ok = 0
+num_fail = 0
+num_skip = 0
 
 # All TF C API operations correspond with tf.raw_ops
 for op_name in sorted(dir(tf.raw_ops)):
     if not op_name.startswith('_'):
+        print("process:" + op_name)
 
         num_ops += 1
         #if num_ops == 51:
@@ -376,10 +409,16 @@ for op_name in sorted(dir(tf.raw_ops)):
 
             # Everything was ok!
             print('{:<50}  [{}]'.format(op_name, colored('  Ok  ', 'green')))
+            num_ok += 1
         except Exception as err:
             print('{:<50}  [{}]'.format(op_name, colored('Failed', 'red')))
             print('    ', err)
-
+            num_fail += 1
+    else:
+        num_skip += 1
+        print("skip:" + op_name)
 
 with open('../raw_ops.h', 'w') as f:
     f.write(ops_file.format(ops_code))
+
+print(f'{colored({num_ops+num_skip}, 'white')} {colored({num_ok}, 'green')} {colored({num_fail}, 'red')} {colored({num_skip}, 'yellow')}')
