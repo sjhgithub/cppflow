@@ -51,7 +51,16 @@
 namespace cppflow {
 
 
+/* # Abort
+# Inputs:
+*    
+# Attributes:
+*    error_msg
+*    exit_without_error
 
+# Outputs:
+*    
+*/
 inline void abort(const std::string& error_msg="", bool exit_without_error=false) {
 
     // Define Op
@@ -72,7 +81,16 @@ inline void abort(const std::string& error_msg="", bool exit_without_error=false
     status_check(context::get_status());
 }
 
+/* # Abs
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor abs(const tensor& x) {
 
     // Define Op
@@ -96,7 +114,18 @@ inline tensor abs(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # AccumulateNV2
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+*    shape
+
+# Outputs:
+*    sum
+
+*/
 inline tensor accumulate_n_v2(const std::vector<tensor>&inputs, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -126,7 +155,18 @@ inline tensor accumulate_n_v2(const std::vector<tensor>&inputs, const std::vecto
     return tensor(res[0]);
 }
 
+/* # AccumulatorApplyGradient
+# Inputs:
+*    handle
+*    local_step
+*    gradient
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    
+*/
 inline void accumulator_apply_gradient(const tensor& handle, const tensor& local_step, const tensor& gradient, datatype dtype) {
 
     // Define Op
@@ -157,7 +197,16 @@ inline void accumulator_apply_gradient(const tensor& handle, const tensor& local
     status_check(context::get_status());
 }
 
+/* # AccumulatorNumAccumulated
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    num_accumulated
+
+*/
 inline tensor accumulator_num_accumulated(const tensor& handle) {
 
     // Define Op
@@ -181,7 +230,16 @@ inline tensor accumulator_num_accumulated(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # AccumulatorSetGlobalStep
+# Inputs:
+*    handle
+*    new_global_step
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void accumulator_set_global_step(const tensor& handle, const tensor& new_global_step) {
 
     // Define Op
@@ -208,7 +266,18 @@ inline void accumulator_set_global_step(const tensor& handle, const tensor& new_
     status_check(context::get_status());
 }
 
+/* # AccumulatorTakeGradient
+# Inputs:
+*    handle
+*    num_required
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    average
+
+*/
 inline tensor accumulator_take_gradient(const tensor& handle, const tensor& num_required, datatype dtype) {
 
     // Define Op
@@ -236,7 +305,16 @@ inline tensor accumulator_take_gradient(const tensor& handle, const tensor& num_
     return tensor(res[0]);
 }
 
+/* # Acos
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor acos(const tensor& x) {
 
     // Define Op
@@ -260,7 +338,16 @@ inline tensor acos(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Acosh
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor acosh(const tensor& x) {
 
     // Define Op
@@ -284,7 +371,17 @@ inline tensor acosh(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Add
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor add(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -312,7 +409,20 @@ inline tensor add(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # AddManySparseToTensorsMap
+# Inputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
 
+# Attributes:
+*    container
+*    shared_name
+
+# Outputs:
+*    sparse_handles
+
+*/
 inline tensor add_many_sparse_to_tensors_map(const tensor& sparse_indices, const tensor& sparse_values, const tensor& sparse_shape, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -345,7 +455,17 @@ inline tensor add_many_sparse_to_tensors_map(const tensor& sparse_indices, const
     return tensor(res[0]);
 }
 
+/* # AddN
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+
+# Outputs:
+*    sum
+
+*/
 inline tensor add_n(const std::vector<tensor>&inputs) {
 
     // Define Op
@@ -371,7 +491,20 @@ inline tensor add_n(const std::vector<tensor>&inputs) {
     return tensor(res[0]);
 }
 
+/* # AddSparseToTensorsMap
+# Inputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
 
+# Attributes:
+*    container
+*    shared_name
+
+# Outputs:
+*    sparse_handle
+
+*/
 inline tensor add_sparse_to_tensors_map(const tensor& sparse_indices, const tensor& sparse_values, const tensor& sparse_shape, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -404,7 +537,17 @@ inline tensor add_sparse_to_tensors_map(const tensor& sparse_indices, const tens
     return tensor(res[0]);
 }
 
+/* # AddV2
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor add_v2(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -432,7 +575,19 @@ inline tensor add_v2(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # AdjustContrast
+# Inputs:
+*    images
+*    contrast_factor
+*    min_value
+*    max_value
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor adjust_contrast(const tensor& images, const tensor& contrast_factor, const tensor& min_value, const tensor& max_value) {
 
     // Define Op
@@ -468,7 +623,17 @@ inline tensor adjust_contrast(const tensor& images, const tensor& contrast_facto
     return tensor(res[0]);
 }
 
+/* # AdjustContrastv2
+# Inputs:
+*    images
+*    contrast_factor
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor adjust_contrastv2(const tensor& images, const tensor& contrast_factor) {
 
     // Define Op
@@ -496,7 +661,17 @@ inline tensor adjust_contrastv2(const tensor& images, const tensor& contrast_fac
     return tensor(res[0]);
 }
 
+/* # AdjustHue
+# Inputs:
+*    images
+*    delta
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor adjust_hue(const tensor& images, const tensor& delta) {
 
     // Define Op
@@ -524,7 +699,17 @@ inline tensor adjust_hue(const tensor& images, const tensor& delta) {
     return tensor(res[0]);
 }
 
+/* # AdjustSaturation
+# Inputs:
+*    images
+*    scale
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor adjust_saturation(const tensor& images, const tensor& scale) {
 
     // Define Op
@@ -552,7 +737,19 @@ inline tensor adjust_saturation(const tensor& images, const tensor& scale) {
     return tensor(res[0]);
 }
 
+/* # All
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor all(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -581,7 +778,23 @@ inline tensor all(const tensor& input, const tensor& reduction_indices, bool kee
     return tensor(res[0]);
 }
 
+/* # AllCandidateSampler
+# Inputs:
+*    true_classes
 
+# Attributes:
+*    num_true
+*    num_sampled
+*    unique
+*    seed
+*    seed2
+
+# Outputs:
+*    sampled_candidates
+*    true_expected_count
+*    sampled_expected_count
+
+*/
 inline std::vector<tensor> all_candidate_sampler(const tensor& true_classes, int64_t num_true, int64_t num_sampled, bool unique, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -609,7 +822,20 @@ inline std::vector<tensor> all_candidate_sampler(const tensor& true_classes, int
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # AllToAll
+# Inputs:
+*    input
+*    group_assignment
 
+# Attributes:
+*    concat_dimension
+*    split_dimension
+*    split_count
+
+# Outputs:
+*    output
+
+*/
 inline tensor all_to_all(const tensor& input, const tensor& group_assignment, int64_t concat_dimension, int64_t split_dimension, int64_t split_count) {
 
     // Define Op
@@ -639,7 +865,17 @@ inline tensor all_to_all(const tensor& input, const tensor& group_assignment, in
     return tensor(res[0]);
 }
 
+/* # Angle
+# Inputs:
+*    input
 
+# Attributes:
+*    Tout
+
+# Outputs:
+*    output
+
+*/
 inline tensor angle(const tensor& input, datatype Tout=static_cast<datatype>(1)) {
 
     // Define Op
@@ -663,7 +899,17 @@ inline tensor angle(const tensor& input, datatype Tout=static_cast<datatype>(1))
     return tensor(res[0]);
 }
 
+/* # AnonymousHashTable
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor anonymous_hash_table(datatype key_dtype, datatype value_dtype) {
 
     // Define Op
@@ -685,7 +931,17 @@ inline tensor anonymous_hash_table(datatype key_dtype, datatype value_dtype) {
     return tensor(res[0]);
 }
 
+/* # AnonymousIterator
+# Inputs:
+*    
+# Attributes:
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+
+*/
 inline tensor anonymous_iterator(const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -714,7 +970,18 @@ inline tensor anonymous_iterator(const std::vector<datatype>& output_types, cons
     return tensor(res[0]);
 }
 
+/* # AnonymousIteratorV2
+# Inputs:
+*    
+# Attributes:
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+*    deleter
+
+*/
 inline std::vector<tensor> anonymous_iterator_v2(const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -743,7 +1010,17 @@ inline std::vector<tensor> anonymous_iterator_v2(const std::vector<datatype>& ou
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # AnonymousIteratorV3
+# Inputs:
+*    
+# Attributes:
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+
+*/
 inline tensor anonymous_iterator_v3(const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -772,7 +1049,16 @@ inline tensor anonymous_iterator_v3(const std::vector<datatype>& output_types, c
     return tensor(res[0]);
 }
 
+/* # AnonymousMemoryCache
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    handle
+*    deleter
 
+*/
 inline std::vector<tensor> anonymous_memory_cache() {
 
     // Define Op
@@ -793,7 +1079,19 @@ inline std::vector<tensor> anonymous_memory_cache() {
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # AnonymousMultiDeviceIterator
+# Inputs:
+*    
+# Attributes:
+*    devices
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+*    deleter
+
+*/
 inline std::vector<tensor> anonymous_multi_device_iterator(const std::vector< std::string>& devices, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -827,7 +1125,18 @@ inline std::vector<tensor> anonymous_multi_device_iterator(const std::vector< st
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # AnonymousMultiDeviceIteratorV3
+# Inputs:
+*    
+# Attributes:
+*    devices
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+
+*/
 inline tensor anonymous_multi_device_iterator_v3(const std::vector< std::string>& devices, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -861,7 +1170,22 @@ inline tensor anonymous_multi_device_iterator_v3(const std::vector< std::string>
     return tensor(res[0]);
 }
 
+/* # AnonymousMutableDenseHashTable
+# Inputs:
+*    empty_key
+*    deleted_key
 
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    value_shape
+*    initial_num_buckets
+*    max_load_factor
+
+# Outputs:
+*    table_handle
+
+*/
 inline tensor anonymous_mutable_dense_hash_table(const tensor& empty_key, const tensor& deleted_key, datatype key_dtype, datatype value_dtype, const std::vector<int64_t>& value_shape, int64_t initial_num_buckets=131072, float max_load_factor=8.0000e-01) {
 
     // Define Op
@@ -896,7 +1220,17 @@ inline tensor anonymous_mutable_dense_hash_table(const tensor& empty_key, const 
     return tensor(res[0]);
 }
 
+/* # AnonymousMutableHashTable
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor anonymous_mutable_hash_table(datatype key_dtype, datatype value_dtype) {
 
     // Define Op
@@ -918,7 +1252,18 @@ inline tensor anonymous_mutable_hash_table(datatype key_dtype, datatype value_dt
     return tensor(res[0]);
 }
 
+/* # AnonymousMutableHashTableOfTensors
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    value_shape
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor anonymous_mutable_hash_table_of_tensors(datatype key_dtype, datatype value_dtype, const std::vector<int64_t>& value_shape) {
 
     // Define Op
@@ -944,7 +1289,18 @@ inline tensor anonymous_mutable_hash_table_of_tensors(datatype key_dtype, dataty
     return tensor(res[0]);
 }
 
+/* # AnonymousRandomSeedGenerator
+# Inputs:
+*    seed
+*    seed2
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+*    deleter
+
+*/
 inline std::vector<tensor> anonymous_random_seed_generator(const tensor& seed, const tensor& seed2) {
 
     // Define Op
@@ -972,7 +1328,19 @@ inline std::vector<tensor> anonymous_random_seed_generator(const tensor& seed, c
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # AnonymousSeedGenerator
+# Inputs:
+*    seed
+*    seed2
+*    reshuffle
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+*    deleter
+
+*/
 inline std::vector<tensor> anonymous_seed_generator(const tensor& seed, const tensor& seed2, const tensor& reshuffle) {
 
     // Define Op
@@ -1004,7 +1372,19 @@ inline std::vector<tensor> anonymous_seed_generator(const tensor& seed, const te
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Any
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor any(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -1033,7 +1413,25 @@ inline tensor any(const tensor& input, const tensor& reduction_indices, bool kee
     return tensor(res[0]);
 }
 
+/* # ApplyAdaMax
+# Inputs:
+*    var
+*    m
+*    v
+*    beta1_power
+*    lr
+*    beta1
+*    beta2
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_ada_max(const tensor& var, const tensor& m, const tensor& v, const tensor& beta1_power, const tensor& lr, const tensor& beta1, const tensor& beta2, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -1089,7 +1487,23 @@ inline tensor apply_ada_max(const tensor& var, const tensor& m, const tensor& v,
     return tensor(res[0]);
 }
 
+/* # ApplyAdadelta
+# Inputs:
+*    var
+*    accum
+*    accum_update
+*    lr
+*    rho
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_adadelta(const tensor& var, const tensor& accum, const tensor& accum_update, const tensor& lr, const tensor& rho, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -1137,7 +1551,21 @@ inline tensor apply_adadelta(const tensor& var, const tensor& accum, const tenso
     return tensor(res[0]);
 }
 
+/* # ApplyAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
 
+# Attributes:
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -1174,7 +1602,24 @@ inline tensor apply_adagrad(const tensor& var, const tensor& accum, const tensor
     return tensor(res[0]);
 }
 
+/* # ApplyAdagradDA
+# Inputs:
+*    var
+*    gradient_accumulator
+*    gradient_squared_accumulator
+*    grad
+*    lr
+*    l1
+*    l2
+*    global_step
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_adagrad_d_a(const tensor& var, const tensor& gradient_accumulator, const tensor& gradient_squared_accumulator, const tensor& grad, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& global_step, bool use_locking=false) {
 
     // Define Op
@@ -1226,7 +1671,22 @@ inline tensor apply_adagrad_d_a(const tensor& var, const tensor& gradient_accumu
     return tensor(res[0]);
 }
 
+/* # ApplyAdagradV2
+# Inputs:
+*    var
+*    accum
+*    lr
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_adagrad_v2(const tensor& var, const tensor& accum, const tensor& lr, const tensor& epsilon, const tensor& grad, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -1267,7 +1727,27 @@ inline tensor apply_adagrad_v2(const tensor& var, const tensor& accum, const ten
     return tensor(res[0]);
 }
 
+/* # ApplyAdam
+# Inputs:
+*    var
+*    m
+*    v
+*    beta1_power
+*    beta2_power
+*    lr
+*    beta1
+*    beta2
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_adam(const tensor& var, const tensor& m, const tensor& v, const tensor& beta1_power, const tensor& beta2_power, const tensor& lr, const tensor& beta1, const tensor& beta2, const tensor& epsilon, const tensor& grad, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -1328,7 +1808,23 @@ inline tensor apply_adam(const tensor& var, const tensor& m, const tensor& v, co
     return tensor(res[0]);
 }
 
+/* # ApplyAddSign
+# Inputs:
+*    var
+*    m
+*    lr
+*    alpha
+*    sign_decay
+*    beta
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_add_sign(const tensor& var, const tensor& m, const tensor& lr, const tensor& alpha, const tensor& sign_decay, const tensor& beta, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -1376,7 +1872,25 @@ inline tensor apply_add_sign(const tensor& var, const tensor& m, const tensor& l
     return tensor(res[0]);
 }
 
+/* # ApplyCenteredRMSProp
+# Inputs:
+*    var
+*    mg
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_centered_r_m_s_prop(const tensor& var, const tensor& mg, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -1432,7 +1946,25 @@ inline tensor apply_centered_r_m_s_prop(const tensor& var, const tensor& mg, con
     return tensor(res[0]);
 }
 
+/* # ApplyFtrl
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    lr
+*    l1
+*    l2
+*    lr_power
 
+# Attributes:
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_ftrl(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& lr_power, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -1485,7 +2017,26 @@ inline tensor apply_ftrl(const tensor& var, const tensor& accum, const tensor& l
     return tensor(res[0]);
 }
 
+/* # ApplyFtrlV2
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    lr
+*    l1
+*    l2
+*    l2_shrinkage
+*    lr_power
 
+# Attributes:
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_ftrl_v2(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& l2_shrinkage, const tensor& lr_power, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -1542,7 +2093,19 @@ inline tensor apply_ftrl_v2(const tensor& var, const tensor& accum, const tensor
     return tensor(res[0]);
 }
 
+/* # ApplyGradientDescent
+# Inputs:
+*    var
+*    alpha
+*    delta
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_gradient_descent(const tensor& var, const tensor& alpha, const tensor& delta, bool use_locking=false) {
 
     // Define Op
@@ -1574,7 +2137,22 @@ inline tensor apply_gradient_descent(const tensor& var, const tensor& alpha, con
     return tensor(res[0]);
 }
 
+/* # ApplyMomentum
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    momentum
 
+# Attributes:
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_momentum(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& momentum, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -1615,7 +2193,23 @@ inline tensor apply_momentum(const tensor& var, const tensor& accum, const tenso
     return tensor(res[0]);
 }
 
+/* # ApplyPowerSign
+# Inputs:
+*    var
+*    m
+*    lr
+*    logbase
+*    sign_decay
+*    beta
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_power_sign(const tensor& var, const tensor& m, const tensor& lr, const tensor& logbase, const tensor& sign_decay, const tensor& beta, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -1663,7 +2257,22 @@ inline tensor apply_power_sign(const tensor& var, const tensor& m, const tensor&
     return tensor(res[0]);
 }
 
+/* # ApplyProximalAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    l1
+*    l2
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_proximal_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -1707,7 +2316,21 @@ inline tensor apply_proximal_adagrad(const tensor& var, const tensor& accum, con
     return tensor(res[0]);
 }
 
+/* # ApplyProximalGradientDescent
+# Inputs:
+*    var
+*    alpha
+*    l1
+*    l2
+*    delta
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_proximal_gradient_descent(const tensor& var, const tensor& alpha, const tensor& l1, const tensor& l2, const tensor& delta, bool use_locking=false) {
 
     // Define Op
@@ -1747,7 +2370,24 @@ inline tensor apply_proximal_gradient_descent(const tensor& var, const tensor& a
     return tensor(res[0]);
 }
 
+/* # ApplyRMSProp
+# Inputs:
+*    var
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor apply_r_m_s_prop(const tensor& var, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -1799,7 +2439,23 @@ inline tensor apply_r_m_s_prop(const tensor& var, const tensor& ms, const tensor
     return tensor(res[0]);
 }
 
+/* # ApproxTopK
+# Inputs:
+*    input
 
+# Attributes:
+*    k
+*    reduction_dimension
+*    recall_target
+*    is_max_k
+*    reduction_input_size_override
+*    aggregate_to_topk
+
+# Outputs:
+*    values
+*    indices
+
+*/
 inline std::vector<tensor> approx_top_k(const tensor& input, int64_t k, int64_t reduction_dimension=-1, float recall_target=9.5000e-01, bool is_max_k=true, int64_t reduction_input_size_override=-1, bool aggregate_to_topk=true) {
 
     // Define Op
@@ -1828,7 +2484,18 @@ inline std::vector<tensor> approx_top_k(const tensor& input, int64_t k, int64_t 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # ApproximateEqual
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    tolerance
+
+# Outputs:
+*    z
+
+*/
 inline tensor approximate_equal(const tensor& x, const tensor& y, float tolerance=1.0000e-05) {
 
     // Define Op
@@ -1856,7 +2523,19 @@ inline tensor approximate_equal(const tensor& x, const tensor& y, float toleranc
     return tensor(res[0]);
 }
 
+/* # ArgMax
+# Inputs:
+*    input
+*    dimension
 
+# Attributes:
+*    Tidx
+*    output_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor arg_max(const tensor& input, const tensor& dimension, datatype Tidx=static_cast<datatype>(3), datatype output_type=static_cast<datatype>(9)) {
 
     // Define Op
@@ -1885,7 +2564,19 @@ inline tensor arg_max(const tensor& input, const tensor& dimension, datatype Tid
     return tensor(res[0]);
 }
 
+/* # ArgMin
+# Inputs:
+*    input
+*    dimension
 
+# Attributes:
+*    Tidx
+*    output_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor arg_min(const tensor& input, const tensor& dimension, datatype Tidx=static_cast<datatype>(3), datatype output_type=static_cast<datatype>(9)) {
 
     // Define Op
@@ -1914,7 +2605,21 @@ inline tensor arg_min(const tensor& input, const tensor& dimension, datatype Tid
     return tensor(res[0]);
 }
 
+/* # AsString
+# Inputs:
+*    input
 
+# Attributes:
+*    precision
+*    scientific
+*    shortest
+*    width
+*    fill
+
+# Outputs:
+*    output
+
+*/
 inline tensor as_string(const tensor& input, int64_t precision=-1, bool scientific=false, bool shortest=false, int64_t width=-1, const std::string& fill="") {
 
     // Define Op
@@ -1942,7 +2647,16 @@ inline tensor as_string(const tensor& input, int64_t precision=-1, bool scientif
     return tensor(res[0]);
 }
 
+/* # Asin
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor asin(const tensor& x) {
 
     // Define Op
@@ -1966,7 +2680,16 @@ inline tensor asin(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Asinh
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor asinh(const tensor& x) {
 
     // Define Op
@@ -1990,7 +2713,17 @@ inline tensor asinh(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Assert
+# Inputs:
+*    condition
+*    data
 
+# Attributes:
+*    summarize
+
+# Outputs:
+*    
+*/
 inline void tfe_assert(const tensor& condition, const std::vector<tensor>&data, int64_t summarize=3) {
 
     // Define Op
@@ -2019,7 +2752,19 @@ inline void tfe_assert(const tensor& condition, const std::vector<tensor>&data, 
     status_check(context::get_status());
 }
 
+/* # AssertCardinalityDataset
+# Inputs:
+*    input_dataset
+*    cardinality
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor assert_cardinality_dataset(const tensor& input_dataset, const tensor& cardinality, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -2055,7 +2800,19 @@ inline tensor assert_cardinality_dataset(const tensor& input_dataset, const tens
     return tensor(res[0]);
 }
 
+/* # AssertNextDataset
+# Inputs:
+*    input_dataset
+*    transformations
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor assert_next_dataset(const tensor& input_dataset, const tensor& transformations, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -2091,7 +2848,19 @@ inline tensor assert_next_dataset(const tensor& input_dataset, const tensor& tra
     return tensor(res[0]);
 }
 
+/* # AssertPrevDataset
+# Inputs:
+*    input_dataset
+*    transformations
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor assert_prev_dataset(const tensor& input_dataset, const tensor& transformations, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -2127,7 +2896,19 @@ inline tensor assert_prev_dataset(const tensor& input_dataset, const tensor& tra
     return tensor(res[0]);
 }
 
+/* # Assign
+# Inputs:
+*    ref
+*    value
 
+# Attributes:
+*    validate_shape
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor assign(const tensor& ref, const tensor& value, bool validate_shape=true, bool use_locking=true) {
 
     // Define Op
@@ -2156,7 +2937,18 @@ inline tensor assign(const tensor& ref, const tensor& value, bool validate_shape
     return tensor(res[0]);
 }
 
+/* # AssignAdd
+# Inputs:
+*    ref
+*    value
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor assign_add(const tensor& ref, const tensor& value, bool use_locking=false) {
 
     // Define Op
@@ -2184,7 +2976,17 @@ inline tensor assign_add(const tensor& ref, const tensor& value, bool use_lockin
     return tensor(res[0]);
 }
 
+/* # AssignAddVariableOp
+# Inputs:
+*    resource
+*    value
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    
+*/
 inline void assign_add_variable_op(const tensor& resource, const tensor& value, datatype dtype) {
 
     // Define Op
@@ -2211,7 +3013,18 @@ inline void assign_add_variable_op(const tensor& resource, const tensor& value, 
     status_check(context::get_status());
 }
 
+/* # AssignSub
+# Inputs:
+*    ref
+*    value
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor assign_sub(const tensor& ref, const tensor& value, bool use_locking=false) {
 
     // Define Op
@@ -2239,7 +3052,17 @@ inline tensor assign_sub(const tensor& ref, const tensor& value, bool use_lockin
     return tensor(res[0]);
 }
 
+/* # AssignSubVariableOp
+# Inputs:
+*    resource
+*    value
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    
+*/
 inline void assign_sub_variable_op(const tensor& resource, const tensor& value, datatype dtype) {
 
     // Define Op
@@ -2266,7 +3089,18 @@ inline void assign_sub_variable_op(const tensor& resource, const tensor& value, 
     status_check(context::get_status());
 }
 
+/* # AssignVariableOp
+# Inputs:
+*    resource
+*    value
 
+# Attributes:
+*    dtype
+*    validate_shape
+
+# Outputs:
+*    
+*/
 inline void assign_variable_op(const tensor& resource, const tensor& value, datatype dtype, bool validate_shape=false) {
 
     // Define Op
@@ -2294,7 +3128,19 @@ inline void assign_variable_op(const tensor& resource, const tensor& value, data
     status_check(context::get_status());
 }
 
+/* # AssignVariableXlaConcatND
+# Inputs:
+*    resource
+*    inputs
 
+# Attributes:
+*    N
+*    num_concats
+*    paddings
+
+# Outputs:
+*    
+*/
 inline void assign_variable_xla_concat_n_d(const tensor& resource, const std::vector<tensor>&inputs, const std::vector<int64_t>& num_concats, const std::vector<int64_t>& paddings) {
 
     // Define Op
@@ -2325,7 +3171,16 @@ inline void assign_variable_xla_concat_n_d(const tensor& resource, const std::ve
     status_check(context::get_status());
 }
 
+/* # Atan
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor atan(const tensor& x) {
 
     // Define Op
@@ -2349,7 +3204,17 @@ inline tensor atan(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Atan2
+# Inputs:
+*    y
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor atan2(const tensor& y, const tensor& x) {
 
     // Define Op
@@ -2377,7 +3242,16 @@ inline tensor atan2(const tensor& y, const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Atanh
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor atanh(const tensor& x) {
 
     // Define Op
@@ -2401,7 +3275,19 @@ inline tensor atanh(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # AudioSpectrogram
+# Inputs:
+*    input
 
+# Attributes:
+*    window_size
+*    stride
+*    magnitude_squared
+
+# Outputs:
+*    spectrogram
+
+*/
 inline tensor audio_spectrogram(const tensor& input, int64_t window_size, int64_t stride, bool magnitude_squared=false) {
 
     // Define Op
@@ -2427,7 +3313,19 @@ inline tensor audio_spectrogram(const tensor& input, int64_t window_size, int64_
     return tensor(res[0]);
 }
 
+/* # AudioSummary
+# Inputs:
+*    tag
+*    tensor
 
+# Attributes:
+*    sample_rate
+*    max_outputs
+
+# Outputs:
+*    summary
+
+*/
 inline tensor audio_summary(const tensor& tag, const tensor& input_tensor, float sample_rate, int64_t max_outputs=3) {
 
     // Define Op
@@ -2456,7 +3354,19 @@ inline tensor audio_summary(const tensor& tag, const tensor& input_tensor, float
     return tensor(res[0]);
 }
 
+/* # AudioSummaryV2
+# Inputs:
+*    tag
+*    tensor
+*    sample_rate
 
+# Attributes:
+*    max_outputs
+
+# Outputs:
+*    summary
+
+*/
 inline tensor audio_summary_v2(const tensor& tag, const tensor& input_tensor, const tensor& sample_rate, int64_t max_outputs=3) {
 
     // Define Op
@@ -2488,7 +3398,22 @@ inline tensor audio_summary_v2(const tensor& tag, const tensor& input_tensor, co
     return tensor(res[0]);
 }
 
+/* # AutoShardDataset
+# Inputs:
+*    input_dataset
+*    num_workers
+*    index
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    auto_shard_policy
+*    num_replicas
+
+# Outputs:
+*    handle
+
+*/
 inline tensor auto_shard_dataset(const tensor& input_dataset, const tensor& num_workers, const tensor& index, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t auto_shard_policy=0, int64_t num_replicas=0) {
 
     // Define Op
@@ -2530,7 +3455,20 @@ inline tensor auto_shard_dataset(const tensor& input_dataset, const tensor& num_
     return tensor(res[0]);
 }
 
+/* # AvgPool
+# Inputs:
+*    value
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor avg_pool(const tensor& value, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -2557,7 +3495,20 @@ inline tensor avg_pool(const tensor& value, const std::vector<int64_t>& ksize, c
     return tensor(res[0]);
 }
 
+/* # AvgPool3D
+# Inputs:
+*    input
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor avg_pool3_d(const tensor& input, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NDHWC") {
 
     // Define Op
@@ -2584,7 +3535,21 @@ inline tensor avg_pool3_d(const tensor& input, const std::vector<int64_t>& ksize
     return tensor(res[0]);
 }
 
+/* # AvgPool3DGrad
+# Inputs:
+*    orig_input_shape
+*    grad
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor avg_pool3_d_grad(const tensor& orig_input_shape, const tensor& grad, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NDHWC") {
 
     // Define Op
@@ -2615,7 +3580,21 @@ inline tensor avg_pool3_d_grad(const tensor& orig_input_shape, const tensor& gra
     return tensor(res[0]);
 }
 
+/* # AvgPoolGrad
+# Inputs:
+*    orig_input_shape
+*    grad
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor avg_pool_grad(const tensor& orig_input_shape, const tensor& grad, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -2646,7 +3625,19 @@ inline tensor avg_pool_grad(const tensor& orig_input_shape, const tensor& grad, 
     return tensor(res[0]);
 }
 
+/* # BandedTriangularSolve
+# Inputs:
+*    matrix
+*    rhs
 
+# Attributes:
+*    lower
+*    adjoint
+
+# Outputs:
+*    output
+
+*/
 inline tensor banded_triangular_solve(const tensor& matrix, const tensor& rhs, bool lower=true, bool adjoint=false) {
 
     // Define Op
@@ -2675,7 +3666,20 @@ inline tensor banded_triangular_solve(const tensor& matrix, const tensor& rhs, b
     return tensor(res[0]);
 }
 
+/* # Barrier
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor barrier(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -2707,7 +3711,16 @@ inline tensor barrier(const std::vector<datatype>& component_types, const std::v
     return tensor(res[0]);
 }
 
+/* # BarrierClose
+# Inputs:
+*    handle
 
+# Attributes:
+*    cancel_pending_enqueues
+
+# Outputs:
+*    
+*/
 inline void barrier_close(const tensor& handle, bool cancel_pending_enqueues=false) {
 
     // Define Op
@@ -2730,7 +3743,16 @@ inline void barrier_close(const tensor& handle, bool cancel_pending_enqueues=fal
     status_check(context::get_status());
 }
 
+/* # BarrierIncompleteSize
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor barrier_incomplete_size(const tensor& handle) {
 
     // Define Op
@@ -2754,7 +3776,18 @@ inline tensor barrier_incomplete_size(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # BarrierInsertMany
+# Inputs:
+*    handle
+*    keys
+*    values
 
+# Attributes:
+*    component_index
+
+# Outputs:
+*    
+*/
 inline void barrier_insert_many(const tensor& handle, const tensor& keys, const tensor& values, int64_t component_index) {
 
     // Define Op
@@ -2785,7 +3818,16 @@ inline void barrier_insert_many(const tensor& handle, const tensor& keys, const 
     status_check(context::get_status());
 }
 
+/* # BarrierReadySize
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor barrier_ready_size(const tensor& handle) {
 
     // Define Op
@@ -2809,7 +3851,23 @@ inline tensor barrier_ready_size(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # BarrierTakeMany
+# Inputs:
+*    handle
+*    num_elements
 
+# Attributes:
+*    component_types
+*    allow_small_batch
+*    wait_for_incomplete
+*    timeout_ms
+
+# Outputs:
+*    indices
+*    keys
+*    values
+
+*/
 inline std::vector<tensor> barrier_take_many(const tensor& handle, const tensor& num_elements, const std::vector<datatype>& component_types, bool allow_small_batch=false, bool wait_for_incomplete=false, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -2840,7 +3898,27 @@ inline std::vector<tensor> barrier_take_many(const tensor& handle, const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # Batch
+# Inputs:
+*    in_tensors
 
+# Attributes:
+*    num_batch_threads
+*    max_batch_size
+*    batch_timeout_micros
+*    allowed_batch_sizes
+*    grad_timeout_micros
+*    max_enqueued_batches
+*    container
+*    shared_name
+*    batching_queue
+
+# Outputs:
+*    batched_tensors
+*    batch_index
+*    id
+
+*/
 inline std::vector<tensor> batch(const std::vector<tensor>&in_tensors, int64_t num_batch_threads, int64_t max_batch_size, int64_t batch_timeout_micros, const std::vector<int64_t>& allowed_batch_sizes, int64_t grad_timeout_micros, int64_t max_enqueued_batches=10, const std::string& container="", const std::string& shared_name="", const std::string& batching_queue="") {
 
     // Define Op
@@ -2874,7 +3952,16 @@ inline std::vector<tensor> batch(const std::vector<tensor>&in_tensors, int64_t n
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # BatchCholesky
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_cholesky(const tensor& input) {
 
     // Define Op
@@ -2898,7 +3985,17 @@ inline tensor batch_cholesky(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchCholeskyGrad
+# Inputs:
+*    l
+*    grad
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_cholesky_grad(const tensor& l, const tensor& grad) {
 
     // Define Op
@@ -2926,7 +4023,20 @@ inline tensor batch_cholesky_grad(const tensor& l, const tensor& grad) {
     return tensor(res[0]);
 }
 
+/* # BatchDataset
+# Inputs:
+*    input_dataset
+*    batch_size
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor batch_dataset(const tensor& input_dataset, const tensor& batch_size, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -2963,7 +4073,22 @@ inline tensor batch_dataset(const tensor& input_dataset, const tensor& batch_siz
     return tensor(res[0]);
 }
 
+/* # BatchDatasetV2
+# Inputs:
+*    input_dataset
+*    batch_size
+*    drop_remainder
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    parallel_copy
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor batch_dataset_v2(const tensor& input_dataset, const tensor& batch_size, const tensor& drop_remainder, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool parallel_copy=false, const std::string& metadata="") {
 
     // Define Op
@@ -3005,7 +4130,16 @@ inline tensor batch_dataset_v2(const tensor& input_dataset, const tensor& batch_
     return tensor(res[0]);
 }
 
+/* # BatchFFT
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_f_f_t(const tensor& input) {
 
     // Define Op
@@ -3029,7 +4163,16 @@ inline tensor batch_f_f_t(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchFFT2D
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_f_f_t2_d(const tensor& input) {
 
     // Define Op
@@ -3053,7 +4196,16 @@ inline tensor batch_f_f_t2_d(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchFFT3D
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_f_f_t3_d(const tensor& input) {
 
     // Define Op
@@ -3077,7 +4229,35 @@ inline tensor batch_f_f_t3_d(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchFunction
+# Inputs:
+*    in_tensors
+*    captured_tensors
 
+# Attributes:
+*    f
+*    num_batch_threads
+*    max_batch_size
+*    batch_timeout_micros
+*    allowed_batch_sizes
+*    low_priority_allowed_batch_sizes
+*    Tin
+*    Tcaptured
+*    Tout
+*    max_enqueued_batches
+*    container
+*    shared_name
+*    batching_queue
+*    low_priority_max_batch_size
+*    low_priority_batch_timeout_micros
+*    low_priority_max_enqueued_batches
+*    mixed_priority_policy
+*    enable_large_batch_splitting
+
+# Outputs:
+*    out_tensors
+
+*/
 inline tensor batch_function(const std::vector<tensor>&in_tensors, const std::vector<tensor>&captured_tensors, int64_t f, int64_t num_batch_threads, int64_t max_batch_size, int64_t batch_timeout_micros, const std::vector<int64_t>& allowed_batch_sizes, const std::vector<int64_t>& low_priority_allowed_batch_sizes, const std::vector<datatype>& Tin, const std::vector<datatype>& Tcaptured, const std::vector<datatype>& Tout, int64_t max_enqueued_batches=10, const std::string& container="", const std::string& shared_name="", const std::string& batching_queue="", int64_t low_priority_max_batch_size=0, int64_t low_priority_batch_timeout_micros=0, int64_t low_priority_max_enqueued_batches=0, const std::string& mixed_priority_policy="low_priority_padding_with_max_batch_size", bool enable_large_batch_splitting=false) {
 
     // Define Op
@@ -3126,7 +4306,16 @@ inline tensor batch_function(const std::vector<tensor>&in_tensors, const std::ve
     return tensor(res[0]);
 }
 
+/* # BatchIFFT
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_i_f_f_t(const tensor& input) {
 
     // Define Op
@@ -3150,7 +4339,16 @@ inline tensor batch_i_f_f_t(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchIFFT2D
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_i_f_f_t2_d(const tensor& input) {
 
     // Define Op
@@ -3174,7 +4372,16 @@ inline tensor batch_i_f_f_t2_d(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchIFFT3D
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_i_f_f_t3_d(const tensor& input) {
 
     // Define Op
@@ -3198,7 +4405,21 @@ inline tensor batch_i_f_f_t3_d(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchMatMul
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    adj_x
+*    adj_y
+*    grad_x
+*    grad_y
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_mat_mul(const tensor& x, const tensor& y, bool adj_x=false, bool adj_y=false, bool grad_x=false, bool grad_y=false) {
 
     // Define Op
@@ -3229,7 +4450,21 @@ inline tensor batch_mat_mul(const tensor& x, const tensor& y, bool adj_x=false, 
     return tensor(res[0]);
 }
 
+/* # BatchMatMulV2
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    adj_x
+*    adj_y
+*    grad_x
+*    grad_y
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_mat_mul_v2(const tensor& x, const tensor& y, bool adj_x=false, bool adj_y=false, bool grad_x=false, bool grad_y=false) {
 
     // Define Op
@@ -3260,7 +4495,24 @@ inline tensor batch_mat_mul_v2(const tensor& x, const tensor& y, bool adj_x=fals
     return tensor(res[0]);
 }
 
+/* # BatchMatMulV3
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    Ta
+*    Tb
+*    Tout
+*    adj_x
+*    adj_y
+*    grad_x
+*    grad_y
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_mat_mul_v3(const tensor& x, const tensor& y, datatype Ta, datatype Tb, datatype Tout, bool adj_x=false, bool adj_y=false, bool grad_x=false, bool grad_y=false) {
 
     // Define Op
@@ -3294,7 +4546,18 @@ inline tensor batch_mat_mul_v3(const tensor& x, const tensor& y, datatype Ta, da
     return tensor(res[0]);
 }
 
+/* # BatchMatrixBandPart
+# Inputs:
+*    input
+*    num_lower
+*    num_upper
 
+# Attributes:
+*    
+# Outputs:
+*    band
+
+*/
 inline tensor batch_matrix_band_part(const tensor& input, const tensor& num_lower, const tensor& num_upper) {
 
     // Define Op
@@ -3326,7 +4589,16 @@ inline tensor batch_matrix_band_part(const tensor& input, const tensor& num_lowe
     return tensor(res[0]);
 }
 
+/* # BatchMatrixDeterminant
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_matrix_determinant(const tensor& input) {
 
     // Define Op
@@ -3350,7 +4622,16 @@ inline tensor batch_matrix_determinant(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchMatrixDiag
+# Inputs:
+*    diagonal
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_matrix_diag(const tensor& diagonal) {
 
     // Define Op
@@ -3374,7 +4655,16 @@ inline tensor batch_matrix_diag(const tensor& diagonal) {
     return tensor(res[0]);
 }
 
+/* # BatchMatrixDiagPart
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    diagonal
+
+*/
 inline tensor batch_matrix_diag_part(const tensor& input) {
 
     // Define Op
@@ -3398,7 +4688,17 @@ inline tensor batch_matrix_diag_part(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchMatrixInverse
+# Inputs:
+*    input
 
+# Attributes:
+*    adjoint
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_matrix_inverse(const tensor& input, bool adjoint=false) {
 
     // Define Op
@@ -3422,7 +4722,17 @@ inline tensor batch_matrix_inverse(const tensor& input, bool adjoint=false) {
     return tensor(res[0]);
 }
 
+/* # BatchMatrixSetDiag
+# Inputs:
+*    input
+*    diagonal
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_matrix_set_diag(const tensor& input, const tensor& diagonal) {
 
     // Define Op
@@ -3450,7 +4760,18 @@ inline tensor batch_matrix_set_diag(const tensor& input, const tensor& diagonal)
     return tensor(res[0]);
 }
 
+/* # BatchMatrixSolve
+# Inputs:
+*    matrix
+*    rhs
 
+# Attributes:
+*    adjoint
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_matrix_solve(const tensor& matrix, const tensor& rhs, bool adjoint=false) {
 
     // Define Op
@@ -3478,7 +4799,19 @@ inline tensor batch_matrix_solve(const tensor& matrix, const tensor& rhs, bool a
     return tensor(res[0]);
 }
 
+/* # BatchMatrixSolveLs
+# Inputs:
+*    matrix
+*    rhs
+*    l2_regularizer
 
+# Attributes:
+*    fast
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_matrix_solve_ls(const tensor& matrix, const tensor& rhs, const tensor& l2_regularizer, bool fast=true) {
 
     // Define Op
@@ -3510,7 +4843,19 @@ inline tensor batch_matrix_solve_ls(const tensor& matrix, const tensor& rhs, con
     return tensor(res[0]);
 }
 
+/* # BatchMatrixTriangularSolve
+# Inputs:
+*    matrix
+*    rhs
 
+# Attributes:
+*    lower
+*    adjoint
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_matrix_triangular_solve(const tensor& matrix, const tensor& rhs, bool lower=true, bool adjoint=false) {
 
     // Define Op
@@ -3539,7 +4884,22 @@ inline tensor batch_matrix_triangular_solve(const tensor& matrix, const tensor& 
     return tensor(res[0]);
 }
 
+/* # BatchNormWithGlobalNormalization
+# Inputs:
+*    t
+*    m
+*    v
+*    beta
+*    gamma
 
+# Attributes:
+*    variance_epsilon
+*    scale_after_normalization
+
+# Outputs:
+*    result
+
+*/
 inline tensor batch_norm_with_global_normalization(const tensor& t, const tensor& m, const tensor& v, const tensor& beta, const tensor& gamma, float variance_epsilon, bool scale_after_normalization) {
 
     // Define Op
@@ -3580,7 +4940,26 @@ inline tensor batch_norm_with_global_normalization(const tensor& t, const tensor
     return tensor(res[0]);
 }
 
+/* # BatchNormWithGlobalNormalizationGrad
+# Inputs:
+*    t
+*    m
+*    v
+*    gamma
+*    backprop
 
+# Attributes:
+*    variance_epsilon
+*    scale_after_normalization
+
+# Outputs:
+*    dx
+*    dm
+*    dv
+*    db
+*    dg
+
+*/
 inline std::vector<tensor> batch_norm_with_global_normalization_grad(const tensor& t, const tensor& m, const tensor& v, const tensor& gamma, const tensor& backprop, float variance_epsilon, bool scale_after_normalization) {
 
     // Define Op
@@ -3621,7 +5000,16 @@ inline std::vector<tensor> batch_norm_with_global_normalization_grad(const tenso
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # BatchSelfAdjointEig
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor batch_self_adjoint_eig(const tensor& input) {
 
     // Define Op
@@ -3645,7 +5033,18 @@ inline tensor batch_self_adjoint_eig(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # BatchSelfAdjointEigV2
+# Inputs:
+*    input
 
+# Attributes:
+*    compute_v
+
+# Outputs:
+*    e
+*    v
+
+*/
 inline std::vector<tensor> batch_self_adjoint_eig_v2(const tensor& input, bool compute_v=true) {
 
     // Define Op
@@ -3669,7 +5068,20 @@ inline std::vector<tensor> batch_self_adjoint_eig_v2(const tensor& input, bool c
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # BatchSvd
+# Inputs:
+*    input
 
+# Attributes:
+*    compute_uv
+*    full_matrices
+
+# Outputs:
+*    s
+*    u
+*    v
+
+*/
 inline std::vector<tensor> batch_svd(const tensor& input, bool compute_uv=true, bool full_matrices=false) {
 
     // Define Op
@@ -3694,7 +5106,19 @@ inline std::vector<tensor> batch_svd(const tensor& input, bool compute_uv=true, 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # BatchToSpace
+# Inputs:
+*    input
+*    crops
 
+# Attributes:
+*    block_size
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_to_space(const tensor& input, const tensor& crops, int64_t block_size, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -3723,7 +5147,20 @@ inline tensor batch_to_space(const tensor& input, const tensor& crops, int64_t b
     return tensor(res[0]);
 }
 
+/* # BatchToSpaceND
+# Inputs:
+*    input
+*    block_shape
+*    crops
 
+# Attributes:
+*    Tblock_shape
+*    Tcrops
+
+# Outputs:
+*    output
+
+*/
 inline tensor batch_to_space_n_d(const tensor& input, const tensor& block_shape, const tensor& crops, datatype Tblock_shape=static_cast<datatype>(3), datatype Tcrops=static_cast<datatype>(3)) {
 
     // Define Op
@@ -3756,7 +5193,16 @@ inline tensor batch_to_space_n_d(const tensor& input, const tensor& block_shape,
     return tensor(res[0]);
 }
 
+/* # BesselI0
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_i0(const tensor& x) {
 
     // Define Op
@@ -3780,7 +5226,16 @@ inline tensor bessel_i0(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselI0e
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_i0e(const tensor& x) {
 
     // Define Op
@@ -3804,7 +5259,16 @@ inline tensor bessel_i0e(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselI1
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_i1(const tensor& x) {
 
     // Define Op
@@ -3828,7 +5292,16 @@ inline tensor bessel_i1(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselI1e
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_i1e(const tensor& x) {
 
     // Define Op
@@ -3852,7 +5325,16 @@ inline tensor bessel_i1e(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselJ0
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_j0(const tensor& x) {
 
     // Define Op
@@ -3876,7 +5358,16 @@ inline tensor bessel_j0(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselJ1
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_j1(const tensor& x) {
 
     // Define Op
@@ -3900,7 +5391,16 @@ inline tensor bessel_j1(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselK0
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_k0(const tensor& x) {
 
     // Define Op
@@ -3924,7 +5424,16 @@ inline tensor bessel_k0(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselK0e
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_k0e(const tensor& x) {
 
     // Define Op
@@ -3948,7 +5457,16 @@ inline tensor bessel_k0e(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselK1
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_k1(const tensor& x) {
 
     // Define Op
@@ -3972,7 +5490,16 @@ inline tensor bessel_k1(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselK1e
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_k1e(const tensor& x) {
 
     // Define Op
@@ -3996,7 +5523,16 @@ inline tensor bessel_k1e(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselY0
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_y0(const tensor& x) {
 
     // Define Op
@@ -4020,7 +5556,16 @@ inline tensor bessel_y0(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BesselY1
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor bessel_y1(const tensor& x) {
 
     // Define Op
@@ -4044,7 +5589,18 @@ inline tensor bessel_y1(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Betainc
+# Inputs:
+*    a
+*    b
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor betainc(const tensor& a, const tensor& b, const tensor& x) {
 
     // Define Op
@@ -4076,7 +5632,18 @@ inline tensor betainc(const tensor& a, const tensor& b, const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # BiasAdd
+# Inputs:
+*    value
+*    bias
 
+# Attributes:
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor bias_add(const tensor& value, const tensor& bias, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -4104,7 +5671,17 @@ inline tensor bias_add(const tensor& value, const tensor& bias, const std::strin
     return tensor(res[0]);
 }
 
+/* # BiasAddGrad
+# Inputs:
+*    out_backprop
 
+# Attributes:
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor bias_add_grad(const tensor& out_backprop, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -4128,7 +5705,17 @@ inline tensor bias_add_grad(const tensor& out_backprop, const std::string& data_
     return tensor(res[0]);
 }
 
+/* # BiasAddV1
+# Inputs:
+*    value
+*    bias
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor bias_add_v1(const tensor& value, const tensor& bias) {
 
     // Define Op
@@ -4156,7 +5743,18 @@ inline tensor bias_add_v1(const tensor& value, const tensor& bias) {
     return tensor(res[0]);
 }
 
+/* # Bincount
+# Inputs:
+*    arr
+*    size
+*    weights
 
+# Attributes:
+*    
+# Outputs:
+*    bins
+
+*/
 inline tensor bincount(const tensor& arr, const tensor& size, const tensor& weights) {
 
     // Define Op
@@ -4188,7 +5786,17 @@ inline tensor bincount(const tensor& arr, const tensor& size, const tensor& weig
     return tensor(res[0]);
 }
 
+/* # Bitcast
+# Inputs:
+*    input
 
+# Attributes:
+*    type
+
+# Outputs:
+*    output
+
+*/
 inline tensor bitcast(const tensor& input, datatype type) {
 
     // Define Op
@@ -4212,7 +5820,17 @@ inline tensor bitcast(const tensor& input, datatype type) {
     return tensor(res[0]);
 }
 
+/* # BitwiseAnd
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor bitwise_and(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -4240,7 +5858,17 @@ inline tensor bitwise_and(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # BitwiseOr
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor bitwise_or(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -4268,7 +5896,17 @@ inline tensor bitwise_or(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # BitwiseXor
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor bitwise_xor(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -4296,7 +5934,33 @@ inline tensor bitwise_xor(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # BlockLSTM
+# Inputs:
+*    seq_len_max
+*    x
+*    cs_prev
+*    h_prev
+*    w
+*    wci
+*    wcf
+*    wco
+*    b
 
+# Attributes:
+*    forget_bias
+*    cell_clip
+*    use_peephole
+
+# Outputs:
+*    i
+*    cs
+*    f
+*    o
+*    ci
+*    co
+*    h
+
+*/
 inline std::vector<tensor> block_l_s_t_m(const tensor& seq_len_max, const tensor& x, const tensor& cs_prev, const tensor& h_prev, const tensor& w, const tensor& wci, const tensor& wcf, const tensor& wco, const tensor& b, float forget_bias=1.0000e+00, float cell_clip=3.0000e+00, bool use_peephole=false) {
 
     // Define Op
@@ -4354,7 +6018,41 @@ inline std::vector<tensor> block_l_s_t_m(const tensor& seq_len_max, const tensor
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
+/* # BlockLSTMGrad
+# Inputs:
+*    seq_len_max
+*    x
+*    cs_prev
+*    h_prev
+*    w
+*    wci
+*    wcf
+*    wco
+*    b
+*    i
+*    cs
+*    f
+*    o
+*    ci
+*    co
+*    h
+*    cs_grad
+*    h_grad
 
+# Attributes:
+*    use_peephole
+
+# Outputs:
+*    x_grad
+*    cs_prev_grad
+*    h_prev_grad
+*    w_grad
+*    wci_grad
+*    wcf_grad
+*    wco_grad
+*    b_grad
+
+*/
 inline std::vector<tensor> block_l_s_t_m_grad(const tensor& seq_len_max, const tensor& x, const tensor& cs_prev, const tensor& h_prev, const tensor& w, const tensor& wci, const tensor& wcf, const tensor& wco, const tensor& b, const tensor& i, const tensor& cs, const tensor& f, const tensor& o, const tensor& ci, const tensor& co, const tensor& h, const tensor& cs_grad, const tensor& h_grad, bool use_peephole) {
 
     // Define Op
@@ -4446,7 +6144,41 @@ inline std::vector<tensor> block_l_s_t_m_grad(const tensor& seq_len_max, const t
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]),tensor(res[7]), };
 }
 
+/* # BlockLSTMGradV2
+# Inputs:
+*    seq_len_max
+*    x
+*    cs_prev
+*    h_prev
+*    w
+*    wci
+*    wcf
+*    wco
+*    b
+*    i
+*    cs
+*    f
+*    o
+*    ci
+*    co
+*    h
+*    cs_grad
+*    h_grad
 
+# Attributes:
+*    use_peephole
+
+# Outputs:
+*    x_grad
+*    cs_prev_grad
+*    h_prev_grad
+*    w_grad
+*    wci_grad
+*    wcf_grad
+*    wco_grad
+*    b_grad
+
+*/
 inline std::vector<tensor> block_l_s_t_m_grad_v2(const tensor& seq_len_max, const tensor& x, const tensor& cs_prev, const tensor& h_prev, const tensor& w, const tensor& wci, const tensor& wcf, const tensor& wco, const tensor& b, const tensor& i, const tensor& cs, const tensor& f, const tensor& o, const tensor& ci, const tensor& co, const tensor& h, const tensor& cs_grad, const tensor& h_grad, bool use_peephole) {
 
     // Define Op
@@ -4538,7 +6270,32 @@ inline std::vector<tensor> block_l_s_t_m_grad_v2(const tensor& seq_len_max, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]),tensor(res[7]), };
 }
 
+/* # BlockLSTMV2
+# Inputs:
+*    seq_len_max
+*    x
+*    cs_prev
+*    h_prev
+*    w
+*    wci
+*    wcf
+*    wco
+*    b
 
+# Attributes:
+*    cell_clip
+*    use_peephole
+
+# Outputs:
+*    i
+*    cs
+*    f
+*    o
+*    ci
+*    co
+*    h
+
+*/
 inline std::vector<tensor> block_l_s_t_m_v2(const tensor& seq_len_max, const tensor& x, const tensor& cs_prev, const tensor& h_prev, const tensor& w, const tensor& wci, const tensor& wcf, const tensor& wco, const tensor& b, float cell_clip=0.0000e+00, bool use_peephole=false) {
 
     // Define Op
@@ -4595,7 +6352,21 @@ inline std::vector<tensor> block_l_s_t_m_v2(const tensor& seq_len_max, const ten
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
+/* # BoostedTreesAggregateStats
+# Inputs:
+*    node_ids
+*    gradients
+*    hessians
+*    feature
 
+# Attributes:
+*    max_splits
+*    num_buckets
+
+# Outputs:
+*    stats_summary
+
+*/
 inline tensor boosted_trees_aggregate_stats(const tensor& node_ids, const tensor& gradients, const tensor& hessians, const tensor& feature, int64_t max_splits, int64_t num_buckets) {
 
     // Define Op
@@ -4632,7 +6403,18 @@ inline tensor boosted_trees_aggregate_stats(const tensor& node_ids, const tensor
     return tensor(res[0]);
 }
 
+/* # BoostedTreesBucketize
+# Inputs:
+*    float_values
+*    bucket_boundaries
 
+# Attributes:
+*    num_features
+
+# Outputs:
+*    buckets
+
+*/
 inline tensor boosted_trees_bucketize(const std::vector<tensor>&float_values, const std::vector<tensor>&bucket_boundaries) {
 
     // Define Op
@@ -4664,7 +6446,29 @@ inline tensor boosted_trees_bucketize(const std::vector<tensor>&float_values, co
     return tensor(res[0]);
 }
 
+/* # BoostedTreesCalculateBestFeatureSplit
+# Inputs:
+*    node_id_range
+*    stats_summary
+*    l1
+*    l2
+*    tree_complexity
+*    min_node_weight
 
+# Attributes:
+*    logits_dimension
+*    split_type
+
+# Outputs:
+*    node_ids
+*    gains
+*    feature_dimensions
+*    thresholds
+*    left_node_contribs
+*    right_node_contribs
+*    split_with_default_directions
+
+*/
 inline std::vector<tensor> boosted_trees_calculate_best_feature_split(const tensor& node_id_range, const tensor& stats_summary, const tensor& l1, const tensor& l2, const tensor& tree_complexity, const tensor& min_node_weight, int64_t logits_dimension, const std::string& split_type="inequality") {
 
     // Define Op
@@ -4709,7 +6513,32 @@ inline std::vector<tensor> boosted_trees_calculate_best_feature_split(const tens
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
+/* # BoostedTreesCalculateBestFeatureSplitV2
+# Inputs:
+*    node_id_range
+*    stats_summaries_list
+*    split_types
+*    candidate_feature_ids
+*    l1
+*    l2
+*    tree_complexity
+*    min_node_weight
 
+# Attributes:
+*    num_features
+*    logits_dimension
+
+# Outputs:
+*    node_ids
+*    gains
+*    feature_ids
+*    feature_dimensions
+*    thresholds
+*    left_node_contribs
+*    right_node_contribs
+*    split_with_default_directions
+
+*/
 inline std::vector<tensor> boosted_trees_calculate_best_feature_split_v2(const tensor& node_id_range, const std::vector<tensor>&stats_summaries_list, const tensor& split_types, const tensor& candidate_feature_ids, const tensor& l1, const tensor& l2, const tensor& tree_complexity, const tensor& min_node_weight, int64_t logits_dimension) {
 
     // Define Op
@@ -4764,7 +6593,27 @@ inline std::vector<tensor> boosted_trees_calculate_best_feature_split_v2(const t
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]),tensor(res[7]), };
 }
 
+/* # BoostedTreesCalculateBestGainsPerFeature
+# Inputs:
+*    node_id_range
+*    stats_summary_list
+*    l1
+*    l2
+*    tree_complexity
+*    min_node_weight
 
+# Attributes:
+*    max_splits
+*    num_features
+
+# Outputs:
+*    node_ids_list
+*    gains_list
+*    thresholds_list
+*    left_node_contribs_list
+*    right_node_contribs_list
+
+*/
 inline std::vector<tensor> boosted_trees_calculate_best_gains_per_feature(const tensor& node_id_range, const std::vector<tensor>&stats_summary_list, const tensor& l1, const tensor& l2, const tensor& tree_complexity, const tensor& min_node_weight, int64_t max_splits) {
 
     // Define Op
@@ -4811,7 +6660,20 @@ inline std::vector<tensor> boosted_trees_calculate_best_gains_per_feature(const 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # BoostedTreesCenterBias
+# Inputs:
+*    tree_ensemble_handle
+*    mean_gradients
+*    mean_hessians
+*    l1
+*    l2
 
+# Attributes:
+*    
+# Outputs:
+*    continue_centering
+
+*/
 inline tensor boosted_trees_center_bias(const tensor& tree_ensemble_handle, const tensor& mean_gradients, const tensor& mean_hessians, const tensor& l1, const tensor& l2) {
 
     // Define Op
@@ -4851,7 +6713,17 @@ inline tensor boosted_trees_center_bias(const tensor& tree_ensemble_handle, cons
     return tensor(res[0]);
 }
 
+/* # BoostedTreesCreateEnsemble
+# Inputs:
+*    tree_ensemble_handle
+*    stamp_token
+*    tree_ensemble_serialized
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void boosted_trees_create_ensemble(const tensor& tree_ensemble_handle, const tensor& stamp_token, const tensor& tree_ensemble_serialized) {
 
     // Define Op
@@ -4882,7 +6754,18 @@ inline void boosted_trees_create_ensemble(const tensor& tree_ensemble_handle, co
     status_check(context::get_status());
 }
 
+/* # BoostedTreesCreateQuantileStreamResource
+# Inputs:
+*    quantile_stream_resource_handle
+*    epsilon
+*    num_streams
 
+# Attributes:
+*    max_elements
+
+# Outputs:
+*    
+*/
 inline void boosted_trees_create_quantile_stream_resource(const tensor& quantile_stream_resource_handle, const tensor& epsilon, const tensor& num_streams, int64_t max_elements=1099511627776) {
 
     // Define Op
@@ -4913,7 +6796,17 @@ inline void boosted_trees_create_quantile_stream_resource(const tensor& quantile
     status_check(context::get_status());
 }
 
+/* # BoostedTreesDeserializeEnsemble
+# Inputs:
+*    tree_ensemble_handle
+*    stamp_token
+*    tree_ensemble_serialized
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void boosted_trees_deserialize_ensemble(const tensor& tree_ensemble_handle, const tensor& stamp_token, const tensor& tree_ensemble_serialized) {
 
     // Define Op
@@ -4944,7 +6837,17 @@ inline void boosted_trees_deserialize_ensemble(const tensor& tree_ensemble_handl
     status_check(context::get_status());
 }
 
+/* # BoostedTreesEnsembleResourceHandleOp
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    resource
+
+*/
 inline tensor boosted_trees_ensemble_resource_handle_op(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -4966,7 +6869,19 @@ inline tensor boosted_trees_ensemble_resource_handle_op(const std::string& conta
     return tensor(res[0]);
 }
 
+/* # BoostedTreesExampleDebugOutputs
+# Inputs:
+*    tree_ensemble_handle
+*    bucketized_features
 
+# Attributes:
+*    num_bucketized_features
+*    logits_dimension
+
+# Outputs:
+*    examples_debug_outputs_serialized
+
+*/
 inline tensor boosted_trees_example_debug_outputs(const tensor& tree_ensemble_handle, const std::vector<tensor>&bucketized_features, int64_t logits_dimension) {
 
     // Define Op
@@ -4997,7 +6912,17 @@ inline tensor boosted_trees_example_debug_outputs(const tensor& tree_ensemble_ha
     return tensor(res[0]);
 }
 
+/* # BoostedTreesFlushQuantileSummaries
+# Inputs:
+*    quantile_stream_resource_handle
 
+# Attributes:
+*    num_features
+
+# Outputs:
+*    summaries
+
+*/
 inline tensor boosted_trees_flush_quantile_summaries(const tensor& quantile_stream_resource_handle, int64_t num_features) {
 
     // Define Op
@@ -5021,7 +6946,20 @@ inline tensor boosted_trees_flush_quantile_summaries(const tensor& quantile_stre
     return tensor(res[0]);
 }
 
+/* # BoostedTreesGetEnsembleStates
+# Inputs:
+*    tree_ensemble_handle
 
+# Attributes:
+*    
+# Outputs:
+*    stamp_token
+*    num_trees
+*    num_finalized_trees
+*    num_attempted_layers
+*    last_layer_nodes_range
+
+*/
 inline std::vector<tensor> boosted_trees_get_ensemble_states(const tensor& tree_ensemble_handle) {
 
     // Define Op
@@ -5045,7 +6983,19 @@ inline std::vector<tensor> boosted_trees_get_ensemble_states(const tensor& tree_
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # BoostedTreesMakeQuantileSummaries
+# Inputs:
+*    float_values
+*    example_weights
+*    epsilon
 
+# Attributes:
+*    num_features
+
+# Outputs:
+*    summaries
+
+*/
 inline tensor boosted_trees_make_quantile_summaries(const std::vector<tensor>&float_values, const tensor& example_weights, const tensor& epsilon) {
 
     // Define Op
@@ -5079,7 +7029,22 @@ inline tensor boosted_trees_make_quantile_summaries(const std::vector<tensor>&fl
     return tensor(res[0]);
 }
 
+/* # BoostedTreesMakeStatsSummary
+# Inputs:
+*    node_ids
+*    gradients
+*    hessians
+*    bucketized_features_list
 
+# Attributes:
+*    max_splits
+*    num_buckets
+*    num_features
+
+# Outputs:
+*    stats_summary
+
+*/
 inline tensor boosted_trees_make_stats_summary(const tensor& node_ids, const tensor& gradients, const tensor& hessians, const std::vector<tensor>&bucketized_features_list, int64_t max_splits, int64_t num_buckets) {
 
     // Define Op
@@ -5119,7 +7084,19 @@ inline tensor boosted_trees_make_stats_summary(const tensor& node_ids, const ten
     return tensor(res[0]);
 }
 
+/* # BoostedTreesPredict
+# Inputs:
+*    tree_ensemble_handle
+*    bucketized_features
 
+# Attributes:
+*    num_bucketized_features
+*    logits_dimension
+
+# Outputs:
+*    logits
+
+*/
 inline tensor boosted_trees_predict(const tensor& tree_ensemble_handle, const std::vector<tensor>&bucketized_features, int64_t logits_dimension) {
 
     // Define Op
@@ -5150,7 +7127,17 @@ inline tensor boosted_trees_predict(const tensor& tree_ensemble_handle, const st
     return tensor(res[0]);
 }
 
+/* # BoostedTreesQuantileStreamResourceAddSummaries
+# Inputs:
+*    quantile_stream_resource_handle
+*    summaries
 
+# Attributes:
+*    num_features
+
+# Outputs:
+*    
+*/
 inline void boosted_trees_quantile_stream_resource_add_summaries(const tensor& quantile_stream_resource_handle, const std::vector<tensor>&summaries) {
 
     // Define Op
@@ -5179,7 +7166,17 @@ inline void boosted_trees_quantile_stream_resource_add_summaries(const tensor& q
     status_check(context::get_status());
 }
 
+/* # BoostedTreesQuantileStreamResourceDeserialize
+# Inputs:
+*    quantile_stream_resource_handle
+*    bucket_boundaries
 
+# Attributes:
+*    num_streams
+
+# Outputs:
+*    
+*/
 inline void boosted_trees_quantile_stream_resource_deserialize(const tensor& quantile_stream_resource_handle, const std::vector<tensor>&bucket_boundaries) {
 
     // Define Op
@@ -5208,7 +7205,17 @@ inline void boosted_trees_quantile_stream_resource_deserialize(const tensor& qua
     status_check(context::get_status());
 }
 
+/* # BoostedTreesQuantileStreamResourceFlush
+# Inputs:
+*    quantile_stream_resource_handle
+*    num_buckets
 
+# Attributes:
+*    generate_quantiles
+
+# Outputs:
+*    
+*/
 inline void boosted_trees_quantile_stream_resource_flush(const tensor& quantile_stream_resource_handle, const tensor& num_buckets, bool generate_quantiles=false) {
 
     // Define Op
@@ -5235,7 +7242,17 @@ inline void boosted_trees_quantile_stream_resource_flush(const tensor& quantile_
     status_check(context::get_status());
 }
 
+/* # BoostedTreesQuantileStreamResourceGetBucketBoundaries
+# Inputs:
+*    quantile_stream_resource_handle
 
+# Attributes:
+*    num_features
+
+# Outputs:
+*    bucket_boundaries
+
+*/
 inline tensor boosted_trees_quantile_stream_resource_get_bucket_boundaries(const tensor& quantile_stream_resource_handle, int64_t num_features) {
 
     // Define Op
@@ -5259,7 +7276,17 @@ inline tensor boosted_trees_quantile_stream_resource_get_bucket_boundaries(const
     return tensor(res[0]);
 }
 
+/* # BoostedTreesQuantileStreamResourceHandleOp
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    resource
+
+*/
 inline tensor boosted_trees_quantile_stream_resource_handle_op(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -5281,7 +7308,17 @@ inline tensor boosted_trees_quantile_stream_resource_handle_op(const std::string
     return tensor(res[0]);
 }
 
+/* # BoostedTreesSerializeEnsemble
+# Inputs:
+*    tree_ensemble_handle
 
+# Attributes:
+*    
+# Outputs:
+*    stamp_token
+*    tree_ensemble_serialized
+
+*/
 inline std::vector<tensor> boosted_trees_serialize_ensemble(const tensor& tree_ensemble_handle) {
 
     // Define Op
@@ -5305,7 +7342,25 @@ inline std::vector<tensor> boosted_trees_serialize_ensemble(const tensor& tree_e
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # BoostedTreesSparseAggregateStats
+# Inputs:
+*    node_ids
+*    gradients
+*    hessians
+*    feature_indices
+*    feature_values
+*    feature_shape
 
+# Attributes:
+*    max_splits
+*    num_buckets
+
+# Outputs:
+*    stats_summary_indices
+*    stats_summary_values
+*    stats_summary_shape
+
+*/
 inline std::vector<tensor> boosted_trees_sparse_aggregate_stats(const tensor& node_ids, const tensor& gradients, const tensor& hessians, const tensor& feature_indices, const tensor& feature_values, const tensor& feature_shape, int64_t max_splits, int64_t num_buckets) {
 
     // Define Op
@@ -5350,7 +7405,31 @@ inline std::vector<tensor> boosted_trees_sparse_aggregate_stats(const tensor& no
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # BoostedTreesSparseCalculateBestFeatureSplit
+# Inputs:
+*    node_id_range
+*    stats_summary_indices
+*    stats_summary_values
+*    stats_summary_shape
+*    l1
+*    l2
+*    tree_complexity
+*    min_node_weight
 
+# Attributes:
+*    logits_dimension
+*    split_type
+
+# Outputs:
+*    node_ids
+*    gains
+*    feature_dimensions
+*    thresholds
+*    left_node_contribs
+*    right_node_contribs
+*    split_with_default_directions
+
+*/
 inline std::vector<tensor> boosted_trees_sparse_calculate_best_feature_split(const tensor& node_id_range, const tensor& stats_summary_indices, const tensor& stats_summary_values, const tensor& stats_summary_shape, const tensor& l1, const tensor& l2, const tensor& tree_complexity, const tensor& min_node_weight, int64_t logits_dimension, const std::string& split_type="inequality") {
 
     // Define Op
@@ -5403,7 +7482,23 @@ inline std::vector<tensor> boosted_trees_sparse_calculate_best_feature_split(con
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
+/* # BoostedTreesTrainingPredict
+# Inputs:
+*    tree_ensemble_handle
+*    cached_tree_ids
+*    cached_node_ids
+*    bucketized_features
 
+# Attributes:
+*    num_bucketized_features
+*    logits_dimension
+
+# Outputs:
+*    partial_logits
+*    tree_ids
+*    node_ids
+
+*/
 inline std::vector<tensor> boosted_trees_training_predict(const tensor& tree_ensemble_handle, const tensor& cached_tree_ids, const tensor& cached_node_ids, const std::vector<tensor>&bucketized_features, int64_t logits_dimension) {
 
     // Define Op
@@ -5442,7 +7537,25 @@ inline std::vector<tensor> boosted_trees_training_predict(const tensor& tree_ens
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # BoostedTreesUpdateEnsemble
+# Inputs:
+*    tree_ensemble_handle
+*    feature_ids
+*    node_ids
+*    gains
+*    thresholds
+*    left_node_contribs
+*    right_node_contribs
+*    max_depth
+*    learning_rate
 
+# Attributes:
+*    pruning_mode
+*    num_features
+
+# Outputs:
+*    
+*/
 inline void boosted_trees_update_ensemble(const tensor& tree_ensemble_handle, const tensor& feature_ids, const std::vector<tensor>&node_ids, const std::vector<tensor>&gains, const std::vector<tensor>&thresholds, const std::vector<tensor>&left_node_contribs, const std::vector<tensor>&right_node_contribs, const tensor& max_depth, const tensor& learning_rate, int64_t pruning_mode) {
 
     // Define Op
@@ -5508,7 +7621,29 @@ inline void boosted_trees_update_ensemble(const tensor& tree_ensemble_handle, co
     status_check(context::get_status());
 }
 
+/* # BoostedTreesUpdateEnsembleV2
+# Inputs:
+*    tree_ensemble_handle
+*    feature_ids
+*    dimension_ids
+*    node_ids
+*    gains
+*    thresholds
+*    left_node_contribs
+*    right_node_contribs
+*    split_types
+*    max_depth
+*    learning_rate
+*    pruning_mode
 
+# Attributes:
+*    num_features
+*    logits_dimension
+*    num_groups
+
+# Outputs:
+*    
+*/
 inline void boosted_trees_update_ensemble_v2(const tensor& tree_ensemble_handle, const std::vector<tensor>&feature_ids, const std::vector<tensor>&dimension_ids, const std::vector<tensor>&node_ids, const std::vector<tensor>&gains, const std::vector<tensor>&thresholds, const std::vector<tensor>&left_node_contribs, const std::vector<tensor>&right_node_contribs, const std::vector<tensor>&split_types, const tensor& max_depth, const tensor& learning_rate, const tensor& pruning_mode, int64_t logits_dimension=1) {
 
     // Define Op
@@ -5593,7 +7728,17 @@ inline void boosted_trees_update_ensemble_v2(const tensor& tree_ensemble_handle,
     status_check(context::get_status());
 }
 
+/* # BroadcastArgs
+# Inputs:
+*    s0
+*    s1
 
+# Attributes:
+*    
+# Outputs:
+*    r0
+
+*/
 inline tensor broadcast_args(const tensor& s0, const tensor& s1) {
 
     // Define Op
@@ -5621,7 +7766,18 @@ inline tensor broadcast_args(const tensor& s0, const tensor& s1) {
     return tensor(res[0]);
 }
 
+/* # BroadcastGradientArgs
+# Inputs:
+*    s0
+*    s1
 
+# Attributes:
+*    
+# Outputs:
+*    r0
+*    r1
+
+*/
 inline std::vector<tensor> broadcast_gradient_args(const tensor& s0, const tensor& s1) {
 
     // Define Op
@@ -5649,7 +7805,18 @@ inline std::vector<tensor> broadcast_gradient_args(const tensor& s0, const tenso
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # BroadcastTo
+# Inputs:
+*    input
+*    shape
 
+# Attributes:
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor broadcast_to(const tensor& input, const tensor& shape, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -5677,7 +7844,17 @@ inline tensor broadcast_to(const tensor& input, const tensor& shape, datatype Ti
     return tensor(res[0]);
 }
 
+/* # Bucketize
+# Inputs:
+*    input
 
+# Attributes:
+*    boundaries
+
+# Outputs:
+*    output
+
+*/
 inline tensor bucketize(const tensor& input, const std::vector<float>& boundaries) {
 
     // Define Op
@@ -5701,7 +7878,19 @@ inline tensor bucketize(const tensor& input, const std::vector<float>& boundarie
     return tensor(res[0]);
 }
 
+/* # BytesProducedStatsDataset
+# Inputs:
+*    input_dataset
+*    tag
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor bytes_produced_stats_dataset(const tensor& input_dataset, const tensor& tag, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -5737,7 +7926,20 @@ inline tensor bytes_produced_stats_dataset(const tensor& input_dataset, const te
     return tensor(res[0]);
 }
 
+/* # CSRSparseMatrixComponents
+# Inputs:
+*    csr_sparse_matrix
+*    index
 
+# Attributes:
+*    type
+
+# Outputs:
+*    row_ptrs
+*    col_inds
+*    values
+
+*/
 inline std::vector<tensor> c_s_r_sparse_matrix_components(const tensor& csr_sparse_matrix, const tensor& index, datatype type) {
 
     // Define Op
@@ -5765,7 +7967,17 @@ inline std::vector<tensor> c_s_r_sparse_matrix_components(const tensor& csr_spar
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # CSRSparseMatrixToDense
+# Inputs:
+*    sparse_input
 
+# Attributes:
+*    type
+
+# Outputs:
+*    dense_output
+
+*/
 inline tensor c_s_r_sparse_matrix_to_dense(const tensor& sparse_input, datatype type) {
 
     // Define Op
@@ -5789,7 +8001,19 @@ inline tensor c_s_r_sparse_matrix_to_dense(const tensor& sparse_input, datatype 
     return tensor(res[0]);
 }
 
+/* # CSRSparseMatrixToSparseTensor
+# Inputs:
+*    sparse_matrix
 
+# Attributes:
+*    type
+
+# Outputs:
+*    indices
+*    values
+*    dense_shape
+
+*/
 inline std::vector<tensor> c_s_r_sparse_matrix_to_sparse_tensor(const tensor& sparse_matrix, datatype type) {
 
     // Define Op
@@ -5813,7 +8037,26 @@ inline std::vector<tensor> c_s_r_sparse_matrix_to_sparse_tensor(const tensor& sp
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # CSVDataset
+# Inputs:
+*    filenames
+*    compression_type
+*    buffer_size
+*    header
+*    field_delim
+*    use_quote_delim
+*    na_value
+*    select_cols
+*    record_defaults
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor c_s_v_dataset(const tensor& filenames, const tensor& compression_type, const tensor& buffer_size, const tensor& header, const tensor& field_delim, const tensor& use_quote_delim, const tensor& na_value, const tensor& select_cols, const std::vector<tensor>&record_defaults, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -5879,7 +8122,27 @@ inline tensor c_s_v_dataset(const tensor& filenames, const tensor& compression_t
     return tensor(res[0]);
 }
 
+/* # CSVDatasetV2
+# Inputs:
+*    filenames
+*    compression_type
+*    buffer_size
+*    header
+*    field_delim
+*    use_quote_delim
+*    na_value
+*    select_cols
+*    record_defaults
+*    exclude_cols
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor c_s_v_dataset_v2(const tensor& filenames, const tensor& compression_type, const tensor& buffer_size, const tensor& header, const tensor& field_delim, const tensor& use_quote_delim, const tensor& na_value, const tensor& select_cols, const std::vector<tensor>&record_defaults, const tensor& exclude_cols, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -5949,7 +8212,23 @@ inline tensor c_s_v_dataset_v2(const tensor& filenames, const tensor& compressio
     return tensor(res[0]);
 }
 
+/* # CTCBeamSearchDecoder
+# Inputs:
+*    inputs
+*    sequence_length
 
+# Attributes:
+*    beam_width
+*    top_paths
+*    merge_repeated
+
+# Outputs:
+*    decoded_indices
+*    decoded_values
+*    decoded_shape
+*    log_probability
+
+*/
 inline std::vector<tensor> c_t_c_beam_search_decoder(const tensor& inputs, const tensor& sequence_length, int64_t beam_width, int64_t top_paths, bool merge_repeated=true) {
 
     // Define Op
@@ -5979,7 +8258,22 @@ inline std::vector<tensor> c_t_c_beam_search_decoder(const tensor& inputs, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # CTCGreedyDecoder
+# Inputs:
+*    inputs
+*    sequence_length
 
+# Attributes:
+*    merge_repeated
+*    blank_index
+
+# Outputs:
+*    decoded_indices
+*    decoded_values
+*    decoded_shape
+*    log_probability
+
+*/
 inline std::vector<tensor> c_t_c_greedy_decoder(const tensor& inputs, const tensor& sequence_length, bool merge_repeated=false, int64_t blank_index=-1) {
 
     // Define Op
@@ -6008,7 +8302,23 @@ inline std::vector<tensor> c_t_c_greedy_decoder(const tensor& inputs, const tens
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # CTCLoss
+# Inputs:
+*    inputs
+*    labels_indices
+*    labels_values
+*    sequence_length
 
+# Attributes:
+*    preprocess_collapse_repeated
+*    ctc_merge_repeated
+*    ignore_longer_outputs_than_inputs
+
+# Outputs:
+*    loss
+*    gradient
+
+*/
 inline std::vector<tensor> c_t_c_loss(const tensor& inputs, const tensor& labels_indices, const tensor& labels_values, const tensor& sequence_length, bool preprocess_collapse_repeated=false, bool ctc_merge_repeated=true, bool ignore_longer_outputs_than_inputs=false) {
 
     // Define Op
@@ -6046,7 +8356,23 @@ inline std::vector<tensor> c_t_c_loss(const tensor& inputs, const tensor& labels
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # CTCLossV2
+# Inputs:
+*    inputs
+*    labels_indices
+*    labels_values
+*    sequence_length
 
+# Attributes:
+*    preprocess_collapse_repeated
+*    ctc_merge_repeated
+*    ignore_longer_outputs_than_inputs
+
+# Outputs:
+*    loss
+*    gradient
+
+*/
 inline std::vector<tensor> c_t_c_loss_v2(const tensor& inputs, const tensor& labels_indices, const tensor& labels_values, const tensor& sequence_length, bool preprocess_collapse_repeated=false, bool ctc_merge_repeated=true, bool ignore_longer_outputs_than_inputs=false) {
 
     // Define Op
@@ -6084,7 +8410,20 @@ inline std::vector<tensor> c_t_c_loss_v2(const tensor& inputs, const tensor& lab
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # CacheDataset
+# Inputs:
+*    input_dataset
+*    filename
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor cache_dataset(const tensor& input_dataset, const tensor& filename, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -6121,7 +8460,21 @@ inline tensor cache_dataset(const tensor& input_dataset, const tensor& filename,
     return tensor(res[0]);
 }
 
+/* # CacheDatasetV2
+# Inputs:
+*    input_dataset
+*    filename
+*    cache
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor cache_dataset_v2(const tensor& input_dataset, const tensor& filename, const tensor& cache, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -6162,7 +8515,21 @@ inline tensor cache_dataset_v2(const tensor& input_dataset, const tensor& filena
     return tensor(res[0]);
 }
 
+/* # Case
+# Inputs:
+*    branch_index
+*    input
 
+# Attributes:
+*    Tin
+*    Tout
+*    branches
+*    output_shapes
+
+# Outputs:
+*    output
+
+*/
 inline tensor tfe_case(const tensor& branch_index, const std::vector<tensor>&input, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, const std::vector<int64_t>& branches, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -6202,7 +8569,19 @@ inline tensor tfe_case(const tensor& branch_index, const std::vector<tensor>&inp
     return tensor(res[0]);
 }
 
+/* # Cast
+# Inputs:
+*    x
 
+# Attributes:
+*    SrcT
+*    DstT
+*    Truncate
+
+# Outputs:
+*    y
+
+*/
 inline tensor cast(const tensor& x, datatype SrcT, datatype DstT, bool Truncate=false) {
 
     // Define Op
@@ -6228,7 +8607,16 @@ inline tensor cast(const tensor& x, datatype SrcT, datatype DstT, bool Truncate=
     return tensor(res[0]);
 }
 
+/* # Ceil
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor ceil(const tensor& x) {
 
     // Define Op
@@ -6252,7 +8640,17 @@ inline tensor ceil(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # CheckNumerics
+# Inputs:
+*    tensor
 
+# Attributes:
+*    message
+
+# Outputs:
+*    output
+
+*/
 inline tensor check_numerics(const tensor& input_tensor, const std::string& message) {
 
     // Define Op
@@ -6276,7 +8674,17 @@ inline tensor check_numerics(const tensor& input_tensor, const std::string& mess
     return tensor(res[0]);
 }
 
+/* # CheckNumericsV2
+# Inputs:
+*    tensor
 
+# Attributes:
+*    message
+
+# Outputs:
+*    output
+
+*/
 inline tensor check_numerics_v2(const tensor& input_tensor, const std::string& message) {
 
     // Define Op
@@ -6300,7 +8708,16 @@ inline tensor check_numerics_v2(const tensor& input_tensor, const std::string& m
     return tensor(res[0]);
 }
 
+/* # Cholesky
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor cholesky(const tensor& input) {
 
     // Define Op
@@ -6324,7 +8741,17 @@ inline tensor cholesky(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # CholeskyGrad
+# Inputs:
+*    l
+*    grad
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor cholesky_grad(const tensor& l, const tensor& grad) {
 
     // Define Op
@@ -6352,7 +8779,25 @@ inline tensor cholesky_grad(const tensor& l, const tensor& grad) {
     return tensor(res[0]);
 }
 
+/* # ChooseFastestBranchDataset
+# Inputs:
+*    input_dataset
+*    ratio_numerator
+*    ratio_denominator
+*    other_arguments
 
+# Attributes:
+*    Targuments
+*    num_elements_per_branch
+*    branches
+*    other_arguments_lengths
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor choose_fastest_branch_dataset(const tensor& input_dataset, const tensor& ratio_numerator, const tensor& ratio_denominator, const std::vector<tensor>&other_arguments, const std::vector<datatype>& Targuments, int64_t num_elements_per_branch, const std::vector<int64_t>& branches, const std::vector<int64_t>& other_arguments_lengths, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -6402,7 +8847,20 @@ inline tensor choose_fastest_branch_dataset(const tensor& input_dataset, const t
     return tensor(res[0]);
 }
 
+/* # ChooseFastestDataset
+# Inputs:
+*    input_datasets
 
+# Attributes:
+*    N
+*    num_experiments
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor choose_fastest_dataset(const std::vector<tensor>&input_datasets, int64_t num_experiments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -6438,7 +8896,18 @@ inline tensor choose_fastest_dataset(const std::vector<tensor>&input_datasets, i
     return tensor(res[0]);
 }
 
+/* # ClipByValue
+# Inputs:
+*    t
+*    clip_value_min
+*    clip_value_max
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor clip_by_value(const tensor& t, const tensor& clip_value_min, const tensor& clip_value_max) {
 
     // Define Op
@@ -6470,7 +8939,15 @@ inline tensor clip_by_value(const tensor& t, const tensor& clip_value_min, const
     return tensor(res[0]);
 }
 
+/* # CloseSummaryWriter
+# Inputs:
+*    writer
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void close_summary_writer(const tensor& writer) {
 
     // Define Op
@@ -6493,7 +8970,24 @@ inline void close_summary_writer(const tensor& writer) {
     status_check(context::get_status());
 }
 
+/* # CollectiveAllToAllV2
+# Inputs:
+*    input
+*    group_size
+*    group_key
+*    instance_key
+*    ordering_token
 
+# Attributes:
+*    communication_hint
+*    timeout_seconds
+*    is_stateless
+*    Nordering_token
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_all_to_all_v2(const tensor& input, const tensor& group_size, const tensor& group_key, const tensor& instance_key, const std::vector<tensor>&ordering_token, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00, bool is_stateless=false) {
 
     // Define Op
@@ -6538,7 +9032,19 @@ inline tensor collective_all_to_all_v2(const tensor& input, const tensor& group_
     return tensor(res[0]);
 }
 
+/* # CollectiveAllToAllV3
+# Inputs:
+*    input
+*    communicator
+*    group_assignment
 
+# Attributes:
+*    timeout_seconds
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_all_to_all_v3(const tensor& input, const tensor& communicator, const tensor& group_assignment, float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6570,7 +9076,19 @@ inline tensor collective_all_to_all_v3(const tensor& input, const tensor& commun
     return tensor(res[0]);
 }
 
+/* # CollectiveAssignGroupV2
+# Inputs:
+*    group_assignment
+*    device_index
+*    base_key
 
+# Attributes:
+*    
+# Outputs:
+*    group_size
+*    group_key
+
+*/
 inline std::vector<tensor> collective_assign_group_v2(const tensor& group_assignment, const tensor& device_index, const tensor& base_key) {
 
     // Define Op
@@ -6602,7 +9120,21 @@ inline std::vector<tensor> collective_assign_group_v2(const tensor& group_assign
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # CollectiveBcastRecv
+# Inputs:
+*    
+# Attributes:
+*    group_size
+*    group_key
+*    instance_key
+*    shape
+*    communication_hint
+*    timeout_seconds
 
+# Outputs:
+*    data
+
+*/
 inline tensor collective_bcast_recv(int64_t group_size, int64_t group_key, int64_t instance_key, const std::vector<int64_t>& shape, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6631,7 +9163,22 @@ inline tensor collective_bcast_recv(int64_t group_size, int64_t group_key, int64
     return tensor(res[0]);
 }
 
+/* # CollectiveBcastRecvV2
+# Inputs:
+*    group_size
+*    group_key
+*    instance_key
+*    shape
 
+# Attributes:
+*    Tshape
+*    communication_hint
+*    timeout_seconds
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_bcast_recv_v2(const tensor& group_size, const tensor& group_key, const tensor& instance_key, const tensor& shape, datatype Tshape=static_cast<datatype>(3), const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6669,7 +9216,22 @@ inline tensor collective_bcast_recv_v2(const tensor& group_size, const tensor& g
     return tensor(res[0]);
 }
 
+/* # CollectiveBcastSend
+# Inputs:
+*    input
 
+# Attributes:
+*    group_size
+*    group_key
+*    instance_key
+*    shape
+*    communication_hint
+*    timeout_seconds
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_bcast_send(const tensor& input, int64_t group_size, int64_t group_key, int64_t instance_key, const std::vector<int64_t>& shape, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6701,7 +9263,21 @@ inline tensor collective_bcast_send(const tensor& input, int64_t group_size, int
     return tensor(res[0]);
 }
 
+/* # CollectiveBcastSendV2
+# Inputs:
+*    input
+*    group_size
+*    group_key
+*    instance_key
 
+# Attributes:
+*    communication_hint
+*    timeout_seconds
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_bcast_send_v2(const tensor& input, const tensor& group_size, const tensor& group_key, const tensor& instance_key, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6738,7 +9314,22 @@ inline tensor collective_bcast_send_v2(const tensor& input, const tensor& group_
     return tensor(res[0]);
 }
 
+/* # CollectiveGather
+# Inputs:
+*    input
 
+# Attributes:
+*    group_size
+*    group_key
+*    instance_key
+*    shape
+*    communication_hint
+*    timeout_seconds
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_gather(const tensor& input, int64_t group_size, int64_t group_key, int64_t instance_key, const std::vector<int64_t>& shape, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6770,7 +9361,24 @@ inline tensor collective_gather(const tensor& input, int64_t group_size, int64_t
     return tensor(res[0]);
 }
 
+/* # CollectiveGatherV2
+# Inputs:
+*    input
+*    group_size
+*    group_key
+*    instance_key
+*    ordering_token
 
+# Attributes:
+*    communication_hint
+*    timeout_seconds
+*    is_stateless
+*    Nordering_token
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_gather_v2(const tensor& input, const tensor& group_size, const tensor& group_key, const tensor& instance_key, const std::vector<tensor>&ordering_token, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00, bool is_stateless=false) {
 
     // Define Op
@@ -6815,7 +9423,20 @@ inline tensor collective_gather_v2(const tensor& input, const tensor& group_size
     return tensor(res[0]);
 }
 
+/* # CollectiveInitializeCommunicator
+# Inputs:
+*    group_key
+*    rank
+*    group_size
 
+# Attributes:
+*    communication_hint
+*    timeout_seconds
+
+# Outputs:
+*    communicator
+
+*/
 inline tensor collective_initialize_communicator(const tensor& group_key, const tensor& rank, const tensor& group_size, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6848,7 +9469,17 @@ inline tensor collective_initialize_communicator(const tensor& group_key, const 
     return tensor(res[0]);
 }
 
+/* # CollectivePermute
+# Inputs:
+*    input
+*    source_target_pairs
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor collective_permute(const tensor& input, const tensor& source_target_pairs) {
 
     // Define Op
@@ -6876,7 +9507,25 @@ inline tensor collective_permute(const tensor& input, const tensor& source_targe
     return tensor(res[0]);
 }
 
+/* # CollectiveReduce
+# Inputs:
+*    input
 
+# Attributes:
+*    group_size
+*    group_key
+*    instance_key
+*    merge_op
+*    final_op
+*    subdiv_offsets
+*    wait_for
+*    communication_hint
+*    timeout_seconds
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_reduce(const tensor& input, int64_t group_size, int64_t group_key, int64_t instance_key, const std::string& merge_op, const std::string& final_op, const std::vector<int64_t>& subdiv_offsets, const std::vector<int64_t>& wait_for, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -6908,7 +9557,27 @@ inline tensor collective_reduce(const tensor& input, int64_t group_size, int64_t
     return tensor(res[0]);
 }
 
+/* # CollectiveReduceScatterV2
+# Inputs:
+*    input
+*    group_size
+*    group_key
+*    instance_key
+*    ordering_token
 
+# Attributes:
+*    merge_op
+*    final_op
+*    communication_hint
+*    timeout_seconds
+*    is_stateless
+*    Nordering_token
+*    max_subdivs_per_device
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_reduce_scatter_v2(const tensor& input, const tensor& group_size, const tensor& group_key, const tensor& instance_key, const std::vector<tensor>&ordering_token, const std::string& merge_op, const std::string& final_op, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00, bool is_stateless=false, int64_t max_subdivs_per_device=-1) {
 
     // Define Op
@@ -6956,7 +9625,27 @@ inline tensor collective_reduce_scatter_v2(const tensor& input, const tensor& gr
     return tensor(res[0]);
 }
 
+/* # CollectiveReduceV2
+# Inputs:
+*    input
+*    group_size
+*    group_key
+*    instance_key
+*    ordering_token
 
+# Attributes:
+*    merge_op
+*    final_op
+*    communication_hint
+*    timeout_seconds
+*    is_stateless
+*    Nordering_token
+*    max_subdivs_per_device
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_reduce_v2(const tensor& input, const tensor& group_size, const tensor& group_key, const tensor& instance_key, const std::vector<tensor>&ordering_token, const std::string& merge_op, const std::string& final_op, const std::string& communication_hint="auto", float timeout_seconds=0.0000e+00, bool is_stateless=false, int64_t max_subdivs_per_device=-1) {
 
     // Define Op
@@ -7004,7 +9693,20 @@ inline tensor collective_reduce_v2(const tensor& input, const tensor& group_size
     return tensor(res[0]);
 }
 
+/* # CollectiveReduceV3
+# Inputs:
+*    input
+*    communicator
+*    group_assignment
 
+# Attributes:
+*    reduction
+*    timeout_seconds
+
+# Outputs:
+*    data
+
+*/
 inline tensor collective_reduce_v3(const tensor& input, const tensor& communicator, const tensor& group_assignment, const std::string& reduction, float timeout_seconds=0.0000e+00) {
 
     // Define Op
@@ -7037,7 +9739,26 @@ inline tensor collective_reduce_v3(const tensor& input, const tensor& communicat
     return tensor(res[0]);
 }
 
+/* # CombinedNonMaxSuppression
+# Inputs:
+*    boxes
+*    scores
+*    max_output_size_per_class
+*    max_total_size
+*    iou_threshold
+*    score_threshold
 
+# Attributes:
+*    pad_per_class
+*    clip_boxes
+
+# Outputs:
+*    nmsed_boxes
+*    nmsed_scores
+*    nmsed_classes
+*    valid_detections
+
+*/
 inline std::vector<tensor> combined_non_max_suppression(const tensor& boxes, const tensor& scores, const tensor& max_output_size_per_class, const tensor& max_total_size, const tensor& iou_threshold, const tensor& score_threshold, bool pad_per_class=false, bool clip_boxes=true) {
 
     // Define Op
@@ -7082,7 +9803,18 @@ inline std::vector<tensor> combined_non_max_suppression(const tensor& boxes, con
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # Complex
+# Inputs:
+*    real
+*    imag
 
+# Attributes:
+*    Tout
+
+# Outputs:
+*    out
+
+*/
 inline tensor complex(const tensor& real, const tensor& imag, datatype Tout=static_cast<datatype>(8)) {
 
     // Define Op
@@ -7110,7 +9842,17 @@ inline tensor complex(const tensor& real, const tensor& imag, datatype Tout=stat
     return tensor(res[0]);
 }
 
+/* # ComplexAbs
+# Inputs:
+*    x
 
+# Attributes:
+*    Tout
+
+# Outputs:
+*    y
+
+*/
 inline tensor complex_abs(const tensor& x, datatype Tout=static_cast<datatype>(1)) {
 
     // Define Op
@@ -7134,7 +9876,18 @@ inline tensor complex_abs(const tensor& x, datatype Tout=static_cast<datatype>(1
     return tensor(res[0]);
 }
 
+/* # CompositeTensorVariantFromComponents
+# Inputs:
+*    components
 
+# Attributes:
+*    metadata
+*    Tcomponents
+
+# Outputs:
+*    encoded
+
+*/
 inline tensor composite_tensor_variant_from_components(const std::vector<tensor>&components, const std::string& metadata, const std::vector<datatype>& Tcomponents) {
 
     // Define Op
@@ -7161,7 +9914,18 @@ inline tensor composite_tensor_variant_from_components(const std::vector<tensor>
     return tensor(res[0]);
 }
 
+/* # CompositeTensorVariantToComponents
+# Inputs:
+*    encoded
 
+# Attributes:
+*    metadata
+*    Tcomponents
+
+# Outputs:
+*    components
+
+*/
 inline tensor composite_tensor_variant_to_components(const tensor& encoded, const std::string& metadata, const std::vector<datatype>& Tcomponents) {
 
     // Define Op
@@ -7186,7 +9950,17 @@ inline tensor composite_tensor_variant_to_components(const tensor& encoded, cons
     return tensor(res[0]);
 }
 
+/* # CompressElement
+# Inputs:
+*    components
 
+# Attributes:
+*    input_types
+
+# Outputs:
+*    compressed
+
+*/
 inline tensor compress_element(const std::vector<tensor>&components, const std::vector<datatype>& input_types) {
 
     // Define Op
@@ -7212,7 +9986,22 @@ inline tensor compress_element(const std::vector<tensor>&components, const std::
     return tensor(res[0]);
 }
 
+/* # ComputeAccidentalHits
+# Inputs:
+*    true_classes
+*    sampled_candidates
 
+# Attributes:
+*    num_true
+*    seed
+*    seed2
+
+# Outputs:
+*    indices
+*    ids
+*    weights
+
+*/
 inline std::vector<tensor> compute_accidental_hits(const tensor& true_classes, const tensor& sampled_candidates, int64_t num_true, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -7242,7 +10031,16 @@ inline std::vector<tensor> compute_accidental_hits(const tensor& true_classes, c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # ComputeBatchSize
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    
+# Outputs:
+*    batch_size
+
+*/
 inline tensor compute_batch_size(const tensor& input_dataset) {
 
     // Define Op
@@ -7266,7 +10064,18 @@ inline tensor compute_batch_size(const tensor& input_dataset) {
     return tensor(res[0]);
 }
 
+/* # Concat
+# Inputs:
+*    concat_dim
+*    values
 
+# Attributes:
+*    N
+
+# Outputs:
+*    output
+
+*/
 inline tensor concat(const tensor& concat_dim, const std::vector<tensor>&values) {
 
     // Define Op
@@ -7296,7 +10105,19 @@ inline tensor concat(const tensor& concat_dim, const std::vector<tensor>&values)
     return tensor(res[0]);
 }
 
+/* # ConcatOffset
+# Inputs:
+*    concat_dim
+*    shape
 
+# Attributes:
+*    N
+*    shape_type
+
+# Outputs:
+*    offset
+
+*/
 inline tensor concat_offset(const tensor& concat_dim, const std::vector<tensor>&shape, datatype shape_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -7327,7 +10148,19 @@ inline tensor concat_offset(const tensor& concat_dim, const std::vector<tensor>&
     return tensor(res[0]);
 }
 
+/* # ConcatV2
+# Inputs:
+*    values
+*    axis
 
+# Attributes:
+*    N
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor concat_v2(const std::vector<tensor>&values, const tensor& axis, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -7358,7 +10191,20 @@ inline tensor concat_v2(const std::vector<tensor>&values, const tensor& axis, da
     return tensor(res[0]);
 }
 
+/* # ConcatenateDataset
+# Inputs:
+*    input_dataset
+*    another_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor concatenate_dataset(const tensor& input_dataset, const tensor& another_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -7395,7 +10241,20 @@ inline tensor concatenate_dataset(const tensor& input_dataset, const tensor& ano
     return tensor(res[0]);
 }
 
+/* # ConditionalAccumulator
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
+*    container
+*    shared_name
+*    reduction_type
 
+# Outputs:
+*    handle
+
+*/
 inline tensor conditional_accumulator(datatype dtype, const std::vector<int64_t>& shape, const std::string& container="", const std::string& shared_name="", const std::string& reduction_type="MEAN") {
 
     // Define Op
@@ -7423,7 +10282,21 @@ inline tensor conditional_accumulator(datatype dtype, const std::vector<int64_t>
     return tensor(res[0]);
 }
 
+/* # ConfigureDistributedTPU
+# Inputs:
+*    
+# Attributes:
+*    embedding_config
+*    tpu_embedding_config
+*    is_global_init
+*    enable_whole_mesh_compilations
+*    compilation_failure_closes_chips
+*    tpu_cancellation_closes_chips
 
+# Outputs:
+*    topology
+
+*/
 inline tensor configure_distributed_t_p_u(const std::string& embedding_config="", const std::string& tpu_embedding_config="", bool is_global_init=false, bool enable_whole_mesh_compilations=false, bool compilation_failure_closes_chips=true, int64_t tpu_cancellation_closes_chips=0) {
 
     // Define Op
@@ -7449,7 +10322,15 @@ inline tensor configure_distributed_t_p_u(const std::string& embedding_config=""
     return tensor(res[0]);
 }
 
+/* # ConfigureTPUEmbedding
+# Inputs:
+*    
+# Attributes:
+*    config
 
+# Outputs:
+*    
+*/
 inline void configure_t_p_u_embedding(const std::string& config) {
 
     // Define Op
@@ -7469,7 +10350,16 @@ inline void configure_t_p_u_embedding(const std::string& config) {
     status_check(context::get_status());
 }
 
+/* # Conj
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor conj(const tensor& input) {
 
     // Define Op
@@ -7493,7 +10383,18 @@ inline tensor conj(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # ConjugateTranspose
+# Inputs:
+*    x
+*    perm
 
+# Attributes:
+*    Tperm
+
+# Outputs:
+*    y
+
+*/
 inline tensor conjugate_transpose(const tensor& x, const tensor& perm, datatype Tperm=static_cast<datatype>(3)) {
 
     // Define Op
@@ -7521,7 +10422,17 @@ inline tensor conjugate_transpose(const tensor& x, const tensor& perm, datatype 
     return tensor(res[0]);
 }
 
+/* # Const
+# Inputs:
+*    
+# Attributes:
+*    value
+*    dtype
 
+# Outputs:
+*    output
+
+*/
 inline tensor const_tensor(const tensor& value, datatype dtype) {
 
     // Define Op
@@ -7546,7 +10457,15 @@ inline tensor const_tensor(const tensor& value, datatype dtype) {
     return tensor(res[0]);
 }
 
+/* # ConsumeMutexLock
+# Inputs:
+*    mutex_lock
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void consume_mutex_lock(const tensor& mutex_lock) {
 
     // Define Op
@@ -7569,7 +10488,14 @@ inline void consume_mutex_lock(const tensor& mutex_lock) {
     status_check(context::get_status());
 }
 
-
+/* # ControlTrigger
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void control_trigger() {
 
     // Define Op
@@ -7589,7 +10515,24 @@ inline void control_trigger() {
     status_check(context::get_status());
 }
 
+/* # Conv
+# Inputs:
+*    input
+*    filter
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    data_format
+*    batch_dims
+*    groups
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv(const tensor& input, const tensor& filter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, const std::string& data_format="CHANNELS_LAST", int64_t batch_dims=1, int64_t groups=1) {
 
     // Define Op
@@ -7623,7 +10566,23 @@ inline tensor conv(const tensor& input, const tensor& filter, const std::vector<
     return tensor(res[0]);
 }
 
+/* # Conv2D
+# Inputs:
+*    input
+*    filter
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    use_cudnn_on_gpu
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv2_d(const tensor& input, const tensor& filter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, bool use_cudnn_on_gpu=true, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -7656,7 +10615,24 @@ inline tensor conv2_d(const tensor& input, const tensor& filter, const std::vect
     return tensor(res[0]);
 }
 
+/* # Conv2DBackpropFilter
+# Inputs:
+*    input
+*    filter_sizes
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    use_cudnn_on_gpu
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv2_d_backprop_filter(const tensor& input, const tensor& filter_sizes, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, bool use_cudnn_on_gpu=true, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -7693,7 +10669,24 @@ inline tensor conv2_d_backprop_filter(const tensor& input, const tensor& filter_
     return tensor(res[0]);
 }
 
+/* # Conv2DBackpropFilterV2
+# Inputs:
+*    input
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    use_cudnn_on_gpu
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv2_d_backprop_filter_v2(const tensor& input, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, bool use_cudnn_on_gpu=true, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -7730,7 +10723,24 @@ inline tensor conv2_d_backprop_filter_v2(const tensor& input, const tensor& filt
     return tensor(res[0]);
 }
 
+/* # Conv2DBackpropInput
+# Inputs:
+*    input_sizes
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    use_cudnn_on_gpu
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv2_d_backprop_input(const tensor& input_sizes, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, bool use_cudnn_on_gpu=true, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -7767,7 +10777,24 @@ inline tensor conv2_d_backprop_input(const tensor& input_sizes, const tensor& fi
     return tensor(res[0]);
 }
 
+/* # Conv2DBackpropInputV2
+# Inputs:
+*    input
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    use_cudnn_on_gpu
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv2_d_backprop_input_v2(const tensor& input, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, bool use_cudnn_on_gpu=true, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -7804,7 +10831,21 @@ inline tensor conv2_d_backprop_input_v2(const tensor& input, const tensor& filte
     return tensor(res[0]);
 }
 
+/* # Conv3D
+# Inputs:
+*    input
+*    filter
 
+# Attributes:
+*    strides
+*    padding
+*    dilations
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv3_d(const tensor& input, const tensor& filter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::string& data_format="NDHWC") {
 
     // Define Op
@@ -7835,7 +10876,21 @@ inline tensor conv3_d(const tensor& input, const tensor& filter, const std::vect
     return tensor(res[0]);
 }
 
+/* # Conv3DBackpropFilter
+# Inputs:
+*    input
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    dilations
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv3_d_backprop_filter(const tensor& input, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations) {
 
     // Define Op
@@ -7869,7 +10924,22 @@ inline tensor conv3_d_backprop_filter(const tensor& input, const tensor& filter,
     return tensor(res[0]);
 }
 
+/* # Conv3DBackpropFilterV2
+# Inputs:
+*    input
+*    filter_sizes
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    dilations
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv3_d_backprop_filter_v2(const tensor& input, const tensor& filter_sizes, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::string& data_format="NDHWC") {
 
     // Define Op
@@ -7904,7 +10974,21 @@ inline tensor conv3_d_backprop_filter_v2(const tensor& input, const tensor& filt
     return tensor(res[0]);
 }
 
+/* # Conv3DBackpropInput
+# Inputs:
+*    input
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    dilations
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv3_d_backprop_input(const tensor& input, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations) {
 
     // Define Op
@@ -7938,7 +11022,23 @@ inline tensor conv3_d_backprop_input(const tensor& input, const tensor& filter, 
     return tensor(res[0]);
 }
 
+/* # Conv3DBackpropInputV2
+# Inputs:
+*    input_sizes
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    dilations
+*    data_format
+*    Tshape
+
+# Outputs:
+*    output
+
+*/
 inline tensor conv3_d_backprop_input_v2(const tensor& input_sizes, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::string& data_format="NDHWC", datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -7974,7 +11074,22 @@ inline tensor conv3_d_backprop_input_v2(const tensor& input_sizes, const tensor&
     return tensor(res[0]);
 }
 
+/* # ConvertToCooTensor
+# Inputs:
+*    indices_or_row_splits
+*    values
+*    weights
 
+# Attributes:
+*    sample_count
+*    combiner
+
+# Outputs:
+*    row_ids
+*    col_ids
+*    gains
+
+*/
 inline std::vector<tensor> convert_to_coo_tensor(const tensor& indices_or_row_splits, const tensor& values, const tensor& weights, int64_t sample_count, const std::string& combiner) {
 
     // Define Op
@@ -8007,7 +11122,18 @@ inline std::vector<tensor> convert_to_coo_tensor(const tensor& indices_or_row_sp
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # Copy
+# Inputs:
+*    input
 
+# Attributes:
+*    debug_ops_spec
+*    tensor_name
+
+# Outputs:
+*    output
+
+*/
 inline tensor copy(const tensor& input, const std::vector< std::string>& debug_ops_spec, const std::string& tensor_name="") {
 
     // Define Op
@@ -8036,7 +11162,18 @@ inline tensor copy(const tensor& input, const std::vector< std::string>& debug_o
     return tensor(res[0]);
 }
 
+/* # CopyHost
+# Inputs:
+*    input
 
+# Attributes:
+*    debug_ops_spec
+*    tensor_name
+
+# Outputs:
+*    output
+
+*/
 inline tensor copy_host(const tensor& input, const std::vector< std::string>& debug_ops_spec, const std::string& tensor_name="") {
 
     // Define Op
@@ -8065,7 +11202,16 @@ inline tensor copy_host(const tensor& input, const std::vector< std::string>& de
     return tensor(res[0]);
 }
 
+/* # Cos
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor cos(const tensor& x) {
 
     // Define Op
@@ -8089,7 +11235,16 @@ inline tensor cos(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Cosh
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor cosh(const tensor& x) {
 
     // Define Op
@@ -8113,7 +11268,17 @@ inline tensor cosh(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # CountUpTo
+# Inputs:
+*    ref
 
+# Attributes:
+*    limit
+
+# Outputs:
+*    output
+
+*/
 inline tensor count_up_to(const tensor& ref, int64_t limit) {
 
     // Define Op
@@ -8137,7 +11302,19 @@ inline tensor count_up_to(const tensor& ref, int64_t limit) {
     return tensor(res[0]);
 }
 
+/* # CreateSummaryDbWriter
+# Inputs:
+*    writer
+*    db_uri
+*    experiment_name
+*    run_name
+*    user_name
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void create_summary_db_writer(const tensor& writer, const tensor& db_uri, const tensor& experiment_name, const tensor& run_name, const tensor& user_name) {
 
     // Define Op
@@ -8176,7 +11353,19 @@ inline void create_summary_db_writer(const tensor& writer, const tensor& db_uri,
     status_check(context::get_status());
 }
 
+/* # CreateSummaryFileWriter
+# Inputs:
+*    writer
+*    logdir
+*    max_queue
+*    flush_millis
+*    filename_suffix
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void create_summary_file_writer(const tensor& writer, const tensor& logdir, const tensor& max_queue, const tensor& flush_millis, const tensor& filename_suffix) {
 
     // Define Op
@@ -8215,7 +11404,21 @@ inline void create_summary_file_writer(const tensor& writer, const tensor& logdi
     status_check(context::get_status());
 }
 
+/* # CropAndResize
+# Inputs:
+*    image
+*    boxes
+*    box_ind
+*    crop_size
 
+# Attributes:
+*    method
+*    extrapolation_value
+
+# Outputs:
+*    crops
+
+*/
 inline tensor crop_and_resize(const tensor& image, const tensor& boxes, const tensor& box_ind, const tensor& crop_size, const std::string& method="bilinear", float extrapolation_value=0.0000e+00) {
 
     // Define Op
@@ -8252,7 +11455,20 @@ inline tensor crop_and_resize(const tensor& image, const tensor& boxes, const te
     return tensor(res[0]);
 }
 
+/* # CropAndResizeGradBoxes
+# Inputs:
+*    grads
+*    image
+*    boxes
+*    box_ind
 
+# Attributes:
+*    method
+
+# Outputs:
+*    output
+
+*/
 inline tensor crop_and_resize_grad_boxes(const tensor& grads, const tensor& image, const tensor& boxes, const tensor& box_ind, const std::string& method="bilinear") {
 
     // Define Op
@@ -8288,7 +11504,20 @@ inline tensor crop_and_resize_grad_boxes(const tensor& grads, const tensor& imag
     return tensor(res[0]);
 }
 
+/* # CropAndResizeGradImage
+# Inputs:
+*    grads
+*    boxes
+*    box_ind
+*    image_size
 
+# Attributes:
+*    method
+
+# Outputs:
+*    output
+
+*/
 inline tensor crop_and_resize_grad_image(const tensor& grads, const tensor& boxes, const tensor& box_ind, const tensor& image_size, const std::string& method="bilinear") {
 
     // Define Op
@@ -8324,7 +11553,17 @@ inline tensor crop_and_resize_grad_image(const tensor& grads, const tensor& boxe
     return tensor(res[0]);
 }
 
+/* # Cross
+# Inputs:
+*    a
+*    b
 
+# Attributes:
+*    
+# Outputs:
+*    product
+
+*/
 inline tensor cross(const tensor& a, const tensor& b) {
 
     // Define Op
@@ -8352,7 +11591,17 @@ inline tensor cross(const tensor& a, const tensor& b) {
     return tensor(res[0]);
 }
 
+/* # CrossReplicaSum
+# Inputs:
+*    input
+*    group_assignment
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor cross_replica_sum(const tensor& input, const tensor& group_assignment) {
 
     // Define Op
@@ -8380,7 +11629,29 @@ inline tensor cross_replica_sum(const tensor& input, const tensor& group_assignm
     return tensor(res[0]);
 }
 
+/* # CudnnRNN
+# Inputs:
+*    input
+*    input_h
+*    input_c
+*    params
 
+# Attributes:
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+*    is_training
+
+# Outputs:
+*    output
+*    output_h
+*    output_c
+*    reserve_space
+
+*/
 inline std::vector<tensor> cudnn_r_n_n(const tensor& input, const tensor& input_h, const tensor& input_c, const tensor& params, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0, bool is_training=true) {
 
     // Define Op
@@ -8422,7 +11693,35 @@ inline std::vector<tensor> cudnn_r_n_n(const tensor& input, const tensor& input_
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # CudnnRNNBackprop
+# Inputs:
+*    input
+*    input_h
+*    input_c
+*    params
+*    output
+*    output_h
+*    output_c
+*    output_backprop
+*    output_h_backprop
+*    output_c_backprop
+*    reserve_space
 
+# Attributes:
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+
+# Outputs:
+*    input_backprop
+*    input_h_backprop
+*    input_c_backprop
+*    params_backprop
+
+*/
 inline std::vector<tensor> cudnn_r_n_n_backprop(const tensor& input, const tensor& input_h, const tensor& input_c, const tensor& params, const tensor& output, const tensor& output_h, const tensor& output_c, const tensor& output_backprop, const tensor& output_h_backprop, const tensor& output_c_backprop, const tensor& reserve_space, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -8491,7 +11790,36 @@ inline std::vector<tensor> cudnn_r_n_n_backprop(const tensor& input, const tenso
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # CudnnRNNBackpropV2
+# Inputs:
+*    input
+*    input_h
+*    input_c
+*    params
+*    output
+*    output_h
+*    output_c
+*    output_backprop
+*    output_h_backprop
+*    output_c_backprop
+*    reserve_space
+*    host_reserved
 
+# Attributes:
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+
+# Outputs:
+*    input_backprop
+*    input_h_backprop
+*    input_c_backprop
+*    params_backprop
+
+*/
 inline std::vector<tensor> cudnn_r_n_n_backprop_v2(const tensor& input, const tensor& input_h, const tensor& input_c, const tensor& params, const tensor& output, const tensor& output_h, const tensor& output_c, const tensor& output_backprop, const tensor& output_h_backprop, const tensor& output_c_backprop, const tensor& reserve_space, const tensor& host_reserved, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -8564,7 +11892,39 @@ inline std::vector<tensor> cudnn_r_n_n_backprop_v2(const tensor& input, const te
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # CudnnRNNBackpropV3
+# Inputs:
+*    input
+*    input_h
+*    input_c
+*    params
+*    sequence_lengths
+*    output
+*    output_h
+*    output_c
+*    output_backprop
+*    output_h_backprop
+*    output_c_backprop
+*    reserve_space
+*    host_reserved
 
+# Attributes:
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+*    num_proj
+*    time_major
+
+# Outputs:
+*    input_backprop
+*    input_h_backprop
+*    input_c_backprop
+*    params_backprop
+
+*/
 inline std::vector<tensor> cudnn_r_n_n_backprop_v3(const tensor& input, const tensor& input_h, const tensor& input_c, const tensor& params, const tensor& sequence_lengths, const tensor& output, const tensor& output_h, const tensor& output_c, const tensor& output_backprop, const tensor& output_h_backprop, const tensor& output_c_backprop, const tensor& reserve_space, const tensor& host_reserved, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0, int64_t num_proj=0, bool time_major=true) {
 
     // Define Op
@@ -8643,7 +12003,27 @@ inline std::vector<tensor> cudnn_r_n_n_backprop_v3(const tensor& input, const te
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # CudnnRNNCanonicalToParams
+# Inputs:
+*    num_layers
+*    num_units
+*    input_size
+*    weights
+*    biases
 
+# Attributes:
+*    num_params
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+
+# Outputs:
+*    params
+
+*/
 inline tensor cudnn_r_n_n_canonical_to_params(const tensor& num_layers, const tensor& num_units, const tensor& input_size, const std::vector<tensor>&weights, const std::vector<tensor>&biases, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -8693,7 +12073,29 @@ inline tensor cudnn_r_n_n_canonical_to_params(const tensor& num_layers, const te
     return tensor(res[0]);
 }
 
+/* # CudnnRNNCanonicalToParamsV2
+# Inputs:
+*    num_layers
+*    num_units
+*    input_size
+*    weights
+*    biases
 
+# Attributes:
+*    num_params_weights
+*    num_params_biases
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+*    num_proj
+
+# Outputs:
+*    params
+
+*/
 inline tensor cudnn_r_n_n_canonical_to_params_v2(const tensor& num_layers, const tensor& num_units, const tensor& input_size, const std::vector<tensor>&weights, const std::vector<tensor>&biases, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0, int64_t num_proj=0) {
 
     // Define Op
@@ -8745,7 +12147,26 @@ inline tensor cudnn_r_n_n_canonical_to_params_v2(const tensor& num_layers, const
     return tensor(res[0]);
 }
 
+/* # CudnnRNNParamsSize
+# Inputs:
+*    num_layers
+*    num_units
+*    input_size
 
+# Attributes:
+*    S
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+*    num_proj
+
+# Outputs:
+*    params_size
+
+*/
 inline tensor cudnn_r_n_n_params_size(const tensor& num_layers, const tensor& num_units, const tensor& input_size, datatype S, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0, int64_t num_proj=0) {
 
     // Define Op
@@ -8784,7 +12205,27 @@ inline tensor cudnn_r_n_n_params_size(const tensor& num_layers, const tensor& nu
     return tensor(res[0]);
 }
 
+/* # CudnnRNNParamsToCanonical
+# Inputs:
+*    num_layers
+*    num_units
+*    input_size
+*    params
 
+# Attributes:
+*    num_params
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+
+# Outputs:
+*    weights
+*    biases
+
+*/
 inline std::vector<tensor> cudnn_r_n_n_params_to_canonical(const tensor& num_layers, const tensor& num_units, const tensor& input_size, const tensor& params, int64_t num_params, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -8826,7 +12267,29 @@ inline std::vector<tensor> cudnn_r_n_n_params_to_canonical(const tensor& num_lay
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # CudnnRNNParamsToCanonicalV2
+# Inputs:
+*    num_layers
+*    num_units
+*    input_size
+*    params
 
+# Attributes:
+*    num_params_weights
+*    num_params_biases
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+*    num_proj
+
+# Outputs:
+*    weights
+*    biases
+
+*/
 inline std::vector<tensor> cudnn_r_n_n_params_to_canonical_v2(const tensor& num_layers, const tensor& num_units, const tensor& input_size, const tensor& params, int64_t num_params_weights, int64_t num_params_biases, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0, int64_t num_proj=0) {
 
     // Define Op
@@ -8870,7 +12333,30 @@ inline std::vector<tensor> cudnn_r_n_n_params_to_canonical_v2(const tensor& num_
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # CudnnRNNV2
+# Inputs:
+*    input
+*    input_h
+*    input_c
+*    params
 
+# Attributes:
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+*    is_training
+
+# Outputs:
+*    output
+*    output_h
+*    output_c
+*    reserve_space
+*    host_reserved
+
+*/
 inline std::vector<tensor> cudnn_r_n_n_v2(const tensor& input, const tensor& input_h, const tensor& input_c, const tensor& params, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0, bool is_training=true) {
 
     // Define Op
@@ -8912,7 +12398,33 @@ inline std::vector<tensor> cudnn_r_n_n_v2(const tensor& input, const tensor& inp
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # CudnnRNNV3
+# Inputs:
+*    input
+*    input_h
+*    input_c
+*    params
+*    sequence_lengths
 
+# Attributes:
+*    rnn_mode
+*    input_mode
+*    direction
+*    dropout
+*    seed
+*    seed2
+*    num_proj
+*    is_training
+*    time_major
+
+# Outputs:
+*    output
+*    output_h
+*    output_c
+*    reserve_space
+*    host_reserved
+
+*/
 inline std::vector<tensor> cudnn_r_n_n_v3(const tensor& input, const tensor& input_h, const tensor& input_c, const tensor& params, const tensor& sequence_lengths, const std::string& rnn_mode="lstm", const std::string& input_mode="linear_input", const std::string& direction="unidirectional", float dropout=0.0000e+00, int64_t seed=0, int64_t seed2=0, int64_t num_proj=0, bool is_training=true, bool time_major=true) {
 
     // Define Op
@@ -8960,7 +12472,20 @@ inline std::vector<tensor> cudnn_r_n_n_v3(const tensor& input, const tensor& inp
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # Cumprod
+# Inputs:
+*    x
+*    axis
 
+# Attributes:
+*    exclusive
+*    reverse
+*    Tidx
+
+# Outputs:
+*    out
+
+*/
 inline tensor cumprod(const tensor& x, const tensor& axis, bool exclusive=false, bool reverse=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -8990,7 +12515,20 @@ inline tensor cumprod(const tensor& x, const tensor& axis, bool exclusive=false,
     return tensor(res[0]);
 }
 
+/* # Cumsum
+# Inputs:
+*    x
+*    axis
 
+# Attributes:
+*    exclusive
+*    reverse
+*    Tidx
+
+# Outputs:
+*    out
+
+*/
 inline tensor cumsum(const tensor& x, const tensor& axis, bool exclusive=false, bool reverse=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -9020,7 +12558,20 @@ inline tensor cumsum(const tensor& x, const tensor& axis, bool exclusive=false, 
     return tensor(res[0]);
 }
 
+/* # CumulativeLogsumexp
+# Inputs:
+*    x
+*    axis
 
+# Attributes:
+*    exclusive
+*    reverse
+*    Tidx
+
+# Outputs:
+*    out
+
+*/
 inline tensor cumulative_logsumexp(const tensor& x, const tensor& axis, bool exclusive=false, bool reverse=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -9050,7 +12601,18 @@ inline tensor cumulative_logsumexp(const tensor& x, const tensor& axis, bool exc
     return tensor(res[0]);
 }
 
+/* # DataFormatDimMap
+# Inputs:
+*    x
 
+# Attributes:
+*    src_format
+*    dst_format
+
+# Outputs:
+*    y
+
+*/
 inline tensor data_format_dim_map(const tensor& x, const std::string& src_format="NHWC", const std::string& dst_format="NCHW") {
 
     // Define Op
@@ -9075,7 +12637,18 @@ inline tensor data_format_dim_map(const tensor& x, const std::string& src_format
     return tensor(res[0]);
 }
 
+/* # DataFormatVecPermute
+# Inputs:
+*    x
 
+# Attributes:
+*    src_format
+*    dst_format
+
+# Outputs:
+*    y
+
+*/
 inline tensor data_format_vec_permute(const tensor& x, const std::string& src_format="NHWC", const std::string& dst_format="NCHW") {
 
     // Define Op
@@ -9100,7 +12673,28 @@ inline tensor data_format_vec_permute(const tensor& x, const std::string& src_fo
     return tensor(res[0]);
 }
 
+/* # DataServiceDataset
+# Inputs:
+*    dataset_id
+*    processing_mode
+*    address
+*    protocol
+*    job_name
+*    max_outstanding_requests
+*    iteration_counter
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    task_refresh_interval_hint_ms
+*    data_transfer_protocol
+*    target_workers
+*    cross_trainer_cache_options
+
+# Outputs:
+*    handle
+
+*/
 inline tensor data_service_dataset(const tensor& dataset_id, const tensor& processing_mode, const tensor& address, const tensor& protocol, const tensor& job_name, const tensor& max_outstanding_requests, const tensor& iteration_counter, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t task_refresh_interval_hint_ms=-1, const std::string& data_transfer_protocol="", const std::string& target_workers="AUTO", const std::string& cross_trainer_cache_options="") {
 
     // Define Op
@@ -9160,7 +12754,30 @@ inline tensor data_service_dataset(const tensor& dataset_id, const tensor& proce
     return tensor(res[0]);
 }
 
+/* # DataServiceDatasetV2
+# Inputs:
+*    dataset_id
+*    processing_mode
+*    address
+*    protocol
+*    job_name
+*    consumer_index
+*    num_consumers
+*    max_outstanding_requests
+*    iteration_counter
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    task_refresh_interval_hint_ms
+*    data_transfer_protocol
+*    target_workers
+*    cross_trainer_cache_options
+
+# Outputs:
+*    handle
+
+*/
 inline tensor data_service_dataset_v2(const tensor& dataset_id, const tensor& processing_mode, const tensor& address, const tensor& protocol, const tensor& job_name, const tensor& consumer_index, const tensor& num_consumers, const tensor& max_outstanding_requests, const tensor& iteration_counter, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t task_refresh_interval_hint_ms=-1, const std::string& data_transfer_protocol="", const std::string& target_workers="AUTO", const std::string& cross_trainer_cache_options="") {
 
     // Define Op
@@ -9228,7 +12845,32 @@ inline tensor data_service_dataset_v2(const tensor& dataset_id, const tensor& pr
     return tensor(res[0]);
 }
 
+/* # DataServiceDatasetV3
+# Inputs:
+*    dataset_id
+*    processing_mode
+*    address
+*    protocol
+*    job_name
+*    consumer_index
+*    num_consumers
+*    max_outstanding_requests
+*    iteration_counter
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    uncompress_fn
+*    task_refresh_interval_hint_ms
+*    data_transfer_protocol
+*    target_workers
+*    uncompress
+*    cross_trainer_cache_options
+
+# Outputs:
+*    handle
+
+*/
 inline tensor data_service_dataset_v3(const tensor& dataset_id, const tensor& processing_mode, const tensor& address, const tensor& protocol, const tensor& job_name, const tensor& consumer_index, const tensor& num_consumers, const tensor& max_outstanding_requests, const tensor& iteration_counter, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t uncompress_fn, int64_t task_refresh_interval_hint_ms=-1, const std::string& data_transfer_protocol="", const std::string& target_workers="AUTO", bool uncompress=false, const std::string& cross_trainer_cache_options="") {
 
     // Define Op
@@ -9298,7 +12940,32 @@ inline tensor data_service_dataset_v3(const tensor& dataset_id, const tensor& pr
     return tensor(res[0]);
 }
 
+/* # DataServiceDatasetV4
+# Inputs:
+*    dataset_id
+*    processing_mode
+*    address
+*    protocol
+*    job_name
+*    consumer_index
+*    num_consumers
+*    max_outstanding_requests
+*    iteration_counter
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    uncompress_fn
+*    task_refresh_interval_hint_ms
+*    data_transfer_protocol
+*    target_workers
+*    uncompress
+*    cross_trainer_cache_options
+
+# Outputs:
+*    handle
+
+*/
 inline tensor data_service_dataset_v4(const tensor& dataset_id, const tensor& processing_mode, const tensor& address, const tensor& protocol, const tensor& job_name, const tensor& consumer_index, const tensor& num_consumers, const tensor& max_outstanding_requests, const tensor& iteration_counter, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t uncompress_fn, int64_t task_refresh_interval_hint_ms=-1, const std::string& data_transfer_protocol="", const std::string& target_workers="AUTO", bool uncompress=false, const std::string& cross_trainer_cache_options="") {
 
     // Define Op
@@ -9368,7 +13035,17 @@ inline tensor data_service_dataset_v4(const tensor& dataset_id, const tensor& pr
     return tensor(res[0]);
 }
 
+/* # DatasetCardinality
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    cardinality_options
+
+# Outputs:
+*    cardinality
+
+*/
 inline tensor dataset_cardinality(const tensor& input_dataset, const std::string& cardinality_options="") {
 
     // Define Op
@@ -9392,7 +13069,16 @@ inline tensor dataset_cardinality(const tensor& input_dataset, const std::string
     return tensor(res[0]);
 }
 
+/* # DatasetFingerprint
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    
+# Outputs:
+*    fingerprint
+
+*/
 inline tensor dataset_fingerprint(const tensor& input_dataset) {
 
     // Define Op
@@ -9416,7 +13102,16 @@ inline tensor dataset_fingerprint(const tensor& input_dataset) {
     return tensor(res[0]);
 }
 
+/* # DatasetFromGraph
+# Inputs:
+*    graph_def
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+
+*/
 inline tensor dataset_from_graph(const tensor& graph_def) {
 
     // Define Op
@@ -9440,7 +13135,19 @@ inline tensor dataset_from_graph(const tensor& graph_def) {
     return tensor(res[0]);
 }
 
+/* # DatasetToGraph
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    stateful_whitelist
+*    allow_stateful
+*    strip_device_assignment
+
+# Outputs:
+*    graph
+
+*/
 inline tensor dataset_to_graph(const tensor& input_dataset, const std::vector< std::string>& stateful_whitelist, bool allow_stateful=false, bool strip_device_assignment=false) {
 
     // Define Op
@@ -9470,7 +13177,18 @@ inline tensor dataset_to_graph(const tensor& input_dataset, const std::vector< s
     return tensor(res[0]);
 }
 
+/* # DatasetToGraphV2
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    external_state_policy
+*    strip_device_assignment
+
+# Outputs:
+*    graph
+
+*/
 inline tensor dataset_to_graph_v2(const tensor& input_dataset, int64_t external_state_policy=0, bool strip_device_assignment=false) {
 
     // Define Op
@@ -9495,7 +13213,19 @@ inline tensor dataset_to_graph_v2(const tensor& input_dataset, int64_t external_
     return tensor(res[0]);
 }
 
+/* # DatasetToSingleElement
+# Inputs:
+*    dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    components
+
+*/
 inline tensor dataset_to_single_element(const tensor& dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -9528,7 +13258,17 @@ inline tensor dataset_to_single_element(const tensor& dataset, const std::vector
     return tensor(res[0]);
 }
 
+/* # DatasetToTFRecord
+# Inputs:
+*    input_dataset
+*    filename
+*    compression_type
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void dataset_to_t_f_record(const tensor& input_dataset, const tensor& filename, const tensor& compression_type) {
 
     // Define Op
@@ -9559,7 +13299,16 @@ inline void dataset_to_t_f_record(const tensor& input_dataset, const tensor& fil
     status_check(context::get_status());
 }
 
+/* # Dawsn
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor dawsn(const tensor& x) {
 
     // Define Op
@@ -9583,7 +13332,16 @@ inline tensor dawsn(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # DebugGradientIdentity
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor debug_gradient_identity(const tensor& input) {
 
     // Define Op
@@ -9607,7 +13365,16 @@ inline tensor debug_gradient_identity(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # DebugGradientRefIdentity
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor debug_gradient_ref_identity(const tensor& input) {
 
     // Define Op
@@ -9631,7 +13398,20 @@ inline tensor debug_gradient_ref_identity(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # DebugIdentity
+# Inputs:
+*    input
 
+# Attributes:
+*    debug_urls
+*    device_name
+*    tensor_name
+*    gated_grpc
+
+# Outputs:
+*    output
+
+*/
 inline tensor debug_identity(const tensor& input, const std::vector< std::string>& debug_urls, const std::string& device_name="", const std::string& tensor_name="", bool gated_grpc=false) {
 
     // Define Op
@@ -9662,7 +13442,23 @@ inline tensor debug_identity(const tensor& input, const std::vector< std::string
     return tensor(res[0]);
 }
 
+/* # DebugIdentityV2
+# Inputs:
+*    input
 
+# Attributes:
+*    debug_urls
+*    tfdbg_context_id
+*    op_name
+*    output_slot
+*    tensor_debug_mode
+*    circular_buffer_size
+*    tfdbg_run_id
+
+# Outputs:
+*    output
+
+*/
 inline tensor debug_identity_v2(const tensor& input, const std::vector< std::string>& debug_urls, const std::string& tfdbg_context_id="", const std::string& op_name="", int64_t output_slot=-1, int64_t tensor_debug_mode=-1, int64_t circular_buffer_size=1000, const std::string& tfdbg_run_id="") {
 
     // Define Op
@@ -9696,7 +13492,23 @@ inline tensor debug_identity_v2(const tensor& input, const std::vector< std::str
     return tensor(res[0]);
 }
 
+/* # DebugIdentityV3
+# Inputs:
+*    input
 
+# Attributes:
+*    debug_urls
+*    device_name
+*    tensor_name
+*    io_of_node
+*    is_input
+*    io_index
+*    gated_grpc
+
+# Outputs:
+*    output
+
+*/
 inline tensor debug_identity_v3(const tensor& input, const std::vector< std::string>& debug_urls, const std::string& device_name="", const std::string& tensor_name="", const std::string& io_of_node="", bool is_input=false, int64_t io_index=-1, bool gated_grpc=false) {
 
     // Define Op
@@ -9730,7 +13542,20 @@ inline tensor debug_identity_v3(const tensor& input, const std::vector< std::str
     return tensor(res[0]);
 }
 
+/* # DebugNanCount
+# Inputs:
+*    input
 
+# Attributes:
+*    debug_urls
+*    device_name
+*    tensor_name
+*    gated_grpc
+
+# Outputs:
+*    output
+
+*/
 inline tensor debug_nan_count(const tensor& input, const std::vector< std::string>& debug_urls, const std::string& device_name="", const std::string& tensor_name="", bool gated_grpc=false) {
 
     // Define Op
@@ -9761,7 +13586,23 @@ inline tensor debug_nan_count(const tensor& input, const std::vector< std::strin
     return tensor(res[0]);
 }
 
+/* # DebugNumericSummary
+# Inputs:
+*    input
 
+# Attributes:
+*    debug_urls
+*    device_name
+*    tensor_name
+*    lower_bound
+*    upper_bound
+*    mute_if_healthy
+*    gated_grpc
+
+# Outputs:
+*    output
+
+*/
 inline tensor debug_numeric_summary(const tensor& input, const std::vector< std::string>& debug_urls, const std::string& device_name="", const std::string& tensor_name="", float lower_bound=-std::numeric_limits<float>::infinity(), float upper_bound=std::numeric_limits<float>::infinity(), bool mute_if_healthy=false, bool gated_grpc=false) {
 
     // Define Op
@@ -9795,7 +13636,19 @@ inline tensor debug_numeric_summary(const tensor& input, const std::vector< std:
     return tensor(res[0]);
 }
 
+/* # DebugNumericSummaryV2
+# Inputs:
+*    input
 
+# Attributes:
+*    output_dtype
+*    tensor_debug_mode
+*    tensor_id
+
+# Outputs:
+*    output
+
+*/
 inline tensor debug_numeric_summary_v2(const tensor& input, datatype output_dtype=static_cast<datatype>(1), int64_t tensor_debug_mode=-1, int64_t tensor_id=-1) {
 
     // Define Op
@@ -9821,7 +13674,23 @@ inline tensor debug_numeric_summary_v2(const tensor& input, datatype output_dtyp
     return tensor(res[0]);
 }
 
+/* # DecodeAndCropJpeg
+# Inputs:
+*    contents
+*    crop_window
 
+# Attributes:
+*    channels
+*    ratio
+*    fancy_upscaling
+*    try_recover_truncated
+*    acceptable_fraction
+*    dct_method
+
+# Outputs:
+*    image
+
+*/
 inline tensor decode_and_crop_jpeg(const tensor& contents, const tensor& crop_window, int64_t channels=0, int64_t ratio=1, bool fancy_upscaling=true, bool try_recover_truncated=false, float acceptable_fraction=1.0000e+00, const std::string& dct_method="") {
 
     // Define Op
@@ -9854,7 +13723,16 @@ inline tensor decode_and_crop_jpeg(const tensor& contents, const tensor& crop_wi
     return tensor(res[0]);
 }
 
+/* # DecodeBase64
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor decode_base64(const tensor& input) {
 
     // Define Op
@@ -9878,7 +13756,17 @@ inline tensor decode_base64(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # DecodeBmp
+# Inputs:
+*    contents
 
+# Attributes:
+*    channels
+
+# Outputs:
+*    image
+
+*/
 inline tensor decode_bmp(const tensor& contents, int64_t channels=0) {
 
     // Define Op
@@ -9902,7 +13790,22 @@ inline tensor decode_bmp(const tensor& contents, int64_t channels=0) {
     return tensor(res[0]);
 }
 
+/* # DecodeCSV
+# Inputs:
+*    records
+*    record_defaults
 
+# Attributes:
+*    OUT_TYPE
+*    select_cols
+*    field_delim
+*    use_quote_delim
+*    na_value
+
+# Outputs:
+*    output
+
+*/
 inline tensor decode_c_s_v(const tensor& records, const std::vector<tensor>&record_defaults, const std::vector<datatype>& OUT_TYPE, const std::vector<int64_t>& select_cols, const std::string& field_delim=",", bool use_quote_delim=true, const std::string& na_value="") {
 
     // Define Op
@@ -9936,7 +13839,17 @@ inline tensor decode_c_s_v(const tensor& records, const std::vector<tensor>&reco
     return tensor(res[0]);
 }
 
+/* # DecodeCompressed
+# Inputs:
+*    bytes
 
+# Attributes:
+*    compression_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor decode_compressed(const tensor& bytes, const std::string& compression_type="") {
 
     // Define Op
@@ -9960,7 +13873,16 @@ inline tensor decode_compressed(const tensor& bytes, const std::string& compress
     return tensor(res[0]);
 }
 
+/* # DecodeGif
+# Inputs:
+*    contents
 
+# Attributes:
+*    
+# Outputs:
+*    image
+
+*/
 inline tensor decode_gif(const tensor& contents) {
 
     // Define Op
@@ -9984,7 +13906,19 @@ inline tensor decode_gif(const tensor& contents) {
     return tensor(res[0]);
 }
 
+/* # DecodeImage
+# Inputs:
+*    contents
 
+# Attributes:
+*    channels
+*    dtype
+*    expand_animations
+
+# Outputs:
+*    image
+
+*/
 inline tensor decode_image(const tensor& contents, int64_t channels=0, datatype dtype=static_cast<datatype>(4), bool expand_animations=true) {
 
     // Define Op
@@ -10010,7 +13944,16 @@ inline tensor decode_image(const tensor& contents, int64_t channels=0, datatype 
     return tensor(res[0]);
 }
 
+/* # DecodeJSONExample
+# Inputs:
+*    json_examples
 
+# Attributes:
+*    
+# Outputs:
+*    binary_examples
+
+*/
 inline tensor decode_j_s_o_n_example(const tensor& json_examples) {
 
     // Define Op
@@ -10034,7 +13977,22 @@ inline tensor decode_j_s_o_n_example(const tensor& json_examples) {
     return tensor(res[0]);
 }
 
+/* # DecodeJpeg
+# Inputs:
+*    contents
 
+# Attributes:
+*    channels
+*    ratio
+*    fancy_upscaling
+*    try_recover_truncated
+*    acceptable_fraction
+*    dct_method
+
+# Outputs:
+*    image
+
+*/
 inline tensor decode_jpeg(const tensor& contents, int64_t channels=0, int64_t ratio=1, bool fancy_upscaling=true, bool try_recover_truncated=false, float acceptable_fraction=1.0000e+00, const std::string& dct_method="") {
 
     // Define Op
@@ -10063,7 +14021,19 @@ inline tensor decode_jpeg(const tensor& contents, int64_t channels=0, int64_t ra
     return tensor(res[0]);
 }
 
+/* # DecodePaddedRaw
+# Inputs:
+*    input_bytes
+*    fixed_length
 
+# Attributes:
+*    out_type
+*    little_endian
+
+# Outputs:
+*    output
+
+*/
 inline tensor decode_padded_raw(const tensor& input_bytes, const tensor& fixed_length, datatype out_type, bool little_endian=true) {
 
     // Define Op
@@ -10092,7 +14062,18 @@ inline tensor decode_padded_raw(const tensor& input_bytes, const tensor& fixed_l
     return tensor(res[0]);
 }
 
+/* # DecodePng
+# Inputs:
+*    contents
 
+# Attributes:
+*    channels
+*    dtype
+
+# Outputs:
+*    image
+
+*/
 inline tensor decode_png(const tensor& contents, int64_t channels=0, datatype dtype=static_cast<datatype>(4)) {
 
     // Define Op
@@ -10117,7 +14098,23 @@ inline tensor decode_png(const tensor& contents, int64_t channels=0, datatype dt
     return tensor(res[0]);
 }
 
+/* # DecodeProtoV2
+# Inputs:
+*    bytes
 
+# Attributes:
+*    message_type
+*    field_names
+*    output_types
+*    descriptor_source
+*    message_format
+*    sanitize
+
+# Outputs:
+*    sizes
+*    values
+
+*/
 inline std::vector<tensor> decode_proto_v2(const tensor& bytes, const std::string& message_type, const std::vector< std::string>& field_names, const std::vector<datatype>& output_types, const std::string& descriptor_source="local://", const std::string& message_format="binary", bool sanitize=false) {
 
     // Define Op
@@ -10150,7 +14147,18 @@ inline std::vector<tensor> decode_proto_v2(const tensor& bytes, const std::strin
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # DecodeRaw
+# Inputs:
+*    bytes
 
+# Attributes:
+*    out_type
+*    little_endian
+
+# Outputs:
+*    output
+
+*/
 inline tensor decode_raw(const tensor& bytes, datatype out_type, bool little_endian=true) {
 
     // Define Op
@@ -10175,7 +14183,19 @@ inline tensor decode_raw(const tensor& bytes, datatype out_type, bool little_end
     return tensor(res[0]);
 }
 
+/* # DecodeWav
+# Inputs:
+*    contents
 
+# Attributes:
+*    desired_channels
+*    desired_samples
+
+# Outputs:
+*    audio
+*    sample_rate
+
+*/
 inline std::vector<tensor> decode_wav(const tensor& contents, int64_t desired_channels=-1, int64_t desired_samples=-1) {
 
     // Define Op
@@ -10200,7 +14220,16 @@ inline std::vector<tensor> decode_wav(const tensor& contents, int64_t desired_ch
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # DeepCopy
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor deep_copy(const tensor& x) {
 
     // Define Op
@@ -10224,7 +14253,16 @@ inline tensor deep_copy(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # DeleteIterator
+# Inputs:
+*    handle
+*    deleter
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void delete_iterator(const tensor& handle, const tensor& deleter) {
 
     // Define Op
@@ -10251,7 +14289,16 @@ inline void delete_iterator(const tensor& handle, const tensor& deleter) {
     status_check(context::get_status());
 }
 
+/* # DeleteMemoryCache
+# Inputs:
+*    handle
+*    deleter
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void delete_memory_cache(const tensor& handle, const tensor& deleter) {
 
     // Define Op
@@ -10278,7 +14325,18 @@ inline void delete_memory_cache(const tensor& handle, const tensor& deleter) {
     status_check(context::get_status());
 }
 
+/* # DeleteMultiDeviceIterator
+# Inputs:
+*    multi_device_iterator
+*    iterators
+*    deleter
 
+# Attributes:
+*    N
+
+# Outputs:
+*    
+*/
 inline void delete_multi_device_iterator(const tensor& multi_device_iterator, const std::vector<tensor>&iterators, const tensor& deleter) {
 
     // Define Op
@@ -10311,7 +14369,16 @@ inline void delete_multi_device_iterator(const tensor& multi_device_iterator, co
     status_check(context::get_status());
 }
 
+/* # DeleteRandomSeedGenerator
+# Inputs:
+*    handle
+*    deleter
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void delete_random_seed_generator(const tensor& handle, const tensor& deleter) {
 
     // Define Op
@@ -10338,7 +14405,16 @@ inline void delete_random_seed_generator(const tensor& handle, const tensor& del
     status_check(context::get_status());
 }
 
+/* # DeleteSeedGenerator
+# Inputs:
+*    handle
+*    deleter
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void delete_seed_generator(const tensor& handle, const tensor& deleter) {
 
     // Define Op
@@ -10365,7 +14441,15 @@ inline void delete_seed_generator(const tensor& handle, const tensor& deleter) {
     status_check(context::get_status());
 }
 
+/* # DeleteSessionTensor
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void delete_session_tensor(const tensor& handle) {
 
     // Define Op
@@ -10388,7 +14472,20 @@ inline void delete_session_tensor(const tensor& handle) {
     status_check(context::get_status());
 }
 
+/* # DenseBincount
+# Inputs:
+*    input
+*    size
+*    weights
 
+# Attributes:
+*    Tidx
+*    binary_output
+
+# Outputs:
+*    output
+
+*/
 inline tensor dense_bincount(const tensor& input, const tensor& size, const tensor& weights, datatype Tidx, bool binary_output=false) {
 
     // Define Op
@@ -10421,7 +14518,23 @@ inline tensor dense_bincount(const tensor& input, const tensor& size, const tens
     return tensor(res[0]);
 }
 
+/* # DenseCountSparseOutput
+# Inputs:
+*    values
+*    weights
 
+# Attributes:
+*    binary_output
+*    output_type
+*    minlength
+*    maxlength
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_dense_shape
+
+*/
 inline std::vector<tensor> dense_count_sparse_output(const tensor& values, const tensor& weights, bool binary_output, datatype output_type, int64_t minlength=-1, int64_t maxlength=-1) {
 
     // Define Op
@@ -10452,7 +14565,17 @@ inline std::vector<tensor> dense_count_sparse_output(const tensor& values, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # DenseToCSRSparseMatrix
+# Inputs:
+*    dense_input
+*    indices
 
+# Attributes:
+*    
+# Outputs:
+*    sparse_output
+
+*/
 inline tensor dense_to_c_s_r_sparse_matrix(const tensor& dense_input, const tensor& indices) {
 
     // Define Op
@@ -10480,7 +14603,21 @@ inline tensor dense_to_c_s_r_sparse_matrix(const tensor& dense_input, const tens
     return tensor(res[0]);
 }
 
+/* # DenseToDenseSetOperation
+# Inputs:
+*    set1
+*    set2
 
+# Attributes:
+*    set_operation
+*    validate_indices
+
+# Outputs:
+*    result_indices
+*    result_values
+*    result_shape
+
+*/
 inline std::vector<tensor> dense_to_dense_set_operation(const tensor& set1, const tensor& set2, const std::string& set_operation, bool validate_indices=true) {
 
     // Define Op
@@ -10509,7 +14646,20 @@ inline std::vector<tensor> dense_to_dense_set_operation(const tensor& set1, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # DenseToSparseBatchDataset
+# Inputs:
+*    input_dataset
+*    batch_size
+*    row_shape
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor dense_to_sparse_batch_dataset(const tensor& input_dataset, const tensor& batch_size, const tensor& row_shape, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -10549,7 +14699,23 @@ inline tensor dense_to_sparse_batch_dataset(const tensor& input_dataset, const t
     return tensor(res[0]);
 }
 
+/* # DenseToSparseSetOperation
+# Inputs:
+*    set1
+*    set2_indices
+*    set2_values
+*    set2_shape
 
+# Attributes:
+*    set_operation
+*    validate_indices
+
+# Outputs:
+*    result_indices
+*    result_values
+*    result_shape
+
+*/
 inline std::vector<tensor> dense_to_sparse_set_operation(const tensor& set1, const tensor& set2_indices, const tensor& set2_values, const tensor& set2_shape, const std::string& set_operation, bool validate_indices=true) {
 
     // Define Op
@@ -10586,7 +14752,18 @@ inline std::vector<tensor> dense_to_sparse_set_operation(const tensor& set1, con
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # DepthToSpace
+# Inputs:
+*    input
 
+# Attributes:
+*    block_size
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor depth_to_space(const tensor& input, int64_t block_size, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -10611,7 +14788,22 @@ inline tensor depth_to_space(const tensor& input, int64_t block_size, const std:
     return tensor(res[0]);
 }
 
+/* # DepthwiseConv2dNative
+# Inputs:
+*    input
+*    filter
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor depthwise_conv2d_native(const tensor& input, const tensor& filter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -10643,7 +14835,23 @@ inline tensor depthwise_conv2d_native(const tensor& input, const tensor& filter,
     return tensor(res[0]);
 }
 
+/* # DepthwiseConv2dNativeBackpropFilter
+# Inputs:
+*    input
+*    filter_sizes
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor depthwise_conv2d_native_backprop_filter(const tensor& input, const tensor& filter_sizes, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -10679,7 +14887,23 @@ inline tensor depthwise_conv2d_native_backprop_filter(const tensor& input, const
     return tensor(res[0]);
 }
 
+/* # DepthwiseConv2dNativeBackpropInput
+# Inputs:
+*    input_sizes
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    padding
+*    explicit_paddings
+*    dilations
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor depthwise_conv2d_native_backprop_input(const tensor& input_sizes, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::vector<int64_t>& dilations, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -10715,7 +14939,22 @@ inline tensor depthwise_conv2d_native_backprop_input(const tensor& input_sizes, 
     return tensor(res[0]);
 }
 
+/* # Dequantize
+# Inputs:
+*    input
+*    min_range
+*    max_range
 
+# Attributes:
+*    mode
+*    narrow_range
+*    axis
+*    dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor dequantize(const tensor& input, const tensor& min_range, const tensor& max_range, const std::string& mode="MIN_COMBINED", bool narrow_range=false, int64_t axis=-1, datatype dtype=static_cast<datatype>(1)) {
 
     // Define Op
@@ -10750,7 +14989,16 @@ inline tensor dequantize(const tensor& input, const tensor& min_range, const ten
     return tensor(res[0]);
 }
 
+/* # DeserializeIterator
+# Inputs:
+*    resource_handle
+*    serialized
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void deserialize_iterator(const tensor& resource_handle, const tensor& serialized) {
 
     // Define Op
@@ -10777,7 +15025,19 @@ inline void deserialize_iterator(const tensor& resource_handle, const tensor& se
     status_check(context::get_status());
 }
 
+/* # DeserializeManySparse
+# Inputs:
+*    serialized_sparse
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
+
+*/
 inline std::vector<tensor> deserialize_many_sparse(const tensor& serialized_sparse, datatype dtype) {
 
     // Define Op
@@ -10801,7 +15061,20 @@ inline std::vector<tensor> deserialize_many_sparse(const tensor& serialized_spar
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # DeserializeSparse
+# Inputs:
+*    serialized_sparse
 
+# Attributes:
+*    dtype
+*    Tserialized
+
+# Outputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
+
+*/
 inline std::vector<tensor> deserialize_sparse(const tensor& serialized_sparse, datatype dtype, datatype Tserialized=static_cast<datatype>(7)) {
 
     // Define Op
@@ -10826,7 +15099,16 @@ inline std::vector<tensor> deserialize_sparse(const tensor& serialized_sparse, d
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # DestroyResourceOp
+# Inputs:
+*    resource
 
+# Attributes:
+*    ignore_lookup_error
+
+# Outputs:
+*    
+*/
 inline void destroy_resource_op(const tensor& resource, bool ignore_lookup_error=true) {
 
     // Define Op
@@ -10849,7 +15131,17 @@ inline void destroy_resource_op(const tensor& resource, bool ignore_lookup_error
     status_check(context::get_status());
 }
 
+/* # DestroyTemporaryVariable
+# Inputs:
+*    ref
 
+# Attributes:
+*    var_name
+
+# Outputs:
+*    value
+
+*/
 inline tensor destroy_temporary_variable(const tensor& ref, const std::string& var_name) {
 
     // Define Op
@@ -10873,7 +15165,16 @@ inline tensor destroy_temporary_variable(const tensor& ref, const std::string& v
     return tensor(res[0]);
 }
 
+/* # DeviceIndex
+# Inputs:
+*    
+# Attributes:
+*    device_names
 
+# Outputs:
+*    index
+
+*/
 inline tensor device_index(const std::vector< std::string>& device_names) {
 
     // Define Op
@@ -10898,7 +15199,16 @@ inline tensor device_index(const std::vector< std::string>& device_names) {
     return tensor(res[0]);
 }
 
+/* # Diag
+# Inputs:
+*    diagonal
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor diag(const tensor& diagonal) {
 
     // Define Op
@@ -10922,7 +15232,16 @@ inline tensor diag(const tensor& diagonal) {
     return tensor(res[0]);
 }
 
+/* # DiagPart
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    diagonal
+
+*/
 inline tensor diag_part(const tensor& input) {
 
     // Define Op
@@ -10946,7 +15265,16 @@ inline tensor diag_part(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # Digamma
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor digamma(const tensor& x) {
 
     // Define Op
@@ -10970,7 +15298,20 @@ inline tensor digamma(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Dilation2D
+# Inputs:
+*    input
+*    filter
 
+# Attributes:
+*    strides
+*    rates
+*    padding
+
+# Outputs:
+*    output
+
+*/
 inline tensor dilation2_d(const tensor& input, const tensor& filter, const std::vector<int64_t>& strides, const std::vector<int64_t>& rates, const std::string& padding) {
 
     // Define Op
@@ -11000,7 +15341,21 @@ inline tensor dilation2_d(const tensor& input, const tensor& filter, const std::
     return tensor(res[0]);
 }
 
+/* # Dilation2DBackpropFilter
+# Inputs:
+*    input
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    rates
+*    padding
+
+# Outputs:
+*    filter_backprop
+
+*/
 inline tensor dilation2_d_backprop_filter(const tensor& input, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::vector<int64_t>& rates, const std::string& padding) {
 
     // Define Op
@@ -11034,7 +15389,21 @@ inline tensor dilation2_d_backprop_filter(const tensor& input, const tensor& fil
     return tensor(res[0]);
 }
 
+/* # Dilation2DBackpropInput
+# Inputs:
+*    input
+*    filter
+*    out_backprop
 
+# Attributes:
+*    strides
+*    rates
+*    padding
+
+# Outputs:
+*    in_backprop
+
+*/
 inline tensor dilation2_d_backprop_input(const tensor& input, const tensor& filter, const tensor& out_backprop, const std::vector<int64_t>& strides, const std::vector<int64_t>& rates, const std::string& padding) {
 
     // Define Op
@@ -11068,7 +15437,21 @@ inline tensor dilation2_d_backprop_input(const tensor& input, const tensor& filt
     return tensor(res[0]);
 }
 
+/* # DirectedInterleaveDataset
+# Inputs:
+*    selector_input_dataset
+*    data_input_datasets
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    N
+*    stop_on_empty_dataset
+
+# Outputs:
+*    handle
+
+*/
 inline tensor directed_interleave_dataset(const tensor& selector_input_dataset, const std::vector<tensor>&data_input_datasets, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool stop_on_empty_dataset=false) {
 
     // Define Op
@@ -11108,7 +15491,15 @@ inline tensor directed_interleave_dataset(const tensor& selector_input_dataset, 
     return tensor(res[0]);
 }
 
+/* # DisableCopyOnRead
+# Inputs:
+*    resource
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void disable_copy_on_read(const tensor& resource) {
 
     // Define Op
@@ -11131,7 +15522,18 @@ inline void disable_copy_on_read(const tensor& resource) {
     status_check(context::get_status());
 }
 
+/* # DistributedSave
+# Inputs:
+*    dataset
+*    directory
+*    address
 
+# Attributes:
+*    metadata
+
+# Outputs:
+*    
+*/
 inline void distributed_save(const tensor& dataset, const tensor& directory, const tensor& address, const std::string& metadata="") {
 
     // Define Op
@@ -11162,7 +15564,17 @@ inline void distributed_save(const tensor& dataset, const tensor& directory, con
     status_check(context::get_status());
 }
 
+/* # Div
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor div(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -11190,7 +15602,17 @@ inline tensor div(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # DivNoNan
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor div_no_nan(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -11218,7 +15640,17 @@ inline tensor div_no_nan(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # DrawBoundingBoxes
+# Inputs:
+*    images
+*    boxes
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor draw_bounding_boxes(const tensor& images, const tensor& boxes) {
 
     // Define Op
@@ -11246,7 +15678,18 @@ inline tensor draw_bounding_boxes(const tensor& images, const tensor& boxes) {
     return tensor(res[0]);
 }
 
+/* # DrawBoundingBoxesV2
+# Inputs:
+*    images
+*    boxes
+*    colors
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor draw_bounding_boxes_v2(const tensor& images, const tensor& boxes, const tensor& colors) {
 
     // Define Op
@@ -11278,7 +15721,15 @@ inline tensor draw_bounding_boxes_v2(const tensor& images, const tensor& boxes, 
     return tensor(res[0]);
 }
 
+/* # DummyIterationCounter
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    handle
 
+*/
 inline tensor dummy_iteration_counter() {
 
     // Define Op
@@ -11299,7 +15750,15 @@ inline tensor dummy_iteration_counter() {
     return tensor(res[0]);
 }
 
+/* # DummyMemoryCache
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    handle
 
+*/
 inline tensor dummy_memory_cache() {
 
     // Define Op
@@ -11320,7 +15779,15 @@ inline tensor dummy_memory_cache() {
     return tensor(res[0]);
 }
 
+/* # DummySeedGenerator
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    handle
 
+*/
 inline tensor dummy_seed_generator() {
 
     // Define Op
@@ -11341,7 +15808,24 @@ inline tensor dummy_seed_generator() {
     return tensor(res[0]);
 }
 
+/* # DynamicEnqueueTPUEmbeddingArbitraryTensorBatch
+# Inputs:
+*    sample_indices_or_row_splits
+*    embedding_indices
+*    aggregation_weights
+*    mode_override
+*    device_ordinal
 
+# Attributes:
+*    N
+*    combiners
+*    T1
+*    T2
+*    T3
+
+# Outputs:
+*    
+*/
 inline void dynamic_enqueue_t_p_u_embedding_arbitrary_tensor_batch(const std::vector<tensor>&sample_indices_or_row_splits, const std::vector<tensor>&embedding_indices, const std::vector<tensor>&aggregation_weights, const tensor& mode_override, const tensor& device_ordinal, const std::vector< std::string>& combiners, datatype T1=static_cast<datatype>(3), datatype T2=static_cast<datatype>(3), datatype T3=static_cast<datatype>(1)) {
 
     // Define Op
@@ -11394,7 +15878,27 @@ inline void dynamic_enqueue_t_p_u_embedding_arbitrary_tensor_batch(const std::ve
     status_check(context::get_status());
 }
 
+/* # DynamicEnqueueTPUEmbeddingRaggedTensorBatch
+# Inputs:
+*    sample_splits
+*    embedding_indices
+*    aggregation_weights
+*    mode_override
+*    device_ordinal
 
+# Attributes:
+*    N
+*    combiners
+*    table_ids
+*    max_sequence_lengths
+*    num_features
+*    T1
+*    T2
+*    T3
+
+# Outputs:
+*    
+*/
 inline void dynamic_enqueue_t_p_u_embedding_ragged_tensor_batch(const std::vector<tensor>&sample_splits, const std::vector<tensor>&embedding_indices, const std::vector<tensor>&aggregation_weights, const tensor& mode_override, const tensor& device_ordinal, const std::vector< std::string>& combiners, const std::vector<int64_t>& table_ids, const std::vector<int64_t>& max_sequence_lengths, const std::vector<int64_t>& num_features, datatype T1=static_cast<datatype>(3), datatype T2=static_cast<datatype>(3), datatype T3=static_cast<datatype>(1)) {
 
     // Define Op
@@ -11450,7 +15954,18 @@ inline void dynamic_enqueue_t_p_u_embedding_ragged_tensor_batch(const std::vecto
     status_check(context::get_status());
 }
 
+/* # DynamicPartition
+# Inputs:
+*    data
+*    partitions
 
+# Attributes:
+*    num_partitions
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor dynamic_partition(const tensor& data, const tensor& partitions, int64_t num_partitions) {
 
     // Define Op
@@ -11478,7 +15993,18 @@ inline tensor dynamic_partition(const tensor& data, const tensor& partitions, in
     return tensor(res[0]);
 }
 
+/* # DynamicStitch
+# Inputs:
+*    indices
+*    data
 
+# Attributes:
+*    N
+
+# Outputs:
+*    merged
+
+*/
 inline tensor dynamic_stitch(const std::vector<tensor>&indices, const std::vector<tensor>&data) {
 
     // Define Op
@@ -11510,7 +16036,20 @@ inline tensor dynamic_stitch(const std::vector<tensor>&indices, const std::vecto
     return tensor(res[0]);
 }
 
+/* # EagerPyFunc
+# Inputs:
+*    input
 
+# Attributes:
+*    token
+*    Tin
+*    Tout
+*    is_async
+
+# Outputs:
+*    output
+
+*/
 inline tensor eager_py_func(const std::vector<tensor>&input, const std::string& token, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, bool is_async=false) {
 
     // Define Op
@@ -11539,7 +16078,22 @@ inline tensor eager_py_func(const std::vector<tensor>&input, const std::string& 
     return tensor(res[0]);
 }
 
+/* # EditDistance
+# Inputs:
+*    hypothesis_indices
+*    hypothesis_values
+*    hypothesis_shape
+*    truth_indices
+*    truth_values
+*    truth_shape
 
+# Attributes:
+*    normalize
+
+# Outputs:
+*    output
+
+*/
 inline tensor edit_distance(const tensor& hypothesis_indices, const tensor& hypothesis_values, const tensor& hypothesis_shape, const tensor& truth_indices, const tensor& truth_values, const tensor& truth_shape, bool normalize=true) {
 
     // Define Op
@@ -11583,7 +16137,19 @@ inline tensor edit_distance(const tensor& hypothesis_indices, const tensor& hypo
     return tensor(res[0]);
 }
 
+/* # Eig
+# Inputs:
+*    input
 
+# Attributes:
+*    Tout
+*    compute_v
+
+# Outputs:
+*    e
+*    v
+
+*/
 inline std::vector<tensor> eig(const tensor& input, datatype Tout, bool compute_v=true) {
 
     // Define Op
@@ -11608,7 +16174,18 @@ inline std::vector<tensor> eig(const tensor& input, datatype Tout, bool compute_
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Einsum
+# Inputs:
+*    inputs
 
+# Attributes:
+*    equation
+*    N
+
+# Outputs:
+*    output
+
+*/
 inline tensor einsum(const std::vector<tensor>&inputs, const std::string& equation) {
 
     // Define Op
@@ -11635,7 +16212,16 @@ inline tensor einsum(const std::vector<tensor>&inputs, const std::string& equati
     return tensor(res[0]);
 }
 
+/* # Elu
+# Inputs:
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    activations
+
+*/
 inline tensor elu(const tensor& features) {
 
     // Define Op
@@ -11659,7 +16245,17 @@ inline tensor elu(const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # EluGrad
+# Inputs:
+*    gradients
+*    outputs
 
+# Attributes:
+*    
+# Outputs:
+*    backprops
+
+*/
 inline tensor elu_grad(const tensor& gradients, const tensor& outputs) {
 
     // Define Op
@@ -11687,7 +16283,18 @@ inline tensor elu_grad(const tensor& gradients, const tensor& outputs) {
     return tensor(res[0]);
 }
 
+/* # Empty
+# Inputs:
+*    shape
 
+# Attributes:
+*    dtype
+*    init
+
+# Outputs:
+*    output
+
+*/
 inline tensor empty(const tensor& shape, datatype dtype, bool init=false) {
 
     // Define Op
@@ -11712,7 +16319,19 @@ inline tensor empty(const tensor& shape, datatype dtype, bool init=false) {
     return tensor(res[0]);
 }
 
+/* # EmptyTensorList
+# Inputs:
+*    element_shape
+*    max_num_elements
 
+# Attributes:
+*    element_dtype
+*    shape_type
+
+# Outputs:
+*    handle
+
+*/
 inline tensor empty_tensor_list(const tensor& element_shape, const tensor& max_num_elements, datatype element_dtype, datatype shape_type) {
 
     // Define Op
@@ -11741,7 +16360,15 @@ inline tensor empty_tensor_list(const tensor& element_shape, const tensor& max_n
     return tensor(res[0]);
 }
 
+/* # EmptyTensorMap
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    handle
 
+*/
 inline tensor empty_tensor_map() {
 
     // Define Op
@@ -11762,7 +16389,17 @@ inline tensor empty_tensor_map() {
     return tensor(res[0]);
 }
 
+/* # EncodeBase64
+# Inputs:
+*    input
 
+# Attributes:
+*    pad
+
+# Outputs:
+*    output
+
+*/
 inline tensor encode_base64(const tensor& input, bool pad=false) {
 
     // Define Op
@@ -11786,7 +16423,25 @@ inline tensor encode_base64(const tensor& input, bool pad=false) {
     return tensor(res[0]);
 }
 
+/* # EncodeJpeg
+# Inputs:
+*    image
 
+# Attributes:
+*    format
+*    quality
+*    progressive
+*    optimize_size
+*    chroma_downsampling
+*    density_unit
+*    x_density
+*    y_density
+*    xmp_metadata
+
+# Outputs:
+*    contents
+
+*/
 inline tensor encode_jpeg(const tensor& image, const std::string& format="", int64_t quality=95, bool progressive=false, bool optimize_size=false, bool chroma_downsampling=true, const std::string& density_unit="in", int64_t x_density=300, int64_t y_density=300, const std::string& xmp_metadata="") {
 
     // Define Op
@@ -11818,7 +16473,17 @@ inline tensor encode_jpeg(const tensor& image, const std::string& format="", int
     return tensor(res[0]);
 }
 
+/* # EncodeJpegVariableQuality
+# Inputs:
+*    images
+*    quality
 
+# Attributes:
+*    
+# Outputs:
+*    contents
+
+*/
 inline tensor encode_jpeg_variable_quality(const tensor& images, const tensor& quality) {
 
     // Define Op
@@ -11846,7 +16511,17 @@ inline tensor encode_jpeg_variable_quality(const tensor& images, const tensor& q
     return tensor(res[0]);
 }
 
+/* # EncodePng
+# Inputs:
+*    image
 
+# Attributes:
+*    compression
+
+# Outputs:
+*    contents
+
+*/
 inline tensor encode_png(const tensor& image, int64_t compression=-1) {
 
     // Define Op
@@ -11870,7 +16545,21 @@ inline tensor encode_png(const tensor& image, int64_t compression=-1) {
     return tensor(res[0]);
 }
 
+/* # EncodeProto
+# Inputs:
+*    sizes
+*    values
 
+# Attributes:
+*    field_names
+*    message_type
+*    Tinput_types
+*    descriptor_source
+
+# Outputs:
+*    bytes
+
+*/
 inline tensor encode_proto(const tensor& sizes, const std::vector<tensor>&values, const std::vector< std::string>& field_names, const std::string& message_type, const std::vector<datatype>& Tinput_types, const std::string& descriptor_source="local://") {
 
     // Define Op
@@ -11907,7 +16596,17 @@ inline tensor encode_proto(const tensor& sizes, const std::vector<tensor>&values
     return tensor(res[0]);
 }
 
+/* # EncodeWav
+# Inputs:
+*    audio
+*    sample_rate
 
+# Attributes:
+*    
+# Outputs:
+*    contents
+
+*/
 inline tensor encode_wav(const tensor& audio, const tensor& sample_rate) {
 
     // Define Op
@@ -11935,7 +16634,24 @@ inline tensor encode_wav(const tensor& audio, const tensor& sample_rate) {
     return tensor(res[0]);
 }
 
+/* # EnqueueTPUEmbeddingArbitraryTensorBatch
+# Inputs:
+*    sample_indices_or_row_splits
+*    embedding_indices
+*    aggregation_weights
+*    mode_override
 
+# Attributes:
+*    N
+*    combiners
+*    T1
+*    T2
+*    T3
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void enqueue_t_p_u_embedding_arbitrary_tensor_batch(const std::vector<tensor>&sample_indices_or_row_splits, const std::vector<tensor>&embedding_indices, const std::vector<tensor>&aggregation_weights, const tensor& mode_override, const std::vector< std::string>& combiners, datatype T1=static_cast<datatype>(3), datatype T2=static_cast<datatype>(3), datatype T3=static_cast<datatype>(1), int64_t device_ordinal=-1) {
 
     // Define Op
@@ -11985,7 +16701,18 @@ inline void enqueue_t_p_u_embedding_arbitrary_tensor_batch(const std::vector<ten
     status_check(context::get_status());
 }
 
+/* # EnqueueTPUEmbeddingIntegerBatch
+# Inputs:
+*    batch
+*    mode_override
 
+# Attributes:
+*    N
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void enqueue_t_p_u_embedding_integer_batch(const std::vector<tensor>&batch, const tensor& mode_override, int64_t device_ordinal=-1) {
 
     // Define Op
@@ -12015,7 +16742,27 @@ inline void enqueue_t_p_u_embedding_integer_batch(const std::vector<tensor>&batc
     status_check(context::get_status());
 }
 
+/* # EnqueueTPUEmbeddingRaggedTensorBatch
+# Inputs:
+*    sample_splits
+*    embedding_indices
+*    aggregation_weights
+*    mode_override
 
+# Attributes:
+*    N
+*    combiners
+*    table_ids
+*    max_sequence_lengths
+*    num_features
+*    T1
+*    T2
+*    T3
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void enqueue_t_p_u_embedding_ragged_tensor_batch(const std::vector<tensor>&sample_splits, const std::vector<tensor>&embedding_indices, const std::vector<tensor>&aggregation_weights, const tensor& mode_override, const std::vector< std::string>& combiners, const std::vector<int64_t>& table_ids, const std::vector<int64_t>& max_sequence_lengths, const std::vector<int64_t>& num_features, datatype T1=static_cast<datatype>(3), datatype T2=static_cast<datatype>(3), datatype T3=static_cast<datatype>(1), int64_t device_ordinal=-1) {
 
     // Define Op
@@ -12068,7 +16815,24 @@ inline void enqueue_t_p_u_embedding_ragged_tensor_batch(const std::vector<tensor
     status_check(context::get_status());
 }
 
+/* # EnqueueTPUEmbeddingSparseBatch
+# Inputs:
+*    sample_indices
+*    embedding_indices
+*    aggregation_weights
+*    mode_override
 
+# Attributes:
+*    N
+*    combiners
+*    T1
+*    T2
+*    T3
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void enqueue_t_p_u_embedding_sparse_batch(const std::vector<tensor>&sample_indices, const std::vector<tensor>&embedding_indices, const std::vector<tensor>&aggregation_weights, const tensor& mode_override, const std::vector< std::string>& combiners, datatype T1=static_cast<datatype>(3), datatype T2=static_cast<datatype>(3), datatype T3=static_cast<datatype>(1), int64_t device_ordinal=-1) {
 
     // Define Op
@@ -12118,7 +16882,27 @@ inline void enqueue_t_p_u_embedding_sparse_batch(const std::vector<tensor>&sampl
     status_check(context::get_status());
 }
 
+/* # EnqueueTPUEmbeddingSparseTensorBatch
+# Inputs:
+*    sample_indices
+*    embedding_indices
+*    aggregation_weights
+*    mode_override
 
+# Attributes:
+*    N
+*    combiners
+*    table_ids
+*    max_sequence_lengths
+*    num_features
+*    T1
+*    T2
+*    T3
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void enqueue_t_p_u_embedding_sparse_tensor_batch(const std::vector<tensor>&sample_indices, const std::vector<tensor>&embedding_indices, const std::vector<tensor>&aggregation_weights, const tensor& mode_override, const std::vector< std::string>& combiners, const std::vector<int64_t>& table_ids, const std::vector<int64_t>& max_sequence_lengths, const std::vector<int64_t>& num_features, datatype T1=static_cast<datatype>(3), datatype T2=static_cast<datatype>(3), datatype T3=static_cast<datatype>(1), int64_t device_ordinal=-1) {
 
     // Define Op
@@ -12171,7 +16955,17 @@ inline void enqueue_t_p_u_embedding_sparse_tensor_batch(const std::vector<tensor
     status_check(context::get_status());
 }
 
+/* # EnsureShape
+# Inputs:
+*    input
 
+# Attributes:
+*    shape
+
+# Outputs:
+*    output
+
+*/
 inline tensor ensure_shape(const tensor& input, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -12198,7 +16992,19 @@ inline tensor ensure_shape(const tensor& input, const std::vector<int64_t>& shap
     return tensor(res[0]);
 }
 
+/* # Enter
+# Inputs:
+*    data
 
+# Attributes:
+*    frame_name
+*    is_constant
+*    parallel_iterations
+
+# Outputs:
+*    output
+
+*/
 inline tensor enter(const tensor& data, const std::string& frame_name, bool is_constant=false, int64_t parallel_iterations=10) {
 
     // Define Op
@@ -12224,7 +17030,18 @@ inline tensor enter(const tensor& data, const std::string& frame_name, bool is_c
     return tensor(res[0]);
 }
 
+/* # Equal
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    incompatible_shape_error
+
+# Outputs:
+*    z
+
+*/
 inline tensor equal(const tensor& x, const tensor& y, bool incompatible_shape_error=true) {
 
     // Define Op
@@ -12252,7 +17069,16 @@ inline tensor equal(const tensor& x, const tensor& y, bool incompatible_shape_er
     return tensor(res[0]);
 }
 
+/* # Erf
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor erf(const tensor& x) {
 
     // Define Op
@@ -12276,7 +17102,16 @@ inline tensor erf(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Erfc
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor erfc(const tensor& x) {
 
     // Define Op
@@ -12300,7 +17135,16 @@ inline tensor erfc(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Erfinv
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor erfinv(const tensor& x) {
 
     // Define Op
@@ -12324,7 +17168,19 @@ inline tensor erfinv(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # EuclideanNorm
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor euclidean_norm(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -12353,7 +17209,16 @@ inline tensor euclidean_norm(const tensor& input, const tensor& reduction_indice
     return tensor(res[0]);
 }
 
+/* # Exit
+# Inputs:
+*    data
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor exit(const tensor& data) {
 
     // Define Op
@@ -12377,7 +17242,16 @@ inline tensor exit(const tensor& data) {
     return tensor(res[0]);
 }
 
+/* # Exp
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor exp(const tensor& x) {
 
     // Define Op
@@ -12401,7 +17275,18 @@ inline tensor exp(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # ExpandDims
+# Inputs:
+*    input
+*    dim
 
+# Attributes:
+*    Tdim
+
+# Outputs:
+*    output
+
+*/
 inline tensor expand_dims(const tensor& input, const tensor& dim, datatype Tdim=static_cast<datatype>(3)) {
 
     // Define Op
@@ -12429,7 +17314,19 @@ inline tensor expand_dims(const tensor& input, const tensor& dim, datatype Tdim=
     return tensor(res[0]);
 }
 
+/* # ExperimentalAssertNextDataset
+# Inputs:
+*    input_dataset
+*    transformations
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_assert_next_dataset(const tensor& input_dataset, const tensor& transformations, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12465,7 +17362,21 @@ inline tensor experimental_assert_next_dataset(const tensor& input_dataset, cons
     return tensor(res[0]);
 }
 
+/* # ExperimentalAutoShardDataset
+# Inputs:
+*    input_dataset
+*    num_workers
+*    index
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    auto_shard_policy
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_auto_shard_dataset(const tensor& input_dataset, const tensor& num_workers, const tensor& index, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t auto_shard_policy=0) {
 
     // Define Op
@@ -12506,7 +17417,19 @@ inline tensor experimental_auto_shard_dataset(const tensor& input_dataset, const
     return tensor(res[0]);
 }
 
+/* # ExperimentalBytesProducedStatsDataset
+# Inputs:
+*    input_dataset
+*    tag
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_bytes_produced_stats_dataset(const tensor& input_dataset, const tensor& tag, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12542,7 +17465,26 @@ inline tensor experimental_bytes_produced_stats_dataset(const tensor& input_data
     return tensor(res[0]);
 }
 
+/* # ExperimentalCSVDataset
+# Inputs:
+*    filenames
+*    compression_type
+*    buffer_size
+*    header
+*    field_delim
+*    use_quote_delim
+*    na_value
+*    select_cols
+*    record_defaults
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_c_s_v_dataset(const tensor& filenames, const tensor& compression_type, const tensor& buffer_size, const tensor& header, const tensor& field_delim, const tensor& use_quote_delim, const tensor& na_value, const tensor& select_cols, const std::vector<tensor>&record_defaults, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12608,7 +17550,20 @@ inline tensor experimental_c_s_v_dataset(const tensor& filenames, const tensor& 
     return tensor(res[0]);
 }
 
+/* # ExperimentalChooseFastestDataset
+# Inputs:
+*    input_datasets
 
+# Attributes:
+*    N
+*    num_experiments
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_choose_fastest_dataset(const std::vector<tensor>&input_datasets, int64_t num_experiments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12644,7 +17599,16 @@ inline tensor experimental_choose_fastest_dataset(const std::vector<tensor>&inpu
     return tensor(res[0]);
 }
 
+/* # ExperimentalDatasetCardinality
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    
+# Outputs:
+*    cardinality
+
+*/
 inline tensor experimental_dataset_cardinality(const tensor& input_dataset) {
 
     // Define Op
@@ -12668,7 +17632,17 @@ inline tensor experimental_dataset_cardinality(const tensor& input_dataset) {
     return tensor(res[0]);
 }
 
+/* # ExperimentalDatasetToTFRecord
+# Inputs:
+*    input_dataset
+*    filename
+*    compression_type
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void experimental_dataset_to_t_f_record(const tensor& input_dataset, const tensor& filename, const tensor& compression_type) {
 
     // Define Op
@@ -12699,7 +17673,20 @@ inline void experimental_dataset_to_t_f_record(const tensor& input_dataset, cons
     status_check(context::get_status());
 }
 
+/* # ExperimentalDenseToSparseBatchDataset
+# Inputs:
+*    input_dataset
+*    batch_size
+*    row_shape
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_dense_to_sparse_batch_dataset(const tensor& input_dataset, const tensor& batch_size, const tensor& row_shape, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12739,7 +17726,20 @@ inline tensor experimental_dense_to_sparse_batch_dataset(const tensor& input_dat
     return tensor(res[0]);
 }
 
+/* # ExperimentalDirectedInterleaveDataset
+# Inputs:
+*    selector_input_dataset
+*    data_input_datasets
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    N
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_directed_interleave_dataset(const tensor& selector_input_dataset, const std::vector<tensor>&data_input_datasets, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12778,7 +17778,30 @@ inline tensor experimental_directed_interleave_dataset(const tensor& selector_in
     return tensor(res[0]);
 }
 
+/* # ExperimentalGroupByReducerDataset
+# Inputs:
+*    input_dataset
+*    key_func_other_arguments
+*    init_func_other_arguments
+*    reduce_func_other_arguments
+*    finalize_func_other_arguments
 
+# Attributes:
+*    key_func
+*    init_func
+*    reduce_func
+*    finalize_func
+*    Tkey_func_other_arguments
+*    Tinit_func_other_arguments
+*    Treduce_func_other_arguments
+*    Tfinalize_func_other_arguments
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_group_by_reducer_dataset(const tensor& input_dataset, const std::vector<tensor>&key_func_other_arguments, const std::vector<tensor>&init_func_other_arguments, const std::vector<tensor>&reduce_func_other_arguments, const std::vector<tensor>&finalize_func_other_arguments, int64_t key_func, int64_t init_func, int64_t reduce_func, int64_t finalize_func, const std::vector<datatype>& Tkey_func_other_arguments, const std::vector<datatype>& Tinit_func_other_arguments, const std::vector<datatype>& Treduce_func_other_arguments, const std::vector<datatype>& Tfinalize_func_other_arguments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12842,7 +17865,27 @@ inline tensor experimental_group_by_reducer_dataset(const tensor& input_dataset,
     return tensor(res[0]);
 }
 
+/* # ExperimentalGroupByWindowDataset
+# Inputs:
+*    input_dataset
+*    key_func_other_arguments
+*    reduce_func_other_arguments
+*    window_size_func_other_arguments
 
+# Attributes:
+*    key_func
+*    reduce_func
+*    window_size_func
+*    Tkey_func_other_arguments
+*    Treduce_func_other_arguments
+*    Twindow_size_func_other_arguments
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_group_by_window_dataset(const tensor& input_dataset, const std::vector<tensor>&key_func_other_arguments, const std::vector<tensor>&reduce_func_other_arguments, const std::vector<tensor>&window_size_func_other_arguments, int64_t key_func, int64_t reduce_func, int64_t window_size_func, const std::vector<datatype>& Tkey_func_other_arguments, const std::vector<datatype>& Treduce_func_other_arguments, const std::vector<datatype>& Twindow_size_func_other_arguments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12898,7 +17941,19 @@ inline tensor experimental_group_by_window_dataset(const tensor& input_dataset, 
     return tensor(res[0]);
 }
 
+/* # ExperimentalIgnoreErrorsDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    log_warning
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_ignore_errors_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool log_warning=false) {
 
     // Define Op
@@ -12931,7 +17986,16 @@ inline tensor experimental_ignore_errors_dataset(const tensor& input_dataset, co
     return tensor(res[0]);
 }
 
+/* # ExperimentalIteratorGetDevice
+# Inputs:
+*    resource
 
+# Attributes:
+*    
+# Outputs:
+*    device
+
+*/
 inline tensor experimental_iterator_get_device(const tensor& resource) {
 
     // Define Op
@@ -12955,7 +18019,18 @@ inline tensor experimental_iterator_get_device(const tensor& resource) {
     return tensor(res[0]);
 }
 
+/* # ExperimentalLMDBDataset
+# Inputs:
+*    filenames
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_l_m_d_b_dataset(const tensor& filenames, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -12987,7 +18062,19 @@ inline tensor experimental_l_m_d_b_dataset(const tensor& filenames, const std::v
     return tensor(res[0]);
 }
 
+/* # ExperimentalLatencyStatsDataset
+# Inputs:
+*    input_dataset
+*    tag
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_latency_stats_dataset(const tensor& input_dataset, const tensor& tag, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13023,7 +18110,25 @@ inline tensor experimental_latency_stats_dataset(const tensor& input_dataset, co
     return tensor(res[0]);
 }
 
+/* # ExperimentalMapAndBatchDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    batch_size
+*    num_parallel_calls
+*    drop_remainder
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    preserve_cardinality
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_map_and_batch_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& batch_size, const tensor& num_parallel_calls, const tensor& drop_remainder, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool preserve_cardinality=false) {
 
     // Define Op
@@ -13076,7 +18181,23 @@ inline tensor experimental_map_and_batch_dataset(const tensor& input_dataset, co
     return tensor(res[0]);
 }
 
+/* # ExperimentalMapDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    use_inter_op_parallelism
+*    preserve_cardinality
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, bool preserve_cardinality=false) {
 
     // Define Op
@@ -13118,7 +18239,16 @@ inline tensor experimental_map_dataset(const tensor& input_dataset, const std::v
     return tensor(res[0]);
 }
 
+/* # ExperimentalMatchingFilesDataset
+# Inputs:
+*    patterns
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_matching_files_dataset(const tensor& patterns) {
 
     // Define Op
@@ -13142,7 +18272,19 @@ inline tensor experimental_matching_files_dataset(const tensor& patterns) {
     return tensor(res[0]);
 }
 
+/* # ExperimentalMaxIntraOpParallelismDataset
+# Inputs:
+*    input_dataset
+*    max_intra_op_parallelism
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_max_intra_op_parallelism_dataset(const tensor& input_dataset, const tensor& max_intra_op_parallelism, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13178,7 +18320,18 @@ inline tensor experimental_max_intra_op_parallelism_dataset(const tensor& input_
     return tensor(res[0]);
 }
 
+/* # ExperimentalNonSerializableDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_non_serializable_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13210,7 +18363,26 @@ inline tensor experimental_non_serializable_dataset(const tensor& input_dataset,
     return tensor(res[0]);
 }
 
+/* # ExperimentalParallelInterleaveDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    cycle_length
+*    block_length
+*    sloppy
+*    buffer_output_elements
+*    prefetch_input_elements
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_parallel_interleave_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& cycle_length, const tensor& block_length, const tensor& sloppy, const tensor& buffer_output_elements, const tensor& prefetch_input_elements, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13270,7 +18442,26 @@ inline tensor experimental_parallel_interleave_dataset(const tensor& input_datas
     return tensor(res[0]);
 }
 
+/* # ExperimentalParseExampleDataset
+# Inputs:
+*    input_dataset
+*    num_parallel_calls
+*    dense_defaults
 
+# Attributes:
+*    sparse_keys
+*    dense_keys
+*    sparse_types
+*    Tdense
+*    dense_shapes
+*    output_types
+*    output_shapes
+*    sloppy
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_parse_example_dataset(const tensor& input_dataset, const tensor& num_parallel_calls, const std::vector<tensor>&dense_defaults, const std::vector< std::string>& sparse_keys, const std::vector< std::string>& dense_keys, const std::vector<datatype>& sparse_types, const std::vector<datatype>& Tdense, const std::vector< std::vector<int64_t>>& dense_shapes, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool sloppy=false) {
 
     // Define Op
@@ -13333,7 +18524,19 @@ inline tensor experimental_parse_example_dataset(const tensor& input_dataset, co
     return tensor(res[0]);
 }
 
+/* # ExperimentalPrivateThreadPoolDataset
+# Inputs:
+*    input_dataset
+*    num_threads
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_private_thread_pool_dataset(const tensor& input_dataset, const tensor& num_threads, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13369,7 +18572,19 @@ inline tensor experimental_private_thread_pool_dataset(const tensor& input_datas
     return tensor(res[0]);
 }
 
+/* # ExperimentalRandomDataset
+# Inputs:
+*    seed
+*    seed2
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_random_dataset(const tensor& seed, const tensor& seed2, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13405,7 +18620,20 @@ inline tensor experimental_random_dataset(const tensor& seed, const tensor& seed
     return tensor(res[0]);
 }
 
+/* # ExperimentalRebatchDataset
+# Inputs:
+*    input_dataset
+*    num_replicas
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    use_fallback
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_rebatch_dataset(const tensor& input_dataset, const tensor& num_replicas, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_fallback=true) {
 
     // Define Op
@@ -13442,7 +18670,24 @@ inline tensor experimental_rebatch_dataset(const tensor& input_dataset, const te
     return tensor(res[0]);
 }
 
+/* # ExperimentalScanDataset
+# Inputs:
+*    input_dataset
+*    initial_state
+*    other_arguments
 
+# Attributes:
+*    f
+*    Tstate
+*    Targuments
+*    output_types
+*    output_shapes
+*    preserve_cardinality
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_scan_dataset(const tensor& input_dataset, const std::vector<tensor>&initial_state, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Tstate, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool preserve_cardinality=false) {
 
     // Define Op
@@ -13490,7 +18735,21 @@ inline tensor experimental_scan_dataset(const tensor& input_dataset, const std::
     return tensor(res[0]);
 }
 
+/* # ExperimentalSetStatsAggregatorDataset
+# Inputs:
+*    input_dataset
+*    stats_aggregator
+*    tag
+*    counter_prefix
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_set_stats_aggregator_dataset(const tensor& input_dataset, const tensor& stats_aggregator, const tensor& tag, const tensor& counter_prefix, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13534,7 +18793,19 @@ inline tensor experimental_set_stats_aggregator_dataset(const tensor& input_data
     return tensor(res[0]);
 }
 
+/* # ExperimentalSleepDataset
+# Inputs:
+*    input_dataset
+*    sleep_microseconds
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_sleep_dataset(const tensor& input_dataset, const tensor& sleep_microseconds, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13570,7 +18841,21 @@ inline tensor experimental_sleep_dataset(const tensor& input_dataset, const tens
     return tensor(res[0]);
 }
 
+/* # ExperimentalSlidingWindowDataset
+# Inputs:
+*    input_dataset
+*    window_size
+*    window_shift
+*    window_stride
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_sliding_window_dataset(const tensor& input_dataset, const tensor& window_size, const tensor& window_shift, const tensor& window_stride, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13614,7 +18899,20 @@ inline tensor experimental_sliding_window_dataset(const tensor& input_dataset, c
     return tensor(res[0]);
 }
 
+/* # ExperimentalSqlDataset
+# Inputs:
+*    driver_name
+*    data_source_name
+*    query
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_sql_dataset(const tensor& driver_name, const tensor& data_source_name, const tensor& query, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13654,7 +18952,17 @@ inline tensor experimental_sql_dataset(const tensor& driver_name, const tensor& 
     return tensor(res[0]);
 }
 
+/* # ExperimentalStatsAggregatorHandle
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_stats_aggregator_handle(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -13676,7 +18984,16 @@ inline tensor experimental_stats_aggregator_handle(const std::string& container=
     return tensor(res[0]);
 }
 
+/* # ExperimentalStatsAggregatorSummary
+# Inputs:
+*    iterator
 
+# Attributes:
+*    
+# Outputs:
+*    summary
+
+*/
 inline tensor experimental_stats_aggregator_summary(const tensor& iterator) {
 
     // Define Op
@@ -13700,7 +19017,21 @@ inline tensor experimental_stats_aggregator_summary(const tensor& iterator) {
     return tensor(res[0]);
 }
 
+/* # ExperimentalTakeWhileDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
 
+# Attributes:
+*    predicate
+*    Targuments
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_take_while_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t predicate, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13740,7 +19071,19 @@ inline tensor experimental_take_while_dataset(const tensor& input_dataset, const
     return tensor(res[0]);
 }
 
+/* # ExperimentalThreadPoolDataset
+# Inputs:
+*    input_dataset
+*    thread_pool
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_thread_pool_dataset(const tensor& input_dataset, const tensor& thread_pool, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13776,7 +19119,20 @@ inline tensor experimental_thread_pool_dataset(const tensor& input_dataset, cons
     return tensor(res[0]);
 }
 
+/* # ExperimentalThreadPoolHandle
+# Inputs:
+*    
+# Attributes:
+*    num_threads
+*    display_name
+*    max_intra_op_parallelism
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_thread_pool_handle(int64_t num_threads, const std::string& display_name, int64_t max_intra_op_parallelism=1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -13801,7 +19157,18 @@ inline tensor experimental_thread_pool_handle(int64_t num_threads, const std::st
     return tensor(res[0]);
 }
 
+/* # ExperimentalUnbatchDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_unbatch_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13833,7 +19200,18 @@ inline tensor experimental_unbatch_dataset(const tensor& input_dataset, const st
     return tensor(res[0]);
 }
 
+/* # ExperimentalUniqueDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor experimental_unique_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -13865,7 +19243,16 @@ inline tensor experimental_unique_dataset(const tensor& input_dataset, const std
     return tensor(res[0]);
 }
 
+/* # Expint
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor expint(const tensor& x) {
 
     // Define Op
@@ -13889,7 +19276,16 @@ inline tensor expint(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Expm1
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor expm1(const tensor& x) {
 
     // Define Op
@@ -13913,7 +19309,22 @@ inline tensor expm1(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # ExtractGlimpse
+# Inputs:
+*    input
+*    size
+*    offsets
 
+# Attributes:
+*    centered
+*    normalized
+*    uniform_noise
+*    noise
+
+# Outputs:
+*    glimpse
+
+*/
 inline tensor extract_glimpse(const tensor& input, const tensor& size, const tensor& offsets, bool centered=true, bool normalized=true, bool uniform_noise=true, const std::string& noise="uniform") {
 
     // Define Op
@@ -13948,7 +19359,22 @@ inline tensor extract_glimpse(const tensor& input, const tensor& size, const ten
     return tensor(res[0]);
 }
 
+/* # ExtractGlimpseV2
+# Inputs:
+*    input
+*    size
+*    offsets
 
+# Attributes:
+*    centered
+*    normalized
+*    uniform_noise
+*    noise
+
+# Outputs:
+*    glimpse
+
+*/
 inline tensor extract_glimpse_v2(const tensor& input, const tensor& size, const tensor& offsets, bool centered=true, bool normalized=true, bool uniform_noise=true, const std::string& noise="uniform") {
 
     // Define Op
@@ -13983,7 +19409,20 @@ inline tensor extract_glimpse_v2(const tensor& input, const tensor& size, const 
     return tensor(res[0]);
 }
 
+/* # ExtractImagePatches
+# Inputs:
+*    images
 
+# Attributes:
+*    ksizes
+*    strides
+*    rates
+*    padding
+
+# Outputs:
+*    patches
+
+*/
 inline tensor extract_image_patches(const tensor& images, const std::vector<int64_t>& ksizes, const std::vector<int64_t>& strides, const std::vector<int64_t>& rates, const std::string& padding) {
 
     // Define Op
@@ -14010,7 +19449,17 @@ inline tensor extract_image_patches(const tensor& images, const std::vector<int6
     return tensor(res[0]);
 }
 
+/* # ExtractJpegShape
+# Inputs:
+*    contents
 
+# Attributes:
+*    output_type
+
+# Outputs:
+*    image_shape
+
+*/
 inline tensor extract_jpeg_shape(const tensor& contents, datatype output_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -14034,7 +19483,19 @@ inline tensor extract_jpeg_shape(const tensor& contents, datatype output_type=st
     return tensor(res[0]);
 }
 
+/* # ExtractVolumePatches
+# Inputs:
+*    input
 
+# Attributes:
+*    ksizes
+*    strides
+*    padding
+
+# Outputs:
+*    patches
+
+*/
 inline tensor extract_volume_patches(const tensor& input, const std::vector<int64_t>& ksizes, const std::vector<int64_t>& strides, const std::string& padding) {
 
     // Define Op
@@ -14060,8 +19521,18 @@ inline tensor extract_volume_patches(const tensor& input, const std::vector<int6
     return tensor(res[0]);
 }
 
+/* # FFT
+# Inputs:
+*    input
 
-inline tensor f_f_t(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor FFT(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "FFT", context::get_status()), &TFE_DeleteOp);
@@ -14084,8 +19555,18 @@ inline tensor f_f_t(const tensor& input, datatype Tcomplex=static_cast<datatype>
     return tensor(res[0]);
 }
 
+/* # FFT2D
+# Inputs:
+*    input
 
-inline tensor f_f_t2_d(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor FFT2D(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "FFT2D", context::get_status()), &TFE_DeleteOp);
@@ -14108,8 +19589,18 @@ inline tensor f_f_t2_d(const tensor& input, datatype Tcomplex=static_cast<dataty
     return tensor(res[0]);
 }
 
+/* # FFT3D
+# Inputs:
+*    input
 
-inline tensor f_f_t3_d(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor FFT3D(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "FFT3D", context::get_status()), &TFE_DeleteOp);
@@ -14132,8 +19623,20 @@ inline tensor f_f_t3_d(const tensor& input, datatype Tcomplex=static_cast<dataty
     return tensor(res[0]);
 }
 
+/* # FFTND
+# Inputs:
+*    input
+*    fft_length
+*    axes
 
-inline tensor f_f_t_n_d(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor FFTND(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "FFTND", context::get_status()), &TFE_DeleteOp);
@@ -14164,7 +19667,20 @@ inline tensor f_f_t_n_d(const tensor& input, const tensor& fft_length, const ten
     return tensor(res[0]);
 }
 
+/* # FIFOQueue
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor f_i_f_o_queue(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -14196,7 +19712,20 @@ inline tensor f_i_f_o_queue(const std::vector<datatype>& component_types, const 
     return tensor(res[0]);
 }
 
+/* # FIFOQueueV2
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor f_i_f_o_queue_v2(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -14228,7 +19757,15 @@ inline tensor f_i_f_o_queue_v2(const std::vector<datatype>& component_types, con
     return tensor(res[0]);
 }
 
+/* # Fact
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    fact
 
+*/
 inline tensor fact() {
 
     // Define Op
@@ -14249,7 +19786,17 @@ inline tensor fact() {
     return tensor(res[0]);
 }
 
+/* # FakeParam
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
 
+# Outputs:
+*    output
+
+*/
 inline tensor fake_param(datatype dtype, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -14274,7 +19821,20 @@ inline tensor fake_param(datatype dtype, const std::vector<int64_t>& shape) {
     return tensor(res[0]);
 }
 
+/* # FakeQuantWithMinMaxArgs
+# Inputs:
+*    inputs
 
+# Attributes:
+*    min
+*    max
+*    num_bits
+*    narrow_range
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor fake_quant_with_min_max_args(const tensor& inputs, float min=-6.0000e+00, float max=6.0000e+00, int64_t num_bits=8, bool narrow_range=false) {
 
     // Define Op
@@ -14301,7 +19861,21 @@ inline tensor fake_quant_with_min_max_args(const tensor& inputs, float min=-6.00
     return tensor(res[0]);
 }
 
+/* # FakeQuantWithMinMaxArgsGradient
+# Inputs:
+*    gradients
+*    inputs
 
+# Attributes:
+*    min
+*    max
+*    num_bits
+*    narrow_range
+
+# Outputs:
+*    backprops
+
+*/
 inline tensor fake_quant_with_min_max_args_gradient(const tensor& gradients, const tensor& inputs, float min=-6.0000e+00, float max=6.0000e+00, int64_t num_bits=8, bool narrow_range=false) {
 
     // Define Op
@@ -14332,7 +19906,20 @@ inline tensor fake_quant_with_min_max_args_gradient(const tensor& gradients, con
     return tensor(res[0]);
 }
 
+/* # FakeQuantWithMinMaxVars
+# Inputs:
+*    inputs
+*    min
+*    max
 
+# Attributes:
+*    num_bits
+*    narrow_range
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor fake_quant_with_min_max_vars(const tensor& inputs, const tensor& min, const tensor& max, int64_t num_bits=8, bool narrow_range=false) {
 
     // Define Op
@@ -14365,7 +19952,23 @@ inline tensor fake_quant_with_min_max_vars(const tensor& inputs, const tensor& m
     return tensor(res[0]);
 }
 
+/* # FakeQuantWithMinMaxVarsGradient
+# Inputs:
+*    gradients
+*    inputs
+*    min
+*    max
 
+# Attributes:
+*    num_bits
+*    narrow_range
+
+# Outputs:
+*    backprops_wrt_input
+*    backprop_wrt_min
+*    backprop_wrt_max
+
+*/
 inline std::vector<tensor> fake_quant_with_min_max_vars_gradient(const tensor& gradients, const tensor& inputs, const tensor& min, const tensor& max, int64_t num_bits=8, bool narrow_range=false) {
 
     // Define Op
@@ -14402,7 +20005,20 @@ inline std::vector<tensor> fake_quant_with_min_max_vars_gradient(const tensor& g
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # FakeQuantWithMinMaxVarsPerChannel
+# Inputs:
+*    inputs
+*    min
+*    max
 
+# Attributes:
+*    num_bits
+*    narrow_range
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor fake_quant_with_min_max_vars_per_channel(const tensor& inputs, const tensor& min, const tensor& max, int64_t num_bits=8, bool narrow_range=false) {
 
     // Define Op
@@ -14435,7 +20051,23 @@ inline tensor fake_quant_with_min_max_vars_per_channel(const tensor& inputs, con
     return tensor(res[0]);
 }
 
+/* # FakeQuantWithMinMaxVarsPerChannelGradient
+# Inputs:
+*    gradients
+*    inputs
+*    min
+*    max
 
+# Attributes:
+*    num_bits
+*    narrow_range
+
+# Outputs:
+*    backprops_wrt_input
+*    backprop_wrt_min
+*    backprop_wrt_max
+
+*/
 inline std::vector<tensor> fake_quant_with_min_max_vars_per_channel_gradient(const tensor& gradients, const tensor& inputs, const tensor& min, const tensor& max, int64_t num_bits=8, bool narrow_range=false) {
 
     // Define Op
@@ -14472,7 +20104,16 @@ inline std::vector<tensor> fake_quant_with_min_max_vars_per_channel_gradient(con
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # FakeQueue
+# Inputs:
+*    resource
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+
+*/
 inline tensor fake_queue(const tensor& resource) {
 
     // Define Op
@@ -14496,7 +20137,17 @@ inline tensor fake_queue(const tensor& resource) {
     return tensor(res[0]);
 }
 
+/* # FileSystemSetConfiguration
+# Inputs:
+*    scheme
+*    key
+*    value
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void file_system_set_configuration(const tensor& scheme, const tensor& key, const tensor& value) {
 
     // Define Op
@@ -14527,7 +20178,18 @@ inline void file_system_set_configuration(const tensor& scheme, const tensor& ke
     status_check(context::get_status());
 }
 
+/* # Fill
+# Inputs:
+*    dims
+*    value
 
+# Attributes:
+*    index_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor fill(const tensor& dims, const tensor& value, datatype index_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -14555,7 +20217,18 @@ inline tensor fill(const tensor& dims, const tensor& value, datatype index_type=
     return tensor(res[0]);
 }
 
+/* # FilterByLastComponentDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    output
+
+*/
 inline tensor filter_by_last_component_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -14587,7 +20260,22 @@ inline tensor filter_by_last_component_dataset(const tensor& input_dataset, cons
     return tensor(res[0]);
 }
 
+/* # FilterDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
 
+# Attributes:
+*    predicate
+*    Targuments
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor filter_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t predicate, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -14628,7 +20316,19 @@ inline tensor filter_dataset(const tensor& input_dataset, const std::vector<tens
     return tensor(res[0]);
 }
 
+/* # FinalizeDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    has_captured_ref
+
+# Outputs:
+*    handle
+
+*/
 inline tensor finalize_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool has_captured_ref=false) {
 
     // Define Op
@@ -14661,7 +20361,17 @@ inline tensor finalize_dataset(const tensor& input_dataset, const std::vector<da
     return tensor(res[0]);
 }
 
+/* # Fingerprint
+# Inputs:
+*    data
+*    method
 
+# Attributes:
+*    
+# Outputs:
+*    fingerprint
+
+*/
 inline tensor fingerprint(const tensor& data, const tensor& method) {
 
     // Define Op
@@ -14689,7 +20399,21 @@ inline tensor fingerprint(const tensor& data, const tensor& method) {
     return tensor(res[0]);
 }
 
+/* # FixedLengthRecordDataset
+# Inputs:
+*    filenames
+*    header_bytes
+*    record_bytes
+*    footer_bytes
+*    buffer_size
 
+# Attributes:
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor fixed_length_record_dataset(const tensor& filenames, const tensor& header_bytes, const tensor& record_bytes, const tensor& footer_bytes, const tensor& buffer_size, const std::string& metadata="") {
 
     // Define Op
@@ -14729,7 +20453,22 @@ inline tensor fixed_length_record_dataset(const tensor& filenames, const tensor&
     return tensor(res[0]);
 }
 
+/* # FixedLengthRecordDatasetV2
+# Inputs:
+*    filenames
+*    header_bytes
+*    record_bytes
+*    footer_bytes
+*    buffer_size
+*    compression_type
 
+# Attributes:
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor fixed_length_record_dataset_v2(const tensor& filenames, const tensor& header_bytes, const tensor& record_bytes, const tensor& footer_bytes, const tensor& buffer_size, const tensor& compression_type, const std::string& metadata="") {
 
     // Define Op
@@ -14773,7 +20512,21 @@ inline tensor fixed_length_record_dataset_v2(const tensor& filenames, const tens
     return tensor(res[0]);
 }
 
+/* # FixedLengthRecordReader
+# Inputs:
+*    
+# Attributes:
+*    record_bytes
+*    header_bytes
+*    footer_bytes
+*    hop_bytes
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor fixed_length_record_reader(int64_t record_bytes, int64_t header_bytes=0, int64_t footer_bytes=0, int64_t hop_bytes=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -14799,7 +20552,22 @@ inline tensor fixed_length_record_reader(int64_t record_bytes, int64_t header_by
     return tensor(res[0]);
 }
 
+/* # FixedLengthRecordReaderV2
+# Inputs:
+*    
+# Attributes:
+*    record_bytes
+*    header_bytes
+*    footer_bytes
+*    hop_bytes
+*    container
+*    shared_name
+*    encoding
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor fixed_length_record_reader_v2(int64_t record_bytes, int64_t header_bytes=0, int64_t footer_bytes=0, int64_t hop_bytes=0, const std::string& container="", const std::string& shared_name="", const std::string& encoding="") {
 
     // Define Op
@@ -14826,7 +20594,30 @@ inline tensor fixed_length_record_reader_v2(int64_t record_bytes, int64_t header
     return tensor(res[0]);
 }
 
+/* # FixedUnigramCandidateSampler
+# Inputs:
+*    true_classes
 
+# Attributes:
+*    num_true
+*    num_sampled
+*    unique
+*    range_max
+*    unigrams
+*    vocab_file
+*    distortion
+*    num_reserved_ids
+*    num_shards
+*    shard
+*    seed
+*    seed2
+
+# Outputs:
+*    sampled_candidates
+*    true_expected_count
+*    sampled_expected_count
+
+*/
 inline std::vector<tensor> fixed_unigram_candidate_sampler(const tensor& true_classes, int64_t num_true, int64_t num_sampled, bool unique, int64_t range_max, const std::vector<float>& unigrams, const std::string& vocab_file="", float distortion=1.0000e+00, int64_t num_reserved_ids=0, int64_t num_shards=1, int64_t shard=0, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -14861,7 +20652,22 @@ inline std::vector<tensor> fixed_unigram_candidate_sampler(const tensor& true_cl
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # FlatMapDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor flat_map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -14902,7 +20708,16 @@ inline tensor flat_map_dataset(const tensor& input_dataset, const std::vector<te
     return tensor(res[0]);
 }
 
+/* # Floor
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor floor(const tensor& x) {
 
     // Define Op
@@ -14926,7 +20741,17 @@ inline tensor floor(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # FloorDiv
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor floor_div(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -14954,7 +20779,17 @@ inline tensor floor_div(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # FloorMod
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor floor_mod(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -14982,7 +20817,15 @@ inline tensor floor_mod(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # FlushSummaryWriter
+# Inputs:
+*    writer
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void flush_summary_writer(const tensor& writer) {
 
     // Define Op
@@ -15005,7 +20848,20 @@ inline void flush_summary_writer(const tensor& writer) {
     status_check(context::get_status());
 }
 
+/* # For
+# Inputs:
+*    start
+*    limit
+*    delta
+*    input
 
+# Attributes:
+*    body
+
+# Outputs:
+*    output
+
+*/
 inline tensor tfe_for(const tensor& start, const tensor& limit, const tensor& delta, const std::vector<tensor>&input, int64_t body) {
 
     // Define Op
@@ -15043,7 +20899,24 @@ inline tensor tfe_for(const tensor& start, const tensor& limit, const tensor& de
     return tensor(res[0]);
 }
 
+/* # FractionalAvgPool
+# Inputs:
+*    value
 
+# Attributes:
+*    pooling_ratio
+*    pseudo_random
+*    overlapping
+*    deterministic
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+*    row_pooling_sequence
+*    col_pooling_sequence
+
+*/
 inline std::vector<tensor> fractional_avg_pool(const tensor& value, const std::vector<float>& pooling_ratio, bool pseudo_random=false, bool overlapping=false, bool deterministic=false, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -15072,7 +20945,20 @@ inline std::vector<tensor> fractional_avg_pool(const tensor& value, const std::v
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # FractionalAvgPoolGrad
+# Inputs:
+*    orig_input_tensor_shape
+*    out_backprop
+*    row_pooling_sequence
+*    col_pooling_sequence
 
+# Attributes:
+*    overlapping
+
+# Outputs:
+*    output
+
+*/
 inline tensor fractional_avg_pool_grad(const tensor& orig_input_input_tensor_shape, const tensor& out_backprop, const tensor& row_pooling_sequence, const tensor& col_pooling_sequence, bool overlapping=false) {
 
     // Define Op
@@ -15108,7 +20994,24 @@ inline tensor fractional_avg_pool_grad(const tensor& orig_input_input_tensor_sha
     return tensor(res[0]);
 }
 
+/* # FractionalMaxPool
+# Inputs:
+*    value
 
+# Attributes:
+*    pooling_ratio
+*    pseudo_random
+*    overlapping
+*    deterministic
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+*    row_pooling_sequence
+*    col_pooling_sequence
+
+*/
 inline std::vector<tensor> fractional_max_pool(const tensor& value, const std::vector<float>& pooling_ratio, bool pseudo_random=false, bool overlapping=false, bool deterministic=false, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -15137,7 +21040,21 @@ inline std::vector<tensor> fractional_max_pool(const tensor& value, const std::v
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # FractionalMaxPoolGrad
+# Inputs:
+*    orig_input
+*    orig_output
+*    out_backprop
+*    row_pooling_sequence
+*    col_pooling_sequence
 
+# Attributes:
+*    overlapping
+
+# Outputs:
+*    output
+
+*/
 inline tensor fractional_max_pool_grad(const tensor& orig_input, const tensor& orig_output, const tensor& out_backprop, const tensor& row_pooling_sequence, const tensor& col_pooling_sequence, bool overlapping=false) {
 
     // Define Op
@@ -15177,7 +21094,16 @@ inline tensor fractional_max_pool_grad(const tensor& orig_input, const tensor& o
     return tensor(res[0]);
 }
 
+/* # FresnelCos
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor fresnel_cos(const tensor& x) {
 
     // Define Op
@@ -15201,7 +21127,16 @@ inline tensor fresnel_cos(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # FresnelSin
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor fresnel_sin(const tensor& x) {
 
     // Define Op
@@ -15225,7 +21160,28 @@ inline tensor fresnel_sin(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # FusedBatchNorm
+# Inputs:
+*    x
+*    scale
+*    offset
+*    mean
+*    variance
 
+# Attributes:
+*    epsilon
+*    exponential_avg_factor
+*    data_format
+*    is_training
+
+# Outputs:
+*    y
+*    batch_mean
+*    batch_variance
+*    reserve_space_1
+*    reserve_space_2
+
+*/
 inline std::vector<tensor> fused_batch_norm(const tensor& x, const tensor& scale, const tensor& offset, const tensor& mean, const tensor& variance, float epsilon=1.0000e-04, float exponential_avg_factor=1.0000e+00, const std::string& data_format="NHWC", bool is_training=true) {
 
     // Define Op
@@ -15268,7 +21224,27 @@ inline std::vector<tensor> fused_batch_norm(const tensor& x, const tensor& scale
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # FusedBatchNormGrad
+# Inputs:
+*    y_backprop
+*    x
+*    scale
+*    reserve_space_1
+*    reserve_space_2
 
+# Attributes:
+*    epsilon
+*    data_format
+*    is_training
+
+# Outputs:
+*    x_backprop
+*    scale_backprop
+*    offset_backprop
+*    reserve_space_3
+*    reserve_space_4
+
+*/
 inline std::vector<tensor> fused_batch_norm_grad(const tensor& y_backprop, const tensor& x, const tensor& scale, const tensor& reserve_space_1, const tensor& reserve_space_2, float epsilon=1.0000e-04, const std::string& data_format="NHWC", bool is_training=true) {
 
     // Define Op
@@ -15310,7 +21286,28 @@ inline std::vector<tensor> fused_batch_norm_grad(const tensor& y_backprop, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # FusedBatchNormGradV2
+# Inputs:
+*    y_backprop
+*    x
+*    scale
+*    reserve_space_1
+*    reserve_space_2
 
+# Attributes:
+*    U
+*    epsilon
+*    data_format
+*    is_training
+
+# Outputs:
+*    x_backprop
+*    scale_backprop
+*    offset_backprop
+*    reserve_space_3
+*    reserve_space_4
+
+*/
 inline std::vector<tensor> fused_batch_norm_grad_v2(const tensor& y_backprop, const tensor& x, const tensor& scale, const tensor& reserve_space_1, const tensor& reserve_space_2, datatype U, float epsilon=1.0000e-04, const std::string& data_format="NHWC", bool is_training=true) {
 
     // Define Op
@@ -15353,7 +21350,29 @@ inline std::vector<tensor> fused_batch_norm_grad_v2(const tensor& y_backprop, co
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # FusedBatchNormGradV3
+# Inputs:
+*    y_backprop
+*    x
+*    scale
+*    reserve_space_1
+*    reserve_space_2
+*    reserve_space_3
 
+# Attributes:
+*    U
+*    epsilon
+*    data_format
+*    is_training
+
+# Outputs:
+*    x_backprop
+*    scale_backprop
+*    offset_backprop
+*    reserve_space_4
+*    reserve_space_5
+
+*/
 inline std::vector<tensor> fused_batch_norm_grad_v3(const tensor& y_backprop, const tensor& x, const tensor& scale, const tensor& reserve_space_1, const tensor& reserve_space_2, const tensor& reserve_space_3, datatype U, float epsilon=1.0000e-04, const std::string& data_format="NHWC", bool is_training=true) {
 
     // Define Op
@@ -15400,7 +21419,29 @@ inline std::vector<tensor> fused_batch_norm_grad_v3(const tensor& y_backprop, co
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # FusedBatchNormV2
+# Inputs:
+*    x
+*    scale
+*    offset
+*    mean
+*    variance
 
+# Attributes:
+*    U
+*    epsilon
+*    exponential_avg_factor
+*    data_format
+*    is_training
+
+# Outputs:
+*    y
+*    batch_mean
+*    batch_variance
+*    reserve_space_1
+*    reserve_space_2
+
+*/
 inline std::vector<tensor> fused_batch_norm_v2(const tensor& x, const tensor& scale, const tensor& offset, const tensor& mean, const tensor& variance, datatype U, float epsilon=1.0000e-04, float exponential_avg_factor=1.0000e+00, const std::string& data_format="NHWC", bool is_training=true) {
 
     // Define Op
@@ -15444,7 +21485,30 @@ inline std::vector<tensor> fused_batch_norm_v2(const tensor& x, const tensor& sc
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # FusedBatchNormV3
+# Inputs:
+*    x
+*    scale
+*    offset
+*    mean
+*    variance
 
+# Attributes:
+*    U
+*    epsilon
+*    exponential_avg_factor
+*    data_format
+*    is_training
+
+# Outputs:
+*    y
+*    batch_mean
+*    batch_variance
+*    reserve_space_1
+*    reserve_space_2
+*    reserve_space_3
+
+*/
 inline std::vector<tensor> fused_batch_norm_v3(const tensor& x, const tensor& scale, const tensor& offset, const tensor& mean, const tensor& variance, datatype U, float epsilon=1.0000e-04, float exponential_avg_factor=1.0000e+00, const std::string& data_format="NHWC", bool is_training=true) {
 
     // Define Op
@@ -15488,7 +21552,21 @@ inline std::vector<tensor> fused_batch_norm_v3(const tensor& x, const tensor& sc
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]), };
 }
 
+/* # FusedPadConv2D
+# Inputs:
+*    input
+*    paddings
+*    filter
 
+# Attributes:
+*    mode
+*    strides
+*    padding
+
+# Outputs:
+*    output
+
+*/
 inline tensor fused_pad_conv2_d(const tensor& input, const tensor& paddings, const tensor& filter, const std::string& mode, const std::vector<int64_t>& strides, const std::string& padding) {
 
     // Define Op
@@ -15522,7 +21600,23 @@ inline tensor fused_pad_conv2_d(const tensor& input, const tensor& paddings, con
     return tensor(res[0]);
 }
 
+/* # FusedResizeAndPadConv2D
+# Inputs:
+*    input
+*    size
+*    paddings
+*    filter
 
+# Attributes:
+*    mode
+*    strides
+*    padding
+*    resize_align_corners
+
+# Outputs:
+*    output
+
+*/
 inline tensor fused_resize_and_pad_conv2_d(const tensor& input, const tensor& size, const tensor& paddings, const tensor& filter, const std::string& mode, const std::vector<int64_t>& strides, const std::string& padding, bool resize_align_corners=false) {
 
     // Define Op
@@ -15561,7 +21655,24 @@ inline tensor fused_resize_and_pad_conv2_d(const tensor& input, const tensor& si
     return tensor(res[0]);
 }
 
+/* # GRUBlockCell
+# Inputs:
+*    x
+*    h_prev
+*    w_ru
+*    w_c
+*    b_ru
+*    b_c
 
+# Attributes:
+*    
+# Outputs:
+*    r
+*    u
+*    c
+*    h
+
+*/
 inline std::vector<tensor> g_r_u_block_cell(const tensor& x, const tensor& h_prev, const tensor& w_ru, const tensor& w_c, const tensor& b_ru, const tensor& b_c) {
 
     // Define Op
@@ -15605,7 +21716,28 @@ inline std::vector<tensor> g_r_u_block_cell(const tensor& x, const tensor& h_pre
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # GRUBlockCellGrad
+# Inputs:
+*    x
+*    h_prev
+*    w_ru
+*    w_c
+*    b_ru
+*    b_c
+*    r
+*    u
+*    c
+*    d_h
 
+# Attributes:
+*    
+# Outputs:
+*    d_x
+*    d_h_prev
+*    d_c_bar
+*    d_r_bar_u_bar
+
+*/
 inline std::vector<tensor> g_r_u_block_cell_grad(const tensor& x, const tensor& h_prev, const tensor& w_ru, const tensor& w_c, const tensor& b_ru, const tensor& b_c, const tensor& r, const tensor& u, const tensor& c, const tensor& d_h) {
 
     // Define Op
@@ -15665,7 +21797,20 @@ inline std::vector<tensor> g_r_u_block_cell_grad(const tensor& x, const tensor& 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # Gather
+# Inputs:
+*    params
+*    indices
 
+# Attributes:
+*    Tparams
+*    Tindices
+*    validate_indices
+
+# Outputs:
+*    output
+
+*/
 inline tensor gather(const tensor& params, const tensor& indices, datatype Tparams, datatype Tindices, bool validate_indices=true) {
 
     // Define Op
@@ -15695,7 +21840,20 @@ inline tensor gather(const tensor& params, const tensor& indices, datatype Tpara
     return tensor(res[0]);
 }
 
+/* # GatherNd
+# Inputs:
+*    params
+*    indices
 
+# Attributes:
+*    Tparams
+*    Tindices
+*    bad_indices_policy
+
+# Outputs:
+*    output
+
+*/
 inline tensor gather_nd(const tensor& params, const tensor& indices, datatype Tparams, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
@@ -15725,7 +21883,22 @@ inline tensor gather_nd(const tensor& params, const tensor& indices, datatype Tp
     return tensor(res[0]);
 }
 
+/* # GatherV2
+# Inputs:
+*    params
+*    indices
+*    axis
 
+# Attributes:
+*    Tparams
+*    Tindices
+*    Taxis
+*    batch_dims
+
+# Outputs:
+*    output
+
+*/
 inline tensor gather_v2(const tensor& params, const tensor& indices, const tensor& axis, datatype Tparams, datatype Tindices, datatype Taxis, int64_t batch_dims=0) {
 
     // Define Op
@@ -15760,7 +21933,24 @@ inline tensor gather_v2(const tensor& params, const tensor& indices, const tenso
     return tensor(res[0]);
 }
 
+/* # GenerateBoundingBoxProposals
+# Inputs:
+*    scores
+*    bbox_deltas
+*    image_info
+*    anchors
+*    nms_threshold
+*    pre_nms_topn
+*    min_size
 
+# Attributes:
+*    post_nms_topn
+
+# Outputs:
+*    rois
+*    roi_probabilities
+
+*/
 inline std::vector<tensor> generate_bounding_box_proposals(const tensor& scores, const tensor& bbox_deltas, const tensor& image_info, const tensor& anchors, const tensor& nms_threshold, const tensor& pre_nms_topn, const tensor& min_size, int64_t post_nms_topn=300) {
 
     // Define Op
@@ -15808,7 +21998,21 @@ inline std::vector<tensor> generate_bounding_box_proposals(const tensor& scores,
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # GenerateVocabRemapping
+# Inputs:
+*    new_vocab_file
+*    old_vocab_file
 
+# Attributes:
+*    new_vocab_offset
+*    num_new_vocab
+*    old_vocab_size
+
+# Outputs:
+*    remapping
+*    num_present
+
+*/
 inline std::vector<tensor> generate_vocab_remapping(const tensor& new_vocab_file, const tensor& old_vocab_file, int64_t new_vocab_offset, int64_t num_new_vocab, int64_t old_vocab_size=-1) {
 
     // Define Op
@@ -15838,7 +22042,27 @@ inline std::vector<tensor> generate_vocab_remapping(const tensor& new_vocab_file
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # GeneratorDataset
+# Inputs:
+*    init_func_other_args
+*    next_func_other_args
+*    finalize_func_other_args
 
+# Attributes:
+*    init_func
+*    next_func
+*    finalize_func
+*    Tinit_func_args
+*    Tnext_func_args
+*    Tfinalize_func_args
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor generator_dataset(const std::vector<tensor>&init_func_other_args, const std::vector<tensor>&next_func_other_args, const std::vector<tensor>&finalize_func_other_args, int64_t init_func, int64_t next_func, int64_t finalize_func, const std::vector<datatype>& Tinit_func_args, const std::vector<datatype>& Tnext_func_args, const std::vector<datatype>& Tfinalize_func_args, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -15891,7 +22115,19 @@ inline tensor generator_dataset(const std::vector<tensor>&init_func_other_args, 
     return tensor(res[0]);
 }
 
+/* # GetElementAtIndex
+# Inputs:
+*    dataset
+*    index
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    components
+
+*/
 inline tensor get_element_at_index(const tensor& dataset, const tensor& index, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -15927,7 +22163,32 @@ inline tensor get_element_at_index(const tensor& dataset, const tensor& index, c
     return tensor(res[0]);
 }
 
+/* # GetMinibatchSplitsWithPhysicalReplica
+# Inputs:
+*    program_key
+*    row_ids
+*    col_ids
+*    gains
 
+# Attributes:
+*    sample_count
+*    num_replica
+*    table_vocab_size
+*    feature_width
+*    num_sc_per_chip
+*    table_name
+*    mini_batch_splits
+
+# Outputs:
+*    sorted_row_ids
+*    sorted_col_ids
+*    sorted_gains
+*    splits
+*    id_counts
+*    max_ids
+*    max_uniques
+
+*/
 inline std::vector<tensor> get_minibatch_splits_with_physical_replica(const tensor& program_key, const tensor& row_ids, const tensor& col_ids, const tensor& gains, int64_t sample_count, int64_t num_replica, int64_t table_vocab_size, int64_t feature_width, int64_t num_sc_per_chip, const std::string& table_name, const std::string& mini_batch_splits) {
 
     // Define Op
@@ -15969,7 +22230,36 @@ inline std::vector<tensor> get_minibatch_splits_with_physical_replica(const tens
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
+/* # GetMinibatchesInCsrWithPhysicalReplica
+# Inputs:
+*    program_key
+*    row_ids
+*    col_ids
+*    gains
+*    splits
+*    id_counts
 
+# Attributes:
+*    sample_count
+*    num_replica
+*    max_minibatches_per_sc
+*    max_ids_per_chip_per_sample
+*    table_vocab_size
+*    feature_width
+*    num_sc_per_chip
+*    table_name
+*    mini_batch_in_csr
+
+# Outputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    row_pointers_unpadded_size
+*    ids_unpadded_size
+*    num_minibatches_per_physical_sparse_core
+
+*/
 inline std::vector<tensor> get_minibatches_in_csr_with_physical_replica(const tensor& program_key, const tensor& row_ids, const tensor& col_ids, const tensor& gains, const tensor& splits, const tensor& id_counts, int64_t sample_count, int64_t num_replica, int64_t max_minibatches_per_sc, int64_t max_ids_per_chip_per_sample, int64_t table_vocab_size, int64_t feature_width, int64_t num_sc_per_chip, const std::string& table_name, const std::string& mini_batch_in_csr) {
 
     // Define Op
@@ -16021,7 +22311,16 @@ inline std::vector<tensor> get_minibatches_in_csr_with_physical_replica(const te
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
+/* # GetOptions
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    
+# Outputs:
+*    serialized_options
+
+*/
 inline tensor get_options(const tensor& input_dataset) {
 
     // Define Op
@@ -16045,7 +22344,16 @@ inline tensor get_options(const tensor& input_dataset) {
     return tensor(res[0]);
 }
 
+/* # GetSessionHandle
+# Inputs:
+*    value
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+
+*/
 inline tensor get_session_handle(const tensor& value) {
 
     // Define Op
@@ -16069,7 +22377,16 @@ inline tensor get_session_handle(const tensor& value) {
     return tensor(res[0]);
 }
 
+/* # GetSessionHandleV2
+# Inputs:
+*    value
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+
+*/
 inline tensor get_session_handle_v2(const tensor& value) {
 
     // Define Op
@@ -16093,7 +22410,17 @@ inline tensor get_session_handle_v2(const tensor& value) {
     return tensor(res[0]);
 }
 
+/* # GetSessionTensor
+# Inputs:
+*    handle
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    value
+
+*/
 inline tensor get_session_tensor(const tensor& handle, datatype dtype) {
 
     // Define Op
@@ -16117,7 +22444,15 @@ inline tensor get_session_tensor(const tensor& handle, datatype dtype) {
     return tensor(res[0]);
 }
 
+/* # GlobalIterId
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    iter_id
 
+*/
 inline tensor global_iter_id() {
 
     // Define Op
@@ -16138,7 +22473,17 @@ inline tensor global_iter_id() {
     return tensor(res[0]);
 }
 
+/* # Greater
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor greater(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -16166,7 +22511,17 @@ inline tensor greater(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # GreaterEqual
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor greater_equal(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -16194,7 +22549,30 @@ inline tensor greater_equal(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # GroupByReducerDataset
+# Inputs:
+*    input_dataset
+*    key_func_other_arguments
+*    init_func_other_arguments
+*    reduce_func_other_arguments
+*    finalize_func_other_arguments
 
+# Attributes:
+*    key_func
+*    init_func
+*    reduce_func
+*    finalize_func
+*    Tkey_func_other_arguments
+*    Tinit_func_other_arguments
+*    Treduce_func_other_arguments
+*    Tfinalize_func_other_arguments
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor group_by_reducer_dataset(const tensor& input_dataset, const std::vector<tensor>&key_func_other_arguments, const std::vector<tensor>&init_func_other_arguments, const std::vector<tensor>&reduce_func_other_arguments, const std::vector<tensor>&finalize_func_other_arguments, int64_t key_func, int64_t init_func, int64_t reduce_func, int64_t finalize_func, const std::vector<datatype>& Tkey_func_other_arguments, const std::vector<datatype>& Tinit_func_other_arguments, const std::vector<datatype>& Treduce_func_other_arguments, const std::vector<datatype>& Tfinalize_func_other_arguments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -16258,7 +22636,28 @@ inline tensor group_by_reducer_dataset(const tensor& input_dataset, const std::v
     return tensor(res[0]);
 }
 
+/* # GroupByWindowDataset
+# Inputs:
+*    input_dataset
+*    key_func_other_arguments
+*    reduce_func_other_arguments
+*    window_size_func_other_arguments
 
+# Attributes:
+*    key_func
+*    reduce_func
+*    window_size_func
+*    Tkey_func_other_arguments
+*    Treduce_func_other_arguments
+*    Twindow_size_func_other_arguments
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor group_by_window_dataset(const tensor& input_dataset, const std::vector<tensor>&key_func_other_arguments, const std::vector<tensor>&reduce_func_other_arguments, const std::vector<tensor>&window_size_func_other_arguments, int64_t key_func, int64_t reduce_func, int64_t window_size_func, const std::vector<datatype>& Tkey_func_other_arguments, const std::vector<datatype>& Treduce_func_other_arguments, const std::vector<datatype>& Twindow_size_func_other_arguments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -16315,7 +22714,16 @@ inline tensor group_by_window_dataset(const tensor& input_dataset, const std::ve
     return tensor(res[0]);
 }
 
+/* # GuaranteeConst
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor guarantee_const_tensor(const tensor& input) {
 
     // Define Op
@@ -16339,7 +22747,16 @@ inline tensor guarantee_const_tensor(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # HSVToRGB
+# Inputs:
+*    images
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor h_s_v_to_r_g_b(const tensor& images) {
 
     // Define Op
@@ -16363,7 +22780,20 @@ inline tensor h_s_v_to_r_g_b(const tensor& images) {
     return tensor(res[0]);
 }
 
+/* # HashTable
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    container
+*    shared_name
+*    use_node_name_sharing
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor hash_table(datatype key_dtype, datatype value_dtype, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false) {
 
     // Define Op
@@ -16388,7 +22818,20 @@ inline tensor hash_table(datatype key_dtype, datatype value_dtype, const std::st
     return tensor(res[0]);
 }
 
+/* # HashTableV2
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    container
+*    shared_name
+*    use_node_name_sharing
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor hash_table_v2(datatype key_dtype, datatype value_dtype, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false) {
 
     // Define Op
@@ -16413,7 +22856,19 @@ inline tensor hash_table_v2(datatype key_dtype, datatype value_dtype, const std:
     return tensor(res[0]);
 }
 
+/* # HistogramFixedWidth
+# Inputs:
+*    values
+*    value_range
+*    nbins
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    out
+
+*/
 inline tensor histogram_fixed_width(const tensor& values, const tensor& value_range, const tensor& nbins, datatype dtype=static_cast<datatype>(3)) {
 
     // Define Op
@@ -16445,7 +22900,17 @@ inline tensor histogram_fixed_width(const tensor& values, const tensor& value_ra
     return tensor(res[0]);
 }
 
+/* # HistogramSummary
+# Inputs:
+*    tag
+*    values
 
+# Attributes:
+*    
+# Outputs:
+*    summary
+
+*/
 inline tensor histogram_summary(const tensor& tag, const tensor& values) {
 
     // Define Op
@@ -16473,8 +22938,18 @@ inline tensor histogram_summary(const tensor& tag, const tensor& values) {
     return tensor(res[0]);
 }
 
+/* # IFFT
+# Inputs:
+*    input
 
-inline tensor i_f_f_t(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IFFT(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IFFT", context::get_status()), &TFE_DeleteOp);
@@ -16497,8 +22972,18 @@ inline tensor i_f_f_t(const tensor& input, datatype Tcomplex=static_cast<datatyp
     return tensor(res[0]);
 }
 
+/* # IFFT2D
+# Inputs:
+*    input
 
-inline tensor i_f_f_t2_d(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IFFT2D(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IFFT2D", context::get_status()), &TFE_DeleteOp);
@@ -16521,8 +23006,18 @@ inline tensor i_f_f_t2_d(const tensor& input, datatype Tcomplex=static_cast<data
     return tensor(res[0]);
 }
 
+/* # IFFT3D
+# Inputs:
+*    input
 
-inline tensor i_f_f_t3_d(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IFFT3D(const tensor& input, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IFFT3D", context::get_status()), &TFE_DeleteOp);
@@ -16545,8 +23040,20 @@ inline tensor i_f_f_t3_d(const tensor& input, datatype Tcomplex=static_cast<data
     return tensor(res[0]);
 }
 
+/* # IFFTND
+# Inputs:
+*    input
+*    fft_length
+*    axes
 
-inline tensor i_f_f_t_n_d(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IFFTND(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IFFTND", context::get_status()), &TFE_DeleteOp);
@@ -16577,8 +23084,20 @@ inline tensor i_f_f_t_n_d(const tensor& input, const tensor& fft_length, const t
     return tensor(res[0]);
 }
 
+/* # IRFFT
+# Inputs:
+*    input
+*    fft_length
 
-inline tensor i_r_f_f_t(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IRFFT(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IRFFT", context::get_status()), &TFE_DeleteOp);
@@ -16606,8 +23125,20 @@ inline tensor i_r_f_f_t(const tensor& input, const tensor& fft_length, datatype 
     return tensor(res[0]);
 }
 
+/* # IRFFT2D
+# Inputs:
+*    input
+*    fft_length
 
-inline tensor i_r_f_f_t2_d(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IRFFT2D(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IRFFT2D", context::get_status()), &TFE_DeleteOp);
@@ -16635,8 +23166,20 @@ inline tensor i_r_f_f_t2_d(const tensor& input, const tensor& fft_length, dataty
     return tensor(res[0]);
 }
 
+/* # IRFFT3D
+# Inputs:
+*    input
+*    fft_length
 
-inline tensor i_r_f_f_t3_d(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IRFFT3D(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IRFFT3D", context::get_status()), &TFE_DeleteOp);
@@ -16664,8 +23207,21 @@ inline tensor i_r_f_f_t3_d(const tensor& input, const tensor& fft_length, dataty
     return tensor(res[0]);
 }
 
+/* # IRFFTND
+# Inputs:
+*    input
+*    fft_length
+*    axes
 
-inline tensor i_r_f_f_t_n_d(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor IRFFTND(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IRFFTND", context::get_status()), &TFE_DeleteOp);
@@ -16697,7 +23253,16 @@ inline tensor i_r_f_f_t_n_d(const tensor& input, const tensor& fft_length, const
     return tensor(res[0]);
 }
 
+/* # Identity
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor identity(const tensor& input) {
 
     // Define Op
@@ -16721,7 +23286,16 @@ inline tensor identity(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # IdentityN
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor identity_n(const std::vector<tensor>&input) {
 
     // Define Op
@@ -16747,7 +23321,17 @@ inline tensor identity_n(const std::vector<tensor>&input) {
     return tensor(res[0]);
 }
 
+/* # IdentityReader
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor identity_reader(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -16769,7 +23353,17 @@ inline tensor identity_reader(const std::string& container="", const std::string
     return tensor(res[0]);
 }
 
+/* # IdentityReaderV2
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor identity_reader_v2(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -16791,7 +23385,23 @@ inline tensor identity_reader_v2(const std::string& container="", const std::str
     return tensor(res[0]);
 }
 
+/* # If
+# Inputs:
+*    cond
+*    input
 
+# Attributes:
+*    Tcond
+*    Tin
+*    Tout
+*    then_branch
+*    else_branch
+*    output_shapes
+
+# Outputs:
+*    output
+
+*/
 inline tensor tfe_if(const tensor& cond, const std::vector<tensor>&input, datatype Tcond, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, int64_t then_branch, int64_t else_branch, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -16833,7 +23443,17 @@ inline tensor tfe_if(const tensor& cond, const std::vector<tensor>&input, dataty
     return tensor(res[0]);
 }
 
+/* # Igamma
+# Inputs:
+*    a
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor igamma(const tensor& a, const tensor& x) {
 
     // Define Op
@@ -16861,7 +23481,17 @@ inline tensor igamma(const tensor& a, const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # IgammaGradA
+# Inputs:
+*    a
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor igamma_grad_a(const tensor& a, const tensor& x) {
 
     // Define Op
@@ -16889,7 +23519,17 @@ inline tensor igamma_grad_a(const tensor& a, const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Igammac
+# Inputs:
+*    a
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor igammac(const tensor& a, const tensor& x) {
 
     // Define Op
@@ -16917,7 +23557,19 @@ inline tensor igammac(const tensor& a, const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # IgnoreErrorsDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    log_warning
+
+# Outputs:
+*    handle
+
+*/
 inline tensor ignore_errors_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool log_warning=false) {
 
     // Define Op
@@ -16950,7 +23602,17 @@ inline tensor ignore_errors_dataset(const tensor& input_dataset, const std::vect
     return tensor(res[0]);
 }
 
+/* # Imag
+# Inputs:
+*    input
 
+# Attributes:
+*    Tout
+
+# Outputs:
+*    output
+
+*/
 inline tensor imag(const tensor& input, datatype Tout=static_cast<datatype>(1)) {
 
     // Define Op
@@ -16974,7 +23636,21 @@ inline tensor imag(const tensor& input, datatype Tout=static_cast<datatype>(1)) 
     return tensor(res[0]);
 }
 
+/* # ImageProjectiveTransformV2
+# Inputs:
+*    images
+*    transforms
+*    output_shape
 
+# Attributes:
+*    dtype
+*    interpolation
+*    fill_mode
+
+# Outputs:
+*    transformed_images
+
+*/
 inline tensor image_projective_transform_v2(const tensor& images, const tensor& transforms, const tensor& output_shape, datatype dtype, const std::string& interpolation, const std::string& fill_mode="CONSTANT") {
 
     // Define Op
@@ -17008,7 +23684,22 @@ inline tensor image_projective_transform_v2(const tensor& images, const tensor& 
     return tensor(res[0]);
 }
 
+/* # ImageProjectiveTransformV3
+# Inputs:
+*    images
+*    transforms
+*    output_shape
+*    fill_value
 
+# Attributes:
+*    dtype
+*    interpolation
+*    fill_mode
+
+# Outputs:
+*    transformed_images
+
+*/
 inline tensor image_projective_transform_v3(const tensor& images, const tensor& transforms, const tensor& output_shape, const tensor& fill_value, datatype dtype, const std::string& interpolation, const std::string& fill_mode="CONSTANT") {
 
     // Define Op
@@ -17046,7 +23737,19 @@ inline tensor image_projective_transform_v3(const tensor& images, const tensor& 
     return tensor(res[0]);
 }
 
+/* # ImageSummary
+# Inputs:
+*    tag
+*    tensor
 
+# Attributes:
+*    bad_color
+*    max_images
+
+# Outputs:
+*    summary
+
+*/
 inline tensor image_summary(const tensor& tag, const tensor& input_tensor, const tensor& bad_color, int64_t max_images=3) {
 
     // Define Op
@@ -17078,7 +23781,18 @@ inline tensor image_summary(const tensor& tag, const tensor& input_tensor, const
     return tensor(res[0]);
 }
 
+/* # ImmutableConst
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
+*    memory_region_name
 
+# Outputs:
+*    tensor
+
+*/
 inline tensor immutable_const_tensor(datatype dtype, const std::vector<int64_t>& shape, const std::string& memory_region_name) {
 
     // Define Op
@@ -17104,7 +23818,16 @@ inline tensor immutable_const_tensor(datatype dtype, const std::vector<int64_t>&
     return tensor(res[0]);
 }
 
+/* # ImportEvent
+# Inputs:
+*    writer
+*    event
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void import_event(const tensor& writer, const tensor& event) {
 
     // Define Op
@@ -17131,7 +23854,18 @@ inline void import_event(const tensor& writer, const tensor& event) {
     status_check(context::get_status());
 }
 
+/* # InTopK
+# Inputs:
+*    predictions
+*    targets
 
+# Attributes:
+*    k
+
+# Outputs:
+*    precision
+
+*/
 inline tensor in_top_k(const tensor& predictions, const tensor& targets, int64_t k) {
 
     // Define Op
@@ -17159,7 +23893,18 @@ inline tensor in_top_k(const tensor& predictions, const tensor& targets, int64_t
     return tensor(res[0]);
 }
 
+/* # InTopKV2
+# Inputs:
+*    predictions
+*    targets
+*    k
 
+# Attributes:
+*    
+# Outputs:
+*    precision
+
+*/
 inline tensor in_top_k_v2(const tensor& predictions, const tensor& targets, const tensor& k) {
 
     // Define Op
@@ -17191,7 +23936,17 @@ inline tensor in_top_k_v2(const tensor& predictions, const tensor& targets, cons
     return tensor(res[0]);
 }
 
+/* # InfeedDequeue
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
 
+# Outputs:
+*    output
+
+*/
 inline tensor infeed_dequeue(datatype dtype, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -17216,7 +23971,17 @@ inline tensor infeed_dequeue(datatype dtype, const std::vector<int64_t>& shape) 
     return tensor(res[0]);
 }
 
+/* # InfeedDequeueTuple
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    shapes
 
+# Outputs:
+*    outputs
+
+*/
 inline tensor infeed_dequeue_tuple(const std::vector<datatype>& dtypes, const std::vector< std::vector<int64_t>>& shapes) {
 
     // Define Op
@@ -17245,7 +24010,19 @@ inline tensor infeed_dequeue_tuple(const std::vector<datatype>& dtypes, const st
     return tensor(res[0]);
 }
 
+/* # InfeedEnqueue
+# Inputs:
+*    input
 
+# Attributes:
+*    dtype
+*    shape
+*    layout
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void infeed_enqueue(const tensor& input, datatype dtype, const std::vector<int64_t>& shape, const std::vector<int64_t>& layout, int64_t device_ordinal=-1) {
 
     // Define Op
@@ -17274,7 +24051,16 @@ inline void infeed_enqueue(const tensor& input, datatype dtype, const std::vecto
     status_check(context::get_status());
 }
 
+/* # InfeedEnqueuePrelinearizedBuffer
+# Inputs:
+*    input
 
+# Attributes:
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void infeed_enqueue_prelinearized_buffer(const tensor& input, int64_t device_ordinal=-1) {
 
     // Define Op
@@ -17297,7 +24083,19 @@ inline void infeed_enqueue_prelinearized_buffer(const tensor& input, int64_t dev
     status_check(context::get_status());
 }
 
+/* # InfeedEnqueueTuple
+# Inputs:
+*    inputs
 
+# Attributes:
+*    dtypes
+*    shapes
+*    layouts
+*    device_ordinal
+
+# Outputs:
+*    
+*/
 inline void infeed_enqueue_tuple(const std::vector<tensor>&inputs, const std::vector<datatype>& dtypes, const std::vector< std::vector<int64_t>>& shapes, const std::vector<int64_t>& layouts, int64_t device_ordinal=-1) {
 
     // Define Op
@@ -17332,7 +24130,19 @@ inline void infeed_enqueue_tuple(const std::vector<tensor>&inputs, const std::ve
     status_check(context::get_status());
 }
 
+/* # InitializeTable
+# Inputs:
+*    table_handle
+*    keys
+*    values
 
+# Attributes:
+*    Tkey
+*    Tval
+
+# Outputs:
+*    
+*/
 inline void initialize_table(const tensor& table_handle, const tensor& keys, const tensor& values, datatype Tkey, datatype Tval) {
 
     // Define Op
@@ -17364,7 +24174,16 @@ inline void initialize_table(const tensor& table_handle, const tensor& keys, con
     status_check(context::get_status());
 }
 
+/* # InitializeTableFromDataset
+# Inputs:
+*    table_handle
+*    dataset
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void initialize_table_from_dataset(const tensor& table_handle, const tensor& dataset) {
 
     // Define Op
@@ -17391,7 +24210,21 @@ inline void initialize_table_from_dataset(const tensor& table_handle, const tens
     status_check(context::get_status());
 }
 
+/* # InitializeTableFromTextFile
+# Inputs:
+*    table_handle
+*    filename
 
+# Attributes:
+*    key_index
+*    value_index
+*    vocab_size
+*    delimiter
+*    offset
+
+# Outputs:
+*    
+*/
 inline void initialize_table_from_text_file(const tensor& table_handle, const tensor& filename, int64_t key_index, int64_t value_index, int64_t vocab_size=-1, const std::string& delimiter="\t", int64_t offset=0) {
 
     // Define Op
@@ -17422,7 +24255,21 @@ inline void initialize_table_from_text_file(const tensor& table_handle, const te
     status_check(context::get_status());
 }
 
+/* # InitializeTableFromTextFileV2
+# Inputs:
+*    table_handle
+*    filename
 
+# Attributes:
+*    key_index
+*    value_index
+*    vocab_size
+*    delimiter
+*    offset
+
+# Outputs:
+*    
+*/
 inline void initialize_table_from_text_file_v2(const tensor& table_handle, const tensor& filename, int64_t key_index, int64_t value_index, int64_t vocab_size=-1, const std::string& delimiter="\t", int64_t offset=0) {
 
     // Define Op
@@ -17453,7 +24300,19 @@ inline void initialize_table_from_text_file_v2(const tensor& table_handle, const
     status_check(context::get_status());
 }
 
+/* # InitializeTableV2
+# Inputs:
+*    table_handle
+*    keys
+*    values
 
+# Attributes:
+*    Tkey
+*    Tval
+
+# Outputs:
+*    
+*/
 inline void initialize_table_v2(const tensor& table_handle, const tensor& keys, const tensor& values, datatype Tkey, datatype Tval) {
 
     // Define Op
@@ -17485,7 +24344,18 @@ inline void initialize_table_v2(const tensor& table_handle, const tensor& keys, 
     status_check(context::get_status());
 }
 
+/* # InplaceAdd
+# Inputs:
+*    x
+*    i
+*    v
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor inplace_add(const tensor& x, const tensor& i, const tensor& v) {
 
     // Define Op
@@ -17517,7 +24387,18 @@ inline tensor inplace_add(const tensor& x, const tensor& i, const tensor& v) {
     return tensor(res[0]);
 }
 
+/* # InplaceSub
+# Inputs:
+*    x
+*    i
+*    v
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor inplace_sub(const tensor& x, const tensor& i, const tensor& v) {
 
     // Define Op
@@ -17549,7 +24430,18 @@ inline tensor inplace_sub(const tensor& x, const tensor& i, const tensor& v) {
     return tensor(res[0]);
 }
 
+/* # InplaceUpdate
+# Inputs:
+*    x
+*    i
+*    v
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor inplace_update(const tensor& x, const tensor& i, const tensor& v) {
 
     // Define Op
@@ -17581,7 +24473,24 @@ inline tensor inplace_update(const tensor& x, const tensor& i, const tensor& v) 
     return tensor(res[0]);
 }
 
+/* # InterleaveDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    cycle_length
+*    block_length
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor interleave_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& cycle_length, const tensor& block_length, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -17630,7 +24539,16 @@ inline tensor interleave_dataset(const tensor& input_dataset, const std::vector<
     return tensor(res[0]);
 }
 
+/* # Inv
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor inv(const tensor& x) {
 
     // Define Op
@@ -17654,7 +24572,17 @@ inline tensor inv(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # InvGrad
+# Inputs:
+*    y
+*    dy
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor inv_grad(const tensor& y, const tensor& dy) {
 
     // Define Op
@@ -17682,7 +24610,16 @@ inline tensor inv_grad(const tensor& y, const tensor& dy) {
     return tensor(res[0]);
 }
 
+/* # Invert
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor invert(const tensor& x) {
 
     // Define Op
@@ -17706,7 +24643,16 @@ inline tensor invert(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # InvertPermutation
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor invert_permutation(const tensor& x) {
 
     // Define Op
@@ -17730,7 +24676,16 @@ inline tensor invert_permutation(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # IsBoostedTreesEnsembleInitialized
+# Inputs:
+*    tree_ensemble_handle
 
+# Attributes:
+*    
+# Outputs:
+*    is_initialized
+
+*/
 inline tensor is_boosted_trees_ensemble_initialized(const tensor& tree_ensemble_handle) {
 
     // Define Op
@@ -17754,7 +24709,16 @@ inline tensor is_boosted_trees_ensemble_initialized(const tensor& tree_ensemble_
     return tensor(res[0]);
 }
 
+/* # IsBoostedTreesQuantileStreamResourceInitialized
+# Inputs:
+*    quantile_stream_resource_handle
 
+# Attributes:
+*    
+# Outputs:
+*    is_initialized
+
+*/
 inline tensor is_boosted_trees_quantile_stream_resource_initialized(const tensor& quantile_stream_resource_handle) {
 
     // Define Op
@@ -17778,7 +24742,16 @@ inline tensor is_boosted_trees_quantile_stream_resource_initialized(const tensor
     return tensor(res[0]);
 }
 
+/* # IsFinite
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor is_finite(const tensor& x) {
 
     // Define Op
@@ -17802,7 +24775,16 @@ inline tensor is_finite(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # IsInf
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor is_inf(const tensor& x) {
 
     // Define Op
@@ -17826,7 +24808,16 @@ inline tensor is_inf(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # IsNan
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor is_nan(const tensor& x) {
 
     // Define Op
@@ -17850,7 +24841,16 @@ inline tensor is_nan(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # IsTPUEmbeddingInitialized
+# Inputs:
+*    
+# Attributes:
+*    config
 
+# Outputs:
+*    is_tpu_embedding_initialized
+
+*/
 inline tensor is_t_p_u_embedding_initialized(const std::string& config="") {
 
     // Define Op
@@ -17871,7 +24871,17 @@ inline tensor is_t_p_u_embedding_initialized(const std::string& config="") {
     return tensor(res[0]);
 }
 
+/* # IsVariableInitialized
+# Inputs:
+*    ref
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    is_initialized
+
+*/
 inline tensor is_variable_initialized(const tensor& ref, datatype dtype) {
 
     // Define Op
@@ -17895,7 +24905,18 @@ inline tensor is_variable_initialized(const tensor& ref, datatype dtype) {
     return tensor(res[0]);
 }
 
+/* # IsotonicRegression
+# Inputs:
+*    input
 
+# Attributes:
+*    output_dtype
+
+# Outputs:
+*    output
+*    segments
+
+*/
 inline std::vector<tensor> isotonic_regression(const tensor& input, datatype output_dtype=static_cast<datatype>(1)) {
 
     // Define Op
@@ -17919,7 +24940,19 @@ inline std::vector<tensor> isotonic_regression(const tensor& input, datatype out
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Iterator
+# Inputs:
+*    
+# Attributes:
+*    shared_name
+*    container
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+
+*/
 inline tensor iterator(const std::string& shared_name, const std::string& container, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -17950,7 +24983,18 @@ inline tensor iterator(const std::string& shared_name, const std::string& contai
     return tensor(res[0]);
 }
 
+/* # IteratorFromStringHandle
+# Inputs:
+*    string_handle
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    resource_handle
+
+*/
 inline tensor iterator_from_string_handle(const tensor& string_handle, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -17982,7 +25026,18 @@ inline tensor iterator_from_string_handle(const tensor& string_handle, const std
     return tensor(res[0]);
 }
 
+/* # IteratorFromStringHandleV2
+# Inputs:
+*    string_handle
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    resource_handle
+
+*/
 inline tensor iterator_from_string_handle_v2(const tensor& string_handle, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18014,7 +25069,16 @@ inline tensor iterator_from_string_handle_v2(const tensor& string_handle, const 
     return tensor(res[0]);
 }
 
+/* # IteratorGetDevice
+# Inputs:
+*    resource
 
+# Attributes:
+*    
+# Outputs:
+*    device
+
+*/
 inline tensor iterator_get_device(const tensor& resource) {
 
     // Define Op
@@ -18038,7 +25102,18 @@ inline tensor iterator_get_device(const tensor& resource) {
     return tensor(res[0]);
 }
 
+/* # IteratorGetNext
+# Inputs:
+*    iterator
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    components
+
+*/
 inline tensor iterator_get_next(const tensor& iterator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18070,7 +25145,18 @@ inline tensor iterator_get_next(const tensor& iterator, const std::vector<dataty
     return tensor(res[0]);
 }
 
+/* # IteratorGetNextAsOptional
+# Inputs:
+*    iterator
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    optional
+
+*/
 inline tensor iterator_get_next_as_optional(const tensor& iterator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18102,7 +25188,18 @@ inline tensor iterator_get_next_as_optional(const tensor& iterator, const std::v
     return tensor(res[0]);
 }
 
+/* # IteratorGetNextSync
+# Inputs:
+*    iterator
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    components
+
+*/
 inline tensor iterator_get_next_sync(const tensor& iterator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18134,7 +25231,16 @@ inline tensor iterator_get_next_sync(const tensor& iterator, const std::vector<d
     return tensor(res[0]);
 }
 
+/* # IteratorToStringHandle
+# Inputs:
+*    resource_handle
 
+# Attributes:
+*    
+# Outputs:
+*    string_handle
+
+*/
 inline tensor iterator_to_string_handle(const tensor& resource_handle) {
 
     // Define Op
@@ -18158,7 +25264,19 @@ inline tensor iterator_to_string_handle(const tensor& resource_handle) {
     return tensor(res[0]);
 }
 
+/* # IteratorV2
+# Inputs:
+*    
+# Attributes:
+*    shared_name
+*    container
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+
+*/
 inline tensor iterator_v2(const std::string& shared_name, const std::string& container, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18189,7 +25307,17 @@ inline tensor iterator_v2(const std::string& shared_name, const std::string& con
     return tensor(res[0]);
 }
 
+/* # KMC2ChainInitialization
+# Inputs:
+*    distances
+*    seed
 
+# Attributes:
+*    
+# Outputs:
+*    index
+
+*/
 inline tensor k_m_c2_chain_initialization(const tensor& distances, const tensor& seed) {
 
     // Define Op
@@ -18217,7 +25345,19 @@ inline tensor k_m_c2_chain_initialization(const tensor& distances, const tensor&
     return tensor(res[0]);
 }
 
+/* # KmeansPlusPlusInitialization
+# Inputs:
+*    points
+*    num_to_sample
+*    seed
+*    num_retries_per_sample
 
+# Attributes:
+*    
+# Outputs:
+*    samples
+
+*/
 inline tensor kmeans_plus_plus_initialization(const tensor& points, const tensor& num_to_sample, const tensor& seed, const tensor& num_retries_per_sample) {
 
     // Define Op
@@ -18253,7 +25393,16 @@ inline tensor kmeans_plus_plus_initialization(const tensor& points, const tensor
     return tensor(res[0]);
 }
 
+/* # L2Loss
+# Inputs:
+*    t
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor l2_loss(const tensor& t) {
 
     // Define Op
@@ -18277,7 +25426,18 @@ inline tensor l2_loss(const tensor& t) {
     return tensor(res[0]);
 }
 
+/* # LMDBDataset
+# Inputs:
+*    filenames
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor l_m_d_b_dataset(const tensor& filenames, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18309,7 +25469,17 @@ inline tensor l_m_d_b_dataset(const tensor& filenames, const std::vector<datatyp
     return tensor(res[0]);
 }
 
+/* # LMDBReader
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor l_m_d_b_reader(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -18331,8 +25501,21 @@ inline tensor l_m_d_b_reader(const std::string& container="", const std::string&
     return tensor(res[0]);
 }
 
+/* # LRN
+# Inputs:
+*    input
 
-inline tensor l_r_n(const tensor& input, int64_t depth_radius=5, float bias=1.0000e+00, float alpha=1.0000e+00, float beta=5.0000e-01) {
+# Attributes:
+*    depth_radius
+*    bias
+*    alpha
+*    beta
+
+# Outputs:
+*    output
+
+*/
+inline tensor LRN(const tensor& input, int64_t depth_radius=5, float bias=1.0000e+00, float alpha=1.0000e+00, float beta=5.0000e-01) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "LRN", context::get_status()), &TFE_DeleteOp);
@@ -18358,7 +25541,22 @@ inline tensor l_r_n(const tensor& input, int64_t depth_radius=5, float bias=1.00
     return tensor(res[0]);
 }
 
+/* # LRNGrad
+# Inputs:
+*    input_grads
+*    input_image
+*    output_image
 
+# Attributes:
+*    depth_radius
+*    bias
+*    alpha
+*    beta
+
+# Outputs:
+*    output
+
+*/
 inline tensor l_r_n_grad(const tensor& input_grads, const tensor& input_image, const tensor& output_image, int64_t depth_radius=5, float bias=1.0000e+00, float alpha=1.0000e+00, float beta=5.0000e-01) {
 
     // Define Op
@@ -18393,7 +25591,32 @@ inline tensor l_r_n_grad(const tensor& input_grads, const tensor& input_image, c
     return tensor(res[0]);
 }
 
+/* # LSTMBlockCell
+# Inputs:
+*    x
+*    cs_prev
+*    h_prev
+*    w
+*    wci
+*    wcf
+*    wco
+*    b
 
+# Attributes:
+*    forget_bias
+*    cell_clip
+*    use_peephole
+
+# Outputs:
+*    i
+*    cs
+*    f
+*    o
+*    ci
+*    co
+*    h
+
+*/
 inline std::vector<tensor> l_s_t_m_block_cell(const tensor& x, const tensor& cs_prev, const tensor& h_prev, const tensor& w, const tensor& wci, const tensor& wcf, const tensor& wco, const tensor& b, float forget_bias=1.0000e+00, float cell_clip=3.0000e+00, bool use_peephole=false) {
 
     // Define Op
@@ -18447,7 +25670,36 @@ inline std::vector<tensor> l_s_t_m_block_cell(const tensor& x, const tensor& cs_
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
+/* # LSTMBlockCellGrad
+# Inputs:
+*    x
+*    cs_prev
+*    h_prev
+*    w
+*    wci
+*    wcf
+*    wco
+*    b
+*    i
+*    cs
+*    f
+*    o
+*    ci
+*    co
+*    cs_grad
+*    h_grad
 
+# Attributes:
+*    use_peephole
+
+# Outputs:
+*    cs_prev_grad
+*    dicfo
+*    wci_grad
+*    wcf_grad
+*    wco_grad
+
+*/
 inline std::vector<tensor> l_s_t_m_block_cell_grad(const tensor& x, const tensor& cs_prev, const tensor& h_prev, const tensor& w, const tensor& wci, const tensor& wcf, const tensor& wco, const tensor& b, const tensor& i, const tensor& cs, const tensor& f, const tensor& o, const tensor& ci, const tensor& co, const tensor& cs_grad, const tensor& h_grad, bool use_peephole) {
 
     // Define Op
@@ -18531,7 +25783,19 @@ inline std::vector<tensor> l_s_t_m_block_cell_grad(const tensor& x, const tensor
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # LatencyStatsDataset
+# Inputs:
+*    input_dataset
+*    tag
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor latency_stats_dataset(const tensor& input_dataset, const tensor& tag, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18567,7 +25831,17 @@ inline tensor latency_stats_dataset(const tensor& input_dataset, const tensor& t
     return tensor(res[0]);
 }
 
+/* # LeakyRelu
+# Inputs:
+*    features
 
+# Attributes:
+*    alpha
+
+# Outputs:
+*    activations
+
+*/
 inline tensor leaky_relu(const tensor& features, float alpha=2.0000e-01) {
 
     // Define Op
@@ -18591,7 +25865,18 @@ inline tensor leaky_relu(const tensor& features, float alpha=2.0000e-01) {
     return tensor(res[0]);
 }
 
+/* # LeakyReluGrad
+# Inputs:
+*    gradients
+*    features
 
+# Attributes:
+*    alpha
+
+# Outputs:
+*    backprops
+
+*/
 inline tensor leaky_relu_grad(const tensor& gradients, const tensor& features, float alpha=2.0000e-01) {
 
     // Define Op
@@ -18619,7 +25904,24 @@ inline tensor leaky_relu_grad(const tensor& gradients, const tensor& features, f
     return tensor(res[0]);
 }
 
+/* # LearnedUnigramCandidateSampler
+# Inputs:
+*    true_classes
 
+# Attributes:
+*    num_true
+*    num_sampled
+*    unique
+*    range_max
+*    seed
+*    seed2
+
+# Outputs:
+*    sampled_candidates
+*    true_expected_count
+*    sampled_expected_count
+
+*/
 inline std::vector<tensor> learned_unigram_candidate_sampler(const tensor& true_classes, int64_t num_true, int64_t num_sampled, bool unique, int64_t range_max, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -18648,7 +25950,17 @@ inline std::vector<tensor> learned_unigram_candidate_sampler(const tensor& true_
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # LeftShift
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor left_shift(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -18676,7 +25988,27 @@ inline tensor left_shift(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # LegacyParallelInterleaveDatasetV2
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    cycle_length
+*    block_length
+*    buffer_output_elements
+*    prefetch_input_elements
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    deterministic
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor legacy_parallel_interleave_dataset_v2(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& cycle_length, const tensor& block_length, const tensor& buffer_output_elements, const tensor& prefetch_input_elements, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& deterministic="default", const std::string& metadata="") {
 
     // Define Op
@@ -18734,7 +26066,17 @@ inline tensor legacy_parallel_interleave_dataset_v2(const tensor& input_dataset,
     return tensor(res[0]);
 }
 
+/* # Less
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor less(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -18762,7 +26104,17 @@ inline tensor less(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # LessEqual
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor less_equal(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -18790,7 +26142,16 @@ inline tensor less_equal(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # Lgamma
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor lgamma(const tensor& x) {
 
     // Define Op
@@ -18814,7 +26175,19 @@ inline tensor lgamma(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # LinSpace
+# Inputs:
+*    start
+*    stop
+*    num
 
+# Attributes:
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor lin_space(const tensor& start, const tensor& stop, const tensor& num, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -18846,7 +26219,20 @@ inline tensor lin_space(const tensor& start, const tensor& stop, const tensor& n
     return tensor(res[0]);
 }
 
+/* # ListDataset
+# Inputs:
+*    tensors
 
+# Attributes:
+*    Tinput_types
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor list_dataset(const std::vector<tensor>&tensors, const std::vector<datatype>& Tinput_types, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -18882,7 +26268,19 @@ inline tensor list_dataset(const std::vector<tensor>&tensors, const std::vector<
     return tensor(res[0]);
 }
 
+/* # ListDiff
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    out_idx
+
+# Outputs:
+*    out
+*    idx
+
+*/
 inline std::vector<tensor> list_diff(const tensor& x, const tensor& y, datatype out_idx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -18910,7 +26308,18 @@ inline std::vector<tensor> list_diff(const tensor& x, const tensor& y, datatype 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # ListSnapshotChunksDataset
+# Inputs:
+*    snapshot_path
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor list_snapshot_chunks_dataset(const tensor& snapshot_path, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -18942,7 +26351,23 @@ inline tensor list_snapshot_chunks_dataset(const tensor& snapshot_path, const st
     return tensor(res[0]);
 }
 
+/* # LoadAndRemapMatrix
+# Inputs:
+*    ckpt_path
+*    old_tensor_name
+*    row_remapping
+*    col_remapping
+*    initializing_values
 
+# Attributes:
+*    num_rows
+*    num_cols
+*    max_rows_in_memory
+
+# Outputs:
+*    output_matrix
+
+*/
 inline tensor load_and_remap_matrix(const tensor& ckpt_path, const tensor& old_input_tensor_name, const tensor& row_remapping, const tensor& col_remapping, const tensor& initializing_values, int64_t num_rows, int64_t num_cols, int64_t max_rows_in_memory=-1) {
 
     // Define Op
@@ -18984,7 +26409,22 @@ inline tensor load_and_remap_matrix(const tensor& ckpt_path, const tensor& old_i
     return tensor(res[0]);
 }
 
+/* # LoadDataset
+# Inputs:
+*    path
+*    reader_func_other_args
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    reader_func
+*    Treader_func_args
+*    compression
+
+# Outputs:
+*    handle
+
+*/
 inline tensor load_dataset(const tensor& path, const std::vector<tensor>&reader_func_other_args, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t reader_func, const std::vector<datatype>& Treader_func_args, const std::string& compression="") {
 
     // Define Op
@@ -19025,7 +26465,22 @@ inline tensor load_dataset(const tensor& path, const std::vector<tensor>&reader_
     return tensor(res[0]);
 }
 
+/* # LoadTPUEmbeddingADAMParameters
+# Inputs:
+*    parameters
+*    momenta
+*    velocities
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_a_d_a_m_parameters(const tensor& parameters, const tensor& momenta, const tensor& velocities, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19060,7 +26515,22 @@ inline void load_t_p_u_embedding_a_d_a_m_parameters(const tensor& parameters, co
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingAdadeltaParameters
+# Inputs:
+*    parameters
+*    accumulators
+*    updates
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_adadelta_parameters(const tensor& parameters, const tensor& accumulators, const tensor& updates, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19095,7 +26565,22 @@ inline void load_t_p_u_embedding_adadelta_parameters(const tensor& parameters, c
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingAdagradMomentumParameters
+# Inputs:
+*    parameters
+*    accumulators
+*    momenta
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_adagrad_momentum_parameters(const tensor& parameters, const tensor& accumulators, const tensor& momenta, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19130,7 +26615,21 @@ inline void load_t_p_u_embedding_adagrad_momentum_parameters(const tensor& param
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingAdagradParameters
+# Inputs:
+*    parameters
+*    accumulators
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_adagrad_parameters(const tensor& parameters, const tensor& accumulators, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19161,7 +26660,23 @@ inline void load_t_p_u_embedding_adagrad_parameters(const tensor& parameters, co
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingCenteredRMSPropParameters
+# Inputs:
+*    parameters
+*    ms
+*    mom
+*    mg
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_centered_r_m_s_prop_parameters(const tensor& parameters, const tensor& ms, const tensor& mom, const tensor& mg, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19200,7 +26715,22 @@ inline void load_t_p_u_embedding_centered_r_m_s_prop_parameters(const tensor& pa
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingFTRLParameters
+# Inputs:
+*    parameters
+*    accumulators
+*    linears
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_f_t_r_l_parameters(const tensor& parameters, const tensor& accumulators, const tensor& linears, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19235,7 +26765,21 @@ inline void load_t_p_u_embedding_f_t_r_l_parameters(const tensor& parameters, co
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingFrequencyEstimatorParameters
+# Inputs:
+*    parameters
+*    last_hit_step
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_frequency_estimator_parameters(const tensor& parameters, const tensor& last_hit_step, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19266,7 +26810,23 @@ inline void load_t_p_u_embedding_frequency_estimator_parameters(const tensor& pa
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingMDLAdagradLightParameters
+# Inputs:
+*    parameters
+*    accumulators
+*    weights
+*    benefits
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_m_d_l_adagrad_light_parameters(const tensor& parameters, const tensor& accumulators, const tensor& weights, const tensor& benefits, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19305,7 +26865,21 @@ inline void load_t_p_u_embedding_m_d_l_adagrad_light_parameters(const tensor& pa
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingMomentumParameters
+# Inputs:
+*    parameters
+*    momenta
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_momentum_parameters(const tensor& parameters, const tensor& momenta, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19336,7 +26910,21 @@ inline void load_t_p_u_embedding_momentum_parameters(const tensor& parameters, c
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingProximalAdagradParameters
+# Inputs:
+*    parameters
+*    accumulators
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_proximal_adagrad_parameters(const tensor& parameters, const tensor& accumulators, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19367,7 +26955,22 @@ inline void load_t_p_u_embedding_proximal_adagrad_parameters(const tensor& param
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingProximalYogiParameters
+# Inputs:
+*    parameters
+*    v
+*    m
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_proximal_yogi_parameters(const tensor& parameters, const tensor& v, const tensor& m, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19402,7 +27005,22 @@ inline void load_t_p_u_embedding_proximal_yogi_parameters(const tensor& paramete
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingRMSPropParameters
+# Inputs:
+*    parameters
+*    ms
+*    mom
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_r_m_s_prop_parameters(const tensor& parameters, const tensor& ms, const tensor& mom, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19437,7 +27055,20 @@ inline void load_t_p_u_embedding_r_m_s_prop_parameters(const tensor& parameters,
     status_check(context::get_status());
 }
 
+/* # LoadTPUEmbeddingStochasticGradientDescentParameters
+# Inputs:
+*    parameters
 
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
+
+# Outputs:
+*    
+*/
 inline void load_t_p_u_embedding_stochastic_gradient_descent_parameters(const tensor& parameters, int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -19464,7 +27095,16 @@ inline void load_t_p_u_embedding_stochastic_gradient_descent_parameters(const te
     status_check(context::get_status());
 }
 
+/* # Log
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor log(const tensor& x) {
 
     // Define Op
@@ -19488,7 +27128,16 @@ inline tensor log(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Log1p
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor log1p(const tensor& x) {
 
     // Define Op
@@ -19512,7 +27161,17 @@ inline tensor log1p(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # LogMatrixDeterminant
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    sign
+*    log_abs_determinant
+
+*/
 inline std::vector<tensor> log_matrix_determinant(const tensor& input) {
 
     // Define Op
@@ -19536,7 +27195,16 @@ inline std::vector<tensor> log_matrix_determinant(const tensor& input) {
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # LogSoftmax
+# Inputs:
+*    logits
 
+# Attributes:
+*    
+# Outputs:
+*    logsoftmax
+
+*/
 inline tensor log_softmax(const tensor& logits) {
 
     // Define Op
@@ -19560,7 +27228,24 @@ inline tensor log_softmax(const tensor& logits) {
     return tensor(res[0]);
 }
 
+/* # LogUniformCandidateSampler
+# Inputs:
+*    true_classes
 
+# Attributes:
+*    num_true
+*    num_sampled
+*    unique
+*    range_max
+*    seed
+*    seed2
+
+# Outputs:
+*    sampled_candidates
+*    true_expected_count
+*    sampled_expected_count
+
+*/
 inline std::vector<tensor> log_uniform_candidate_sampler(const tensor& true_classes, int64_t num_true, int64_t num_sampled, bool unique, int64_t range_max, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -19589,7 +27274,17 @@ inline std::vector<tensor> log_uniform_candidate_sampler(const tensor& true_clas
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # LogicalAnd
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor logical_and(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -19617,7 +27312,16 @@ inline tensor logical_and(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # LogicalNot
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor logical_not(const tensor& x) {
 
     // Define Op
@@ -19641,7 +27345,17 @@ inline tensor logical_not(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # LogicalOr
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor logical_or(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -19669,7 +27383,19 @@ inline tensor logical_or(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # LookupTableExport
+# Inputs:
+*    table_handle
 
+# Attributes:
+*    Tkeys
+*    Tvalues
+
+# Outputs:
+*    keys
+*    values
+
+*/
 inline std::vector<tensor> lookup_table_export(const tensor& table_handle, datatype Tkeys, datatype Tvalues) {
 
     // Define Op
@@ -19694,7 +27420,19 @@ inline std::vector<tensor> lookup_table_export(const tensor& table_handle, datat
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # LookupTableExportV2
+# Inputs:
+*    table_handle
 
+# Attributes:
+*    Tkeys
+*    Tvalues
+
+# Outputs:
+*    keys
+*    values
+
+*/
 inline std::vector<tensor> lookup_table_export_v2(const tensor& table_handle, datatype Tkeys, datatype Tvalues) {
 
     // Define Op
@@ -19719,7 +27457,20 @@ inline std::vector<tensor> lookup_table_export_v2(const tensor& table_handle, da
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # LookupTableFind
+# Inputs:
+*    table_handle
+*    keys
+*    default_value
 
+# Attributes:
+*    Tin
+*    Tout
+
+# Outputs:
+*    values
+
+*/
 inline tensor lookup_table_find(const tensor& table_handle, const tensor& keys, const tensor& default_value, datatype Tin, datatype Tout) {
 
     // Define Op
@@ -19752,7 +27503,20 @@ inline tensor lookup_table_find(const tensor& table_handle, const tensor& keys, 
     return tensor(res[0]);
 }
 
+/* # LookupTableFindV2
+# Inputs:
+*    table_handle
+*    keys
+*    default_value
 
+# Attributes:
+*    Tin
+*    Tout
+
+# Outputs:
+*    values
+
+*/
 inline tensor lookup_table_find_v2(const tensor& table_handle, const tensor& keys, const tensor& default_value, datatype Tin, datatype Tout) {
 
     // Define Op
@@ -19785,7 +27549,19 @@ inline tensor lookup_table_find_v2(const tensor& table_handle, const tensor& key
     return tensor(res[0]);
 }
 
+/* # LookupTableImport
+# Inputs:
+*    table_handle
+*    keys
+*    values
 
+# Attributes:
+*    Tin
+*    Tout
+
+# Outputs:
+*    
+*/
 inline void lookup_table_import(const tensor& table_handle, const tensor& keys, const tensor& values, datatype Tin, datatype Tout) {
 
     // Define Op
@@ -19817,7 +27593,19 @@ inline void lookup_table_import(const tensor& table_handle, const tensor& keys, 
     status_check(context::get_status());
 }
 
+/* # LookupTableImportV2
+# Inputs:
+*    table_handle
+*    keys
+*    values
 
+# Attributes:
+*    Tin
+*    Tout
+
+# Outputs:
+*    
+*/
 inline void lookup_table_import_v2(const tensor& table_handle, const tensor& keys, const tensor& values, datatype Tin, datatype Tout) {
 
     // Define Op
@@ -19849,7 +27637,19 @@ inline void lookup_table_import_v2(const tensor& table_handle, const tensor& key
     status_check(context::get_status());
 }
 
+/* # LookupTableInsert
+# Inputs:
+*    table_handle
+*    keys
+*    values
 
+# Attributes:
+*    Tin
+*    Tout
+
+# Outputs:
+*    
+*/
 inline void lookup_table_insert(const tensor& table_handle, const tensor& keys, const tensor& values, datatype Tin, datatype Tout) {
 
     // Define Op
@@ -19881,7 +27681,19 @@ inline void lookup_table_insert(const tensor& table_handle, const tensor& keys, 
     status_check(context::get_status());
 }
 
+/* # LookupTableInsertV2
+# Inputs:
+*    table_handle
+*    keys
+*    values
 
+# Attributes:
+*    Tin
+*    Tout
+
+# Outputs:
+*    
+*/
 inline void lookup_table_insert_v2(const tensor& table_handle, const tensor& keys, const tensor& values, datatype Tin, datatype Tout) {
 
     // Define Op
@@ -19913,7 +27725,17 @@ inline void lookup_table_insert_v2(const tensor& table_handle, const tensor& key
     status_check(context::get_status());
 }
 
+/* # LookupTableRemoveV2
+# Inputs:
+*    table_handle
+*    keys
 
+# Attributes:
+*    Tin
+
+# Outputs:
+*    
+*/
 inline void lookup_table_remove_v2(const tensor& table_handle, const tensor& keys, datatype Tin) {
 
     // Define Op
@@ -19940,7 +27762,16 @@ inline void lookup_table_remove_v2(const tensor& table_handle, const tensor& key
     status_check(context::get_status());
 }
 
+/* # LookupTableSize
+# Inputs:
+*    table_handle
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor lookup_table_size(const tensor& table_handle) {
 
     // Define Op
@@ -19964,7 +27795,16 @@ inline tensor lookup_table_size(const tensor& table_handle) {
     return tensor(res[0]);
 }
 
+/* # LookupTableSizeV2
+# Inputs:
+*    table_handle
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor lookup_table_size_v2(const tensor& table_handle) {
 
     // Define Op
@@ -19988,7 +27828,16 @@ inline tensor lookup_table_size_v2(const tensor& table_handle) {
     return tensor(res[0]);
 }
 
+/* # LoopCond
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor loop_cond(const tensor& input) {
 
     // Define Op
@@ -20012,7 +27861,18 @@ inline tensor loop_cond(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # LowerBound
+# Inputs:
+*    sorted_inputs
+*    values
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor lower_bound(const tensor& sorted_inputs, const tensor& values, datatype out_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -20040,7 +27900,18 @@ inline tensor lower_bound(const tensor& sorted_inputs, const tensor& values, dat
     return tensor(res[0]);
 }
 
+/* # Lu
+# Inputs:
+*    input
 
+# Attributes:
+*    output_idx_type
+
+# Outputs:
+*    lu
+*    p
+
+*/
 inline std::vector<tensor> lu(const tensor& input, datatype output_idx_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -20064,7 +27935,16 @@ inline std::vector<tensor> lu(const tensor& input, datatype output_idx_type=stat
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # MakeIterator
+# Inputs:
+*    dataset
+*    iterator
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void make_iterator(const tensor& dataset, const tensor& iterator) {
 
     // Define Op
@@ -20091,7 +27971,26 @@ inline void make_iterator(const tensor& dataset, const tensor& iterator) {
     status_check(context::get_status());
 }
 
+/* # MapAndBatchDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    batch_size
+*    num_parallel_calls
+*    drop_remainder
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    preserve_cardinality
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor map_and_batch_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& batch_size, const tensor& num_parallel_calls, const tensor& drop_remainder, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool preserve_cardinality=false, const std::string& metadata="") {
 
     // Define Op
@@ -20145,7 +28044,19 @@ inline tensor map_and_batch_dataset(const tensor& input_dataset, const std::vect
     return tensor(res[0]);
 }
 
+/* # MapClear
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    
+*/
 inline void map_clear(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -20169,7 +28080,24 @@ inline void map_clear(const std::vector<datatype>& dtypes, int64_t capacity=0, i
     status_check(context::get_status());
 }
 
+/* # MapDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    use_inter_op_parallelism
+*    preserve_cardinality
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, bool preserve_cardinality=false, const std::string& metadata="") {
 
     // Define Op
@@ -20212,7 +28140,23 @@ inline tensor map_dataset(const tensor& input_dataset, const std::vector<tensor>
     return tensor(res[0]);
 }
 
+/* # MapDefun
+# Inputs:
+*    arguments
+*    captured_inputs
 
+# Attributes:
+*    Targuments
+*    Tcaptured
+*    output_types
+*    output_shapes
+*    f
+*    max_intra_op_parallelism
+
+# Outputs:
+*    output
+
+*/
 inline tensor map_defun(const std::vector<tensor>&arguments, const std::vector<tensor>&captured_inputs, const std::vector<datatype>& Targuments, const std::vector<datatype>& Tcaptured, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t f, int64_t max_intra_op_parallelism=1) {
 
     // Define Op
@@ -20256,7 +28200,20 @@ inline tensor map_defun(const std::vector<tensor>&arguments, const std::vector<t
     return tensor(res[0]);
 }
 
+/* # MapIncompleteSize
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    size
+
+*/
 inline tensor map_incomplete_size(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -20281,7 +28238,22 @@ inline tensor map_incomplete_size(const std::vector<datatype>& dtypes, int64_t c
     return tensor(res[0]);
 }
 
+/* # MapPeek
+# Inputs:
+*    key
+*    indices
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    values
+
+*/
 inline tensor map_peek(const tensor& key, const tensor& indices, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -20313,7 +28285,20 @@ inline tensor map_peek(const tensor& key, const tensor& indices, const std::vect
     return tensor(res[0]);
 }
 
+/* # MapSize
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    size
+
+*/
 inline tensor map_size(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -20338,7 +28323,23 @@ inline tensor map_size(const std::vector<datatype>& dtypes, int64_t capacity=0, 
     return tensor(res[0]);
 }
 
+/* # MapStage
+# Inputs:
+*    key
+*    indices
+*    values
 
+# Attributes:
+*    dtypes
+*    fake_dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    
+*/
 inline void map_stage(const tensor& key, const tensor& indices, const std::vector<tensor>&values, const std::vector<datatype>& dtypes, const std::vector<datatype>& fake_dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -20376,7 +28377,22 @@ inline void map_stage(const tensor& key, const tensor& indices, const std::vecto
     status_check(context::get_status());
 }
 
+/* # MapUnstage
+# Inputs:
+*    key
+*    indices
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    values
+
+*/
 inline tensor map_unstage(const tensor& key, const tensor& indices, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -20408,7 +28424,22 @@ inline tensor map_unstage(const tensor& key, const tensor& indices, const std::v
     return tensor(res[0]);
 }
 
+/* # MapUnstageNoKey
+# Inputs:
+*    indices
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    key
+*    values
+
+*/
 inline std::vector<tensor> map_unstage_no_key(const tensor& indices, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -20436,7 +28467,21 @@ inline std::vector<tensor> map_unstage_no_key(const tensor& indices, const std::
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # MatMul
+# Inputs:
+*    a
+*    b
 
+# Attributes:
+*    transpose_a
+*    transpose_b
+*    grad_a
+*    grad_b
+
+# Outputs:
+*    product
+
+*/
 inline tensor mat_mul(const tensor& a, const tensor& b, bool transpose_a=false, bool transpose_b=false, bool grad_a=false, bool grad_b=false) {
 
     // Define Op
@@ -20467,7 +28512,16 @@ inline tensor mat_mul(const tensor& a, const tensor& b, bool transpose_a=false, 
     return tensor(res[0]);
 }
 
+/* # MatchingFiles
+# Inputs:
+*    pattern
 
+# Attributes:
+*    
+# Outputs:
+*    filenames
+
+*/
 inline tensor matching_files(const tensor& pattern) {
 
     // Define Op
@@ -20491,7 +28545,16 @@ inline tensor matching_files(const tensor& pattern) {
     return tensor(res[0]);
 }
 
+/* # MatchingFilesDataset
+# Inputs:
+*    patterns
 
+# Attributes:
+*    
+# Outputs:
+*    handle
+
+*/
 inline tensor matching_files_dataset(const tensor& patterns) {
 
     // Define Op
@@ -20515,7 +28578,19 @@ inline tensor matching_files_dataset(const tensor& patterns) {
     return tensor(res[0]);
 }
 
+/* # MatrixBandPart
+# Inputs:
+*    input
+*    num_lower
+*    num_upper
 
+# Attributes:
+*    Tindex
+
+# Outputs:
+*    band
+
+*/
 inline tensor matrix_band_part(const tensor& input, const tensor& num_lower, const tensor& num_upper, datatype Tindex=static_cast<datatype>(9)) {
 
     // Define Op
@@ -20547,7 +28622,16 @@ inline tensor matrix_band_part(const tensor& input, const tensor& num_lower, con
     return tensor(res[0]);
 }
 
+/* # MatrixDeterminant
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_determinant(const tensor& input) {
 
     // Define Op
@@ -20571,7 +28655,16 @@ inline tensor matrix_determinant(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # MatrixDiag
+# Inputs:
+*    diagonal
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_diag(const tensor& diagonal) {
 
     // Define Op
@@ -20595,7 +28688,16 @@ inline tensor matrix_diag(const tensor& diagonal) {
     return tensor(res[0]);
 }
 
+/* # MatrixDiagPart
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    diagonal
+
+*/
 inline tensor matrix_diag_part(const tensor& input) {
 
     // Define Op
@@ -20619,7 +28721,18 @@ inline tensor matrix_diag_part(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # MatrixDiagPartV2
+# Inputs:
+*    input
+*    k
+*    padding_value
 
+# Attributes:
+*    
+# Outputs:
+*    diagonal
+
+*/
 inline tensor matrix_diag_part_v2(const tensor& input, const tensor& k, const tensor& padding_value) {
 
     // Define Op
@@ -20651,7 +28764,19 @@ inline tensor matrix_diag_part_v2(const tensor& input, const tensor& k, const te
     return tensor(res[0]);
 }
 
+/* # MatrixDiagPartV3
+# Inputs:
+*    input
+*    k
+*    padding_value
 
+# Attributes:
+*    align
+
+# Outputs:
+*    diagonal
+
+*/
 inline tensor matrix_diag_part_v3(const tensor& input, const tensor& k, const tensor& padding_value, const std::string& align="RIGHT_LEFT") {
 
     // Define Op
@@ -20683,7 +28808,20 @@ inline tensor matrix_diag_part_v3(const tensor& input, const tensor& k, const te
     return tensor(res[0]);
 }
 
+/* # MatrixDiagV2
+# Inputs:
+*    diagonal
+*    k
+*    num_rows
+*    num_cols
+*    padding_value
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_diag_v2(const tensor& diagonal, const tensor& k, const tensor& num_rows, const tensor& num_cols, const tensor& padding_value) {
 
     // Define Op
@@ -20723,7 +28861,21 @@ inline tensor matrix_diag_v2(const tensor& diagonal, const tensor& k, const tens
     return tensor(res[0]);
 }
 
+/* # MatrixDiagV3
+# Inputs:
+*    diagonal
+*    k
+*    num_rows
+*    num_cols
+*    padding_value
 
+# Attributes:
+*    align
+
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_diag_v3(const tensor& diagonal, const tensor& k, const tensor& num_rows, const tensor& num_cols, const tensor& padding_value, const std::string& align="RIGHT_LEFT") {
 
     // Define Op
@@ -20763,7 +28915,16 @@ inline tensor matrix_diag_v3(const tensor& diagonal, const tensor& k, const tens
     return tensor(res[0]);
 }
 
+/* # MatrixExponential
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_exponential(const tensor& input) {
 
     // Define Op
@@ -20787,7 +28948,17 @@ inline tensor matrix_exponential(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # MatrixInverse
+# Inputs:
+*    input
 
+# Attributes:
+*    adjoint
+
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_inverse(const tensor& input, bool adjoint=false) {
 
     // Define Op
@@ -20811,7 +28982,16 @@ inline tensor matrix_inverse(const tensor& input, bool adjoint=false) {
     return tensor(res[0]);
 }
 
+/* # MatrixLogarithm
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_logarithm(const tensor& input) {
 
     // Define Op
@@ -20835,7 +29015,17 @@ inline tensor matrix_logarithm(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # MatrixSetDiag
+# Inputs:
+*    input
+*    diagonal
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_set_diag(const tensor& input, const tensor& diagonal) {
 
     // Define Op
@@ -20863,7 +29053,18 @@ inline tensor matrix_set_diag(const tensor& input, const tensor& diagonal) {
     return tensor(res[0]);
 }
 
+/* # MatrixSetDiagV2
+# Inputs:
+*    input
+*    diagonal
+*    k
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_set_diag_v2(const tensor& input, const tensor& diagonal, const tensor& k) {
 
     // Define Op
@@ -20895,7 +29096,19 @@ inline tensor matrix_set_diag_v2(const tensor& input, const tensor& diagonal, co
     return tensor(res[0]);
 }
 
+/* # MatrixSetDiagV3
+# Inputs:
+*    input
+*    diagonal
+*    k
 
+# Attributes:
+*    align
+
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_set_diag_v3(const tensor& input, const tensor& diagonal, const tensor& k, const std::string& align="RIGHT_LEFT") {
 
     // Define Op
@@ -20927,7 +29140,18 @@ inline tensor matrix_set_diag_v3(const tensor& input, const tensor& diagonal, co
     return tensor(res[0]);
 }
 
+/* # MatrixSolve
+# Inputs:
+*    matrix
+*    rhs
 
+# Attributes:
+*    adjoint
+
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_solve(const tensor& matrix, const tensor& rhs, bool adjoint=false) {
 
     // Define Op
@@ -20955,7 +29179,19 @@ inline tensor matrix_solve(const tensor& matrix, const tensor& rhs, bool adjoint
     return tensor(res[0]);
 }
 
+/* # MatrixSolveLs
+# Inputs:
+*    matrix
+*    rhs
+*    l2_regularizer
 
+# Attributes:
+*    fast
+
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_solve_ls(const tensor& matrix, const tensor& rhs, const tensor& l2_regularizer, bool fast=true) {
 
     // Define Op
@@ -20987,7 +29223,16 @@ inline tensor matrix_solve_ls(const tensor& matrix, const tensor& rhs, const ten
     return tensor(res[0]);
 }
 
+/* # MatrixSquareRoot
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_square_root(const tensor& input) {
 
     // Define Op
@@ -21011,7 +29256,19 @@ inline tensor matrix_square_root(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # MatrixTriangularSolve
+# Inputs:
+*    matrix
+*    rhs
 
+# Attributes:
+*    lower
+*    adjoint
+
+# Outputs:
+*    output
+
+*/
 inline tensor matrix_triangular_solve(const tensor& matrix, const tensor& rhs, bool lower=true, bool adjoint=false) {
 
     // Define Op
@@ -21040,7 +29297,19 @@ inline tensor matrix_triangular_solve(const tensor& matrix, const tensor& rhs, b
     return tensor(res[0]);
 }
 
+/* # Max
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor max(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -21069,7 +29338,19 @@ inline tensor max(const tensor& input, const tensor& reduction_indices, bool kee
     return tensor(res[0]);
 }
 
+/* # MaxIntraOpParallelismDataset
+# Inputs:
+*    input_dataset
+*    max_intra_op_parallelism
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor max_intra_op_parallelism_dataset(const tensor& input_dataset, const tensor& max_intra_op_parallelism, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -21105,7 +29386,21 @@ inline tensor max_intra_op_parallelism_dataset(const tensor& input_dataset, cons
     return tensor(res[0]);
 }
 
+/* # MaxPool
+# Inputs:
+*    input
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    explicit_paddings
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool(const tensor& input, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -21133,7 +29428,20 @@ inline tensor max_pool(const tensor& input, const std::vector<int64_t>& ksize, c
     return tensor(res[0]);
 }
 
+/* # MaxPool3D
+# Inputs:
+*    input
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool3_d(const tensor& input, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NDHWC") {
 
     // Define Op
@@ -21160,7 +29468,23 @@ inline tensor max_pool3_d(const tensor& input, const std::vector<int64_t>& ksize
     return tensor(res[0]);
 }
 
+/* # MaxPool3DGrad
+# Inputs:
+*    orig_input
+*    orig_output
+*    grad
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+*    TInput
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool3_d_grad(const tensor& orig_input, const tensor& orig_output, const tensor& grad, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NDHWC", datatype TInput=static_cast<datatype>(1)) {
 
     // Define Op
@@ -21196,7 +29520,22 @@ inline tensor max_pool3_d_grad(const tensor& orig_input, const tensor& orig_outp
     return tensor(res[0]);
 }
 
+/* # MaxPool3DGradGrad
+# Inputs:
+*    orig_input
+*    orig_output
+*    grad
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool3_d_grad_grad(const tensor& orig_input, const tensor& orig_output, const tensor& grad, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NDHWC") {
 
     // Define Op
@@ -21231,7 +29570,23 @@ inline tensor max_pool3_d_grad_grad(const tensor& orig_input, const tensor& orig
     return tensor(res[0]);
 }
 
+/* # MaxPoolGrad
+# Inputs:
+*    orig_input
+*    orig_output
+*    grad
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    explicit_paddings
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool_grad(const tensor& orig_input, const tensor& orig_output, const tensor& grad, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& explicit_paddings, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -21267,7 +29622,22 @@ inline tensor max_pool_grad(const tensor& orig_input, const tensor& orig_output,
     return tensor(res[0]);
 }
 
+/* # MaxPoolGradGrad
+# Inputs:
+*    orig_input
+*    orig_output
+*    grad
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool_grad_grad(const tensor& orig_input, const tensor& orig_output, const tensor& grad, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -21302,7 +29672,22 @@ inline tensor max_pool_grad_grad(const tensor& orig_input, const tensor& orig_ou
     return tensor(res[0]);
 }
 
+/* # MaxPoolGradGradV2
+# Inputs:
+*    orig_input
+*    orig_output
+*    grad
+*    ksize
+*    strides
 
+# Attributes:
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool_grad_grad_v2(const tensor& orig_input, const tensor& orig_output, const tensor& grad, const tensor& ksize, const tensor& strides, const std::string& padding, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -21343,7 +29728,23 @@ inline tensor max_pool_grad_grad_v2(const tensor& orig_input, const tensor& orig
     return tensor(res[0]);
 }
 
+/* # MaxPoolGradGradWithArgmax
+# Inputs:
+*    input
+*    grad
+*    argmax
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    Targmax
+*    include_batch_in_index
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool_grad_grad_with_argmax(const tensor& input, const tensor& grad, const tensor& argmax, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, datatype Targmax, bool include_batch_in_index=false) {
 
     // Define Op
@@ -21379,7 +29780,22 @@ inline tensor max_pool_grad_grad_with_argmax(const tensor& input, const tensor& 
     return tensor(res[0]);
 }
 
+/* # MaxPoolGradV2
+# Inputs:
+*    orig_input
+*    orig_output
+*    grad
+*    ksize
+*    strides
 
+# Attributes:
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool_grad_v2(const tensor& orig_input, const tensor& orig_output, const tensor& grad, const tensor& ksize, const tensor& strides, const std::string& padding, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -21420,7 +29836,23 @@ inline tensor max_pool_grad_v2(const tensor& orig_input, const tensor& orig_outp
     return tensor(res[0]);
 }
 
+/* # MaxPoolGradWithArgmax
+# Inputs:
+*    input
+*    grad
+*    argmax
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    Targmax
+*    include_batch_in_index
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool_grad_with_argmax(const tensor& input, const tensor& grad, const tensor& argmax, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, datatype Targmax, bool include_batch_in_index=false) {
 
     // Define Op
@@ -21456,7 +29888,20 @@ inline tensor max_pool_grad_with_argmax(const tensor& input, const tensor& grad,
     return tensor(res[0]);
 }
 
+/* # MaxPoolV2
+# Inputs:
+*    input
+*    ksize
+*    strides
 
+# Attributes:
+*    padding
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor max_pool_v2(const tensor& input, const tensor& ksize, const tensor& strides, const std::string& padding, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -21489,7 +29934,22 @@ inline tensor max_pool_v2(const tensor& input, const tensor& ksize, const tensor
     return tensor(res[0]);
 }
 
+/* # MaxPoolWithArgmax
+# Inputs:
+*    input
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+*    Targmax
+*    include_batch_in_index
+
+# Outputs:
+*    output
+*    argmax
+
+*/
 inline std::vector<tensor> max_pool_with_argmax(const tensor& input, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding, datatype Targmax=static_cast<datatype>(9), bool include_batch_in_index=false) {
 
     // Define Op
@@ -21517,7 +29977,17 @@ inline std::vector<tensor> max_pool_with_argmax(const tensor& input, const std::
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Maximum
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor maximum(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -21545,7 +30015,19 @@ inline tensor maximum(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # Mean
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor mean(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -21574,7 +30056,18 @@ inline tensor mean(const tensor& input, const tensor& reduction_indices, bool ke
     return tensor(res[0]);
 }
 
+/* # Merge
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+
+# Outputs:
+*    output
+*    value_index
+
+*/
 inline std::vector<tensor> merge(const std::vector<tensor>&inputs) {
 
     // Define Op
@@ -21600,7 +30093,17 @@ inline std::vector<tensor> merge(const std::vector<tensor>&inputs) {
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # MergeSummary
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+
+# Outputs:
+*    summary
+
+*/
 inline tensor merge_summary(const std::vector<tensor>&inputs) {
 
     // Define Op
@@ -21626,7 +30129,18 @@ inline tensor merge_summary(const std::vector<tensor>&inputs) {
     return tensor(res[0]);
 }
 
+/* # MergeV2Checkpoints
+# Inputs:
+*    checkpoint_prefixes
+*    destination_prefix
 
+# Attributes:
+*    delete_old_dirs
+*    allow_missing_files
+
+# Outputs:
+*    
+*/
 inline void merge_v2_checkpoints(const tensor& checkpoint_prefixes, const tensor& destination_prefix, bool delete_old_dirs=true, bool allow_missing_files=false) {
 
     // Define Op
@@ -21654,7 +30168,21 @@ inline void merge_v2_checkpoints(const tensor& checkpoint_prefixes, const tensor
     status_check(context::get_status());
 }
 
+/* # Mfcc
+# Inputs:
+*    spectrogram
+*    sample_rate
 
+# Attributes:
+*    upper_frequency_limit
+*    lower_frequency_limit
+*    filterbank_channel_count
+*    dct_coefficient_count
+
+# Outputs:
+*    output
+
+*/
 inline tensor mfcc(const tensor& spectrogram, const tensor& sample_rate, float upper_frequency_limit=4.0000e+03, float lower_frequency_limit=2.0000e+01, int64_t filterbank_channel_count=40, int64_t dct_coefficient_count=13) {
 
     // Define Op
@@ -21685,7 +30213,19 @@ inline tensor mfcc(const tensor& spectrogram, const tensor& sample_rate, float u
     return tensor(res[0]);
 }
 
+/* # Min
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor min(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -21714,7 +30254,17 @@ inline tensor min(const tensor& input, const tensor& reduction_indices, bool kee
     return tensor(res[0]);
 }
 
+/* # Minimum
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor minimum(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -21742,7 +30292,19 @@ inline tensor minimum(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # MirrorPad
+# Inputs:
+*    input
+*    paddings
 
+# Attributes:
+*    mode
+*    Tpaddings
+
+# Outputs:
+*    output
+
+*/
 inline tensor mirror_pad(const tensor& input, const tensor& paddings, const std::string& mode, datatype Tpaddings=static_cast<datatype>(3)) {
 
     // Define Op
@@ -21771,7 +30333,19 @@ inline tensor mirror_pad(const tensor& input, const tensor& paddings, const std:
     return tensor(res[0]);
 }
 
+/* # MirrorPadGrad
+# Inputs:
+*    input
+*    paddings
 
+# Attributes:
+*    mode
+*    Tpaddings
+
+# Outputs:
+*    output
+
+*/
 inline tensor mirror_pad_grad(const tensor& input, const tensor& paddings, const std::string& mode, datatype Tpaddings=static_cast<datatype>(3)) {
 
     // Define Op
@@ -21800,7 +30374,17 @@ inline tensor mirror_pad_grad(const tensor& input, const tensor& paddings, const
     return tensor(res[0]);
 }
 
+/* # Mod
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor mod(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -21828,7 +30412,21 @@ inline tensor mod(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # ModelDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    algorithm
+*    cpu_budget
+*    ram_budget
+
+# Outputs:
+*    handle
+
+*/
 inline tensor model_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t algorithm=0, int64_t cpu_budget=0, int64_t ram_budget=0) {
 
     // Define Op
@@ -21863,7 +30461,17 @@ inline tensor model_dataset(const tensor& input_dataset, const std::vector<datat
     return tensor(res[0]);
 }
 
+/* # Mul
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor mul(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -21891,7 +30499,17 @@ inline tensor mul(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # MulNoNan
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor mul_no_nan(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -21919,7 +30537,20 @@ inline tensor mul_no_nan(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # MultiDeviceIterator
+# Inputs:
+*    
+# Attributes:
+*    devices
+*    shared_name
+*    container
+*    output_types
+*    output_shapes
 
+# Outputs:
+*    handle
+
+*/
 inline tensor multi_device_iterator(const std::vector< std::string>& devices, const std::string& shared_name, const std::string& container, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -21955,7 +30586,18 @@ inline tensor multi_device_iterator(const std::vector< std::string>& devices, co
     return tensor(res[0]);
 }
 
+/* # MultiDeviceIteratorFromStringHandle
+# Inputs:
+*    string_handle
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    multi_device_iterator
+
+*/
 inline tensor multi_device_iterator_from_string_handle(const tensor& string_handle, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -21987,7 +30629,20 @@ inline tensor multi_device_iterator_from_string_handle(const tensor& string_hand
     return tensor(res[0]);
 }
 
+/* # MultiDeviceIteratorGetNextFromShard
+# Inputs:
+*    multi_device_iterator
+*    shard_num
+*    incarnation_id
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    components
+
+*/
 inline tensor multi_device_iterator_get_next_from_shard(const tensor& multi_device_iterator, const tensor& shard_num, const tensor& incarnation_id, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -22027,7 +30682,18 @@ inline tensor multi_device_iterator_get_next_from_shard(const tensor& multi_devi
     return tensor(res[0]);
 }
 
+/* # MultiDeviceIteratorInit
+# Inputs:
+*    dataset
+*    multi_device_iterator
+*    max_buffer_size
 
+# Attributes:
+*    
+# Outputs:
+*    incarnation_id
+
+*/
 inline tensor multi_device_iterator_init(const tensor& dataset, const tensor& multi_device_iterator, const tensor& max_buffer_size) {
 
     // Define Op
@@ -22059,7 +30725,16 @@ inline tensor multi_device_iterator_init(const tensor& dataset, const tensor& mu
     return tensor(res[0]);
 }
 
+/* # MultiDeviceIteratorToStringHandle
+# Inputs:
+*    multi_device_iterator
 
+# Attributes:
+*    
+# Outputs:
+*    string_handle
+
+*/
 inline tensor multi_device_iterator_to_string_handle(const tensor& multi_device_iterator) {
 
     // Define Op
@@ -22083,7 +30758,20 @@ inline tensor multi_device_iterator_to_string_handle(const tensor& multi_device_
     return tensor(res[0]);
 }
 
+/* # Multinomial
+# Inputs:
+*    logits
+*    num_samples
 
+# Attributes:
+*    seed
+*    seed2
+*    output_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor multinomial(const tensor& logits, const tensor& num_samples, int64_t seed=0, int64_t seed2=0, datatype output_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -22113,7 +30801,24 @@ inline tensor multinomial(const tensor& logits, const tensor& num_samples, int64
     return tensor(res[0]);
 }
 
+/* # MutableDenseHashTable
+# Inputs:
+*    empty_key
 
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    value_shape
+*    container
+*    shared_name
+*    use_node_name_sharing
+*    initial_num_buckets
+*    max_load_factor
+
+# Outputs:
+*    table_handle
+
+*/
 inline tensor mutable_dense_hash_table(const tensor& empty_key, datatype key_dtype, datatype value_dtype, const std::vector<int64_t>& value_shape, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false, int64_t initial_num_buckets=131072, float max_load_factor=8.0000e-01) {
 
     // Define Op
@@ -22147,7 +30852,25 @@ inline tensor mutable_dense_hash_table(const tensor& empty_key, datatype key_dty
     return tensor(res[0]);
 }
 
+/* # MutableDenseHashTableV2
+# Inputs:
+*    empty_key
+*    deleted_key
 
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    value_shape
+*    container
+*    shared_name
+*    use_node_name_sharing
+*    initial_num_buckets
+*    max_load_factor
+
+# Outputs:
+*    table_handle
+
+*/
 inline tensor mutable_dense_hash_table_v2(const tensor& empty_key, const tensor& deleted_key, datatype key_dtype, datatype value_dtype, const std::vector<int64_t>& value_shape, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false, int64_t initial_num_buckets=131072, float max_load_factor=8.0000e-01) {
 
     // Define Op
@@ -22185,7 +30908,20 @@ inline tensor mutable_dense_hash_table_v2(const tensor& empty_key, const tensor&
     return tensor(res[0]);
 }
 
+/* # MutableHashTable
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    container
+*    shared_name
+*    use_node_name_sharing
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor mutable_hash_table(datatype key_dtype, datatype value_dtype, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false) {
 
     // Define Op
@@ -22210,7 +30946,21 @@ inline tensor mutable_hash_table(datatype key_dtype, datatype value_dtype, const
     return tensor(res[0]);
 }
 
+/* # MutableHashTableOfTensors
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    value_shape
+*    container
+*    shared_name
+*    use_node_name_sharing
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor mutable_hash_table_of_tensors(datatype key_dtype, datatype value_dtype, const std::vector<int64_t>& value_shape, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false) {
 
     // Define Op
@@ -22239,7 +30989,21 @@ inline tensor mutable_hash_table_of_tensors(datatype key_dtype, datatype value_d
     return tensor(res[0]);
 }
 
+/* # MutableHashTableOfTensorsV2
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    value_shape
+*    container
+*    shared_name
+*    use_node_name_sharing
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor mutable_hash_table_of_tensors_v2(datatype key_dtype, datatype value_dtype, const std::vector<int64_t>& value_shape, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false) {
 
     // Define Op
@@ -22268,7 +31032,20 @@ inline tensor mutable_hash_table_of_tensors_v2(datatype key_dtype, datatype valu
     return tensor(res[0]);
 }
 
+/* # MutableHashTableV2
+# Inputs:
+*    
+# Attributes:
+*    key_dtype
+*    value_dtype
+*    container
+*    shared_name
+*    use_node_name_sharing
 
+# Outputs:
+*    table_handle
+
+*/
 inline tensor mutable_hash_table_v2(datatype key_dtype, datatype value_dtype, const std::string& container="", const std::string& shared_name="", bool use_node_name_sharing=false) {
 
     // Define Op
@@ -22293,7 +31070,16 @@ inline tensor mutable_hash_table_v2(datatype key_dtype, datatype value_dtype, co
     return tensor(res[0]);
 }
 
+/* # MutexLock
+# Inputs:
+*    mutex
 
+# Attributes:
+*    
+# Outputs:
+*    mutex_lock
+
+*/
 inline tensor mutex_lock(const tensor& mutex) {
 
     // Define Op
@@ -22317,7 +31103,17 @@ inline tensor mutex_lock(const tensor& mutex) {
     return tensor(res[0]);
 }
 
+/* # MutexV2
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    resource
+
+*/
 inline tensor mutex_v2(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -22339,7 +31135,19 @@ inline tensor mutex_v2(const std::string& container="", const std::string& share
     return tensor(res[0]);
 }
 
+/* # NcclAllReduce
+# Inputs:
+*    input
 
+# Attributes:
+*    reduction
+*    num_devices
+*    shared_name
+
+# Outputs:
+*    data
+
+*/
 inline tensor nccl_all_reduce(const tensor& input, const std::string& reduction, int64_t num_devices, const std::string& shared_name) {
 
     // Define Op
@@ -22365,7 +31173,17 @@ inline tensor nccl_all_reduce(const tensor& input, const std::string& reduction,
     return tensor(res[0]);
 }
 
+/* # NcclBroadcast
+# Inputs:
+*    input
 
+# Attributes:
+*    shape
+
+# Outputs:
+*    output
+
+*/
 inline tensor nccl_broadcast(const tensor& input, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -22392,7 +31210,18 @@ inline tensor nccl_broadcast(const tensor& input, const std::vector<int64_t>& sh
     return tensor(res[0]);
 }
 
+/* # NcclReduce
+# Inputs:
+*    input
 
+# Attributes:
+*    reduction
+*    num_devices
+
+# Outputs:
+*    data
+
+*/
 inline tensor nccl_reduce(const std::vector<tensor>&input, const std::string& reduction) {
 
     // Define Op
@@ -22419,7 +31248,16 @@ inline tensor nccl_reduce(const std::vector<tensor>&input, const std::string& re
     return tensor(res[0]);
 }
 
+/* # Ndtri
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor ndtri(const tensor& x) {
 
     // Define Op
@@ -22443,7 +31281,19 @@ inline tensor ndtri(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # NearestNeighbors
+# Inputs:
+*    points
+*    centers
+*    k
 
+# Attributes:
+*    
+# Outputs:
+*    nearest_center_indices
+*    nearest_center_distances
+
+*/
 inline std::vector<tensor> nearest_neighbors(const tensor& points, const tensor& centers, const tensor& k) {
 
     // Define Op
@@ -22475,7 +31325,16 @@ inline std::vector<tensor> nearest_neighbors(const tensor& points, const tensor&
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Neg
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor neg(const tensor& x) {
 
     // Define Op
@@ -22499,7 +31358,17 @@ inline tensor neg(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # NextAfter
+# Inputs:
+*    x1
+*    x2
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor next_after(const tensor& x1, const tensor& x2) {
 
     // Define Op
@@ -22527,7 +31396,16 @@ inline tensor next_after(const tensor& x1, const tensor& x2) {
     return tensor(res[0]);
 }
 
+/* # NextIteration
+# Inputs:
+*    data
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor next_iteration(const tensor& data) {
 
     // Define Op
@@ -22551,7 +31429,14 @@ inline tensor next_iteration(const tensor& data) {
     return tensor(res[0]);
 }
 
-
+/* # NoOp
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void no_op() {
 
     // Define Op
@@ -22571,7 +31456,18 @@ inline void no_op() {
     status_check(context::get_status());
 }
 
+/* # NonDeterministicInts
+# Inputs:
+*    shape
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor non_deterministic_ints(const tensor& shape, datatype dtype=static_cast<datatype>(9), datatype shape_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -22596,7 +31492,19 @@ inline tensor non_deterministic_ints(const tensor& shape, datatype dtype=static_
     return tensor(res[0]);
 }
 
+/* # NonMaxSuppression
+# Inputs:
+*    boxes
+*    scores
+*    max_output_size
 
+# Attributes:
+*    iou_threshold
+
+# Outputs:
+*    selected_indices
+
+*/
 inline tensor non_max_suppression(const tensor& boxes, const tensor& scores, const tensor& max_output_size, float iou_threshold=5.0000e-01) {
 
     // Define Op
@@ -22628,7 +31536,20 @@ inline tensor non_max_suppression(const tensor& boxes, const tensor& scores, con
     return tensor(res[0]);
 }
 
+/* # NonMaxSuppressionV2
+# Inputs:
+*    boxes
+*    scores
+*    max_output_size
+*    iou_threshold
 
+# Attributes:
+*    T_threshold
+
+# Outputs:
+*    selected_indices
+
+*/
 inline tensor non_max_suppression_v2(const tensor& boxes, const tensor& scores, const tensor& max_output_size, const tensor& iou_threshold, datatype T_threshold=static_cast<datatype>(1)) {
 
     // Define Op
@@ -22664,7 +31585,21 @@ inline tensor non_max_suppression_v2(const tensor& boxes, const tensor& scores, 
     return tensor(res[0]);
 }
 
+/* # NonMaxSuppressionV3
+# Inputs:
+*    boxes
+*    scores
+*    max_output_size
+*    iou_threshold
+*    score_threshold
 
+# Attributes:
+*    T_threshold
+
+# Outputs:
+*    selected_indices
+
+*/
 inline tensor non_max_suppression_v3(const tensor& boxes, const tensor& scores, const tensor& max_output_size, const tensor& iou_threshold, const tensor& score_threshold, datatype T_threshold=static_cast<datatype>(1)) {
 
     // Define Op
@@ -22704,7 +31639,23 @@ inline tensor non_max_suppression_v3(const tensor& boxes, const tensor& scores, 
     return tensor(res[0]);
 }
 
+/* # NonMaxSuppressionV4
+# Inputs:
+*    boxes
+*    scores
+*    max_output_size
+*    iou_threshold
+*    score_threshold
 
+# Attributes:
+*    T_threshold
+*    pad_to_max_output_size
+
+# Outputs:
+*    selected_indices
+*    valid_outputs
+
+*/
 inline std::vector<tensor> non_max_suppression_v4(const tensor& boxes, const tensor& scores, const tensor& max_output_size, const tensor& iou_threshold, const tensor& score_threshold, datatype T_threshold=static_cast<datatype>(1), bool pad_to_max_output_size=false) {
 
     // Define Op
@@ -22745,7 +31696,24 @@ inline std::vector<tensor> non_max_suppression_v4(const tensor& boxes, const ten
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # NonMaxSuppressionV5
+# Inputs:
+*    boxes
+*    scores
+*    max_output_size
+*    iou_threshold
+*    score_threshold
+*    soft_nms_sigma
 
+# Attributes:
+*    pad_to_max_output_size
+
+# Outputs:
+*    selected_indices
+*    selected_scores
+*    valid_outputs
+
+*/
 inline std::vector<tensor> non_max_suppression_v5(const tensor& boxes, const tensor& scores, const tensor& max_output_size, const tensor& iou_threshold, const tensor& score_threshold, const tensor& soft_nms_sigma, bool pad_to_max_output_size=false) {
 
     // Define Op
@@ -22789,7 +31757,20 @@ inline std::vector<tensor> non_max_suppression_v5(const tensor& boxes, const ten
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # NonMaxSuppressionWithOverlaps
+# Inputs:
+*    overlaps
+*    scores
+*    max_output_size
+*    overlap_threshold
+*    score_threshold
 
+# Attributes:
+*    
+# Outputs:
+*    selected_indices
+
+*/
 inline tensor non_max_suppression_with_overlaps(const tensor& overlaps, const tensor& scores, const tensor& max_output_size, const tensor& overlap_threshold, const tensor& score_threshold) {
 
     // Define Op
@@ -22829,7 +31810,18 @@ inline tensor non_max_suppression_with_overlaps(const tensor& overlaps, const te
     return tensor(res[0]);
 }
 
+/* # NonSerializableDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor non_serializable_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -22861,7 +31853,18 @@ inline tensor non_serializable_dataset(const tensor& input_dataset, const std::v
     return tensor(res[0]);
 }
 
+/* # NotEqual
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    incompatible_shape_error
+
+# Outputs:
+*    z
+
+*/
 inline tensor not_equal(const tensor& x, const tensor& y, bool incompatible_shape_error=true) {
 
     // Define Op
@@ -22889,7 +31892,18 @@ inline tensor not_equal(const tensor& x, const tensor& y, bool incompatible_shap
     return tensor(res[0]);
 }
 
+/* # NthElement
+# Inputs:
+*    input
+*    n
 
+# Attributes:
+*    reverse
+
+# Outputs:
+*    values
+
+*/
 inline tensor nth_element(const tensor& input, const tensor& n, bool reverse=false) {
 
     // Define Op
@@ -22917,7 +31931,21 @@ inline tensor nth_element(const tensor& input, const tensor& n, bool reverse=fal
     return tensor(res[0]);
 }
 
+/* # OneHot
+# Inputs:
+*    indices
+*    depth
+*    on_value
+*    off_value
 
+# Attributes:
+*    axis
+*    TI
+
+# Outputs:
+*    output
+
+*/
 inline tensor one_hot(const tensor& indices, const tensor& depth, const tensor& on_value, const tensor& off_value, int64_t axis=-1, datatype TI=static_cast<datatype>(9)) {
 
     // Define Op
@@ -22954,7 +31982,20 @@ inline tensor one_hot(const tensor& indices, const tensor& depth, const tensor& 
     return tensor(res[0]);
 }
 
+/* # OneShotIterator
+# Inputs:
+*    
+# Attributes:
+*    dataset_factory
+*    output_types
+*    output_shapes
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor one_shot_iterator(int64_t dataset_factory, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -22986,7 +32027,16 @@ inline tensor one_shot_iterator(int64_t dataset_factory, const std::vector<datat
     return tensor(res[0]);
 }
 
+/* # OnesLike
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor ones_like(const tensor& x) {
 
     // Define Op
@@ -23010,7 +32060,20 @@ inline tensor ones_like(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # OptimizeDataset
+# Inputs:
+*    input_dataset
+*    optimizations
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    optimization_configs
+
+# Outputs:
+*    handle
+
+*/
 inline tensor optimize_dataset(const tensor& input_dataset, const tensor& optimizations, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::vector< std::string>& optimization_configs) {
 
     // Define Op
@@ -23051,7 +32114,22 @@ inline tensor optimize_dataset(const tensor& input_dataset, const tensor& optimi
     return tensor(res[0]);
 }
 
+/* # OptimizeDatasetV2
+# Inputs:
+*    input_dataset
+*    optimizations_enabled
+*    optimizations_disabled
+*    optimizations_default
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    optimization_configs
+
+# Outputs:
+*    handle
+
+*/
 inline tensor optimize_dataset_v2(const tensor& input_dataset, const tensor& optimizations_enabled, const tensor& optimizations_disabled, const tensor& optimizations_default, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::vector< std::string>& optimization_configs) {
 
     // Define Op
@@ -23100,7 +32178,17 @@ inline tensor optimize_dataset_v2(const tensor& input_dataset, const tensor& opt
     return tensor(res[0]);
 }
 
+/* # OptionalFromValue
+# Inputs:
+*    components
 
+# Attributes:
+*    Toutput_types
+
+# Outputs:
+*    optional
+
+*/
 inline tensor optional_from_value(const std::vector<tensor>&components, const std::vector<datatype>& Toutput_types) {
 
     // Define Op
@@ -23126,7 +32214,18 @@ inline tensor optional_from_value(const std::vector<tensor>&components, const st
     return tensor(res[0]);
 }
 
+/* # OptionalGetValue
+# Inputs:
+*    optional
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    components
+
+*/
 inline tensor optional_get_value(const tensor& optional, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -23158,7 +32257,16 @@ inline tensor optional_get_value(const tensor& optional, const std::vector<datat
     return tensor(res[0]);
 }
 
+/* # OptionalHasValue
+# Inputs:
+*    optional
 
+# Attributes:
+*    
+# Outputs:
+*    has_value
+
+*/
 inline tensor optional_has_value(const tensor& optional) {
 
     // Define Op
@@ -23182,7 +32290,15 @@ inline tensor optional_has_value(const tensor& optional) {
     return tensor(res[0]);
 }
 
+/* # OptionalNone
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    optional
 
+*/
 inline tensor optional_none() {
 
     // Define Op
@@ -23203,7 +32319,20 @@ inline tensor optional_none() {
     return tensor(res[0]);
 }
 
+/* # OptionsDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    serialized_options
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor options_dataset(const tensor& input_dataset, const std::string& serialized_options, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -23237,7 +32366,19 @@ inline tensor options_dataset(const tensor& input_dataset, const std::string& se
     return tensor(res[0]);
 }
 
+/* # OrderedMapClear
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    
+*/
 inline void ordered_map_clear(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23261,7 +32402,20 @@ inline void ordered_map_clear(const std::vector<datatype>& dtypes, int64_t capac
     status_check(context::get_status());
 }
 
+/* # OrderedMapIncompleteSize
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    size
+
+*/
 inline tensor ordered_map_incomplete_size(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23286,7 +32440,22 @@ inline tensor ordered_map_incomplete_size(const std::vector<datatype>& dtypes, i
     return tensor(res[0]);
 }
 
+/* # OrderedMapPeek
+# Inputs:
+*    key
+*    indices
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    values
+
+*/
 inline tensor ordered_map_peek(const tensor& key, const tensor& indices, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23318,7 +32487,20 @@ inline tensor ordered_map_peek(const tensor& key, const tensor& indices, const s
     return tensor(res[0]);
 }
 
+/* # OrderedMapSize
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    size
+
+*/
 inline tensor ordered_map_size(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23343,7 +32525,23 @@ inline tensor ordered_map_size(const std::vector<datatype>& dtypes, int64_t capa
     return tensor(res[0]);
 }
 
+/* # OrderedMapStage
+# Inputs:
+*    key
+*    indices
+*    values
 
+# Attributes:
+*    dtypes
+*    fake_dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    
+*/
 inline void ordered_map_stage(const tensor& key, const tensor& indices, const std::vector<tensor>&values, const std::vector<datatype>& dtypes, const std::vector<datatype>& fake_dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23381,7 +32579,22 @@ inline void ordered_map_stage(const tensor& key, const tensor& indices, const st
     status_check(context::get_status());
 }
 
+/* # OrderedMapUnstage
+# Inputs:
+*    key
+*    indices
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    values
+
+*/
 inline tensor ordered_map_unstage(const tensor& key, const tensor& indices, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23413,7 +32626,22 @@ inline tensor ordered_map_unstage(const tensor& key, const tensor& indices, cons
     return tensor(res[0]);
 }
 
+/* # OrderedMapUnstageNoKey
+# Inputs:
+*    indices
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    key
+*    values
+
+*/
 inline std::vector<tensor> ordered_map_unstage_no_key(const tensor& indices, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23441,7 +32669,18 @@ inline std::vector<tensor> ordered_map_unstage_no_key(const tensor& indices, con
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # OutfeedDequeue
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
+*    device_ordinal
 
+# Outputs:
+*    output
+
+*/
 inline tensor outfeed_dequeue(datatype dtype, const std::vector<int64_t>& shape, int64_t device_ordinal=-1) {
 
     // Define Op
@@ -23467,7 +32706,18 @@ inline tensor outfeed_dequeue(datatype dtype, const std::vector<int64_t>& shape,
     return tensor(res[0]);
 }
 
+/* # OutfeedDequeueTuple
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    shapes
+*    device_ordinal
 
+# Outputs:
+*    outputs
+
+*/
 inline tensor outfeed_dequeue_tuple(const std::vector<datatype>& dtypes, const std::vector< std::vector<int64_t>>& shapes, int64_t device_ordinal=-1) {
 
     // Define Op
@@ -23497,7 +32747,18 @@ inline tensor outfeed_dequeue_tuple(const std::vector<datatype>& dtypes, const s
     return tensor(res[0]);
 }
 
+/* # OutfeedDequeueTupleV2
+# Inputs:
+*    device_ordinal
 
+# Attributes:
+*    dtypes
+*    shapes
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor outfeed_dequeue_tuple_v2(const tensor& device_ordinal, const std::vector<datatype>& dtypes, const std::vector< std::vector<int64_t>>& shapes) {
 
     // Define Op
@@ -23529,7 +32790,18 @@ inline tensor outfeed_dequeue_tuple_v2(const tensor& device_ordinal, const std::
     return tensor(res[0]);
 }
 
+/* # OutfeedDequeueV2
+# Inputs:
+*    device_ordinal
 
+# Attributes:
+*    dtype
+*    shape
+
+# Outputs:
+*    output
+
+*/
 inline tensor outfeed_dequeue_v2(const tensor& device_ordinal, datatype dtype, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -23557,7 +32829,16 @@ inline tensor outfeed_dequeue_v2(const tensor& device_ordinal, datatype dtype, c
     return tensor(res[0]);
 }
 
+/* # OutfeedEnqueue
+# Inputs:
+*    input
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    
+*/
 inline void outfeed_enqueue(const tensor& input, datatype dtype) {
 
     // Define Op
@@ -23580,7 +32861,16 @@ inline void outfeed_enqueue(const tensor& input, datatype dtype) {
     status_check(context::get_status());
 }
 
+/* # OutfeedEnqueueTuple
+# Inputs:
+*    inputs
 
+# Attributes:
+*    dtypes
+
+# Outputs:
+*    
+*/
 inline void outfeed_enqueue_tuple(const std::vector<tensor>&inputs, const std::vector<datatype>& dtypes) {
 
     // Define Op
@@ -23605,7 +32895,18 @@ inline void outfeed_enqueue_tuple(const std::vector<tensor>&inputs, const std::v
     status_check(context::get_status());
 }
 
+/* # Pack
+# Inputs:
+*    values
 
+# Attributes:
+*    N
+*    axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor pack(const std::vector<tensor>&values, int64_t axis=0) {
 
     // Define Op
@@ -23632,7 +32933,18 @@ inline tensor pack(const std::vector<tensor>&values, int64_t axis=0) {
     return tensor(res[0]);
 }
 
+/* # Pad
+# Inputs:
+*    input
+*    paddings
 
+# Attributes:
+*    Tpaddings
+
+# Outputs:
+*    output
+
+*/
 inline tensor pad(const tensor& input, const tensor& paddings, datatype Tpaddings=static_cast<datatype>(3)) {
 
     // Define Op
@@ -23660,7 +32972,19 @@ inline tensor pad(const tensor& input, const tensor& paddings, datatype Tpadding
     return tensor(res[0]);
 }
 
+/* # PadV2
+# Inputs:
+*    input
+*    paddings
+*    constant_values
 
+# Attributes:
+*    Tpaddings
+
+# Outputs:
+*    output
+
+*/
 inline tensor pad_v2(const tensor& input, const tensor& paddings, const tensor& constant_values, datatype Tpaddings=static_cast<datatype>(3)) {
 
     // Define Op
@@ -23692,7 +33016,23 @@ inline tensor pad_v2(const tensor& input, const tensor& paddings, const tensor& 
     return tensor(res[0]);
 }
 
+/* # PaddedBatchDataset
+# Inputs:
+*    input_dataset
+*    batch_size
+*    padded_shapes
+*    padding_values
 
+# Attributes:
+*    Toutput_types
+*    output_shapes
+*    N
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor padded_batch_dataset(const tensor& input_dataset, const tensor& batch_size, const std::vector<tensor>&padded_shapes, const std::vector<tensor>&padding_values, const std::vector<datatype>& Toutput_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -23742,7 +33082,25 @@ inline tensor padded_batch_dataset(const tensor& input_dataset, const tensor& ba
     return tensor(res[0]);
 }
 
+/* # PaddedBatchDatasetV2
+# Inputs:
+*    input_dataset
+*    batch_size
+*    padded_shapes
+*    padding_values
+*    drop_remainder
 
+# Attributes:
+*    Toutput_types
+*    output_shapes
+*    N
+*    parallel_copy
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor padded_batch_dataset_v2(const tensor& input_dataset, const tensor& batch_size, const std::vector<tensor>&padded_shapes, const std::vector<tensor>&padding_values, const tensor& drop_remainder, const std::vector<datatype>& Toutput_types, const std::vector< std::vector<int64_t>>& output_shapes, bool parallel_copy=false, const std::string& metadata="") {
 
     // Define Op
@@ -23797,7 +33155,20 @@ inline tensor padded_batch_dataset_v2(const tensor& input_dataset, const tensor&
     return tensor(res[0]);
 }
 
+/* # PaddingFIFOQueue
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor padding_f_i_f_o_queue(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23829,7 +33200,20 @@ inline tensor padding_f_i_f_o_queue(const std::vector<datatype>& component_types
     return tensor(res[0]);
 }
 
+/* # PaddingFIFOQueueV2
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor padding_f_i_f_o_queue_v2(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -23861,7 +33245,24 @@ inline tensor padding_f_i_f_o_queue_v2(const std::vector<datatype>& component_ty
     return tensor(res[0]);
 }
 
+/* # ParallelBatchDataset
+# Inputs:
+*    input_dataset
+*    batch_size
+*    num_parallel_calls
+*    drop_remainder
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    parallel_copy
+*    deterministic
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_batch_dataset(const tensor& input_dataset, const tensor& batch_size, const tensor& num_parallel_calls, const tensor& drop_remainder, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool parallel_copy=false, const std::string& deterministic="default", const std::string& metadata="") {
 
     // Define Op
@@ -23908,7 +33309,18 @@ inline tensor parallel_batch_dataset(const tensor& input_dataset, const tensor& 
     return tensor(res[0]);
 }
 
+/* # ParallelConcat
+# Inputs:
+*    values
 
+# Attributes:
+*    N
+*    shape
+
+# Outputs:
+*    output
+
+*/
 inline tensor parallel_concat(const std::vector<tensor>&values, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -23938,7 +33350,18 @@ inline tensor parallel_concat(const std::vector<tensor>&values, const std::vecto
     return tensor(res[0]);
 }
 
+/* # ParallelDynamicStitch
+# Inputs:
+*    indices
+*    data
 
+# Attributes:
+*    N
+
+# Outputs:
+*    merged
+
+*/
 inline tensor parallel_dynamic_stitch(const std::vector<tensor>&indices, const std::vector<tensor>&data) {
 
     // Define Op
@@ -23970,7 +33393,24 @@ inline tensor parallel_dynamic_stitch(const std::vector<tensor>&indices, const s
     return tensor(res[0]);
 }
 
+/* # ParallelFilterDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    num_parallel_calls
 
+# Attributes:
+*    predicate
+*    Targuments
+*    output_types
+*    output_shapes
+*    deterministic
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_filter_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& num_parallel_calls, int64_t predicate, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& deterministic="default", const std::string& metadata="") {
 
     // Define Op
@@ -24016,7 +33456,27 @@ inline tensor parallel_filter_dataset(const tensor& input_dataset, const std::ve
     return tensor(res[0]);
 }
 
+/* # ParallelInterleaveDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    cycle_length
+*    block_length
+*    sloppy
+*    buffer_output_elements
+*    prefetch_input_elements
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_interleave_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& cycle_length, const tensor& block_length, const tensor& sloppy, const tensor& buffer_output_elements, const tensor& prefetch_input_elements, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -24077,7 +33537,26 @@ inline tensor parallel_interleave_dataset(const tensor& input_dataset, const std
     return tensor(res[0]);
 }
 
+/* # ParallelInterleaveDatasetV2
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    cycle_length
+*    block_length
+*    num_parallel_calls
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    sloppy
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_interleave_dataset_v2(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& cycle_length, const tensor& block_length, const tensor& num_parallel_calls, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool sloppy=false, const std::string& metadata="") {
 
     // Define Op
@@ -24131,7 +33610,26 @@ inline tensor parallel_interleave_dataset_v2(const tensor& input_dataset, const 
     return tensor(res[0]);
 }
 
+/* # ParallelInterleaveDatasetV3
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    cycle_length
+*    block_length
+*    num_parallel_calls
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    deterministic
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_interleave_dataset_v3(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& cycle_length, const tensor& block_length, const tensor& num_parallel_calls, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& deterministic="default", const std::string& metadata="") {
 
     // Define Op
@@ -24185,7 +33683,28 @@ inline tensor parallel_interleave_dataset_v3(const tensor& input_dataset, const 
     return tensor(res[0]);
 }
 
+/* # ParallelInterleaveDatasetV4
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    cycle_length
+*    block_length
+*    buffer_output_elements
+*    prefetch_input_elements
+*    num_parallel_calls
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    deterministic
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_interleave_dataset_v4(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& cycle_length, const tensor& block_length, const tensor& buffer_output_elements, const tensor& prefetch_input_elements, const tensor& num_parallel_calls, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& deterministic="default", const std::string& metadata="") {
 
     // Define Op
@@ -24247,7 +33766,26 @@ inline tensor parallel_interleave_dataset_v4(const tensor& input_dataset, const 
     return tensor(res[0]);
 }
 
+/* # ParallelMapDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    num_parallel_calls
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    use_inter_op_parallelism
+*    sloppy
+*    preserve_cardinality
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& num_parallel_calls, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, bool sloppy=false, bool preserve_cardinality=false, const std::string& metadata="") {
 
     // Define Op
@@ -24295,7 +33833,26 @@ inline tensor parallel_map_dataset(const tensor& input_dataset, const std::vecto
     return tensor(res[0]);
 }
 
+/* # ParallelMapDatasetV2
+# Inputs:
+*    input_dataset
+*    other_arguments
+*    num_parallel_calls
 
+# Attributes:
+*    f
+*    Targuments
+*    output_types
+*    output_shapes
+*    use_inter_op_parallelism
+*    deterministic
+*    preserve_cardinality
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parallel_map_dataset_v2(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& num_parallel_calls, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, const std::string& deterministic="default", bool preserve_cardinality=false, const std::string& metadata="") {
 
     // Define Op
@@ -24343,7 +33900,23 @@ inline tensor parallel_map_dataset_v2(const tensor& input_dataset, const std::ve
     return tensor(res[0]);
 }
 
+/* # ParameterizedTruncatedNormal
+# Inputs:
+*    shape
+*    means
+*    stdevs
+*    minvals
+*    maxvals
 
+# Attributes:
+*    dtype
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor parameterized_truncated_normal(const tensor& shape, const tensor& means, const tensor& stdevs, const tensor& minvals, const tensor& maxvals, datatype dtype, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -24385,7 +33958,28 @@ inline tensor parameterized_truncated_normal(const tensor& shape, const tensor& 
     return tensor(res[0]);
 }
 
+/* # ParseExample
+# Inputs:
+*    serialized
+*    names
+*    sparse_keys
+*    dense_keys
+*    dense_defaults
 
+# Attributes:
+*    Nsparse
+*    Ndense
+*    sparse_types
+*    Tdense
+*    dense_shapes
+
+# Outputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shapes
+*    dense_values
+
+*/
 inline std::vector<tensor> parse_example(const tensor& serialized, const tensor& names, const std::vector<tensor>&sparse_keys, const std::vector<tensor>&dense_keys, const std::vector<tensor>&dense_defaults, const std::vector<datatype>& sparse_types, const std::vector<datatype>& Tdense, const std::vector< std::vector<int64_t>>& dense_shapes) {
 
     // Define Op
@@ -24442,7 +34036,29 @@ inline std::vector<tensor> parse_example(const tensor& serialized, const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # ParseExampleDataset
+# Inputs:
+*    input_dataset
+*    num_parallel_calls
+*    dense_defaults
 
+# Attributes:
+*    sparse_keys
+*    dense_keys
+*    sparse_types
+*    Tdense
+*    dense_shapes
+*    output_types
+*    output_shapes
+*    ragged_keys
+*    ragged_value_types
+*    ragged_split_types
+*    sloppy
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parse_example_dataset(const tensor& input_dataset, const tensor& num_parallel_calls, const std::vector<tensor>&dense_defaults, const std::vector< std::string>& sparse_keys, const std::vector< std::string>& dense_keys, const std::vector<datatype>& sparse_types, const std::vector<datatype>& Tdense, const std::vector< std::vector<int64_t>>& dense_shapes, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::vector< std::string>& ragged_keys, const std::vector<datatype>& ragged_value_types, const std::vector<datatype>& ragged_split_types, bool sloppy=false) {
 
     // Define Op
@@ -24512,7 +34128,29 @@ inline tensor parse_example_dataset(const tensor& input_dataset, const tensor& n
     return tensor(res[0]);
 }
 
+/* # ParseExampleDatasetV2
+# Inputs:
+*    input_dataset
+*    num_parallel_calls
+*    dense_defaults
 
+# Attributes:
+*    sparse_keys
+*    dense_keys
+*    sparse_types
+*    Tdense
+*    dense_shapes
+*    output_types
+*    output_shapes
+*    ragged_keys
+*    ragged_value_types
+*    ragged_split_types
+*    deterministic
+
+# Outputs:
+*    handle
+
+*/
 inline tensor parse_example_dataset_v2(const tensor& input_dataset, const tensor& num_parallel_calls, const std::vector<tensor>&dense_defaults, const std::vector< std::string>& sparse_keys, const std::vector< std::string>& dense_keys, const std::vector<datatype>& sparse_types, const std::vector<datatype>& Tdense, const std::vector< std::vector<int64_t>>& dense_shapes, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::vector< std::string>& ragged_keys, const std::vector<datatype>& ragged_value_types, const std::vector<datatype>& ragged_split_types, const std::string& deterministic="default") {
 
     // Define Op
@@ -24582,7 +34220,32 @@ inline tensor parse_example_dataset_v2(const tensor& input_dataset, const tensor
     return tensor(res[0]);
 }
 
+/* # ParseExampleV2
+# Inputs:
+*    serialized
+*    names
+*    sparse_keys
+*    dense_keys
+*    ragged_keys
+*    dense_defaults
 
+# Attributes:
+*    Tdense
+*    num_sparse
+*    sparse_types
+*    ragged_value_types
+*    ragged_split_types
+*    dense_shapes
+
+# Outputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shapes
+*    dense_values
+*    ragged_values
+*    ragged_row_splits
+
+*/
 inline std::vector<tensor> parse_example_v2(const tensor& serialized, const tensor& names, const tensor& sparse_keys, const tensor& dense_keys, const tensor& ragged_keys, const std::vector<tensor>&dense_defaults, const std::vector<datatype>& Tdense, int64_t num_sparse, const std::vector<datatype>& sparse_types, const std::vector<datatype>& ragged_value_types, const std::vector<datatype>& ragged_split_types, const std::vector< std::vector<int64_t>>& dense_shapes) {
 
     // Define Op
@@ -24640,7 +34303,41 @@ inline std::vector<tensor> parse_example_v2(const tensor& serialized, const tens
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]), };
 }
 
+/* # ParseSequenceExample
+# Inputs:
+*    serialized
+*    debug_name
+*    context_dense_defaults
 
+# Attributes:
+*    feature_list_dense_missing_assumed_empty
+*    context_sparse_keys
+*    context_dense_keys
+*    feature_list_sparse_keys
+*    feature_list_dense_keys
+*    context_sparse_types
+*    Tcontext_dense
+*    feature_list_dense_types
+*    context_dense_shapes
+*    feature_list_sparse_types
+*    feature_list_dense_shapes
+*    Ncontext_sparse
+*    Ncontext_dense
+*    Nfeature_list_sparse
+*    Nfeature_list_dense
+
+# Outputs:
+*    context_sparse_indices
+*    context_sparse_values
+*    context_sparse_shapes
+*    context_dense_values
+*    feature_list_sparse_indices
+*    feature_list_sparse_values
+*    feature_list_sparse_shapes
+*    feature_list_dense_values
+*    feature_list_dense_lengths
+
+*/
 inline std::vector<tensor> parse_sequence_example(const tensor& serialized, const tensor& debug_name, const std::vector<tensor>&context_dense_defaults, const std::vector< std::string>& feature_list_dense_missing_assumed_empty, const std::vector< std::string>& context_sparse_keys, const std::vector< std::string>& context_dense_keys, const std::vector< std::string>& feature_list_sparse_keys, const std::vector< std::string>& feature_list_dense_keys, const std::vector<datatype>& context_sparse_types, const std::vector<datatype>& Tcontext_dense, const std::vector<datatype>& feature_list_dense_types, const std::vector< std::vector<int64_t>>& context_dense_shapes, const std::vector<datatype>& feature_list_sparse_types, const std::vector< std::vector<int64_t>>& feature_list_dense_shapes, int64_t Ncontext_sparse=0, int64_t Ncontext_dense=0, int64_t Nfeature_list_sparse=0, int64_t Nfeature_list_dense=0) {
 
     // Define Op
@@ -24722,7 +34419,51 @@ inline std::vector<tensor> parse_sequence_example(const tensor& serialized, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]),tensor(res[7]),tensor(res[8]), };
 }
 
+/* # ParseSequenceExampleV2
+# Inputs:
+*    serialized
+*    debug_name
+*    context_sparse_keys
+*    context_dense_keys
+*    context_ragged_keys
+*    feature_list_sparse_keys
+*    feature_list_dense_keys
+*    feature_list_ragged_keys
+*    feature_list_dense_missing_assumed_empty
+*    context_dense_defaults
 
+# Attributes:
+*    Tcontext_dense
+*    context_sparse_types
+*    context_ragged_value_types
+*    context_ragged_split_types
+*    context_dense_shapes
+*    feature_list_dense_types
+*    feature_list_sparse_types
+*    feature_list_ragged_value_types
+*    feature_list_ragged_split_types
+*    feature_list_dense_shapes
+*    Ncontext_sparse
+*    Nfeature_list_sparse
+*    Nfeature_list_dense
+
+# Outputs:
+*    context_sparse_indices
+*    context_sparse_values
+*    context_sparse_shapes
+*    context_dense_values
+*    context_ragged_values
+*    context_ragged_row_splits
+*    feature_list_sparse_indices
+*    feature_list_sparse_values
+*    feature_list_sparse_shapes
+*    feature_list_dense_values
+*    feature_list_dense_lengths
+*    feature_list_ragged_values
+*    feature_list_ragged_outer_splits
+*    feature_list_ragged_inner_splits
+
+*/
 inline std::vector<tensor> parse_sequence_example_v2(const tensor& serialized, const tensor& debug_name, const tensor& context_sparse_keys, const tensor& context_dense_keys, const tensor& context_ragged_keys, const tensor& feature_list_sparse_keys, const tensor& feature_list_dense_keys, const tensor& feature_list_ragged_keys, const tensor& feature_list_dense_missing_assumed_empty, const std::vector<tensor>&context_dense_defaults, const std::vector<datatype>& Tcontext_dense, const std::vector<datatype>& context_sparse_types, const std::vector<datatype>& context_ragged_value_types, const std::vector<datatype>& context_ragged_split_types, const std::vector< std::vector<int64_t>>& context_dense_shapes, const std::vector<datatype>& feature_list_dense_types, const std::vector<datatype>& feature_list_sparse_types, const std::vector<datatype>& feature_list_ragged_value_types, const std::vector<datatype>& feature_list_ragged_split_types, const std::vector< std::vector<int64_t>>& feature_list_dense_shapes, int64_t Ncontext_sparse=0, int64_t Nfeature_list_sparse=0, int64_t Nfeature_list_dense=0) {
 
     // Define Op
@@ -24810,7 +34551,26 @@ inline std::vector<tensor> parse_sequence_example_v2(const tensor& serialized, c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]),tensor(res[7]),tensor(res[8]),tensor(res[9]),tensor(res[10]),tensor(res[11]),tensor(res[12]),tensor(res[13]), };
 }
 
+/* # ParseSingleExample
+# Inputs:
+*    serialized
+*    dense_defaults
 
+# Attributes:
+*    num_sparse
+*    sparse_keys
+*    dense_keys
+*    sparse_types
+*    Tdense
+*    dense_shapes
+
+# Outputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shapes
+*    dense_values
+
+*/
 inline std::vector<tensor> parse_single_example(const tensor& serialized, const std::vector<tensor>&dense_defaults, int64_t num_sparse, const std::vector< std::string>& sparse_keys, const std::vector< std::string>& dense_keys, const std::vector<datatype>& sparse_types, const std::vector<datatype>& Tdense, const std::vector< std::vector<int64_t>>& dense_shapes) {
 
     // Define Op
@@ -24860,7 +34620,40 @@ inline std::vector<tensor> parse_single_example(const tensor& serialized, const 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # ParseSingleSequenceExample
+# Inputs:
+*    serialized
+*    feature_list_dense_missing_assumed_empty
+*    context_sparse_keys
+*    context_dense_keys
+*    feature_list_sparse_keys
+*    feature_list_dense_keys
+*    context_dense_defaults
+*    debug_name
 
+# Attributes:
+*    context_sparse_types
+*    Tcontext_dense
+*    feature_list_dense_types
+*    context_dense_shapes
+*    feature_list_sparse_types
+*    feature_list_dense_shapes
+*    Ncontext_sparse
+*    Ncontext_dense
+*    Nfeature_list_sparse
+*    Nfeature_list_dense
+
+# Outputs:
+*    context_sparse_indices
+*    context_sparse_values
+*    context_sparse_shapes
+*    context_dense_values
+*    feature_list_sparse_indices
+*    feature_list_sparse_values
+*    feature_list_sparse_shapes
+*    feature_list_dense_values
+
+*/
 inline std::vector<tensor> parse_single_sequence_example(const tensor& serialized, const tensor& feature_list_dense_missing_assumed_empty, const std::vector<tensor>&context_sparse_keys, const std::vector<tensor>&context_dense_keys, const std::vector<tensor>&feature_list_sparse_keys, const std::vector<tensor>&feature_list_dense_keys, const std::vector<tensor>&context_dense_defaults, const tensor& debug_name, const std::vector<datatype>& context_sparse_types, const std::vector<datatype>& Tcontext_dense, const std::vector<datatype>& feature_list_dense_types, const std::vector< std::vector<int64_t>>& context_dense_shapes, const std::vector<datatype>& feature_list_sparse_types, const std::vector< std::vector<int64_t>>& feature_list_dense_shapes) {
 
     // Define Op
@@ -24945,7 +34738,17 @@ inline std::vector<tensor> parse_single_sequence_example(const tensor& serialize
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]),tensor(res[7]), };
 }
 
+/* # ParseTensor
+# Inputs:
+*    serialized
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor parse_tensor(const tensor& serialized, datatype out_type) {
 
     // Define Op
@@ -24969,7 +34772,22 @@ inline tensor parse_tensor(const tensor& serialized, datatype out_type) {
     return tensor(res[0]);
 }
 
+/* # PartitionedCall
+# Inputs:
+*    args
 
+# Attributes:
+*    Tin
+*    Tout
+*    f
+*    config
+*    config_proto
+*    executor_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor partitioned_call(const std::vector<tensor>&args, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, int64_t f, const std::string& config="", const std::string& config_proto="", const std::string& executor_type="") {
 
     // Define Op
@@ -25000,7 +34818,17 @@ inline tensor partitioned_call(const std::vector<tensor>&args, const std::vector
     return tensor(res[0]);
 }
 
+/* # Placeholder
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
 
+# Outputs:
+*    output
+
+*/
 inline tensor placeholder(datatype dtype, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -25025,7 +34853,17 @@ inline tensor placeholder(datatype dtype, const std::vector<int64_t>& shape) {
     return tensor(res[0]);
 }
 
+/* # PlaceholderV2
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
 
+# Outputs:
+*    output
+
+*/
 inline tensor placeholder_v2(datatype dtype, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -25050,7 +34888,18 @@ inline tensor placeholder_v2(datatype dtype, const std::vector<int64_t>& shape) 
     return tensor(res[0]);
 }
 
+/* # PlaceholderWithDefault
+# Inputs:
+*    input
 
+# Attributes:
+*    dtype
+*    shape
+
+# Outputs:
+*    output
+
+*/
 inline tensor placeholder_with_default(const tensor& input, datatype dtype, const std::vector<int64_t>& shape) {
 
     // Define Op
@@ -25078,7 +34927,17 @@ inline tensor placeholder_with_default(const tensor& input, datatype dtype, cons
     return tensor(res[0]);
 }
 
+/* # Polygamma
+# Inputs:
+*    a
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor polygamma(const tensor& a, const tensor& x) {
 
     // Define Op
@@ -25106,7 +34965,16 @@ inline tensor polygamma(const tensor& a, const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # PopulationCount
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor population_count(const tensor& x) {
 
     // Define Op
@@ -25130,7 +34998,17 @@ inline tensor population_count(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Pow
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor pow(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -25158,7 +35036,23 @@ inline tensor pow(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # PrefetchDataset
+# Inputs:
+*    input_dataset
+*    buffer_size
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    slack_period
+*    legacy_autotune
+*    buffer_size_min
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor prefetch_dataset(const tensor& input_dataset, const tensor& buffer_size, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t slack_period=0, bool legacy_autotune=true, int64_t buffer_size_min=0, const std::string& metadata="") {
 
     // Define Op
@@ -25198,7 +35092,19 @@ inline tensor prefetch_dataset(const tensor& input_dataset, const tensor& buffer
     return tensor(res[0]);
 }
 
+/* # Prelinearize
+# Inputs:
+*    input
 
+# Attributes:
+*    dtype
+*    shape
+*    layout
+
+# Outputs:
+*    output
+
+*/
 inline tensor prelinearize(const tensor& input, datatype dtype, const std::vector<int64_t>& shape, const std::vector<int64_t>& layout) {
 
     // Define Op
@@ -25227,7 +35133,19 @@ inline tensor prelinearize(const tensor& input, datatype dtype, const std::vecto
     return tensor(res[0]);
 }
 
+/* # PrelinearizeTuple
+# Inputs:
+*    inputs
 
+# Attributes:
+*    dtypes
+*    shapes
+*    layouts
+
+# Outputs:
+*    output
+
+*/
 inline tensor prelinearize_tuple(const std::vector<tensor>&inputs, const std::vector<datatype>& dtypes, const std::vector< std::vector<int64_t>>& shapes, const std::vector<int64_t>& layouts) {
 
     // Define Op
@@ -25262,7 +35180,17 @@ inline tensor prelinearize_tuple(const std::vector<tensor>&inputs, const std::ve
     return tensor(res[0]);
 }
 
+/* # PreventGradient
+# Inputs:
+*    input
 
+# Attributes:
+*    message
+
+# Outputs:
+*    output
+
+*/
 inline tensor prevent_gradient(const tensor& input, const std::string& message="") {
 
     // Define Op
@@ -25286,7 +35214,21 @@ inline tensor prevent_gradient(const tensor& input, const std::string& message="
     return tensor(res[0]);
 }
 
+/* # Print
+# Inputs:
+*    input
+*    data
 
+# Attributes:
+*    U
+*    message
+*    first_n
+*    summarize
+
+# Outputs:
+*    output
+
+*/
 inline tensor print(const tensor& input, const std::vector<tensor>&data, const std::vector<datatype>& U, const std::string& message="", int64_t first_n=-1, int64_t summarize=3) {
 
     // Define Op
@@ -25319,7 +35261,17 @@ inline tensor print(const tensor& input, const std::vector<tensor>&data, const s
     return tensor(res[0]);
 }
 
+/* # PrintV2
+# Inputs:
+*    input
 
+# Attributes:
+*    output_stream
+*    end
+
+# Outputs:
+*    
+*/
 inline void print_v2(const tensor& input, const std::string& output_stream="stderr", const std::string& end="\n") {
 
     // Define Op
@@ -25343,7 +35295,20 @@ inline void print_v2(const tensor& input, const std::string& output_stream="stde
     status_check(context::get_status());
 }
 
+/* # PriorityQueue
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor priority_queue(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -25375,7 +35340,20 @@ inline tensor priority_queue(const std::vector<datatype>& component_types, const
     return tensor(res[0]);
 }
 
+/* # PriorityQueueV2
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor priority_queue_v2(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -25407,7 +35385,19 @@ inline tensor priority_queue_v2(const std::vector<datatype>& component_types, co
     return tensor(res[0]);
 }
 
+/* # PrivateThreadPoolDataset
+# Inputs:
+*    input_dataset
+*    num_threads
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor private_thread_pool_dataset(const tensor& input_dataset, const tensor& num_threads, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -25443,7 +35433,19 @@ inline tensor private_thread_pool_dataset(const tensor& input_dataset, const ten
     return tensor(res[0]);
 }
 
+/* # Prod
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor prod(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -25472,7 +35474,19 @@ inline tensor prod(const tensor& input, const tensor& reduction_indices, bool ke
     return tensor(res[0]);
 }
 
+/* # PyFunc
+# Inputs:
+*    input
 
+# Attributes:
+*    token
+*    Tin
+*    Tout
+
+# Outputs:
+*    output
+
+*/
 inline tensor py_func(const std::vector<tensor>&input, const std::string& token, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout) {
 
     // Define Op
@@ -25500,7 +35514,19 @@ inline tensor py_func(const std::vector<tensor>&input, const std::string& token,
     return tensor(res[0]);
 }
 
+/* # PyFuncStateless
+# Inputs:
+*    input
 
+# Attributes:
+*    token
+*    Tin
+*    Tout
+
+# Outputs:
+*    output
+
+*/
 inline tensor py_func_stateless(const std::vector<tensor>&input, const std::string& token, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout) {
 
     // Define Op
@@ -25528,7 +35554,18 @@ inline tensor py_func_stateless(const std::vector<tensor>&input, const std::stri
     return tensor(res[0]);
 }
 
+/* # Qr
+# Inputs:
+*    input
 
+# Attributes:
+*    full_matrices
+
+# Outputs:
+*    q
+*    r
+
+*/
 inline std::vector<tensor> qr(const tensor& input, bool full_matrices=false) {
 
     // Define Op
@@ -25552,7 +35589,21 @@ inline std::vector<tensor> qr(const tensor& input, bool full_matrices=false) {
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # QuantizeAndDequantize
+# Inputs:
+*    input
 
+# Attributes:
+*    signed_input
+*    num_bits
+*    range_given
+*    input_min
+*    input_max
+
+# Outputs:
+*    output
+
+*/
 inline tensor quantize_and_dequantize(const tensor& input, bool signed_input=true, int64_t num_bits=8, bool range_given=false, float input_min=0.0000e+00, float input_max=0.0000e+00) {
 
     // Define Op
@@ -25580,7 +35631,24 @@ inline tensor quantize_and_dequantize(const tensor& input, bool signed_input=tru
     return tensor(res[0]);
 }
 
+/* # QuantizeAndDequantizeV2
+# Inputs:
+*    input
+*    input_min
+*    input_max
 
+# Attributes:
+*    signed_input
+*    num_bits
+*    range_given
+*    round_mode
+*    narrow_range
+*    axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor quantize_and_dequantize_v2(const tensor& input, const tensor& input_min, const tensor& input_max, bool signed_input=true, int64_t num_bits=8, bool range_given=false, const std::string& round_mode="HALF_TO_EVEN", bool narrow_range=false, int64_t axis=-1) {
 
     // Define Op
@@ -25617,7 +35685,23 @@ inline tensor quantize_and_dequantize_v2(const tensor& input, const tensor& inpu
     return tensor(res[0]);
 }
 
+/* # QuantizeAndDequantizeV3
+# Inputs:
+*    input
+*    input_min
+*    input_max
+*    num_bits
 
+# Attributes:
+*    signed_input
+*    range_given
+*    narrow_range
+*    axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor quantize_and_dequantize_v3(const tensor& input, const tensor& input_min, const tensor& input_max, const tensor& num_bits, bool signed_input=true, bool range_given=true, bool narrow_range=false, int64_t axis=-1) {
 
     // Define Op
@@ -25656,7 +35740,24 @@ inline tensor quantize_and_dequantize_v3(const tensor& input, const tensor& inpu
     return tensor(res[0]);
 }
 
+/* # QuantizeAndDequantizeV4
+# Inputs:
+*    input
+*    input_min
+*    input_max
 
+# Attributes:
+*    signed_input
+*    num_bits
+*    range_given
+*    round_mode
+*    narrow_range
+*    axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor quantize_and_dequantize_v4(const tensor& input, const tensor& input_min, const tensor& input_max, bool signed_input=true, int64_t num_bits=8, bool range_given=false, const std::string& round_mode="HALF_TO_EVEN", bool narrow_range=false, int64_t axis=-1) {
 
     // Define Op
@@ -25693,7 +35794,22 @@ inline tensor quantize_and_dequantize_v4(const tensor& input, const tensor& inpu
     return tensor(res[0]);
 }
 
+/* # QuantizeAndDequantizeV4Grad
+# Inputs:
+*    gradients
+*    input
+*    input_min
+*    input_max
 
+# Attributes:
+*    axis
+
+# Outputs:
+*    input_backprop
+*    input_min_backprop
+*    input_max_backprop
+
+*/
 inline std::vector<tensor> quantize_and_dequantize_v4_grad(const tensor& gradients, const tensor& input, const tensor& input_min, const tensor& input_max, int64_t axis=-1) {
 
     // Define Op
@@ -25729,7 +35845,22 @@ inline std::vector<tensor> quantize_and_dequantize_v4_grad(const tensor& gradien
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizeDownAndShrinkRange
+# Inputs:
+*    input
+*    input_min
+*    input_max
 
+# Attributes:
+*    Tinput
+*    out_type
+
+# Outputs:
+*    output
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> quantize_down_and_shrink_range(const tensor& input, const tensor& input_min, const tensor& input_max, datatype Tinput, datatype out_type) {
 
     // Define Op
@@ -25762,7 +35893,25 @@ inline std::vector<tensor> quantize_down_and_shrink_range(const tensor& input, c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizeV2
+# Inputs:
+*    input
+*    min_range
+*    max_range
 
+# Attributes:
+*    mode
+*    round_mode
+*    narrow_range
+*    axis
+*    ensure_minimum_range
+
+# Outputs:
+*    output
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> quantize_v2(const tensor& input, const tensor& min_range, const tensor& max_range, const std::string& mode="MIN_COMBINED", const std::string& round_mode="HALF_AWAY_FROM_ZERO", bool narrow_range=false, int64_t axis=-1, float ensure_minimum_range=1.0000e-02) {
 
     // Define Op
@@ -25798,7 +35947,26 @@ inline std::vector<tensor> quantize_v2(const tensor& input, const tensor& min_ra
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedAdd
+# Inputs:
+*    x
+*    y
+*    min_x
+*    max_x
+*    min_y
+*    max_y
 
+# Attributes:
+*    T1
+*    T2
+*    Toutput
+
+# Outputs:
+*    z
+*    min_z
+*    max_z
+
+*/
 inline std::vector<tensor> quantized_add(const tensor& x, const tensor& y, const tensor& min_x, const tensor& max_x, const tensor& min_y, const tensor& max_y, datatype T1, datatype T2, datatype Toutput=static_cast<datatype>(13)) {
 
     // Define Op
@@ -25844,7 +36012,23 @@ inline std::vector<tensor> quantized_add(const tensor& x, const tensor& y, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedAvgPool
+# Inputs:
+*    input
+*    min_input
+*    max_input
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_avg_pool(const tensor& input, const tensor& min_input, const tensor& max_input, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding) {
 
     // Define Op
@@ -25878,7 +36062,36 @@ inline std::vector<tensor> quantized_avg_pool(const tensor& input, const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedBatchNormWithGlobalNormalization
+# Inputs:
+*    t
+*    t_min
+*    t_max
+*    m
+*    m_min
+*    m_max
+*    v
+*    v_min
+*    v_max
+*    beta
+*    beta_min
+*    beta_max
+*    gamma
+*    gamma_min
+*    gamma_max
 
+# Attributes:
+*    Tinput
+*    out_type
+*    variance_epsilon
+*    scale_after_normalization
+
+# Outputs:
+*    result
+*    result_min
+*    result_max
+
+*/
 inline std::vector<tensor> quantized_batch_norm_with_global_normalization(const tensor& t, const tensor& t_min, const tensor& t_max, const tensor& m, const tensor& m_min, const tensor& m_max, const tensor& v, const tensor& v_min, const tensor& v_max, const tensor& beta, const tensor& beta_min, const tensor& beta_max, const tensor& gamma, const tensor& gamma_min, const tensor& gamma_max, datatype Tinput, datatype out_type, float variance_epsilon, bool scale_after_normalization) {
 
     // Define Op
@@ -25961,7 +36174,26 @@ inline std::vector<tensor> quantized_batch_norm_with_global_normalization(const 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedBiasAdd
+# Inputs:
+*    input
+*    bias
+*    min_input
+*    max_input
+*    min_bias
+*    max_bias
 
+# Attributes:
+*    T1
+*    T2
+*    out_type
+
+# Outputs:
+*    output
+*    min_out
+*    max_out
+
+*/
 inline std::vector<tensor> quantized_bias_add(const tensor& input, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_bias, const tensor& max_bias, datatype T1, datatype T2, datatype out_type) {
 
     // Define Op
@@ -26007,7 +36239,22 @@ inline std::vector<tensor> quantized_bias_add(const tensor& input, const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConcat
+# Inputs:
+*    concat_dim
+*    values
+*    input_mins
+*    input_maxes
 
+# Attributes:
+*    N
+
+# Outputs:
+*    output
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> quantized_concat(const tensor& concat_dim, const std::vector<tensor>&values, const std::vector<tensor>&input_mins, const std::vector<tensor>&input_maxes) {
 
     // Define Op
@@ -26049,7 +36296,29 @@ inline std::vector<tensor> quantized_concat(const tensor& concat_dim, const std:
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2D
+# Inputs:
+*    input
+*    filter
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d(const tensor& input, const tensor& filter, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26098,7 +36367,30 @@ inline std::vector<tensor> quantized_conv2_d(const tensor& input, const tensor& 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DAndRelu
+# Inputs:
+*    input
+*    filter
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_and_relu(const tensor& input, const tensor& filter, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26148,7 +36440,32 @@ inline std::vector<tensor> quantized_conv2_d_and_relu(const tensor& input, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DAndReluAndRequantize
+# Inputs:
+*    input
+*    filter
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_and_relu_and_requantize(const tensor& input, const tensor& filter, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -26206,7 +36523,32 @@ inline std::vector<tensor> quantized_conv2_d_and_relu_and_requantize(const tenso
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DAndRequantize
+# Inputs:
+*    input
+*    filter
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_and_requantize(const tensor& input, const tensor& filter, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(11)) {
 
     // Define Op
@@ -26264,7 +36606,29 @@ inline std::vector<tensor> quantized_conv2_d_and_requantize(const tensor& input,
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DPerChannel
+# Inputs:
+*    input
+*    filter
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_per_channel(const tensor& input, const tensor& filter, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26313,7 +36677,31 @@ inline std::vector<tensor> quantized_conv2_d_per_channel(const tensor& input, co
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DWithBias
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_with_bias(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26367,7 +36755,31 @@ inline std::vector<tensor> quantized_conv2_d_with_bias(const tensor& input, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DWithBiasAndRelu
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_with_bias_and_relu(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26421,7 +36833,34 @@ inline std::vector<tensor> quantized_conv2_d_with_bias_and_relu(const tensor& in
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DWithBiasAndReluAndRequantize
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    Tbias
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_with_bias_and_relu_and_requantize(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype Tinput, datatype Tfilter, datatype Tbias, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -26484,7 +36923,34 @@ inline std::vector<tensor> quantized_conv2_d_with_bias_and_relu_and_requantize(c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DWithBiasAndRequantize
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    Tbias
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_with_bias_and_requantize(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype Tinput, datatype Tfilter, datatype Tbias, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(11)) {
 
     // Define Op
@@ -26547,7 +37013,38 @@ inline std::vector<tensor> quantized_conv2_d_with_bias_and_requantize(const tens
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DWithBiasSignedSumAndReluAndRequantize
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    min_freezed_output
+*    max_freezed_output
+*    summand
+*    min_summand
+*    max_summand
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    Tbias
+*    Tsummand
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_with_bias_signed_sum_and_relu_and_requantize(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& min_freezed_output, const tensor& max_freezed_output, const tensor& summand, const tensor& min_summand, const tensor& max_summand, datatype Tinput, datatype Tfilter, datatype Tbias, datatype Tsummand, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -26623,7 +37120,32 @@ inline std::vector<tensor> quantized_conv2_d_with_bias_signed_sum_and_relu_and_r
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DWithBiasSumAndRelu
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    summand
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_with_bias_sum_and_relu(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& summand, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26681,7 +37203,38 @@ inline std::vector<tensor> quantized_conv2_d_with_bias_sum_and_relu(const tensor
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedConv2DWithBiasSumAndReluAndRequantize
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    min_freezed_output
+*    max_freezed_output
+*    summand
+*    min_summand
+*    max_summand
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    Tbias
+*    Tsummand
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_conv2_d_with_bias_sum_and_relu_and_requantize(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& min_freezed_output, const tensor& max_freezed_output, const tensor& summand, const tensor& min_summand, const tensor& max_summand, datatype Tinput, datatype Tfilter, datatype Tbias, datatype Tsummand, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -26757,7 +37310,29 @@ inline std::vector<tensor> quantized_conv2_d_with_bias_sum_and_relu_and_requanti
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedDepthwiseConv2D
+# Inputs:
+*    input
+*    filter
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_depthwise_conv2_d(const tensor& input, const tensor& filter, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26806,7 +37381,30 @@ inline std::vector<tensor> quantized_depthwise_conv2_d(const tensor& input, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedDepthwiseConv2DWithBias
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_depthwise_conv2_d_with_bias(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26859,7 +37457,31 @@ inline std::vector<tensor> quantized_depthwise_conv2_d_with_bias(const tensor& i
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedDepthwiseConv2DWithBiasAndRelu
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_depthwise_conv2_d_with_bias_and_relu(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, datatype Tinput, datatype Tfilter, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(13)) {
 
     // Define Op
@@ -26913,7 +37535,34 @@ inline std::vector<tensor> quantized_depthwise_conv2_d_with_bias_and_relu(const 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedDepthwiseConv2DWithBiasAndReluAndRequantize
+# Inputs:
+*    input
+*    filter
+*    bias
+*    min_input
+*    max_input
+*    min_filter
+*    max_filter
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    Tinput
+*    Tfilter
+*    Tbias
+*    strides
+*    padding
+*    dilations
+*    padding_list
+*    out_type
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_depthwise_conv2_d_with_bias_and_relu_and_requantize(const tensor& input, const tensor& filter, const tensor& bias, const tensor& min_input, const tensor& max_input, const tensor& min_filter, const tensor& max_filter, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype Tinput, datatype Tfilter, datatype Tbias, const std::vector<int64_t>& strides, const std::string& padding, const std::vector<int64_t>& dilations, const std::vector<int64_t>& padding_list, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -26976,7 +37625,25 @@ inline std::vector<tensor> quantized_depthwise_conv2_d_with_bias_and_relu_and_re
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedInstanceNorm
+# Inputs:
+*    x
+*    x_min
+*    x_max
 
+# Attributes:
+*    output_range_given
+*    given_y_min
+*    given_y_max
+*    variance_epsilon
+*    min_separation
+
+# Outputs:
+*    y
+*    y_min
+*    y_max
+
+*/
 inline std::vector<tensor> quantized_instance_norm(const tensor& x, const tensor& x_min, const tensor& x_max, bool output_range_given=false, float given_y_min=0.0000e+00, float given_y_max=0.0000e+00, float variance_epsilon=1.0000e-05, float min_separation=1.0000e-03) {
 
     // Define Op
@@ -27012,7 +37679,29 @@ inline std::vector<tensor> quantized_instance_norm(const tensor& x, const tensor
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedMatMul
+# Inputs:
+*    a
+*    b
+*    min_a
+*    max_a
+*    min_b
+*    max_b
 
+# Attributes:
+*    T1
+*    T2
+*    Toutput
+*    transpose_a
+*    transpose_b
+*    Tactivation
+
+# Outputs:
+*    out
+*    min_out
+*    max_out
+
+*/
 inline std::vector<tensor> quantized_mat_mul(const tensor& a, const tensor& b, const tensor& min_a, const tensor& max_a, const tensor& min_b, const tensor& max_b, datatype T1, datatype T2, datatype Toutput=static_cast<datatype>(13), bool transpose_a=false, bool transpose_b=false, datatype Tactivation=static_cast<datatype>(12)) {
 
     // Define Op
@@ -27061,7 +37750,31 @@ inline std::vector<tensor> quantized_mat_mul(const tensor& a, const tensor& b, c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedMatMulWithBias
+# Inputs:
+*    a
+*    b
+*    bias
+*    min_a
+*    max_a
+*    min_b
+*    max_b
 
+# Attributes:
+*    T1
+*    T2
+*    Tbias
+*    Toutput
+*    transpose_a
+*    transpose_b
+*    input_quant_mode
+
+# Outputs:
+*    out
+*    min_out
+*    max_out
+
+*/
 inline std::vector<tensor> quantized_mat_mul_with_bias(const tensor& a, const tensor& b, const tensor& bias, const tensor& min_a, const tensor& max_a, const tensor& min_b, const tensor& max_b, datatype T1, datatype T2, datatype Tbias, datatype Toutput=static_cast<datatype>(13), bool transpose_a=false, bool transpose_b=false, const std::string& input_quant_mode="MIN_FIRST") {
 
     // Define Op
@@ -27115,7 +37828,31 @@ inline std::vector<tensor> quantized_mat_mul_with_bias(const tensor& a, const te
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedMatMulWithBiasAndDequantize
+# Inputs:
+*    a
+*    b
+*    bias
+*    min_a
+*    max_a
+*    min_b
+*    max_b
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    T1
+*    T2
+*    Tbias
+*    Toutput
+*    transpose_a
+*    transpose_b
+*    input_quant_mode
+
+# Outputs:
+*    out
+
+*/
 inline tensor quantized_mat_mul_with_bias_and_dequantize(const tensor& a, const tensor& b, const tensor& bias, const tensor& min_a, const tensor& max_a, const tensor& min_b, const tensor& max_b, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype T1, datatype T2, datatype Tbias, datatype Toutput, bool transpose_a=false, bool transpose_b=false, const std::string& input_quant_mode="MIN_FIRST") {
 
     // Define Op
@@ -27177,7 +37914,30 @@ inline tensor quantized_mat_mul_with_bias_and_dequantize(const tensor& a, const 
     return tensor(res[0]);
 }
 
+/* # QuantizedMatMulWithBiasAndRelu
+# Inputs:
+*    a
+*    b
+*    bias
+*    min_a
+*    max_a
+*    min_b
+*    max_b
 
+# Attributes:
+*    T1
+*    T2
+*    Toutput
+*    transpose_a
+*    transpose_b
+*    input_quant_mode
+
+# Outputs:
+*    out
+*    min_out
+*    max_out
+
+*/
 inline std::vector<tensor> quantized_mat_mul_with_bias_and_relu(const tensor& a, const tensor& b, const tensor& bias, const tensor& min_a, const tensor& max_a, const tensor& min_b, const tensor& max_b, datatype T1, datatype T2, datatype Toutput=static_cast<datatype>(13), bool transpose_a=false, bool transpose_b=false, const std::string& input_quant_mode="MIN_FIRST") {
 
     // Define Op
@@ -27230,7 +37990,33 @@ inline std::vector<tensor> quantized_mat_mul_with_bias_and_relu(const tensor& a,
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedMatMulWithBiasAndReluAndRequantize
+# Inputs:
+*    a
+*    b
+*    bias
+*    min_a
+*    max_a
+*    min_b
+*    max_b
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    T1
+*    T2
+*    Tbias
+*    Toutput
+*    transpose_a
+*    transpose_b
+*    input_quant_mode
+
+# Outputs:
+*    out
+*    min_out
+*    max_out
+
+*/
 inline std::vector<tensor> quantized_mat_mul_with_bias_and_relu_and_requantize(const tensor& a, const tensor& b, const tensor& bias, const tensor& min_a, const tensor& max_a, const tensor& min_b, const tensor& max_b, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype T1, datatype T2, datatype Tbias, datatype Toutput=static_cast<datatype>(12), bool transpose_a=false, bool transpose_b=false, const std::string& input_quant_mode="MIN_FIRST") {
 
     // Define Op
@@ -27292,7 +38078,33 @@ inline std::vector<tensor> quantized_mat_mul_with_bias_and_relu_and_requantize(c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedMatMulWithBiasAndRequantize
+# Inputs:
+*    a
+*    b
+*    bias
+*    min_a
+*    max_a
+*    min_b
+*    max_b
+*    min_freezed_output
+*    max_freezed_output
 
+# Attributes:
+*    T1
+*    T2
+*    Tbias
+*    Toutput
+*    transpose_a
+*    transpose_b
+*    input_quant_mode
+
+# Outputs:
+*    out
+*    min_out
+*    max_out
+
+*/
 inline std::vector<tensor> quantized_mat_mul_with_bias_and_requantize(const tensor& a, const tensor& b, const tensor& bias, const tensor& min_a, const tensor& max_a, const tensor& min_b, const tensor& max_b, const tensor& min_freezed_output, const tensor& max_freezed_output, datatype T1, datatype T2, datatype Tbias, datatype Toutput=static_cast<datatype>(12), bool transpose_a=false, bool transpose_b=false, const std::string& input_quant_mode="MIN_FIRST") {
 
     // Define Op
@@ -27354,7 +38166,23 @@ inline std::vector<tensor> quantized_mat_mul_with_bias_and_requantize(const tens
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedMaxPool
+# Inputs:
+*    input
+*    min_input
+*    max_input
 
+# Attributes:
+*    ksize
+*    strides
+*    padding
+
+# Outputs:
+*    output
+*    min_output
+*    max_output
+
+*/
 inline std::vector<tensor> quantized_max_pool(const tensor& input, const tensor& min_input, const tensor& max_input, const std::vector<int64_t>& ksize, const std::vector<int64_t>& strides, const std::string& padding) {
 
     // Define Op
@@ -27388,7 +38216,26 @@ inline std::vector<tensor> quantized_max_pool(const tensor& input, const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedMul
+# Inputs:
+*    x
+*    y
+*    min_x
+*    max_x
+*    min_y
+*    max_y
 
+# Attributes:
+*    T1
+*    T2
+*    Toutput
+
+# Outputs:
+*    z
+*    min_z
+*    max_z
+
+*/
 inline std::vector<tensor> quantized_mul(const tensor& x, const tensor& y, const tensor& min_x, const tensor& max_x, const tensor& min_y, const tensor& max_y, datatype T1, datatype T2, datatype Toutput=static_cast<datatype>(13)) {
 
     // Define Op
@@ -27434,7 +38281,22 @@ inline std::vector<tensor> quantized_mul(const tensor& x, const tensor& y, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedRelu
+# Inputs:
+*    features
+*    min_features
+*    max_features
 
+# Attributes:
+*    Tinput
+*    out_type
+
+# Outputs:
+*    activations
+*    min_activations
+*    max_activations
+
+*/
 inline std::vector<tensor> quantized_relu(const tensor& features, const tensor& min_features, const tensor& max_features, datatype Tinput, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -27467,7 +38329,22 @@ inline std::vector<tensor> quantized_relu(const tensor& features, const tensor& 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedRelu6
+# Inputs:
+*    features
+*    min_features
+*    max_features
 
+# Attributes:
+*    Tinput
+*    out_type
+
+# Outputs:
+*    activations
+*    min_activations
+*    max_activations
+
+*/
 inline std::vector<tensor> quantized_relu6(const tensor& features, const tensor& min_features, const tensor& max_features, datatype Tinput, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -27500,7 +38377,23 @@ inline std::vector<tensor> quantized_relu6(const tensor& features, const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedReluX
+# Inputs:
+*    features
+*    max_value
+*    min_features
+*    max_features
 
+# Attributes:
+*    Tinput
+*    out_type
+
+# Outputs:
+*    activations
+*    min_activations
+*    max_activations
+
+*/
 inline std::vector<tensor> quantized_relu_x(const tensor& features, const tensor& max_value, const tensor& min_features, const tensor& max_features, datatype Tinput, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -27537,7 +38430,22 @@ inline std::vector<tensor> quantized_relu_x(const tensor& features, const tensor
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedReshape
+# Inputs:
+*    tensor
+*    shape
+*    input_min
+*    input_max
 
+# Attributes:
+*    Tshape
+
+# Outputs:
+*    output
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> quantized_reshape(const tensor& input_tensor, const tensor& shape, const tensor& input_min, const tensor& input_max, datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -27573,7 +38481,23 @@ inline std::vector<tensor> quantized_reshape(const tensor& input_tensor, const t
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QuantizedResizeBilinear
+# Inputs:
+*    images
+*    size
+*    min
+*    max
 
+# Attributes:
+*    align_corners
+*    half_pixel_centers
+
+# Outputs:
+*    resized_images
+*    out_min
+*    out_max
+
+*/
 inline std::vector<tensor> quantized_resize_bilinear(const tensor& images, const tensor& size, const tensor& min, const tensor& max, bool align_corners=false, bool half_pixel_centers=false) {
 
     // Define Op
@@ -27610,7 +38534,16 @@ inline std::vector<tensor> quantized_resize_bilinear(const tensor& images, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # QueueClose
+# Inputs:
+*    handle
 
+# Attributes:
+*    cancel_pending_enqueues
+
+# Outputs:
+*    
+*/
 inline void queue_close(const tensor& handle, bool cancel_pending_enqueues=false) {
 
     // Define Op
@@ -27633,7 +38566,16 @@ inline void queue_close(const tensor& handle, bool cancel_pending_enqueues=false
     status_check(context::get_status());
 }
 
+/* # QueueCloseV2
+# Inputs:
+*    handle
 
+# Attributes:
+*    cancel_pending_enqueues
+
+# Outputs:
+*    
+*/
 inline void queue_close_v2(const tensor& handle, bool cancel_pending_enqueues=false) {
 
     // Define Op
@@ -27656,7 +38598,18 @@ inline void queue_close_v2(const tensor& handle, bool cancel_pending_enqueues=fa
     status_check(context::get_status());
 }
 
+/* # QueueDequeue
+# Inputs:
+*    handle
 
+# Attributes:
+*    component_types
+*    timeout_ms
+
+# Outputs:
+*    components
+
+*/
 inline tensor queue_dequeue(const tensor& handle, const std::vector<datatype>& component_types, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27681,7 +38634,19 @@ inline tensor queue_dequeue(const tensor& handle, const std::vector<datatype>& c
     return tensor(res[0]);
 }
 
+/* # QueueDequeueMany
+# Inputs:
+*    handle
+*    n
 
+# Attributes:
+*    component_types
+*    timeout_ms
+
+# Outputs:
+*    components
+
+*/
 inline tensor queue_dequeue_many(const tensor& handle, const tensor& n, const std::vector<datatype>& component_types, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27710,7 +38675,19 @@ inline tensor queue_dequeue_many(const tensor& handle, const tensor& n, const st
     return tensor(res[0]);
 }
 
+/* # QueueDequeueManyV2
+# Inputs:
+*    handle
+*    n
 
+# Attributes:
+*    component_types
+*    timeout_ms
+
+# Outputs:
+*    components
+
+*/
 inline tensor queue_dequeue_many_v2(const tensor& handle, const tensor& n, const std::vector<datatype>& component_types, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27739,7 +38716,19 @@ inline tensor queue_dequeue_many_v2(const tensor& handle, const tensor& n, const
     return tensor(res[0]);
 }
 
+/* # QueueDequeueUpTo
+# Inputs:
+*    handle
+*    n
 
+# Attributes:
+*    component_types
+*    timeout_ms
+
+# Outputs:
+*    components
+
+*/
 inline tensor queue_dequeue_up_to(const tensor& handle, const tensor& n, const std::vector<datatype>& component_types, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27768,7 +38757,19 @@ inline tensor queue_dequeue_up_to(const tensor& handle, const tensor& n, const s
     return tensor(res[0]);
 }
 
+/* # QueueDequeueUpToV2
+# Inputs:
+*    handle
+*    n
 
+# Attributes:
+*    component_types
+*    timeout_ms
+
+# Outputs:
+*    components
+
+*/
 inline tensor queue_dequeue_up_to_v2(const tensor& handle, const tensor& n, const std::vector<datatype>& component_types, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27797,7 +38798,18 @@ inline tensor queue_dequeue_up_to_v2(const tensor& handle, const tensor& n, cons
     return tensor(res[0]);
 }
 
+/* # QueueDequeueV2
+# Inputs:
+*    handle
 
+# Attributes:
+*    component_types
+*    timeout_ms
+
+# Outputs:
+*    components
+
+*/
 inline tensor queue_dequeue_v2(const tensor& handle, const std::vector<datatype>& component_types, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27822,7 +38834,18 @@ inline tensor queue_dequeue_v2(const tensor& handle, const std::vector<datatype>
     return tensor(res[0]);
 }
 
+/* # QueueEnqueue
+# Inputs:
+*    handle
+*    components
 
+# Attributes:
+*    Tcomponents
+*    timeout_ms
+
+# Outputs:
+*    
+*/
 inline void queue_enqueue(const tensor& handle, const std::vector<tensor>&components, const std::vector<datatype>& Tcomponents, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27852,7 +38875,18 @@ inline void queue_enqueue(const tensor& handle, const std::vector<tensor>&compon
     status_check(context::get_status());
 }
 
+/* # QueueEnqueueMany
+# Inputs:
+*    handle
+*    components
 
+# Attributes:
+*    Tcomponents
+*    timeout_ms
+
+# Outputs:
+*    
+*/
 inline void queue_enqueue_many(const tensor& handle, const std::vector<tensor>&components, const std::vector<datatype>& Tcomponents, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27882,7 +38916,18 @@ inline void queue_enqueue_many(const tensor& handle, const std::vector<tensor>&c
     status_check(context::get_status());
 }
 
+/* # QueueEnqueueManyV2
+# Inputs:
+*    handle
+*    components
 
+# Attributes:
+*    Tcomponents
+*    timeout_ms
+
+# Outputs:
+*    
+*/
 inline void queue_enqueue_many_v2(const tensor& handle, const std::vector<tensor>&components, const std::vector<datatype>& Tcomponents, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27912,7 +38957,18 @@ inline void queue_enqueue_many_v2(const tensor& handle, const std::vector<tensor
     status_check(context::get_status());
 }
 
+/* # QueueEnqueueV2
+# Inputs:
+*    handle
+*    components
 
+# Attributes:
+*    Tcomponents
+*    timeout_ms
+
+# Outputs:
+*    
+*/
 inline void queue_enqueue_v2(const tensor& handle, const std::vector<tensor>&components, const std::vector<datatype>& Tcomponents, int64_t timeout_ms=-1) {
 
     // Define Op
@@ -27942,7 +38998,16 @@ inline void queue_enqueue_v2(const tensor& handle, const std::vector<tensor>&com
     status_check(context::get_status());
 }
 
+/* # QueueIsClosed
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    is_closed
+
+*/
 inline tensor queue_is_closed(const tensor& handle) {
 
     // Define Op
@@ -27966,7 +39031,16 @@ inline tensor queue_is_closed(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # QueueIsClosedV2
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    is_closed
+
+*/
 inline tensor queue_is_closed_v2(const tensor& handle) {
 
     // Define Op
@@ -27990,7 +39064,16 @@ inline tensor queue_is_closed_v2(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # QueueSize
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor queue_size(const tensor& handle) {
 
     // Define Op
@@ -28014,7 +39097,16 @@ inline tensor queue_size(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # QueueSizeV2
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor queue_size_v2(const tensor& handle) {
 
     // Define Op
@@ -28038,8 +39130,20 @@ inline tensor queue_size_v2(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # RFFT
+# Inputs:
+*    input
+*    fft_length
 
-inline tensor r_f_f_t(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor RFFT(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "RFFT", context::get_status()), &TFE_DeleteOp);
@@ -28067,8 +39171,20 @@ inline tensor r_f_f_t(const tensor& input, const tensor& fft_length, datatype Tr
     return tensor(res[0]);
 }
 
+/* # RFFT2D
+# Inputs:
+*    input
+*    fft_length
 
-inline tensor r_f_f_t2_d(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor RFFT2D(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "RFFT2D", context::get_status()), &TFE_DeleteOp);
@@ -28096,8 +39212,20 @@ inline tensor r_f_f_t2_d(const tensor& input, const tensor& fft_length, datatype
     return tensor(res[0]);
 }
 
+/* # RFFT3D
+# Inputs:
+*    input
+*    fft_length
 
-inline tensor r_f_f_t3_d(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor RFFT3D(const tensor& input, const tensor& fft_length, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "RFFT3D", context::get_status()), &TFE_DeleteOp);
@@ -28125,8 +39253,21 @@ inline tensor r_f_f_t3_d(const tensor& input, const tensor& fft_length, datatype
     return tensor(res[0]);
 }
 
+/* # RFFTND
+# Inputs:
+*    input
+*    fft_length
+*    axes
 
-inline tensor r_f_f_t_n_d(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
+# Attributes:
+*    Treal
+*    Tcomplex
+
+# Outputs:
+*    output
+
+*/
+inline tensor RFFTND(const tensor& input, const tensor& fft_length, const tensor& axes, datatype Treal=static_cast<datatype>(1), datatype Tcomplex=static_cast<datatype>(8)) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "RFFTND", context::get_status()), &TFE_DeleteOp);
@@ -28158,7 +39299,16 @@ inline tensor r_f_f_t_n_d(const tensor& input, const tensor& fft_length, const t
     return tensor(res[0]);
 }
 
+/* # RGBToHSV
+# Inputs:
+*    images
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor r_g_b_to_h_s_v(const tensor& images) {
 
     // Define Op
@@ -28182,7 +39332,21 @@ inline tensor r_g_b_to_h_s_v(const tensor& images) {
     return tensor(res[0]);
 }
 
+/* # RaggedBincount
+# Inputs:
+*    splits
+*    values
+*    size
+*    weights
 
+# Attributes:
+*    Tidx
+*    binary_output
+
+# Outputs:
+*    output
+
+*/
 inline tensor ragged_bincount(const tensor& splits, const tensor& values, const tensor& size, const tensor& weights, datatype Tidx, bool binary_output=false) {
 
     // Define Op
@@ -28219,7 +39383,24 @@ inline tensor ragged_bincount(const tensor& splits, const tensor& values, const 
     return tensor(res[0]);
 }
 
+/* # RaggedCountSparseOutput
+# Inputs:
+*    splits
+*    values
+*    weights
 
+# Attributes:
+*    binary_output
+*    output_type
+*    minlength
+*    maxlength
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_dense_shape
+
+*/
 inline std::vector<tensor> ragged_count_sparse_output(const tensor& splits, const tensor& values, const tensor& weights, bool binary_output, datatype output_type, int64_t minlength=-1, int64_t maxlength=-1) {
 
     // Define Op
@@ -28254,7 +39435,33 @@ inline std::vector<tensor> ragged_count_sparse_output(const tensor& splits, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RaggedCross
+# Inputs:
+*    ragged_values
+*    ragged_row_splits
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
+*    dense_inputs
 
+# Attributes:
+*    Nsparse
+*    input_order
+*    hashed_output
+*    num_buckets
+*    hash_key
+*    ragged_values_types
+*    ragged_splits_types
+*    sparse_values_types
+*    dense_types
+*    out_values_type
+*    out_row_splits_type
+
+# Outputs:
+*    output_values
+*    output_row_splits
+
+*/
 inline std::vector<tensor> ragged_cross(const std::vector<tensor>&ragged_values, const std::vector<tensor>&ragged_row_splits, const std::vector<tensor>&sparse_indices, const std::vector<tensor>&sparse_values, const std::vector<tensor>&sparse_shape, const std::vector<tensor>&dense_inputs, const std::string& input_order, bool hashed_output, int64_t num_buckets, int64_t hash_key, const std::vector<datatype>& ragged_values_types, const std::vector<datatype>& ragged_splits_types, const std::vector<datatype>& sparse_values_types, const std::vector<datatype>& dense_types, datatype out_values_type, datatype out_row_splits_type) {
 
     // Define Op
@@ -28320,7 +39527,22 @@ inline std::vector<tensor> ragged_cross(const std::vector<tensor>&ragged_values,
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RaggedFillEmptyRows
+# Inputs:
+*    value_rowids
+*    values
+*    nrows
+*    default_value
 
+# Attributes:
+*    
+# Outputs:
+*    output_value_rowids
+*    output_values
+*    empty_row_indicator
+*    reverse_index_map
+
+*/
 inline std::vector<tensor> ragged_fill_empty_rows(const tensor& value_rowids, const tensor& values, const tensor& nrows, const tensor& default_value) {
 
     // Define Op
@@ -28356,7 +39578,18 @@ inline std::vector<tensor> ragged_fill_empty_rows(const tensor& value_rowids, co
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # RaggedFillEmptyRowsGrad
+# Inputs:
+*    reverse_index_map
+*    grad_values
 
+# Attributes:
+*    
+# Outputs:
+*    d_values
+*    d_default_value
+
+*/
 inline std::vector<tensor> ragged_fill_empty_rows_grad(const tensor& reverse_index_map, const tensor& grad_values) {
 
     // Define Op
@@ -28384,7 +39617,24 @@ inline std::vector<tensor> ragged_fill_empty_rows_grad(const tensor& reverse_ind
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RaggedGather
+# Inputs:
+*    params_nested_splits
+*    params_dense_values
+*    indices
 
+# Attributes:
+*    Tvalues
+*    Tindices
+*    PARAMS_RAGGED_RANK
+*    OUTPUT_RAGGED_RANK
+*    Tsplits
+
+# Outputs:
+*    output_nested_splits
+*    output_dense_values
+
+*/
 inline std::vector<tensor> ragged_gather(const std::vector<tensor>&params_nested_splits, const tensor& params_dense_values, const tensor& indices, datatype Tvalues, datatype Tindices, int64_t OUTPUT_RAGGED_RANK, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -28422,7 +39672,20 @@ inline std::vector<tensor> ragged_gather(const std::vector<tensor>&params_nested
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RaggedRange
+# Inputs:
+*    starts
+*    limits
+*    deltas
 
+# Attributes:
+*    Tsplits
+
+# Outputs:
+*    rt_nested_splits
+*    rt_dense_values
+
+*/
 inline std::vector<tensor> ragged_range(const tensor& starts, const tensor& limits, const tensor& deltas, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -28454,7 +39717,21 @@ inline std::vector<tensor> ragged_range(const tensor& starts, const tensor& limi
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RaggedTensorFromVariant
+# Inputs:
+*    encoded_ragged
 
+# Attributes:
+*    input_ragged_rank
+*    output_ragged_rank
+*    Tvalues
+*    Tsplits
+
+# Outputs:
+*    output_nested_splits
+*    output_dense_values
+
+*/
 inline std::vector<tensor> ragged_tensor_from_variant(const tensor& encoded_ragged, int64_t input_ragged_rank, int64_t output_ragged_rank, datatype Tvalues, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -28481,7 +39758,21 @@ inline std::vector<tensor> ragged_tensor_from_variant(const tensor& encoded_ragg
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RaggedTensorToSparse
+# Inputs:
+*    rt_nested_splits
+*    rt_dense_values
 
+# Attributes:
+*    RAGGED_RANK
+*    Tsplits
+
+# Outputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_dense_shape
+
+*/
 inline std::vector<tensor> ragged_tensor_to_sparse(const std::vector<tensor>&rt_nested_splits, const tensor& rt_dense_values, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -28512,7 +39803,23 @@ inline std::vector<tensor> ragged_tensor_to_sparse(const std::vector<tensor>&rt_
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RaggedTensorToTensor
+# Inputs:
+*    shape
+*    values
+*    default_value
+*    row_partition_tensors
 
+# Attributes:
+*    Tindex
+*    Tshape
+*    num_row_partition_tensors
+*    row_partition_types
+
+# Outputs:
+*    result
+
+*/
 inline tensor ragged_tensor_to_tensor(const tensor& shape, const tensor& values, const tensor& default_value, const std::vector<tensor>&row_partition_tensors, datatype Tindex, datatype Tshape, const std::vector< std::string>& row_partition_types) {
 
     // Define Op
@@ -28557,7 +39864,21 @@ inline tensor ragged_tensor_to_tensor(const tensor& shape, const tensor& values,
     return tensor(res[0]);
 }
 
+/* # RaggedTensorToVariant
+# Inputs:
+*    rt_nested_splits
+*    rt_dense_values
 
+# Attributes:
+*    RAGGED_RANK
+*    Tvalues
+*    batched_input
+*    Tsplits
+
+# Outputs:
+*    encoded_ragged
+
+*/
 inline tensor ragged_tensor_to_variant(const std::vector<tensor>&rt_nested_splits, const tensor& rt_dense_values, datatype Tvalues, bool batched_input, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -28590,7 +39911,20 @@ inline tensor ragged_tensor_to_variant(const std::vector<tensor>&rt_nested_split
     return tensor(res[0]);
 }
 
+/* # RaggedTensorToVariantGradient
+# Inputs:
+*    encoded_ragged_grad
+*    row_splits
+*    dense_values_shape
 
+# Attributes:
+*    Tvalues
+*    Tsplits
+
+# Outputs:
+*    dense_values_grad
+
+*/
 inline tensor ragged_tensor_to_variant_gradient(const tensor& encoded_ragged_grad, const tensor& row_splits, const tensor& dense_values_shape, datatype Tvalues, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -28623,7 +39957,19 @@ inline tensor ragged_tensor_to_variant_gradient(const tensor& encoded_ragged_gra
     return tensor(res[0]);
 }
 
+/* # RandomCrop
+# Inputs:
+*    image
+*    size
 
+# Attributes:
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_crop(const tensor& image, const tensor& size, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -28652,7 +39998,20 @@ inline tensor random_crop(const tensor& image, const tensor& size, int64_t seed=
     return tensor(res[0]);
 }
 
+/* # RandomDataset
+# Inputs:
+*    seed
+*    seed2
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor random_dataset(const tensor& seed, const tensor& seed2, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -28689,7 +40048,22 @@ inline tensor random_dataset(const tensor& seed, const tensor& seed2, const std:
     return tensor(res[0]);
 }
 
+/* # RandomDatasetV2
+# Inputs:
+*    seed
+*    seed2
+*    seed_generator
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    rerandomize_each_iteration
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor random_dataset_v2(const tensor& seed, const tensor& seed2, const tensor& seed_generator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool rerandomize_each_iteration=false, const std::string& metadata="") {
 
     // Define Op
@@ -28731,7 +40105,20 @@ inline tensor random_dataset_v2(const tensor& seed, const tensor& seed2, const t
     return tensor(res[0]);
 }
 
+/* # RandomGamma
+# Inputs:
+*    shape
+*    alpha
 
+# Attributes:
+*    S
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_gamma(const tensor& shape, const tensor& alpha, datatype S, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -28761,7 +40148,17 @@ inline tensor random_gamma(const tensor& shape, const tensor& alpha, datatype S,
     return tensor(res[0]);
 }
 
+/* # RandomGammaGrad
+# Inputs:
+*    alpha
+*    sample
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor random_gamma_grad(const tensor& alpha, const tensor& sample) {
 
     // Define Op
@@ -28789,7 +40186,21 @@ inline tensor random_gamma_grad(const tensor& alpha, const tensor& sample) {
     return tensor(res[0]);
 }
 
+/* # RandomIndexShuffle
+# Inputs:
+*    index
+*    seed
+*    max_index
 
+# Attributes:
+*    dtype
+*    Tseed
+*    rounds
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_index_shuffle(const tensor& index, const tensor& seed, const tensor& max_index, datatype dtype, datatype Tseed, int64_t rounds=4) {
 
     // Define Op
@@ -28823,7 +40234,21 @@ inline tensor random_index_shuffle(const tensor& index, const tensor& seed, cons
     return tensor(res[0]);
 }
 
+/* # RandomPoisson
+# Inputs:
+*    shape
+*    rate
 
+# Attributes:
+*    S
+*    dtype
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_poisson(const tensor& shape, const tensor& rate, datatype S, datatype dtype, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -28854,7 +40279,22 @@ inline tensor random_poisson(const tensor& shape, const tensor& rate, datatype S
     return tensor(res[0]);
 }
 
+/* # RandomPoissonV2
+# Inputs:
+*    shape
+*    rate
 
+# Attributes:
+*    S
+*    seed
+*    seed2
+*    R
+*    dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_poisson_v2(const tensor& shape, const tensor& rate, datatype S, int64_t seed=0, int64_t seed2=0, datatype R=static_cast<datatype>(2), datatype dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -28886,7 +40326,18 @@ inline tensor random_poisson_v2(const tensor& shape, const tensor& rate, datatyp
     return tensor(res[0]);
 }
 
+/* # RandomShuffle
+# Inputs:
+*    value
 
+# Attributes:
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_shuffle(const tensor& value, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -28911,7 +40362,23 @@ inline tensor random_shuffle(const tensor& value, int64_t seed=0, int64_t seed2=
     return tensor(res[0]);
 }
 
+/* # RandomShuffleQueue
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    min_after_dequeue
+*    seed
+*    seed2
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor random_shuffle_queue(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, int64_t min_after_dequeue=0, int64_t seed=0, int64_t seed2=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -28946,7 +40413,23 @@ inline tensor random_shuffle_queue(const std::vector<datatype>& component_types,
     return tensor(res[0]);
 }
 
+/* # RandomShuffleQueueV2
+# Inputs:
+*    
+# Attributes:
+*    component_types
+*    shapes
+*    capacity
+*    min_after_dequeue
+*    seed
+*    seed2
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor random_shuffle_queue_v2(const std::vector<datatype>& component_types, const std::vector< std::vector<int64_t>>& shapes, int64_t capacity=-1, int64_t min_after_dequeue=0, int64_t seed=0, int64_t seed2=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -28981,7 +40464,19 @@ inline tensor random_shuffle_queue_v2(const std::vector<datatype>& component_typ
     return tensor(res[0]);
 }
 
+/* # RandomStandardNormal
+# Inputs:
+*    shape
 
+# Attributes:
+*    dtype
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_standard_normal(const tensor& shape, datatype dtype, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -29007,7 +40502,19 @@ inline tensor random_standard_normal(const tensor& shape, datatype dtype, int64_
     return tensor(res[0]);
 }
 
+/* # RandomUniform
+# Inputs:
+*    shape
 
+# Attributes:
+*    dtype
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_uniform(const tensor& shape, datatype dtype, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -29033,7 +40540,21 @@ inline tensor random_uniform(const tensor& shape, datatype dtype, int64_t seed=0
     return tensor(res[0]);
 }
 
+/* # RandomUniformInt
+# Inputs:
+*    shape
+*    minval
+*    maxval
 
+# Attributes:
+*    Tout
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor random_uniform_int(const tensor& shape, const tensor& minval, const tensor& maxval, datatype Tout, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -29067,7 +40588,19 @@ inline tensor random_uniform_int(const tensor& shape, const tensor& minval, cons
     return tensor(res[0]);
 }
 
+/* # Range
+# Inputs:
+*    start
+*    limit
+*    delta
 
+# Attributes:
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor range(const tensor& start, const tensor& limit, const tensor& delta, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -29099,7 +40632,22 @@ inline tensor range(const tensor& start, const tensor& limit, const tensor& delt
     return tensor(res[0]);
 }
 
+/* # RangeDataset
+# Inputs:
+*    start
+*    stop
+*    step
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+*    replicate_on_split
+
+# Outputs:
+*    handle
+
+*/
 inline tensor range_dataset(const tensor& start, const tensor& stop, const tensor& step, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="", bool replicate_on_split=false) {
 
     // Define Op
@@ -29141,7 +40689,16 @@ inline tensor range_dataset(const tensor& start, const tensor& stop, const tenso
     return tensor(res[0]);
 }
 
+/* # Rank
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor rank(const tensor& input) {
 
     // Define Op
@@ -29165,7 +40722,16 @@ inline tensor rank(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # ReadFile
+# Inputs:
+*    filename
 
+# Attributes:
+*    
+# Outputs:
+*    contents
+
+*/
 inline tensor read_file(const tensor& filename) {
 
     // Define Op
@@ -29189,7 +40755,17 @@ inline tensor read_file(const tensor& filename) {
     return tensor(res[0]);
 }
 
+/* # ReadVariableOp
+# Inputs:
+*    resource
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    value
+
+*/
 inline tensor read_variable_op(const tensor& resource, datatype dtype) {
 
     // Define Op
@@ -29213,7 +40789,19 @@ inline tensor read_variable_op(const tensor& resource, datatype dtype) {
     return tensor(res[0]);
 }
 
+/* # ReadVariableXlaSplitND
+# Inputs:
+*    resource
 
+# Attributes:
+*    N
+*    num_splits
+*    paddings
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor read_variable_xla_split_n_d(const tensor& resource, int64_t N, const std::vector<int64_t>& num_splits, const std::vector<int64_t>& paddings) {
 
     // Define Op
@@ -29239,7 +40827,16 @@ inline tensor read_variable_xla_split_n_d(const tensor& resource, int64_t N, con
     return tensor(res[0]);
 }
 
+/* # ReaderNumRecordsProduced
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    records_produced
+
+*/
 inline tensor reader_num_records_produced(const tensor& reader_handle) {
 
     // Define Op
@@ -29263,7 +40860,16 @@ inline tensor reader_num_records_produced(const tensor& reader_handle) {
     return tensor(res[0]);
 }
 
+/* # ReaderNumRecordsProducedV2
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    records_produced
+
+*/
 inline tensor reader_num_records_produced_v2(const tensor& reader_handle) {
 
     // Define Op
@@ -29287,7 +40893,16 @@ inline tensor reader_num_records_produced_v2(const tensor& reader_handle) {
     return tensor(res[0]);
 }
 
+/* # ReaderNumWorkUnitsCompleted
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    units_completed
+
+*/
 inline tensor reader_num_work_units_completed(const tensor& reader_handle) {
 
     // Define Op
@@ -29311,7 +40926,16 @@ inline tensor reader_num_work_units_completed(const tensor& reader_handle) {
     return tensor(res[0]);
 }
 
+/* # ReaderNumWorkUnitsCompletedV2
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    units_completed
+
+*/
 inline tensor reader_num_work_units_completed_v2(const tensor& reader_handle) {
 
     // Define Op
@@ -29335,7 +40959,18 @@ inline tensor reader_num_work_units_completed_v2(const tensor& reader_handle) {
     return tensor(res[0]);
 }
 
+/* # ReaderRead
+# Inputs:
+*    reader_handle
+*    queue_handle
 
+# Attributes:
+*    
+# Outputs:
+*    key
+*    value
+
+*/
 inline std::vector<tensor> reader_read(const tensor& reader_handle, const tensor& queue_handle) {
 
     // Define Op
@@ -29363,7 +40998,19 @@ inline std::vector<tensor> reader_read(const tensor& reader_handle, const tensor
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # ReaderReadUpTo
+# Inputs:
+*    reader_handle
+*    queue_handle
+*    num_records
 
+# Attributes:
+*    
+# Outputs:
+*    keys
+*    values
+
+*/
 inline std::vector<tensor> reader_read_up_to(const tensor& reader_handle, const tensor& queue_handle, const tensor& num_records) {
 
     // Define Op
@@ -29395,7 +41042,19 @@ inline std::vector<tensor> reader_read_up_to(const tensor& reader_handle, const 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # ReaderReadUpToV2
+# Inputs:
+*    reader_handle
+*    queue_handle
+*    num_records
 
+# Attributes:
+*    
+# Outputs:
+*    keys
+*    values
+
+*/
 inline std::vector<tensor> reader_read_up_to_v2(const tensor& reader_handle, const tensor& queue_handle, const tensor& num_records) {
 
     // Define Op
@@ -29427,7 +41086,18 @@ inline std::vector<tensor> reader_read_up_to_v2(const tensor& reader_handle, con
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # ReaderReadV2
+# Inputs:
+*    reader_handle
+*    queue_handle
 
+# Attributes:
+*    
+# Outputs:
+*    key
+*    value
+
+*/
 inline std::vector<tensor> reader_read_v2(const tensor& reader_handle, const tensor& queue_handle) {
 
     // Define Op
@@ -29455,7 +41125,15 @@ inline std::vector<tensor> reader_read_v2(const tensor& reader_handle, const ten
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # ReaderReset
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void reader_reset(const tensor& reader_handle) {
 
     // Define Op
@@ -29478,7 +41156,15 @@ inline void reader_reset(const tensor& reader_handle) {
     status_check(context::get_status());
 }
 
+/* # ReaderResetV2
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void reader_reset_v2(const tensor& reader_handle) {
 
     // Define Op
@@ -29501,7 +41187,16 @@ inline void reader_reset_v2(const tensor& reader_handle) {
     status_check(context::get_status());
 }
 
+/* # ReaderRestoreState
+# Inputs:
+*    reader_handle
+*    state
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void reader_restore_state(const tensor& reader_handle, const tensor& state) {
 
     // Define Op
@@ -29528,7 +41223,16 @@ inline void reader_restore_state(const tensor& reader_handle, const tensor& stat
     status_check(context::get_status());
 }
 
+/* # ReaderRestoreStateV2
+# Inputs:
+*    reader_handle
+*    state
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void reader_restore_state_v2(const tensor& reader_handle, const tensor& state) {
 
     // Define Op
@@ -29555,7 +41259,16 @@ inline void reader_restore_state_v2(const tensor& reader_handle, const tensor& s
     status_check(context::get_status());
 }
 
+/* # ReaderSerializeState
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    state
+
+*/
 inline tensor reader_serialize_state(const tensor& reader_handle) {
 
     // Define Op
@@ -29579,7 +41292,16 @@ inline tensor reader_serialize_state(const tensor& reader_handle) {
     return tensor(res[0]);
 }
 
+/* # ReaderSerializeStateV2
+# Inputs:
+*    reader_handle
 
+# Attributes:
+*    
+# Outputs:
+*    state
+
+*/
 inline tensor reader_serialize_state_v2(const tensor& reader_handle) {
 
     // Define Op
@@ -29603,7 +41325,17 @@ inline tensor reader_serialize_state_v2(const tensor& reader_handle) {
     return tensor(res[0]);
 }
 
+/* # Real
+# Inputs:
+*    input
 
+# Attributes:
+*    Tout
+
+# Outputs:
+*    output
+
+*/
 inline tensor real(const tensor& input, datatype Tout=static_cast<datatype>(1)) {
 
     // Define Op
@@ -29627,7 +41359,17 @@ inline tensor real(const tensor& input, datatype Tout=static_cast<datatype>(1)) 
     return tensor(res[0]);
 }
 
+/* # RealDiv
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor real_div(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -29655,7 +41397,20 @@ inline tensor real_div(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # RebatchDataset
+# Inputs:
+*    input_dataset
+*    num_replicas
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    use_fallback
+
+# Outputs:
+*    handle
+
+*/
 inline tensor rebatch_dataset(const tensor& input_dataset, const tensor& num_replicas, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_fallback=true) {
 
     // Define Op
@@ -29692,7 +41447,20 @@ inline tensor rebatch_dataset(const tensor& input_dataset, const tensor& num_rep
     return tensor(res[0]);
 }
 
+/* # RebatchDatasetV2
+# Inputs:
+*    input_dataset
+*    batch_sizes
+*    drop_remainder
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor rebatch_dataset_v2(const tensor& input_dataset, const tensor& batch_sizes, const tensor& drop_remainder, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -29732,7 +41500,16 @@ inline tensor rebatch_dataset_v2(const tensor& input_dataset, const tensor& batc
     return tensor(res[0]);
 }
 
+/* # Reciprocal
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor reciprocal(const tensor& x) {
 
     // Define Op
@@ -29756,7 +41533,17 @@ inline tensor reciprocal(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # ReciprocalGrad
+# Inputs:
+*    y
+*    dy
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor reciprocal_grad(const tensor& y, const tensor& dy) {
 
     // Define Op
@@ -29784,7 +41571,22 @@ inline tensor reciprocal_grad(const tensor& y, const tensor& dy) {
     return tensor(res[0]);
 }
 
+/* # RecordInput
+# Inputs:
+*    
+# Attributes:
+*    file_pattern
+*    file_random_seed
+*    file_shuffle_shift_ratio
+*    file_buffer_size
+*    file_parallelism
+*    batch_size
+*    compression_type
 
+# Outputs:
+*    records
+
+*/
 inline tensor record_input(const std::string& file_pattern, int64_t file_random_seed=301, float file_shuffle_shift_ratio=0.0000e+00, int64_t file_buffer_size=10000, int64_t file_parallelism=16, int64_t batch_size=32, const std::string& compression_type="") {
 
     // Define Op
@@ -29811,7 +41613,21 @@ inline tensor record_input(const std::string& file_pattern, int64_t file_random_
     return tensor(res[0]);
 }
 
+/* # Recv
+# Inputs:
+*    
+# Attributes:
+*    tensor_type
+*    tensor_name
+*    send_device
+*    send_device_incarnation
+*    recv_device
+*    client_terminated
 
+# Outputs:
+*    tensor
+
+*/
 inline tensor recv(datatype tensor_type, const std::string& tensor_name, const std::string& send_device, int64_t send_device_incarnation, const std::string& recv_device, bool client_terminated=false) {
 
     // Define Op
@@ -29837,7 +41653,17 @@ inline tensor recv(datatype tensor_type, const std::string& tensor_name, const s
     return tensor(res[0]);
 }
 
+/* # RecvTPUEmbeddingActivations
+# Inputs:
+*    
+# Attributes:
+*    num_outputs
+*    config
 
+# Outputs:
+*    outputs
+
+*/
 inline tensor recv_t_p_u_embedding_activations(int64_t num_outputs, const std::string& config) {
 
     // Define Op
@@ -29859,7 +41685,25 @@ inline tensor recv_t_p_u_embedding_activations(int64_t num_outputs, const std::s
     return tensor(res[0]);
 }
 
+/* # ReduceDataset
+# Inputs:
+*    input_dataset
+*    initial_state
+*    other_arguments
 
+# Attributes:
+*    f
+*    Tstate
+*    Targuments
+*    output_types
+*    output_shapes
+*    use_inter_op_parallelism
+*    metadata
+
+# Outputs:
+*    components
+
+*/
 inline tensor reduce_dataset(const tensor& input_dataset, const std::vector<tensor>&initial_state, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Tstate, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, const std::string& metadata="") {
 
     // Define Op
@@ -29908,7 +41752,19 @@ inline tensor reduce_dataset(const tensor& input_dataset, const std::vector<tens
     return tensor(res[0]);
 }
 
+/* # ReduceJoin
+# Inputs:
+*    inputs
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    separator
+
+# Outputs:
+*    output
+
+*/
 inline tensor reduce_join(const tensor& inputs, const tensor& reduction_indices, bool keep_dims=false, const std::string& separator="") {
 
     // Define Op
@@ -29937,7 +41793,19 @@ inline tensor reduce_join(const tensor& inputs, const tensor& reduction_indices,
     return tensor(res[0]);
 }
 
+/* # RefEnter
+# Inputs:
+*    data
 
+# Attributes:
+*    frame_name
+*    is_constant
+*    parallel_iterations
+
+# Outputs:
+*    output
+
+*/
 inline tensor ref_enter(const tensor& data, const std::string& frame_name, bool is_constant=false, int64_t parallel_iterations=10) {
 
     // Define Op
@@ -29963,7 +41831,16 @@ inline tensor ref_enter(const tensor& data, const std::string& frame_name, bool 
     return tensor(res[0]);
 }
 
+/* # RefExit
+# Inputs:
+*    data
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor ref_exit(const tensor& data) {
 
     // Define Op
@@ -29987,7 +41864,16 @@ inline tensor ref_exit(const tensor& data) {
     return tensor(res[0]);
 }
 
+/* # RefIdentity
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor ref_identity(const tensor& input) {
 
     // Define Op
@@ -30011,7 +41897,18 @@ inline tensor ref_identity(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # RefMerge
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+
+# Outputs:
+*    output
+*    value_index
+
+*/
 inline std::vector<tensor> ref_merge(const std::vector<tensor>&inputs) {
 
     // Define Op
@@ -30037,7 +41934,16 @@ inline std::vector<tensor> ref_merge(const std::vector<tensor>&inputs) {
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RefNextIteration
+# Inputs:
+*    data
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor ref_next_iteration(const tensor& data) {
 
     // Define Op
@@ -30061,7 +41967,18 @@ inline tensor ref_next_iteration(const tensor& data) {
     return tensor(res[0]);
 }
 
+/* # RefSelect
+# Inputs:
+*    index
+*    inputs
 
+# Attributes:
+*    N
+
+# Outputs:
+*    output
+
+*/
 inline tensor ref_select(const tensor& index, const std::vector<tensor>&inputs) {
 
     // Define Op
@@ -30091,7 +42008,18 @@ inline tensor ref_select(const tensor& index, const std::vector<tensor>&inputs) 
     return tensor(res[0]);
 }
 
+/* # RefSwitch
+# Inputs:
+*    data
+*    pred
 
+# Attributes:
+*    
+# Outputs:
+*    output_false
+*    output_true
+
+*/
 inline std::vector<tensor> ref_switch(const tensor& data, const tensor& pred) {
 
     // Define Op
@@ -30119,7 +42047,17 @@ inline std::vector<tensor> ref_switch(const tensor& data, const tensor& pred) {
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RegexFullMatch
+# Inputs:
+*    input
+*    pattern
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor regex_full_match(const tensor& input, const tensor& pattern) {
 
     // Define Op
@@ -30147,7 +42085,19 @@ inline tensor regex_full_match(const tensor& input, const tensor& pattern) {
     return tensor(res[0]);
 }
 
+/* # RegexReplace
+# Inputs:
+*    input
+*    pattern
+*    rewrite
 
+# Attributes:
+*    replace_global
+
+# Outputs:
+*    output
+
+*/
 inline tensor regex_replace(const tensor& input, const tensor& pattern, const tensor& rewrite, bool replace_global=true) {
 
     // Define Op
@@ -30179,7 +42129,21 @@ inline tensor regex_replace(const tensor& input, const tensor& pattern, const te
     return tensor(res[0]);
 }
 
+/* # RegisterDataset
+# Inputs:
+*    dataset
+*    address
+*    protocol
 
+# Attributes:
+*    external_state_policy
+*    element_spec
+*    metadata
+
+# Outputs:
+*    dataset_id
+
+*/
 inline tensor register_dataset(const tensor& dataset, const tensor& address, const tensor& protocol, int64_t external_state_policy, const std::string& element_spec="", const std::string& metadata="") {
 
     // Define Op
@@ -30213,7 +42177,22 @@ inline tensor register_dataset(const tensor& dataset, const tensor& address, con
     return tensor(res[0]);
 }
 
+/* # RegisterDatasetV2
+# Inputs:
+*    dataset
+*    address
+*    protocol
 
+# Attributes:
+*    external_state_policy
+*    element_spec
+*    requested_dataset_id
+*    metadata
+
+# Outputs:
+*    dataset_id
+
+*/
 inline tensor register_dataset_v2(const tensor& dataset, const tensor& address, const tensor& protocol, int64_t external_state_policy, const std::string& element_spec="", const std::string& requested_dataset_id="", const std::string& metadata="") {
 
     // Define Op
@@ -30248,7 +42227,16 @@ inline tensor register_dataset_v2(const tensor& dataset, const tensor& address, 
     return tensor(res[0]);
 }
 
+/* # Relu
+# Inputs:
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    activations
+
+*/
 inline tensor relu(const tensor& features) {
 
     // Define Op
@@ -30272,7 +42260,16 @@ inline tensor relu(const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # Relu6
+# Inputs:
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    activations
+
+*/
 inline tensor relu6(const tensor& features) {
 
     // Define Op
@@ -30296,7 +42293,17 @@ inline tensor relu6(const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # Relu6Grad
+# Inputs:
+*    gradients
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    backprops
+
+*/
 inline tensor relu6_grad(const tensor& gradients, const tensor& features) {
 
     // Define Op
@@ -30324,7 +42331,17 @@ inline tensor relu6_grad(const tensor& gradients, const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # ReluGrad
+# Inputs:
+*    gradients
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    backprops
+
+*/
 inline tensor relu_grad(const tensor& gradients, const tensor& features) {
 
     // Define Op
@@ -30352,7 +42369,20 @@ inline tensor relu_grad(const tensor& gradients, const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # RemoteCall
+# Inputs:
+*    target
+*    args
 
+# Attributes:
+*    Tin
+*    Tout
+*    f
+
+# Outputs:
+*    output
+
+*/
 inline tensor remote_call(const tensor& target, const std::vector<tensor>&args, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, int64_t f) {
 
     // Define Op
@@ -30384,7 +42414,20 @@ inline tensor remote_call(const tensor& target, const std::vector<tensor>&args, 
     return tensor(res[0]);
 }
 
+/* # RepeatDataset
+# Inputs:
+*    input_dataset
+*    count
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor repeat_dataset(const tensor& input_dataset, const tensor& count, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -30421,7 +42464,20 @@ inline tensor repeat_dataset(const tensor& input_dataset, const tensor& count, c
     return tensor(res[0]);
 }
 
+/* # RequantizationRange
+# Inputs:
+*    input
+*    input_min
+*    input_max
 
+# Attributes:
+*    Tinput
+
+# Outputs:
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> requantization_range(const tensor& input, const tensor& input_min, const tensor& input_max, datatype Tinput) {
 
     // Define Op
@@ -30453,7 +42509,20 @@ inline std::vector<tensor> requantization_range(const tensor& input, const tenso
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RequantizationRangePerChannel
+# Inputs:
+*    input
+*    input_min
+*    input_max
 
+# Attributes:
+*    clip_value_max
+
+# Outputs:
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> requantization_range_per_channel(const tensor& input, const tensor& input_min, const tensor& input_max, float clip_value_max) {
 
     // Define Op
@@ -30485,7 +42554,24 @@ inline std::vector<tensor> requantization_range_per_channel(const tensor& input,
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Requantize
+# Inputs:
+*    input
+*    input_min
+*    input_max
+*    requested_output_min
+*    requested_output_max
 
+# Attributes:
+*    Tinput
+*    out_type
+
+# Outputs:
+*    output
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> requantize(const tensor& input, const tensor& input_min, const tensor& input_max, const tensor& requested_output_min, const tensor& requested_output_max, datatype Tinput, datatype out_type) {
 
     // Define Op
@@ -30526,7 +42612,23 @@ inline std::vector<tensor> requantize(const tensor& input, const tensor& input_m
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RequantizePerChannel
+# Inputs:
+*    input
+*    input_min
+*    input_max
+*    requested_output_min
+*    requested_output_max
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+*    output_min
+*    output_max
+
+*/
 inline std::vector<tensor> requantize_per_channel(const tensor& input, const tensor& input_min, const tensor& input_max, const tensor& requested_output_min, const tensor& requested_output_max, datatype out_type=static_cast<datatype>(12)) {
 
     // Define Op
@@ -30566,7 +42668,18 @@ inline std::vector<tensor> requantize_per_channel(const tensor& input, const ten
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # Reshape
+# Inputs:
+*    tensor
+*    shape
 
+# Attributes:
+*    Tshape
+
+# Outputs:
+*    output
+
+*/
 inline tensor reshape(const tensor& input_tensor, const tensor& shape, datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -30594,7 +42707,18 @@ inline tensor reshape(const tensor& input_tensor, const tensor& shape, datatype 
     return tensor(res[0]);
 }
 
+/* # ResizeArea
+# Inputs:
+*    images
+*    size
 
+# Attributes:
+*    align_corners
+
+# Outputs:
+*    resized_images
+
+*/
 inline tensor resize_area(const tensor& images, const tensor& size, bool align_corners=false) {
 
     // Define Op
@@ -30622,7 +42746,19 @@ inline tensor resize_area(const tensor& images, const tensor& size, bool align_c
     return tensor(res[0]);
 }
 
+/* # ResizeBicubic
+# Inputs:
+*    images
+*    size
 
+# Attributes:
+*    align_corners
+*    half_pixel_centers
+
+# Outputs:
+*    resized_images
+
+*/
 inline tensor resize_bicubic(const tensor& images, const tensor& size, bool align_corners=false, bool half_pixel_centers=false) {
 
     // Define Op
@@ -30651,7 +42787,19 @@ inline tensor resize_bicubic(const tensor& images, const tensor& size, bool alig
     return tensor(res[0]);
 }
 
+/* # ResizeBicubicGrad
+# Inputs:
+*    grads
+*    original_image
 
+# Attributes:
+*    align_corners
+*    half_pixel_centers
+
+# Outputs:
+*    output
+
+*/
 inline tensor resize_bicubic_grad(const tensor& grads, const tensor& original_image, bool align_corners=false, bool half_pixel_centers=false) {
 
     // Define Op
@@ -30680,7 +42828,19 @@ inline tensor resize_bicubic_grad(const tensor& grads, const tensor& original_im
     return tensor(res[0]);
 }
 
+/* # ResizeBilinear
+# Inputs:
+*    images
+*    size
 
+# Attributes:
+*    align_corners
+*    half_pixel_centers
+
+# Outputs:
+*    resized_images
+
+*/
 inline tensor resize_bilinear(const tensor& images, const tensor& size, bool align_corners=false, bool half_pixel_centers=false) {
 
     // Define Op
@@ -30709,7 +42869,19 @@ inline tensor resize_bilinear(const tensor& images, const tensor& size, bool ali
     return tensor(res[0]);
 }
 
+/* # ResizeBilinearGrad
+# Inputs:
+*    grads
+*    original_image
 
+# Attributes:
+*    align_corners
+*    half_pixel_centers
+
+# Outputs:
+*    output
+
+*/
 inline tensor resize_bilinear_grad(const tensor& grads, const tensor& original_image, bool align_corners=false, bool half_pixel_centers=false) {
 
     // Define Op
@@ -30738,7 +42910,19 @@ inline tensor resize_bilinear_grad(const tensor& grads, const tensor& original_i
     return tensor(res[0]);
 }
 
+/* # ResizeNearestNeighbor
+# Inputs:
+*    images
+*    size
 
+# Attributes:
+*    align_corners
+*    half_pixel_centers
+
+# Outputs:
+*    resized_images
+
+*/
 inline tensor resize_nearest_neighbor(const tensor& images, const tensor& size, bool align_corners=false, bool half_pixel_centers=false) {
 
     // Define Op
@@ -30767,7 +42951,19 @@ inline tensor resize_nearest_neighbor(const tensor& images, const tensor& size, 
     return tensor(res[0]);
 }
 
+/* # ResizeNearestNeighborGrad
+# Inputs:
+*    grads
+*    size
 
+# Attributes:
+*    align_corners
+*    half_pixel_centers
+
+# Outputs:
+*    output
+
+*/
 inline tensor resize_nearest_neighbor_grad(const tensor& grads, const tensor& size, bool align_corners=false, bool half_pixel_centers=false) {
 
     // Define Op
@@ -30796,7 +42992,18 @@ inline tensor resize_nearest_neighbor_grad(const tensor& grads, const tensor& si
     return tensor(res[0]);
 }
 
+/* # ResourceAccumulatorApplyGradient
+# Inputs:
+*    handle
+*    local_step
+*    gradient
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    
+*/
 inline void resource_accumulator_apply_gradient(const tensor& handle, const tensor& local_step, const tensor& gradient, datatype dtype) {
 
     // Define Op
@@ -30827,7 +43034,16 @@ inline void resource_accumulator_apply_gradient(const tensor& handle, const tens
     status_check(context::get_status());
 }
 
+/* # ResourceAccumulatorNumAccumulated
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    num_accumulated
+
+*/
 inline tensor resource_accumulator_num_accumulated(const tensor& handle) {
 
     // Define Op
@@ -30851,7 +43067,16 @@ inline tensor resource_accumulator_num_accumulated(const tensor& handle) {
     return tensor(res[0]);
 }
 
+/* # ResourceAccumulatorSetGlobalStep
+# Inputs:
+*    handle
+*    new_global_step
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void resource_accumulator_set_global_step(const tensor& handle, const tensor& new_global_step) {
 
     // Define Op
@@ -30878,7 +43103,18 @@ inline void resource_accumulator_set_global_step(const tensor& handle, const ten
     status_check(context::get_status());
 }
 
+/* # ResourceAccumulatorTakeGradient
+# Inputs:
+*    handle
+*    num_required
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    average
+
+*/
 inline tensor resource_accumulator_take_gradient(const tensor& handle, const tensor& num_required, datatype dtype) {
 
     // Define Op
@@ -30906,7 +43142,24 @@ inline tensor resource_accumulator_take_gradient(const tensor& handle, const ten
     return tensor(res[0]);
 }
 
+/* # ResourceApplyAdaMax
+# Inputs:
+*    var
+*    m
+*    v
+*    beta1_power
+*    lr
+*    beta1
+*    beta2
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_ada_max(const tensor& var, const tensor& m, const tensor& v, const tensor& beta1_power, const tensor& lr, const tensor& beta1, const tensor& beta2, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -30961,7 +43214,22 @@ inline void resource_apply_ada_max(const tensor& var, const tensor& m, const ten
     status_check(context::get_status());
 }
 
+/* # ResourceApplyAdadelta
+# Inputs:
+*    var
+*    accum
+*    accum_update
+*    lr
+*    rho
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_adadelta(const tensor& var, const tensor& accum, const tensor& accum_update, const tensor& lr, const tensor& rho, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -31008,7 +43276,20 @@ inline void resource_apply_adadelta(const tensor& var, const tensor& accum, cons
     status_check(context::get_status());
 }
 
+/* # ResourceApplyAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
 
+# Attributes:
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    
+*/
 inline void resource_apply_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -31044,7 +43325,23 @@ inline void resource_apply_adagrad(const tensor& var, const tensor& accum, const
     status_check(context::get_status());
 }
 
+/* # ResourceApplyAdagradDA
+# Inputs:
+*    var
+*    gradient_accumulator
+*    gradient_squared_accumulator
+*    grad
+*    lr
+*    l1
+*    l2
+*    global_step
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_adagrad_d_a(const tensor& var, const tensor& gradient_accumulator, const tensor& gradient_squared_accumulator, const tensor& grad, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& global_step, bool use_locking=false) {
 
     // Define Op
@@ -31095,7 +43392,21 @@ inline void resource_apply_adagrad_d_a(const tensor& var, const tensor& gradient
     status_check(context::get_status());
 }
 
+/* # ResourceApplyAdagradV2
+# Inputs:
+*    var
+*    accum
+*    lr
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    
+*/
 inline void resource_apply_adagrad_v2(const tensor& var, const tensor& accum, const tensor& lr, const tensor& epsilon, const tensor& grad, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -31135,7 +43446,26 @@ inline void resource_apply_adagrad_v2(const tensor& var, const tensor& accum, co
     status_check(context::get_status());
 }
 
+/* # ResourceApplyAdam
+# Inputs:
+*    var
+*    m
+*    v
+*    beta1_power
+*    beta2_power
+*    lr
+*    beta1
+*    beta2
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    
+*/
 inline void resource_apply_adam(const tensor& var, const tensor& m, const tensor& v, const tensor& beta1_power, const tensor& beta2_power, const tensor& lr, const tensor& beta1, const tensor& beta2, const tensor& epsilon, const tensor& grad, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -31195,7 +43525,26 @@ inline void resource_apply_adam(const tensor& var, const tensor& m, const tensor
     status_check(context::get_status());
 }
 
+/* # ResourceApplyAdamWithAmsgrad
+# Inputs:
+*    var
+*    m
+*    v
+*    vhat
+*    beta1_power
+*    beta2_power
+*    lr
+*    beta1
+*    beta2
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_adam_with_amsgrad(const tensor& var, const tensor& m, const tensor& v, const tensor& vhat, const tensor& beta1_power, const tensor& beta2_power, const tensor& lr, const tensor& beta1, const tensor& beta2, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -31258,7 +43607,22 @@ inline void resource_apply_adam_with_amsgrad(const tensor& var, const tensor& m,
     status_check(context::get_status());
 }
 
+/* # ResourceApplyAddSign
+# Inputs:
+*    var
+*    m
+*    lr
+*    alpha
+*    sign_decay
+*    beta
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_add_sign(const tensor& var, const tensor& m, const tensor& lr, const tensor& alpha, const tensor& sign_decay, const tensor& beta, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -31305,7 +43669,24 @@ inline void resource_apply_add_sign(const tensor& var, const tensor& m, const te
     status_check(context::get_status());
 }
 
+/* # ResourceApplyCenteredRMSProp
+# Inputs:
+*    var
+*    mg
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_centered_r_m_s_prop(const tensor& var, const tensor& mg, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -31360,7 +43741,24 @@ inline void resource_apply_centered_r_m_s_prop(const tensor& var, const tensor& 
     status_check(context::get_status());
 }
 
+/* # ResourceApplyFtrl
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    lr
+*    l1
+*    l2
+*    lr_power
 
+# Attributes:
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    
+*/
 inline void resource_apply_ftrl(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& lr_power, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -31412,7 +43810,25 @@ inline void resource_apply_ftrl(const tensor& var, const tensor& accum, const te
     status_check(context::get_status());
 }
 
+/* # ResourceApplyFtrlV2
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    lr
+*    l1
+*    l2
+*    l2_shrinkage
+*    lr_power
 
+# Attributes:
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    
+*/
 inline void resource_apply_ftrl_v2(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& l2_shrinkage, const tensor& lr_power, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -31468,7 +43884,18 @@ inline void resource_apply_ftrl_v2(const tensor& var, const tensor& accum, const
     status_check(context::get_status());
 }
 
+/* # ResourceApplyGradientDescent
+# Inputs:
+*    var
+*    alpha
+*    delta
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_gradient_descent(const tensor& var, const tensor& alpha, const tensor& delta, bool use_locking=false) {
 
     // Define Op
@@ -31499,7 +43926,21 @@ inline void resource_apply_gradient_descent(const tensor& var, const tensor& alp
     status_check(context::get_status());
 }
 
+/* # ResourceApplyKerasMomentum
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    momentum
 
+# Attributes:
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    
+*/
 inline void resource_apply_keras_momentum(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& momentum, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -31539,7 +43980,21 @@ inline void resource_apply_keras_momentum(const tensor& var, const tensor& accum
     status_check(context::get_status());
 }
 
+/* # ResourceApplyMomentum
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    momentum
 
+# Attributes:
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    
+*/
 inline void resource_apply_momentum(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& momentum, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -31579,7 +44034,22 @@ inline void resource_apply_momentum(const tensor& var, const tensor& accum, cons
     status_check(context::get_status());
 }
 
+/* # ResourceApplyPowerSign
+# Inputs:
+*    var
+*    m
+*    lr
+*    logbase
+*    sign_decay
+*    beta
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_power_sign(const tensor& var, const tensor& m, const tensor& lr, const tensor& logbase, const tensor& sign_decay, const tensor& beta, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -31626,7 +44096,21 @@ inline void resource_apply_power_sign(const tensor& var, const tensor& m, const 
     status_check(context::get_status());
 }
 
+/* # ResourceApplyProximalAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    l1
+*    l2
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_proximal_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -31669,7 +44153,20 @@ inline void resource_apply_proximal_adagrad(const tensor& var, const tensor& acc
     status_check(context::get_status());
 }
 
+/* # ResourceApplyProximalGradientDescent
+# Inputs:
+*    var
+*    alpha
+*    l1
+*    l2
+*    delta
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_proximal_gradient_descent(const tensor& var, const tensor& alpha, const tensor& l1, const tensor& l2, const tensor& delta, bool use_locking=false) {
 
     // Define Op
@@ -31708,7 +44205,23 @@ inline void resource_apply_proximal_gradient_descent(const tensor& var, const te
     status_check(context::get_status());
 }
 
+/* # ResourceApplyRMSProp
+# Inputs:
+*    var
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
 
+# Attributes:
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_apply_r_m_s_prop(const tensor& var, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, bool use_locking=false) {
 
     // Define Op
@@ -31759,7 +44272,20 @@ inline void resource_apply_r_m_s_prop(const tensor& var, const tensor& ms, const
     status_check(context::get_status());
 }
 
+/* # ResourceConditionalAccumulator
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
+*    container
+*    shared_name
+*    reduction_type
 
+# Outputs:
+*    handle
+
+*/
 inline tensor resource_conditional_accumulator(datatype dtype, const std::vector<int64_t>& shape, const std::string& container="", const std::string& shared_name="", const std::string& reduction_type="MEAN") {
 
     // Define Op
@@ -31787,7 +44313,17 @@ inline tensor resource_conditional_accumulator(datatype dtype, const std::vector
     return tensor(res[0]);
 }
 
+/* # ResourceCountUpTo
+# Inputs:
+*    resource
 
+# Attributes:
+*    limit
+
+# Outputs:
+*    output
+
+*/
 inline tensor resource_count_up_to(const tensor& resource, int64_t limit) {
 
     // Define Op
@@ -31811,7 +44347,21 @@ inline tensor resource_count_up_to(const tensor& resource, int64_t limit) {
     return tensor(res[0]);
 }
 
+/* # ResourceGather
+# Inputs:
+*    resource
+*    indices
 
+# Attributes:
+*    dtype
+*    Tindices
+*    batch_dims
+*    validate_indices
+
+# Outputs:
+*    output
+
+*/
 inline tensor resource_gather(const tensor& resource, const tensor& indices, datatype dtype, datatype Tindices, int64_t batch_dims=0, bool validate_indices=true) {
 
     // Define Op
@@ -31842,7 +44392,19 @@ inline tensor resource_gather(const tensor& resource, const tensor& indices, dat
     return tensor(res[0]);
 }
 
+/* # ResourceGatherNd
+# Inputs:
+*    resource
+*    indices
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor resource_gather_nd(const tensor& resource, const tensor& indices, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -31871,7 +44433,19 @@ inline tensor resource_gather_nd(const tensor& resource, const tensor& indices, 
     return tensor(res[0]);
 }
 
+/* # ResourceScatterAdd
+# Inputs:
+*    resource
+*    indices
+*    updates
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_add(const tensor& resource, const tensor& indices, const tensor& updates, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -31903,7 +44477,19 @@ inline void resource_scatter_add(const tensor& resource, const tensor& indices, 
     status_check(context::get_status());
 }
 
+/* # ResourceScatterDiv
+# Inputs:
+*    resource
+*    indices
+*    updates
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_div(const tensor& resource, const tensor& indices, const tensor& updates, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -31935,7 +44521,19 @@ inline void resource_scatter_div(const tensor& resource, const tensor& indices, 
     status_check(context::get_status());
 }
 
+/* # ResourceScatterMax
+# Inputs:
+*    resource
+*    indices
+*    updates
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_max(const tensor& resource, const tensor& indices, const tensor& updates, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -31967,7 +44565,19 @@ inline void resource_scatter_max(const tensor& resource, const tensor& indices, 
     status_check(context::get_status());
 }
 
+/* # ResourceScatterMin
+# Inputs:
+*    resource
+*    indices
+*    updates
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_min(const tensor& resource, const tensor& indices, const tensor& updates, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -31999,7 +44609,19 @@ inline void resource_scatter_min(const tensor& resource, const tensor& indices, 
     status_check(context::get_status());
 }
 
+/* # ResourceScatterMul
+# Inputs:
+*    resource
+*    indices
+*    updates
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_mul(const tensor& resource, const tensor& indices, const tensor& updates, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -32031,7 +44653,19 @@ inline void resource_scatter_mul(const tensor& resource, const tensor& indices, 
     status_check(context::get_status());
 }
 
+/* # ResourceScatterNdAdd
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_nd_add(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
 
     // Define Op
@@ -32063,7 +44697,19 @@ inline void resource_scatter_nd_add(const tensor& ref, const tensor& indices, co
     status_check(context::get_status());
 }
 
+/* # ResourceScatterNdMax
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_nd_max(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
 
     // Define Op
@@ -32095,7 +44741,19 @@ inline void resource_scatter_nd_max(const tensor& ref, const tensor& indices, co
     status_check(context::get_status());
 }
 
+/* # ResourceScatterNdMin
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_nd_min(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
 
     // Define Op
@@ -32127,7 +44785,19 @@ inline void resource_scatter_nd_min(const tensor& ref, const tensor& indices, co
     status_check(context::get_status());
 }
 
+/* # ResourceScatterNdSub
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_nd_sub(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
 
     // Define Op
@@ -32159,7 +44829,19 @@ inline void resource_scatter_nd_sub(const tensor& ref, const tensor& indices, co
     status_check(context::get_status());
 }
 
+/* # ResourceScatterNdUpdate
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_nd_update(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
 
     // Define Op
@@ -32191,7 +44873,19 @@ inline void resource_scatter_nd_update(const tensor& ref, const tensor& indices,
     status_check(context::get_status());
 }
 
+/* # ResourceScatterSub
+# Inputs:
+*    resource
+*    indices
+*    updates
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_sub(const tensor& resource, const tensor& indices, const tensor& updates, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -32223,7 +44917,19 @@ inline void resource_scatter_sub(const tensor& resource, const tensor& indices, 
     status_check(context::get_status());
 }
 
+/* # ResourceScatterUpdate
+# Inputs:
+*    resource
+*    indices
+*    updates
 
+# Attributes:
+*    dtype
+*    Tindices
+
+# Outputs:
+*    
+*/
 inline void resource_scatter_update(const tensor& resource, const tensor& indices, const tensor& updates, datatype dtype, datatype Tindices) {
 
     // Define Op
@@ -32255,7 +44961,24 @@ inline void resource_scatter_update(const tensor& resource, const tensor& indice
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyAdadelta
+# Inputs:
+*    var
+*    accum
+*    accum_update
+*    lr
+*    rho
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_adadelta(const tensor& var, const tensor& accum, const tensor& accum_update, const tensor& lr, const tensor& rho, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -32307,7 +45030,22 @@ inline void resource_sparse_apply_adadelta(const tensor& var, const tensor& accu
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -32348,7 +45086,25 @@ inline void resource_sparse_apply_adagrad(const tensor& var, const tensor& accum
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyAdagradDA
+# Inputs:
+*    var
+*    gradient_accumulator
+*    gradient_squared_accumulator
+*    grad
+*    indices
+*    lr
+*    l1
+*    l2
+*    global_step
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_adagrad_d_a(const tensor& var, const tensor& gradient_accumulator, const tensor& gradient_squared_accumulator, const tensor& grad, const tensor& indices, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& global_step, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -32404,7 +45160,23 @@ inline void resource_sparse_apply_adagrad_d_a(const tensor& var, const tensor& g
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyAdagradV2
+# Inputs:
+*    var
+*    accum
+*    lr
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_adagrad_v2(const tensor& var, const tensor& accum, const tensor& lr, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -32449,7 +45221,26 @@ inline void resource_sparse_apply_adagrad_v2(const tensor& var, const tensor& ac
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyCenteredRMSProp
+# Inputs:
+*    var
+*    mg
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_centered_r_m_s_prop(const tensor& var, const tensor& mg, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -32509,7 +45300,26 @@ inline void resource_sparse_apply_centered_r_m_s_prop(const tensor& var, const t
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyFtrl
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    indices
+*    lr
+*    l1
+*    l2
+*    lr_power
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_ftrl(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& indices, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& lr_power, datatype Tindices, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -32566,7 +45376,27 @@ inline void resource_sparse_apply_ftrl(const tensor& var, const tensor& accum, c
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyFtrlV2
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    indices
+*    lr
+*    l1
+*    l2
+*    l2_shrinkage
+*    lr_power
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_ftrl_v2(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& indices, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& l2_shrinkage, const tensor& lr_power, datatype Tindices, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -32627,7 +45457,23 @@ inline void resource_sparse_apply_ftrl_v2(const tensor& var, const tensor& accum
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyKerasMomentum
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    indices
+*    momentum
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_keras_momentum(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& indices, const tensor& momentum, datatype Tindices, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -32672,7 +45518,23 @@ inline void resource_sparse_apply_keras_momentum(const tensor& var, const tensor
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyMomentum
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    indices
+*    momentum
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_momentum(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& indices, const tensor& momentum, datatype Tindices, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -32717,7 +45579,23 @@ inline void resource_sparse_apply_momentum(const tensor& var, const tensor& accu
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyProximalAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    l1
+*    l2
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_proximal_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -32765,7 +45643,22 @@ inline void resource_sparse_apply_proximal_adagrad(const tensor& var, const tens
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyProximalGradientDescent
+# Inputs:
+*    var
+*    alpha
+*    l1
+*    l2
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_proximal_gradient_descent(const tensor& var, const tensor& alpha, const tensor& l1, const tensor& l2, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -32809,7 +45702,25 @@ inline void resource_sparse_apply_proximal_gradient_descent(const tensor& var, c
     status_check(context::get_status());
 }
 
+/* # ResourceSparseApplyRMSProp
+# Inputs:
+*    var
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    
+*/
 inline void resource_sparse_apply_r_m_s_prop(const tensor& var, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -32865,7 +45776,25 @@ inline void resource_sparse_apply_r_m_s_prop(const tensor& var, const tensor& ms
     status_check(context::get_status());
 }
 
+/* # ResourceStridedSliceAssign
+# Inputs:
+*    ref
+*    begin
+*    end
+*    strides
+*    value
 
+# Attributes:
+*    Index
+*    begin_mask
+*    end_mask
+*    ellipsis_mask
+*    new_axis_mask
+*    shrink_axis_mask
+
+# Outputs:
+*    
+*/
 inline void resource_strided_slice_assign(const tensor& ref, const tensor& begin, const tensor& end, const tensor& strides, const tensor& value, datatype Index, int64_t begin_mask=0, int64_t end_mask=0, int64_t ellipsis_mask=0, int64_t new_axis_mask=0, int64_t shrink_axis_mask=0) {
 
     // Define Op
@@ -32909,7 +45838,19 @@ inline void resource_strided_slice_assign(const tensor& ref, const tensor& begin
     status_check(context::get_status());
 }
 
+/* # Restore
+# Inputs:
+*    file_pattern
+*    tensor_name
 
+# Attributes:
+*    dt
+*    preferred_shard
+
+# Outputs:
+*    tensor
+
+*/
 inline tensor restore(const tensor& file_pattern, const tensor& input_tensor_name, datatype dt, int64_t preferred_shard=-1) {
 
     // Define Op
@@ -32938,7 +45879,20 @@ inline tensor restore(const tensor& file_pattern, const tensor& input_tensor_nam
     return tensor(res[0]);
 }
 
+/* # RestoreSlice
+# Inputs:
+*    file_pattern
+*    tensor_name
+*    shape_and_slice
 
+# Attributes:
+*    dt
+*    preferred_shard
+
+# Outputs:
+*    tensor
+
+*/
 inline tensor restore_slice(const tensor& file_pattern, const tensor& input_tensor_name, const tensor& shape_and_slice, datatype dt, int64_t preferred_shard=-1) {
 
     // Define Op
@@ -32971,7 +45925,19 @@ inline tensor restore_slice(const tensor& file_pattern, const tensor& input_tens
     return tensor(res[0]);
 }
 
+/* # RestoreV2
+# Inputs:
+*    prefix
+*    tensor_names
+*    shape_and_slices
 
+# Attributes:
+*    dtypes
+
+# Outputs:
+*    tensors
+
+*/
 inline tensor restore_v2(const tensor& prefix, const tensor& input_tensor_names, const tensor& shape_and_slices, const std::vector<datatype>& dtypes) {
 
     // Define Op
@@ -33003,7 +45969,22 @@ inline tensor restore_v2(const tensor& prefix, const tensor& input_tensor_names,
     return tensor(res[0]);
 }
 
+/* # RetrieveTPUEmbeddingADAMParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    momenta
+*    velocities
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_a_d_a_m_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33028,7 +46009,22 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_a_d_a_m_parameters(int64_t n
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RetrieveTPUEmbeddingAdadeltaParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    accumulators
+*    updates
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_adadelta_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33053,7 +46049,22 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_adadelta_parameters(int64_t 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RetrieveTPUEmbeddingAdagradMomentumParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    accumulators
+*    momenta
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_adagrad_momentum_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33078,7 +46089,21 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_adagrad_momentum_parameters(
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RetrieveTPUEmbeddingAdagradParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    accumulators
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_adagrad_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33103,7 +46128,23 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_adagrad_parameters(int64_t n
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RetrieveTPUEmbeddingCenteredRMSPropParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    ms
+*    mom
+*    mg
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_centered_r_m_s_prop_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33128,7 +46169,22 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_centered_r_m_s_prop_paramete
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # RetrieveTPUEmbeddingFTRLParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    accumulators
+*    linears
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_f_t_r_l_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33153,7 +46209,21 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_f_t_r_l_parameters(int64_t n
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RetrieveTPUEmbeddingFrequencyEstimatorParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    last_hit_step
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_frequency_estimator_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33178,7 +46248,23 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_frequency_estimator_paramete
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RetrieveTPUEmbeddingMDLAdagradLightParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    accumulators
+*    weights
+*    benefits
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_m_d_l_adagrad_light_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33203,7 +46289,21 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_m_d_l_adagrad_light_paramete
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # RetrieveTPUEmbeddingMomentumParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    momenta
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_momentum_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33228,7 +46328,21 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_momentum_parameters(int64_t 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RetrieveTPUEmbeddingProximalAdagradParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    accumulators
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_proximal_adagrad_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33253,7 +46367,22 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_proximal_adagrad_parameters(
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # RetrieveTPUEmbeddingProximalYogiParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    v
+*    m
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_proximal_yogi_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33278,7 +46407,22 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_proximal_yogi_parameters(int
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RetrieveTPUEmbeddingRMSPropParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+*    ms
+*    mom
+
+*/
 inline std::vector<tensor> retrieve_t_p_u_embedding_r_m_s_prop_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33303,7 +46447,20 @@ inline std::vector<tensor> retrieve_t_p_u_embedding_r_m_s_prop_parameters(int64_
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # RetrieveTPUEmbeddingStochasticGradientDescentParameters
+# Inputs:
+*    
+# Attributes:
+*    num_shards
+*    shard_id
+*    table_id
+*    table_name
+*    config
 
+# Outputs:
+*    parameters
+
+*/
 inline tensor retrieve_t_p_u_embedding_stochastic_gradient_descent_parameters(int64_t num_shards, int64_t shard_id, int64_t table_id=-1, const std::string& table_name="", const std::string& config="") {
 
     // Define Op
@@ -33328,7 +46485,17 @@ inline tensor retrieve_t_p_u_embedding_stochastic_gradient_descent_parameters(in
     return tensor(res[0]);
 }
 
+/* # Reverse
+# Inputs:
+*    tensor
+*    dims
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor reverse(const tensor& input_tensor, const tensor& dims) {
 
     // Define Op
@@ -33356,7 +46523,20 @@ inline tensor reverse(const tensor& input_tensor, const tensor& dims) {
     return tensor(res[0]);
 }
 
+/* # ReverseSequence
+# Inputs:
+*    input
+*    seq_lengths
 
+# Attributes:
+*    seq_dim
+*    batch_dim
+*    Tlen
+
+# Outputs:
+*    output
+
+*/
 inline tensor reverse_sequence(const tensor& input, const tensor& seq_lengths, int64_t seq_dim, int64_t batch_dim=0, datatype Tlen=static_cast<datatype>(9)) {
 
     // Define Op
@@ -33386,7 +46566,18 @@ inline tensor reverse_sequence(const tensor& input, const tensor& seq_lengths, i
     return tensor(res[0]);
 }
 
+/* # ReverseV2
+# Inputs:
+*    tensor
+*    axis
 
+# Attributes:
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor reverse_v2(const tensor& input_tensor, const tensor& axis, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -33414,7 +46605,19 @@ inline tensor reverse_v2(const tensor& input_tensor, const tensor& axis, datatyp
     return tensor(res[0]);
 }
 
+/* # RewriteDataset
+# Inputs:
+*    input_dataset
+*    rewrite_name
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor rewrite_dataset(const tensor& input_dataset, const tensor& rewrite_name, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -33450,7 +46653,17 @@ inline tensor rewrite_dataset(const tensor& input_dataset, const tensor& rewrite
     return tensor(res[0]);
 }
 
+/* # RightShift
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor right_shift(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -33478,7 +46691,16 @@ inline tensor right_shift(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # Rint
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor rint(const tensor& x) {
 
     // Define Op
@@ -33502,7 +46724,18 @@ inline tensor rint(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # RngReadAndSkip
+# Inputs:
+*    resource
+*    alg
+*    delta
 
+# Attributes:
+*    
+# Outputs:
+*    value
+
+*/
 inline tensor rng_read_and_skip(const tensor& resource, const tensor& alg, const tensor& delta) {
 
     // Define Op
@@ -33534,7 +46767,17 @@ inline tensor rng_read_and_skip(const tensor& resource, const tensor& alg, const
     return tensor(res[0]);
 }
 
+/* # RngSkip
+# Inputs:
+*    resource
+*    algorithm
+*    delta
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void rng_skip(const tensor& resource, const tensor& algorithm, const tensor& delta) {
 
     // Define Op
@@ -33565,7 +46808,20 @@ inline void rng_skip(const tensor& resource, const tensor& algorithm, const tens
     status_check(context::get_status());
 }
 
+/* # Roll
+# Inputs:
+*    input
+*    shift
+*    axis
 
+# Attributes:
+*    Tshift
+*    Taxis
+
+# Outputs:
+*    output
+
+*/
 inline tensor roll(const tensor& input, const tensor& shift, const tensor& axis, datatype Tshift, datatype Taxis) {
 
     // Define Op
@@ -33598,7 +46854,16 @@ inline tensor roll(const tensor& input, const tensor& shift, const tensor& axis,
     return tensor(res[0]);
 }
 
+/* # Round
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor round(const tensor& x) {
 
     // Define Op
@@ -33622,7 +46887,16 @@ inline tensor round(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Rsqrt
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor rsqrt(const tensor& x) {
 
     // Define Op
@@ -33646,7 +46920,17 @@ inline tensor rsqrt(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # RsqrtGrad
+# Inputs:
+*    y
+*    dy
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor rsqrt_grad(const tensor& y, const tensor& dy) {
 
     // Define Op
@@ -33674,7 +46958,26 @@ inline tensor rsqrt_grad(const tensor& y, const tensor& dy) {
     return tensor(res[0]);
 }
 
+/* # SampleDistortedBoundingBox
+# Inputs:
+*    image_size
+*    bounding_boxes
 
+# Attributes:
+*    aspect_ratio_range
+*    area_range
+*    seed
+*    seed2
+*    min_object_covered
+*    max_attempts
+*    use_image_if_no_bounding_boxes
+
+# Outputs:
+*    begin
+*    size
+*    bboxes
+
+*/
 inline std::vector<tensor> sample_distorted_bounding_box(const tensor& image_size, const tensor& bounding_boxes, const std::vector<float>& aspect_ratio_range, const std::vector<float>& area_range, int64_t seed=0, int64_t seed2=0, float min_object_covered=1.0000e-01, int64_t max_attempts=100, bool use_image_if_no_bounding_boxes=false) {
 
     // Define Op
@@ -33708,7 +47011,26 @@ inline std::vector<tensor> sample_distorted_bounding_box(const tensor& image_siz
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SampleDistortedBoundingBoxV2
+# Inputs:
+*    image_size
+*    bounding_boxes
+*    min_object_covered
 
+# Attributes:
+*    aspect_ratio_range
+*    area_range
+*    seed
+*    seed2
+*    max_attempts
+*    use_image_if_no_bounding_boxes
+
+# Outputs:
+*    begin
+*    size
+*    bboxes
+
+*/
 inline std::vector<tensor> sample_distorted_bounding_box_v2(const tensor& image_size, const tensor& bounding_boxes, const tensor& min_object_covered, const std::vector<float>& aspect_ratio_range, const std::vector<float>& area_range, int64_t seed=0, int64_t seed2=0, int64_t max_attempts=100, bool use_image_if_no_bounding_boxes=false) {
 
     // Define Op
@@ -33745,7 +47067,21 @@ inline std::vector<tensor> sample_distorted_bounding_box_v2(const tensor& image_
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SamplingDataset
+# Inputs:
+*    input_dataset
+*    rate
+*    seed
+*    seed2
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor sampling_dataset(const tensor& input_dataset, const tensor& rate, const tensor& seed, const tensor& seed2, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -33789,7 +47125,17 @@ inline tensor sampling_dataset(const tensor& input_dataset, const tensor& rate, 
     return tensor(res[0]);
 }
 
+/* # Save
+# Inputs:
+*    filename
+*    tensor_names
+*    data
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void save(const tensor& filename, const tensor& input_tensor_names, const std::vector<tensor>&data) {
 
     // Define Op
@@ -33822,7 +47168,21 @@ inline void save(const tensor& filename, const tensor& input_tensor_names, const
     status_check(context::get_status());
 }
 
+/* # SaveDataset
+# Inputs:
+*    input_dataset
+*    path
+*    shard_func_other_args
 
+# Attributes:
+*    shard_func
+*    Tshard_func_args
+*    compression
+*    use_shard_func
+
+# Outputs:
+*    
+*/
 inline void save_dataset(const tensor& input_dataset, const tensor& path, const std::vector<tensor>&shard_func_other_args, int64_t shard_func, const std::vector<datatype>& Tshard_func_args, const std::string& compression="", bool use_shard_func=true) {
 
     // Define Op
@@ -33858,7 +47218,24 @@ inline void save_dataset(const tensor& input_dataset, const tensor& path, const 
     status_check(context::get_status());
 }
 
+/* # SaveDatasetV2
+# Inputs:
+*    input_dataset
+*    path
+*    shard_func_other_args
 
+# Attributes:
+*    shard_func
+*    Tshard_func_args
+*    output_types
+*    output_shapes
+*    compression
+*    use_shard_func
+
+# Outputs:
+*    handle
+
+*/
 inline tensor save_dataset_v2(const tensor& input_dataset, const tensor& path, const std::vector<tensor>&shard_func_other_args, int64_t shard_func, const std::vector<datatype>& Tshard_func_args, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& compression="", bool use_shard_func=true) {
 
     // Define Op
@@ -33904,7 +47281,18 @@ inline tensor save_dataset_v2(const tensor& input_dataset, const tensor& path, c
     return tensor(res[0]);
 }
 
+/* # SaveSlices
+# Inputs:
+*    filename
+*    tensor_names
+*    shapes_and_slices
+*    data
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void save_slices(const tensor& filename, const tensor& input_tensor_names, const tensor& shapes_and_slices, const std::vector<tensor>&data) {
 
     // Define Op
@@ -33941,7 +47329,19 @@ inline void save_slices(const tensor& filename, const tensor& input_tensor_names
     status_check(context::get_status());
 }
 
+/* # SaveV2
+# Inputs:
+*    prefix
+*    tensor_names
+*    shape_and_slices
+*    tensors
 
+# Attributes:
+*    dtypes
+
+# Outputs:
+*    
+*/
 inline void save_v2(const tensor& prefix, const tensor& input_tensor_names, const tensor& shape_and_slices, const std::vector<tensor>&tensors, const std::vector<datatype>& dtypes) {
 
     // Define Op
@@ -33978,7 +47378,17 @@ inline void save_v2(const tensor& prefix, const tensor& input_tensor_names, cons
     status_check(context::get_status());
 }
 
+/* # ScalarSummary
+# Inputs:
+*    tags
+*    values
 
+# Attributes:
+*    
+# Outputs:
+*    summary
+
+*/
 inline tensor scalar_summary(const tensor& tags, const tensor& values) {
 
     // Define Op
@@ -34006,7 +47416,21 @@ inline tensor scalar_summary(const tensor& tags, const tensor& values) {
     return tensor(res[0]);
 }
 
+/* # ScaleAndTranslate
+# Inputs:
+*    images
+*    size
+*    scale
+*    translation
 
+# Attributes:
+*    kernel_type
+*    antialias
+
+# Outputs:
+*    resized_images
+
+*/
 inline tensor scale_and_translate(const tensor& images, const tensor& size, const tensor& scale, const tensor& translation, const std::string& kernel_type="lanczos3", bool antialias=true) {
 
     // Define Op
@@ -34043,7 +47467,21 @@ inline tensor scale_and_translate(const tensor& images, const tensor& size, cons
     return tensor(res[0]);
 }
 
+/* # ScaleAndTranslateGrad
+# Inputs:
+*    grads
+*    original_image
+*    scale
+*    translation
 
+# Attributes:
+*    kernel_type
+*    antialias
+
+# Outputs:
+*    output
+
+*/
 inline tensor scale_and_translate_grad(const tensor& grads, const tensor& original_image, const tensor& scale, const tensor& translation, const std::string& kernel_type="lanczos3", bool antialias=true) {
 
     // Define Op
@@ -34080,7 +47518,26 @@ inline tensor scale_and_translate_grad(const tensor& grads, const tensor& origin
     return tensor(res[0]);
 }
 
+/* # ScanDataset
+# Inputs:
+*    input_dataset
+*    initial_state
+*    other_arguments
 
+# Attributes:
+*    f
+*    Tstate
+*    Targuments
+*    output_types
+*    output_shapes
+*    preserve_cardinality
+*    use_default_device
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor scan_dataset(const tensor& input_dataset, const std::vector<tensor>&initial_state, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Tstate, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool preserve_cardinality=false, bool use_default_device=true, const std::string& metadata="") {
 
     // Define Op
@@ -34130,7 +47587,20 @@ inline tensor scan_dataset(const tensor& input_dataset, const std::vector<tensor
     return tensor(res[0]);
 }
 
+/* # ScatterAdd
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_add(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34163,7 +47633,20 @@ inline tensor scatter_add(const tensor& ref, const tensor& indices, const tensor
     return tensor(res[0]);
 }
 
+/* # ScatterDiv
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_div(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34196,7 +47679,20 @@ inline tensor scatter_div(const tensor& ref, const tensor& indices, const tensor
     return tensor(res[0]);
 }
 
+/* # ScatterMax
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_max(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34229,7 +47725,20 @@ inline tensor scatter_max(const tensor& ref, const tensor& indices, const tensor
     return tensor(res[0]);
 }
 
+/* # ScatterMin
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_min(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34262,7 +47771,20 @@ inline tensor scatter_min(const tensor& ref, const tensor& indices, const tensor
     return tensor(res[0]);
 }
 
+/* # ScatterMul
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_mul(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34295,7 +47817,20 @@ inline tensor scatter_mul(const tensor& ref, const tensor& indices, const tensor
     return tensor(res[0]);
 }
 
+/* # ScatterNd
+# Inputs:
+*    indices
+*    updates
+*    shape
 
+# Attributes:
+*    Tindices
+*    bad_indices_policy
+
+# Outputs:
+*    output
+
+*/
 inline tensor scatter_nd(const tensor& indices, const tensor& updates, const tensor& shape, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
@@ -34328,7 +47863,20 @@ inline tensor scatter_nd(const tensor& indices, const tensor& updates, const ten
     return tensor(res[0]);
 }
 
+/* # ScatterNdAdd
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_nd_add(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34361,7 +47909,20 @@ inline tensor scatter_nd_add(const tensor& ref, const tensor& indices, const ten
     return tensor(res[0]);
 }
 
+/* # ScatterNdMax
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_nd_max(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34394,7 +47955,20 @@ inline tensor scatter_nd_max(const tensor& ref, const tensor& indices, const ten
     return tensor(res[0]);
 }
 
+/* # ScatterNdMin
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_nd_min(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34427,7 +48001,19 @@ inline tensor scatter_nd_min(const tensor& ref, const tensor& indices, const ten
     return tensor(res[0]);
 }
 
+/* # ScatterNdNonAliasingAdd
+# Inputs:
+*    input
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor scatter_nd_non_aliasing_add(const tensor& input, const tensor& indices, const tensor& updates, datatype Tindices) {
 
     // Define Op
@@ -34459,7 +48045,20 @@ inline tensor scatter_nd_non_aliasing_add(const tensor& input, const tensor& ind
     return tensor(res[0]);
 }
 
+/* # ScatterNdSub
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_nd_sub(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34492,7 +48091,20 @@ inline tensor scatter_nd_sub(const tensor& ref, const tensor& indices, const ten
     return tensor(res[0]);
 }
 
+/* # ScatterNdUpdate
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_nd_update(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
 
     // Define Op
@@ -34525,7 +48137,20 @@ inline tensor scatter_nd_update(const tensor& ref, const tensor& indices, const 
     return tensor(res[0]);
 }
 
+/* # ScatterSub
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_sub(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -34558,7 +48183,20 @@ inline tensor scatter_sub(const tensor& ref, const tensor& indices, const tensor
     return tensor(res[0]);
 }
 
+/* # ScatterUpdate
+# Inputs:
+*    ref
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor scatter_update(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
 
     // Define Op
@@ -34591,7 +48229,16 @@ inline tensor scatter_update(const tensor& ref, const tensor& indices, const ten
     return tensor(res[0]);
 }
 
+/* # SdcaFprint
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor sdca_fprint(const tensor& input) {
 
     // Define Op
@@ -34615,7 +48262,36 @@ inline tensor sdca_fprint(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # SdcaOptimizer
+# Inputs:
+*    sparse_example_indices
+*    sparse_feature_indices
+*    sparse_feature_values
+*    dense_features
+*    example_weights
+*    example_labels
+*    sparse_indices
+*    sparse_weights
+*    dense_weights
+*    example_state_data
 
+# Attributes:
+*    loss_type
+*    num_sparse_features
+*    num_sparse_features_with_values
+*    num_dense_features
+*    l1
+*    l2
+*    num_loss_partitions
+*    num_inner_iterations
+*    adaptative
+
+# Outputs:
+*    out_example_state_data
+*    out_delta_sparse_weights
+*    out_delta_dense_weights
+
+*/
 inline std::vector<tensor> sdca_optimizer(const std::vector<tensor>&sparse_example_indices, const std::vector<tensor>&sparse_feature_indices, const std::vector<tensor>&sparse_feature_values, const std::vector<tensor>&dense_features, const tensor& example_weights, const tensor& example_labels, const std::vector<tensor>&sparse_indices, const std::vector<tensor>&sparse_weights, const std::vector<tensor>&dense_weights, const tensor& example_state_data, const std::string& loss_type, float l1, float l2, int64_t num_loss_partitions, int64_t num_inner_iterations, bool adaptative=false) {
 
     // Define Op
@@ -34697,7 +48373,36 @@ inline std::vector<tensor> sdca_optimizer(const std::vector<tensor>&sparse_examp
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SdcaOptimizerV2
+# Inputs:
+*    sparse_example_indices
+*    sparse_feature_indices
+*    sparse_feature_values
+*    dense_features
+*    example_weights
+*    example_labels
+*    sparse_indices
+*    sparse_weights
+*    dense_weights
+*    example_state_data
 
+# Attributes:
+*    loss_type
+*    num_sparse_features
+*    num_sparse_features_with_values
+*    num_dense_features
+*    l1
+*    l2
+*    num_loss_partitions
+*    num_inner_iterations
+*    adaptive
+
+# Outputs:
+*    out_example_state_data
+*    out_delta_sparse_weights
+*    out_delta_dense_weights
+
+*/
 inline std::vector<tensor> sdca_optimizer_v2(const std::vector<tensor>&sparse_example_indices, const std::vector<tensor>&sparse_feature_indices, const std::vector<tensor>&sparse_feature_values, const std::vector<tensor>&dense_features, const tensor& example_weights, const tensor& example_labels, const std::vector<tensor>&sparse_indices, const std::vector<tensor>&sparse_weights, const std::vector<tensor>&dense_weights, const tensor& example_state_data, const std::string& loss_type, float l1, float l2, int64_t num_loss_partitions, int64_t num_inner_iterations, bool adaptive=false) {
 
     // Define Op
@@ -34779,7 +48484,18 @@ inline std::vector<tensor> sdca_optimizer_v2(const std::vector<tensor>&sparse_ex
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SdcaShrinkL1
+# Inputs:
+*    weights
 
+# Attributes:
+*    num_features
+*    l1
+*    l2
+
+# Outputs:
+*    
+*/
 inline void sdca_shrink_l1(const std::vector<tensor>&weights, float l1, float l2) {
 
     // Define Op
@@ -34806,7 +48522,18 @@ inline void sdca_shrink_l1(const std::vector<tensor>&weights, float l1, float l2
     status_check(context::get_status());
 }
 
+/* # SegmentMax
+# Inputs:
+*    data
+*    segment_ids
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_max(const tensor& data, const tensor& segment_ids, datatype Tindices) {
 
     // Define Op
@@ -34834,7 +48561,20 @@ inline tensor segment_max(const tensor& data, const tensor& segment_ids, datatyp
     return tensor(res[0]);
 }
 
+/* # SegmentMaxV2
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_max_v2(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -34867,7 +48607,18 @@ inline tensor segment_max_v2(const tensor& data, const tensor& segment_ids, cons
     return tensor(res[0]);
 }
 
+/* # SegmentMean
+# Inputs:
+*    data
+*    segment_ids
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_mean(const tensor& data, const tensor& segment_ids, datatype Tindices) {
 
     // Define Op
@@ -34895,7 +48646,18 @@ inline tensor segment_mean(const tensor& data, const tensor& segment_ids, dataty
     return tensor(res[0]);
 }
 
+/* # SegmentMin
+# Inputs:
+*    data
+*    segment_ids
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_min(const tensor& data, const tensor& segment_ids, datatype Tindices) {
 
     // Define Op
@@ -34923,7 +48685,20 @@ inline tensor segment_min(const tensor& data, const tensor& segment_ids, datatyp
     return tensor(res[0]);
 }
 
+/* # SegmentMinV2
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_min_v2(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -34956,7 +48731,18 @@ inline tensor segment_min_v2(const tensor& data, const tensor& segment_ids, cons
     return tensor(res[0]);
 }
 
+/* # SegmentProd
+# Inputs:
+*    data
+*    segment_ids
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_prod(const tensor& data, const tensor& segment_ids, datatype Tindices) {
 
     // Define Op
@@ -34984,7 +48770,20 @@ inline tensor segment_prod(const tensor& data, const tensor& segment_ids, dataty
     return tensor(res[0]);
 }
 
+/* # SegmentProdV2
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_prod_v2(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -35017,7 +48816,18 @@ inline tensor segment_prod_v2(const tensor& data, const tensor& segment_ids, con
     return tensor(res[0]);
 }
 
+/* # SegmentSum
+# Inputs:
+*    data
+*    segment_ids
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_sum(const tensor& data, const tensor& segment_ids, datatype Tindices) {
 
     // Define Op
@@ -35045,7 +48855,20 @@ inline tensor segment_sum(const tensor& data, const tensor& segment_ids, datatyp
     return tensor(res[0]);
 }
 
+/* # SegmentSumV2
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor segment_sum_v2(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -35078,7 +48901,18 @@ inline tensor segment_sum_v2(const tensor& data, const tensor& segment_ids, cons
     return tensor(res[0]);
 }
 
+/* # Select
+# Inputs:
+*    condition
+*    t
+*    e
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor select(const tensor& condition, const tensor& t, const tensor& e) {
 
     // Define Op
@@ -35110,7 +48944,18 @@ inline tensor select(const tensor& condition, const tensor& t, const tensor& e) 
     return tensor(res[0]);
 }
 
+/* # SelectV2
+# Inputs:
+*    condition
+*    t
+*    e
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor select_v2(const tensor& condition, const tensor& t, const tensor& e) {
 
     // Define Op
@@ -35142,7 +48987,16 @@ inline tensor select_v2(const tensor& condition, const tensor& t, const tensor& 
     return tensor(res[0]);
 }
 
+/* # SelfAdjointEig
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor self_adjoint_eig(const tensor& input) {
 
     // Define Op
@@ -35166,7 +49020,18 @@ inline tensor self_adjoint_eig(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # SelfAdjointEigV2
+# Inputs:
+*    input
 
+# Attributes:
+*    compute_v
+
+# Outputs:
+*    e
+*    v
+
+*/
 inline std::vector<tensor> self_adjoint_eig_v2(const tensor& input, bool compute_v=true) {
 
     // Define Op
@@ -35190,7 +49055,16 @@ inline std::vector<tensor> self_adjoint_eig_v2(const tensor& input, bool compute
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Selu
+# Inputs:
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    activations
+
+*/
 inline tensor selu(const tensor& features) {
 
     // Define Op
@@ -35214,7 +49088,17 @@ inline tensor selu(const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # SeluGrad
+# Inputs:
+*    gradients
+*    outputs
 
+# Attributes:
+*    
+# Outputs:
+*    backprops
+
+*/
 inline tensor selu_grad(const tensor& gradients, const tensor& outputs) {
 
     // Define Op
@@ -35242,7 +49126,20 @@ inline tensor selu_grad(const tensor& gradients, const tensor& outputs) {
     return tensor(res[0]);
 }
 
+/* # Send
+# Inputs:
+*    tensor
 
+# Attributes:
+*    tensor_name
+*    send_device
+*    send_device_incarnation
+*    recv_device
+*    client_terminated
+
+# Outputs:
+*    
+*/
 inline void send(const tensor& input_tensor, const std::string& tensor_name, const std::string& send_device, int64_t send_device_incarnation, const std::string& recv_device, bool client_terminated=false) {
 
     // Define Op
@@ -35269,7 +49166,19 @@ inline void send(const tensor& input_tensor, const std::string& tensor_name, con
     status_check(context::get_status());
 }
 
+/* # SendTPUEmbeddingGradients
+# Inputs:
+*    inputs
+*    learning_rates
 
+# Attributes:
+*    N
+*    config
+*    NN
+
+# Outputs:
+*    
+*/
 inline void send_t_p_u_embedding_gradients(const std::vector<tensor>&inputs, const std::vector<tensor>&learning_rates, const std::string& config) {
 
     // Define Op
@@ -35302,7 +49211,17 @@ inline void send_t_p_u_embedding_gradients(const std::vector<tensor>&inputs, con
     status_check(context::get_status());
 }
 
+/* # SerializeIterator
+# Inputs:
+*    resource_handle
 
+# Attributes:
+*    external_state_policy
+
+# Outputs:
+*    serialized
+
+*/
 inline tensor serialize_iterator(const tensor& resource_handle, int64_t external_state_policy=0) {
 
     // Define Op
@@ -35326,7 +49245,19 @@ inline tensor serialize_iterator(const tensor& resource_handle, int64_t external
     return tensor(res[0]);
 }
 
+/* # SerializeManySparse
+# Inputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    serialized_sparse
+
+*/
 inline tensor serialize_many_sparse(const tensor& sparse_indices, const tensor& sparse_values, const tensor& sparse_shape, datatype out_type=static_cast<datatype>(7)) {
 
     // Define Op
@@ -35358,7 +49289,19 @@ inline tensor serialize_many_sparse(const tensor& sparse_indices, const tensor& 
     return tensor(res[0]);
 }
 
+/* # SerializeSparse
+# Inputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    serialized_sparse
+
+*/
 inline tensor serialize_sparse(const tensor& sparse_indices, const tensor& sparse_values, const tensor& sparse_shape, datatype out_type=static_cast<datatype>(7)) {
 
     // Define Op
@@ -35390,7 +49333,16 @@ inline tensor serialize_sparse(const tensor& sparse_indices, const tensor& spars
     return tensor(res[0]);
 }
 
+/* # SerializeTensor
+# Inputs:
+*    tensor
 
+# Attributes:
+*    
+# Outputs:
+*    serialized
+
+*/
 inline tensor serialize_tensor(const tensor& input_tensor) {
 
     // Define Op
@@ -35414,7 +49366,19 @@ inline tensor serialize_tensor(const tensor& input_tensor) {
     return tensor(res[0]);
 }
 
+/* # SetSize
+# Inputs:
+*    set_indices
+*    set_values
+*    set_shape
 
+# Attributes:
+*    validate_indices
+
+# Outputs:
+*    size
+
+*/
 inline tensor set_size(const tensor& set_indices, const tensor& set_values, const tensor& set_shape, bool validate_indices=true) {
 
     // Define Op
@@ -35446,7 +49410,21 @@ inline tensor set_size(const tensor& set_indices, const tensor& set_values, cons
     return tensor(res[0]);
 }
 
+/* # SetStatsAggregatorDataset
+# Inputs:
+*    input_dataset
+*    stats_aggregator
+*    tag
+*    counter_prefix
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor set_stats_aggregator_dataset(const tensor& input_dataset, const tensor& stats_aggregator, const tensor& tag, const tensor& counter_prefix, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -35490,7 +49468,17 @@ inline tensor set_stats_aggregator_dataset(const tensor& input_dataset, const te
     return tensor(res[0]);
 }
 
+/* # Shape
+# Inputs:
+*    input
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor shape(const tensor& input, datatype out_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -35514,7 +49502,18 @@ inline tensor shape(const tensor& input, datatype out_type=static_cast<datatype>
     return tensor(res[0]);
 }
 
+/* # ShapeN
+# Inputs:
+*    input
 
+# Attributes:
+*    N
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor shape_n(const std::vector<tensor>&input, datatype out_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -35541,7 +49540,22 @@ inline tensor shape_n(const std::vector<tensor>&input, datatype out_type=static_
     return tensor(res[0]);
 }
 
+/* # ShardDataset
+# Inputs:
+*    input_dataset
+*    num_shards
+*    index
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    require_non_empty
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor shard_dataset(const tensor& input_dataset, const tensor& num_shards, const tensor& index, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool require_non_empty=false, const std::string& metadata="") {
 
     // Define Op
@@ -35583,7 +49597,18 @@ inline tensor shard_dataset(const tensor& input_dataset, const tensor& num_shard
     return tensor(res[0]);
 }
 
+/* # ShardedFilename
+# Inputs:
+*    basename
+*    shard
+*    num_shards
 
+# Attributes:
+*    
+# Outputs:
+*    filename
+
+*/
 inline tensor sharded_filename(const tensor& basename, const tensor& shard, const tensor& num_shards) {
 
     // Define Op
@@ -35615,7 +49640,17 @@ inline tensor sharded_filename(const tensor& basename, const tensor& shard, cons
     return tensor(res[0]);
 }
 
+/* # ShardedFilespec
+# Inputs:
+*    basename
+*    num_shards
 
+# Attributes:
+*    
+# Outputs:
+*    filename
+
+*/
 inline tensor sharded_filespec(const tensor& basename, const tensor& num_shards) {
 
     // Define Op
@@ -35643,7 +49678,24 @@ inline tensor sharded_filespec(const tensor& basename, const tensor& num_shards)
     return tensor(res[0]);
 }
 
+/* # ShuffleAndRepeatDataset
+# Inputs:
+*    input_dataset
+*    buffer_size
+*    seed
+*    seed2
+*    count
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    reshuffle_each_iteration
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor shuffle_and_repeat_dataset(const tensor& input_dataset, const tensor& buffer_size, const tensor& seed, const tensor& seed2, const tensor& count, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool reshuffle_each_iteration=true, const std::string& metadata="") {
 
     // Define Op
@@ -35693,7 +49745,25 @@ inline tensor shuffle_and_repeat_dataset(const tensor& input_dataset, const tens
     return tensor(res[0]);
 }
 
+/* # ShuffleAndRepeatDatasetV2
+# Inputs:
+*    input_dataset
+*    buffer_size
+*    seed
+*    seed2
+*    count
+*    seed_generator
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    reshuffle_each_iteration
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor shuffle_and_repeat_dataset_v2(const tensor& input_dataset, const tensor& buffer_size, const tensor& seed, const tensor& seed2, const tensor& count, const tensor& seed_generator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool reshuffle_each_iteration=true, const std::string& metadata="") {
 
     // Define Op
@@ -35747,7 +49817,23 @@ inline tensor shuffle_and_repeat_dataset_v2(const tensor& input_dataset, const t
     return tensor(res[0]);
 }
 
+/* # ShuffleDataset
+# Inputs:
+*    input_dataset
+*    buffer_size
+*    seed
+*    seed2
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    reshuffle_each_iteration
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor shuffle_dataset(const tensor& input_dataset, const tensor& buffer_size, const tensor& seed, const tensor& seed2, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool reshuffle_each_iteration=true, const std::string& metadata="") {
 
     // Define Op
@@ -35793,7 +49879,21 @@ inline tensor shuffle_dataset(const tensor& input_dataset, const tensor& buffer_
     return tensor(res[0]);
 }
 
+/* # ShuffleDatasetV2
+# Inputs:
+*    input_dataset
+*    buffer_size
+*    seed_generator
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor shuffle_dataset_v2(const tensor& input_dataset, const tensor& buffer_size, const tensor& seed_generator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -35834,7 +49934,24 @@ inline tensor shuffle_dataset_v2(const tensor& input_dataset, const tensor& buff
     return tensor(res[0]);
 }
 
+/* # ShuffleDatasetV3
+# Inputs:
+*    input_dataset
+*    buffer_size
+*    seed
+*    seed2
+*    seed_generator
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    reshuffle_each_iteration
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor shuffle_dataset_v3(const tensor& input_dataset, const tensor& buffer_size, const tensor& seed, const tensor& seed2, const tensor& seed_generator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool reshuffle_each_iteration=true, const std::string& metadata="") {
 
     // Define Op
@@ -35884,7 +50001,14 @@ inline tensor shuffle_dataset_v3(const tensor& input_dataset, const tensor& buff
     return tensor(res[0]);
 }
 
-
+/* # ShutdownDistributedTPU
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void shutdown_distributed_t_p_u() {
 
     // Define Op
@@ -35904,7 +50028,16 @@ inline void shutdown_distributed_t_p_u() {
     status_check(context::get_status());
 }
 
+/* # Sigmoid
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor sigmoid(const tensor& x) {
 
     // Define Op
@@ -35928,7 +50061,17 @@ inline tensor sigmoid(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # SigmoidGrad
+# Inputs:
+*    y
+*    dy
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor sigmoid_grad(const tensor& y, const tensor& dy) {
 
     // Define Op
@@ -35956,7 +50099,16 @@ inline tensor sigmoid_grad(const tensor& y, const tensor& dy) {
     return tensor(res[0]);
 }
 
+/* # Sign
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor sign(const tensor& x) {
 
     // Define Op
@@ -35980,7 +50132,16 @@ inline tensor sign(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Sin
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor sin(const tensor& x) {
 
     // Define Op
@@ -36004,7 +50165,16 @@ inline tensor sin(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Sinh
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor sinh(const tensor& x) {
 
     // Define Op
@@ -36028,7 +50198,17 @@ inline tensor sinh(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Size
+# Inputs:
+*    input
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor size(const tensor& input, datatype out_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -36052,7 +50232,20 @@ inline tensor size(const tensor& input, datatype out_type=static_cast<datatype>(
     return tensor(res[0]);
 }
 
+/* # SkipDataset
+# Inputs:
+*    input_dataset
+*    count
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor skip_dataset(const tensor& input_dataset, const tensor& count, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -36089,7 +50282,19 @@ inline tensor skip_dataset(const tensor& input_dataset, const tensor& count, con
     return tensor(res[0]);
 }
 
+/* # SleepDataset
+# Inputs:
+*    input_dataset
+*    sleep_microseconds
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor sleep_dataset(const tensor& input_dataset, const tensor& sleep_microseconds, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -36125,7 +50330,19 @@ inline tensor sleep_dataset(const tensor& input_dataset, const tensor& sleep_mic
     return tensor(res[0]);
 }
 
+/* # Slice
+# Inputs:
+*    input
+*    begin
+*    size
 
+# Attributes:
+*    Index
+
+# Outputs:
+*    output
+
+*/
 inline tensor slice(const tensor& input, const tensor& begin, const tensor& size, datatype Index) {
 
     // Define Op
@@ -36157,7 +50374,22 @@ inline tensor slice(const tensor& input, const tensor& begin, const tensor& size
     return tensor(res[0]);
 }
 
+/* # SlidingWindowDataset
+# Inputs:
+*    input_dataset
+*    window_size
+*    window_shift
+*    window_stride
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    drop_remainder
+
+# Outputs:
+*    handle
+
+*/
 inline tensor sliding_window_dataset(const tensor& input_dataset, const tensor& window_size, const tensor& window_shift, const tensor& window_stride, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool drop_remainder=true) {
 
     // Define Op
@@ -36202,7 +50434,16 @@ inline tensor sliding_window_dataset(const tensor& input_dataset, const tensor& 
     return tensor(res[0]);
 }
 
+/* # Snapshot
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor snapshot(const tensor& input) {
 
     // Define Op
@@ -36226,7 +50467,19 @@ inline tensor snapshot(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # SnapshotChunkDataset
+# Inputs:
+*    chunk_file
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    compression
+
+# Outputs:
+*    handle
+
+*/
 inline tensor snapshot_chunk_dataset(const tensor& chunk_file, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& compression="") {
 
     // Define Op
@@ -36259,7 +50512,33 @@ inline tensor snapshot_chunk_dataset(const tensor& chunk_file, const std::vector
     return tensor(res[0]);
 }
 
+/* # SnapshotDataset
+# Inputs:
+*    input_dataset
+*    path
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    compression
+*    reader_path_prefix
+*    writer_path_prefix
+*    shard_size_bytes
+*    pending_snapshot_expiry_seconds
+*    num_reader_threads
+*    reader_buffer_size
+*    num_writer_threads
+*    writer_buffer_size
+*    shuffle_on_read
+*    seed
+*    seed2
+*    mode
+*    snapshot_name
+
+# Outputs:
+*    handle
+
+*/
 inline tensor snapshot_dataset(const tensor& input_dataset, const tensor& path, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& compression="", const std::string& reader_path_prefix="", const std::string& writer_path_prefix="", int64_t shard_size_bytes=10737418240, int64_t pending_snapshot_expiry_seconds=86400, int64_t num_reader_threads=1, int64_t reader_buffer_size=1, int64_t num_writer_threads=1, int64_t writer_buffer_size=1, bool shuffle_on_read=false, int64_t seed=0, int64_t seed2=0, const std::string& mode="auto", const std::string& snapshot_name="") {
 
     // Define Op
@@ -36309,7 +50588,21 @@ inline tensor snapshot_dataset(const tensor& input_dataset, const tensor& path, 
     return tensor(res[0]);
 }
 
+/* # SnapshotDatasetReader
+# Inputs:
+*    shard_dir
+*    start_index
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    version
+*    compression
+
+# Outputs:
+*    handle
+
+*/
 inline tensor snapshot_dataset_reader(const tensor& shard_dir, const tensor& start_index, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t version, const std::string& compression="") {
 
     // Define Op
@@ -36347,7 +50640,31 @@ inline tensor snapshot_dataset_reader(const tensor& shard_dir, const tensor& sta
     return tensor(res[0]);
 }
 
+/* # SnapshotDatasetV2
+# Inputs:
+*    input_dataset
+*    path
+*    reader_func_other_args
+*    shard_func_other_args
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    reader_func
+*    shard_func
+*    Treader_func_args
+*    Tshard_func_args
+*    compression
+*    reader_prefix
+*    writer_prefix
+*    hash_valid
+*    hash
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor snapshot_dataset_v2(const tensor& input_dataset, const tensor& path, const std::vector<tensor>&reader_func_other_args, const std::vector<tensor>&shard_func_other_args, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, int64_t reader_func, int64_t shard_func, const std::vector<datatype>& Treader_func_args, const std::vector<datatype>& Tshard_func_args, const std::string& compression="", const std::string& reader_prefix="", const std::string& writer_prefix="", bool hash_valid=false, int64_t hash=0, const std::string& metadata="") {
 
     // Define Op
@@ -36405,7 +50722,19 @@ inline tensor snapshot_dataset_v2(const tensor& input_dataset, const tensor& pat
     return tensor(res[0]);
 }
 
+/* # SnapshotNestedDatasetReader
+# Inputs:
+*    inputs
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    N
+
+# Outputs:
+*    handle
+
+*/
 inline tensor snapshot_nested_dataset_reader(const std::vector<tensor>&inputs, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -36440,7 +50769,19 @@ inline tensor snapshot_nested_dataset_reader(const std::vector<tensor>&inputs, c
     return tensor(res[0]);
 }
 
+/* # SobolSample
+# Inputs:
+*    dim
+*    num_results
+*    skip
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    samples
+
+*/
 inline tensor sobol_sample(const tensor& dim, const tensor& num_results, const tensor& skip, datatype dtype=static_cast<datatype>(1)) {
 
     // Define Op
@@ -36472,7 +50813,16 @@ inline tensor sobol_sample(const tensor& dim, const tensor& num_results, const t
     return tensor(res[0]);
 }
 
+/* # Softmax
+# Inputs:
+*    logits
 
+# Attributes:
+*    
+# Outputs:
+*    softmax
+
+*/
 inline tensor softmax(const tensor& logits) {
 
     // Define Op
@@ -36496,7 +50846,18 @@ inline tensor softmax(const tensor& logits) {
     return tensor(res[0]);
 }
 
+/* # SoftmaxCrossEntropyWithLogits
+# Inputs:
+*    features
+*    labels
 
+# Attributes:
+*    
+# Outputs:
+*    loss
+*    backprop
+
+*/
 inline std::vector<tensor> softmax_cross_entropy_with_logits(const tensor& features, const tensor& labels) {
 
     // Define Op
@@ -36524,7 +50885,16 @@ inline std::vector<tensor> softmax_cross_entropy_with_logits(const tensor& featu
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Softplus
+# Inputs:
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    activations
+
+*/
 inline tensor softplus(const tensor& features) {
 
     // Define Op
@@ -36548,7 +50918,17 @@ inline tensor softplus(const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # SoftplusGrad
+# Inputs:
+*    gradients
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    backprops
+
+*/
 inline tensor softplus_grad(const tensor& gradients, const tensor& features) {
 
     // Define Op
@@ -36576,7 +50956,16 @@ inline tensor softplus_grad(const tensor& gradients, const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # Softsign
+# Inputs:
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    activations
+
+*/
 inline tensor softsign(const tensor& features) {
 
     // Define Op
@@ -36600,7 +50989,17 @@ inline tensor softsign(const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # SoftsignGrad
+# Inputs:
+*    gradients
+*    features
 
+# Attributes:
+*    
+# Outputs:
+*    backprops
+
+*/
 inline tensor softsign_grad(const tensor& gradients, const tensor& features) {
 
     // Define Op
@@ -36628,7 +51027,19 @@ inline tensor softsign_grad(const tensor& gradients, const tensor& features) {
     return tensor(res[0]);
 }
 
+/* # SpaceToBatch
+# Inputs:
+*    input
+*    paddings
 
+# Attributes:
+*    block_size
+*    Tpaddings
+
+# Outputs:
+*    output
+
+*/
 inline tensor space_to_batch(const tensor& input, const tensor& paddings, int64_t block_size, datatype Tpaddings=static_cast<datatype>(3)) {
 
     // Define Op
@@ -36657,7 +51068,20 @@ inline tensor space_to_batch(const tensor& input, const tensor& paddings, int64_
     return tensor(res[0]);
 }
 
+/* # SpaceToBatchND
+# Inputs:
+*    input
+*    block_shape
+*    paddings
 
+# Attributes:
+*    Tblock_shape
+*    Tpaddings
+
+# Outputs:
+*    output
+
+*/
 inline tensor space_to_batch_n_d(const tensor& input, const tensor& block_shape, const tensor& paddings, datatype Tblock_shape=static_cast<datatype>(3), datatype Tpaddings=static_cast<datatype>(3)) {
 
     // Define Op
@@ -36690,7 +51114,18 @@ inline tensor space_to_batch_n_d(const tensor& input, const tensor& block_shape,
     return tensor(res[0]);
 }
 
+/* # SpaceToDepth
+# Inputs:
+*    input
 
+# Attributes:
+*    block_size
+*    data_format
+
+# Outputs:
+*    output
+
+*/
 inline tensor space_to_depth(const tensor& input, int64_t block_size, const std::string& data_format="NHWC") {
 
     // Define Op
@@ -36715,7 +51150,21 @@ inline tensor space_to_depth(const tensor& input, int64_t block_size, const std:
     return tensor(res[0]);
 }
 
+/* # SparseAccumulatorApplyGradient
+# Inputs:
+*    handle
+*    local_step
+*    gradient_indices
+*    gradient_values
+*    gradient_shape
 
+# Attributes:
+*    dtype
+*    has_known_shape
+
+# Outputs:
+*    
+*/
 inline void sparse_accumulator_apply_gradient(const tensor& handle, const tensor& local_step, const tensor& gradient_indices, const tensor& gradient_values, const tensor& gradient_shape, datatype dtype, bool has_known_shape) {
 
     // Define Op
@@ -36755,7 +51204,20 @@ inline void sparse_accumulator_apply_gradient(const tensor& handle, const tensor
     status_check(context::get_status());
 }
 
+/* # SparseAccumulatorTakeGradient
+# Inputs:
+*    handle
+*    num_required
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    indices
+*    values
+*    shape
+
+*/
 inline std::vector<tensor> sparse_accumulator_take_gradient(const tensor& handle, const tensor& num_required, datatype dtype) {
 
     // Define Op
@@ -36783,7 +51245,25 @@ inline std::vector<tensor> sparse_accumulator_take_gradient(const tensor& handle
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseAdd
+# Inputs:
+*    a_indices
+*    a_values
+*    a_shape
+*    b_indices
+*    b_values
+*    b_shape
+*    thresh
 
+# Attributes:
+*    Treal
+
+# Outputs:
+*    sum_indices
+*    sum_values
+*    sum_shape
+
+*/
 inline std::vector<tensor> sparse_add(const tensor& a_indices, const tensor& a_values, const tensor& a_shape, const tensor& b_indices, const tensor& b_values, const tensor& b_shape, const tensor& thresh, datatype Treal) {
 
     // Define Op
@@ -36831,7 +51311,20 @@ inline std::vector<tensor> sparse_add(const tensor& a_indices, const tensor& a_v
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseAddGrad
+# Inputs:
+*    backprop_val_grad
+*    a_indices
+*    b_indices
+*    sum_indices
 
+# Attributes:
+*    
+# Outputs:
+*    a_val_grad
+*    b_val_grad
+
+*/
 inline std::vector<tensor> sparse_add_grad(const tensor& backprop_val_grad, const tensor& a_indices, const tensor& b_indices, const tensor& sum_indices) {
 
     // Define Op
@@ -36867,7 +51360,25 @@ inline std::vector<tensor> sparse_add_grad(const tensor& backprop_val_grad, cons
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseApplyAdadelta
+# Inputs:
+*    var
+*    accum
+*    accum_update
+*    lr
+*    rho
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_adadelta(const tensor& var, const tensor& accum, const tensor& accum_update, const tensor& lr, const tensor& rho, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -36920,7 +51431,23 @@ inline tensor sparse_apply_adadelta(const tensor& var, const tensor& accum, cons
     return tensor(res[0]);
 }
 
+/* # SparseApplyAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -36962,7 +51489,26 @@ inline tensor sparse_apply_adagrad(const tensor& var, const tensor& accum, const
     return tensor(res[0]);
 }
 
+/* # SparseApplyAdagradDA
+# Inputs:
+*    var
+*    gradient_accumulator
+*    gradient_squared_accumulator
+*    grad
+*    indices
+*    lr
+*    l1
+*    l2
+*    global_step
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_adagrad_d_a(const tensor& var, const tensor& gradient_accumulator, const tensor& gradient_squared_accumulator, const tensor& grad, const tensor& indices, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& global_step, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -37019,7 +51565,24 @@ inline tensor sparse_apply_adagrad_d_a(const tensor& var, const tensor& gradient
     return tensor(res[0]);
 }
 
+/* # SparseApplyAdagradV2
+# Inputs:
+*    var
+*    accum
+*    lr
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    update_slots
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_adagrad_v2(const tensor& var, const tensor& accum, const tensor& lr, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false, bool update_slots=true) {
 
     // Define Op
@@ -37065,7 +51628,27 @@ inline tensor sparse_apply_adagrad_v2(const tensor& var, const tensor& accum, co
     return tensor(res[0]);
 }
 
+/* # SparseApplyCenteredRMSProp
+# Inputs:
+*    var
+*    mg
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_centered_r_m_s_prop(const tensor& var, const tensor& mg, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -37126,7 +51709,27 @@ inline tensor sparse_apply_centered_r_m_s_prop(const tensor& var, const tensor& 
     return tensor(res[0]);
 }
 
+/* # SparseApplyFtrl
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    indices
+*    lr
+*    l1
+*    l2
+*    lr_power
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_ftrl(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& indices, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& lr_power, datatype Tindices, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -37184,7 +51787,28 @@ inline tensor sparse_apply_ftrl(const tensor& var, const tensor& accum, const te
     return tensor(res[0]);
 }
 
+/* # SparseApplyFtrlV2
+# Inputs:
+*    var
+*    accum
+*    linear
+*    grad
+*    indices
+*    lr
+*    l1
+*    l2
+*    l2_shrinkage
+*    lr_power
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    multiply_linear_by_lr
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_ftrl_v2(const tensor& var, const tensor& accum, const tensor& linear, const tensor& grad, const tensor& indices, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& l2_shrinkage, const tensor& lr_power, datatype Tindices, bool use_locking=false, bool multiply_linear_by_lr=false) {
 
     // Define Op
@@ -37246,7 +51870,24 @@ inline tensor sparse_apply_ftrl_v2(const tensor& var, const tensor& accum, const
     return tensor(res[0]);
 }
 
+/* # SparseApplyMomentum
+# Inputs:
+*    var
+*    accum
+*    lr
+*    grad
+*    indices
+*    momentum
 
+# Attributes:
+*    Tindices
+*    use_locking
+*    use_nesterov
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_momentum(const tensor& var, const tensor& accum, const tensor& lr, const tensor& grad, const tensor& indices, const tensor& momentum, datatype Tindices, bool use_locking=false, bool use_nesterov=false) {
 
     // Define Op
@@ -37292,7 +51933,24 @@ inline tensor sparse_apply_momentum(const tensor& var, const tensor& accum, cons
     return tensor(res[0]);
 }
 
+/* # SparseApplyProximalAdagrad
+# Inputs:
+*    var
+*    accum
+*    lr
+*    l1
+*    l2
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_proximal_adagrad(const tensor& var, const tensor& accum, const tensor& lr, const tensor& l1, const tensor& l2, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -37341,7 +51999,23 @@ inline tensor sparse_apply_proximal_adagrad(const tensor& var, const tensor& acc
     return tensor(res[0]);
 }
 
+/* # SparseApplyProximalGradientDescent
+# Inputs:
+*    var
+*    alpha
+*    l1
+*    l2
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_proximal_gradient_descent(const tensor& var, const tensor& alpha, const tensor& l1, const tensor& l2, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -37386,7 +52060,26 @@ inline tensor sparse_apply_proximal_gradient_descent(const tensor& var, const te
     return tensor(res[0]);
 }
 
+/* # SparseApplyRMSProp
+# Inputs:
+*    var
+*    ms
+*    mom
+*    lr
+*    rho
+*    momentum
+*    epsilon
+*    grad
+*    indices
 
+# Attributes:
+*    Tindices
+*    use_locking
+
+# Outputs:
+*    out
+
+*/
 inline tensor sparse_apply_r_m_s_prop(const tensor& var, const tensor& ms, const tensor& mom, const tensor& lr, const tensor& rho, const tensor& momentum, const tensor& epsilon, const tensor& grad, const tensor& indices, datatype Tindices, bool use_locking=false) {
 
     // Define Op
@@ -37443,7 +52136,22 @@ inline tensor sparse_apply_r_m_s_prop(const tensor& var, const tensor& ms, const
     return tensor(res[0]);
 }
 
+/* # SparseBincount
+# Inputs:
+*    indices
+*    values
+*    dense_shape
+*    size
+*    weights
 
+# Attributes:
+*    Tidx
+*    binary_output
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_bincount(const tensor& indices, const tensor& values, const tensor& dense_shape, const tensor& size, const tensor& weights, datatype Tidx, bool binary_output=false) {
 
     // Define Op
@@ -37484,7 +52192,22 @@ inline tensor sparse_bincount(const tensor& indices, const tensor& values, const
     return tensor(res[0]);
 }
 
+/* # SparseConcat
+# Inputs:
+*    indices
+*    values
+*    shapes
 
+# Attributes:
+*    concat_dim
+*    N
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_concat(const std::vector<tensor>&indices, const std::vector<tensor>&values, const std::vector<tensor>&shapes, int64_t concat_dim) {
 
     // Define Op
@@ -37523,7 +52246,20 @@ inline std::vector<tensor> sparse_concat(const std::vector<tensor>&indices, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseConditionalAccumulator
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
+*    container
+*    shared_name
+*    reduction_type
 
+# Outputs:
+*    handle
+
+*/
 inline tensor sparse_conditional_accumulator(datatype dtype, const std::vector<int64_t>& shape, const std::string& container="", const std::string& shared_name="", const std::string& reduction_type="MEAN") {
 
     // Define Op
@@ -37551,7 +52287,25 @@ inline tensor sparse_conditional_accumulator(datatype dtype, const std::vector<i
     return tensor(res[0]);
 }
 
+/* # SparseCountSparseOutput
+# Inputs:
+*    indices
+*    values
+*    dense_shape
+*    weights
 
+# Attributes:
+*    binary_output
+*    output_type
+*    minlength
+*    maxlength
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_dense_shape
+
+*/
 inline std::vector<tensor> sparse_count_sparse_output(const tensor& indices, const tensor& values, const tensor& dense_shape, const tensor& weights, bool binary_output, datatype output_type, int64_t minlength=-1, int64_t maxlength=-1) {
 
     // Define Op
@@ -37590,7 +52344,29 @@ inline std::vector<tensor> sparse_count_sparse_output(const tensor& indices, con
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseCross
+# Inputs:
+*    indices
+*    values
+*    shapes
+*    dense_inputs
 
+# Attributes:
+*    N
+*    hashed_output
+*    num_buckets
+*    hash_key
+*    sparse_types
+*    dense_types
+*    out_type
+*    internal_type
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_cross(const std::vector<tensor>&indices, const std::vector<tensor>&values, const std::vector<tensor>&shapes, const std::vector<tensor>&dense_inputs, bool hashed_output, int64_t num_buckets, int64_t hash_key, const std::vector<datatype>& sparse_types, const std::vector<datatype>& dense_types, datatype out_type, datatype internal_type) {
 
     // Define Op
@@ -37641,7 +52417,27 @@ inline std::vector<tensor> sparse_cross(const std::vector<tensor>&indices, const
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseCrossHashed
+# Inputs:
+*    indices
+*    values
+*    shapes
+*    dense_inputs
+*    num_buckets
+*    strong_hash
+*    salt
 
+# Attributes:
+*    N
+*    sparse_types
+*    dense_types
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_cross_hashed(const std::vector<tensor>&indices, const std::vector<tensor>&values, const std::vector<tensor>&shapes, const std::vector<tensor>&dense_inputs, const tensor& num_buckets, const tensor& strong_hash, const tensor& salt, const std::vector<datatype>& sparse_types, const std::vector<datatype>& dense_types) {
 
     // Define Op
@@ -37699,7 +52495,25 @@ inline std::vector<tensor> sparse_cross_hashed(const std::vector<tensor>&indices
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseCrossV2
+# Inputs:
+*    indices
+*    values
+*    shapes
+*    dense_inputs
+*    sep
 
+# Attributes:
+*    N
+*    sparse_types
+*    dense_types
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_cross_v2(const std::vector<tensor>&indices, const std::vector<tensor>&values, const std::vector<tensor>&shapes, const std::vector<tensor>&dense_inputs, const tensor& sep, const std::vector<datatype>& sparse_types, const std::vector<datatype>& dense_types) {
 
     // Define Op
@@ -37749,7 +52563,19 @@ inline std::vector<tensor> sparse_cross_v2(const std::vector<tensor>&indices, co
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseDenseCwiseAdd
+# Inputs:
+*    sp_indices
+*    sp_values
+*    sp_shape
+*    dense
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_dense_cwise_add(const tensor& sp_indices, const tensor& sp_values, const tensor& sp_shape, const tensor& dense) {
 
     // Define Op
@@ -37785,7 +52611,19 @@ inline tensor sparse_dense_cwise_add(const tensor& sp_indices, const tensor& sp_
     return tensor(res[0]);
 }
 
+/* # SparseDenseCwiseDiv
+# Inputs:
+*    sp_indices
+*    sp_values
+*    sp_shape
+*    dense
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_dense_cwise_div(const tensor& sp_indices, const tensor& sp_values, const tensor& sp_shape, const tensor& dense) {
 
     // Define Op
@@ -37821,7 +52659,19 @@ inline tensor sparse_dense_cwise_div(const tensor& sp_indices, const tensor& sp_
     return tensor(res[0]);
 }
 
+/* # SparseDenseCwiseMul
+# Inputs:
+*    sp_indices
+*    sp_values
+*    sp_shape
+*    dense
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_dense_cwise_mul(const tensor& sp_indices, const tensor& sp_values, const tensor& sp_shape, const tensor& dense) {
 
     // Define Op
@@ -37857,7 +52707,22 @@ inline tensor sparse_dense_cwise_mul(const tensor& sp_indices, const tensor& sp_
     return tensor(res[0]);
 }
 
+/* # SparseFillEmptyRows
+# Inputs:
+*    indices
+*    values
+*    dense_shape
+*    default_value
 
+# Attributes:
+*    
+# Outputs:
+*    output_indices
+*    output_values
+*    empty_row_indicator
+*    reverse_index_map
+
+*/
 inline std::vector<tensor> sparse_fill_empty_rows(const tensor& indices, const tensor& values, const tensor& dense_shape, const tensor& default_value) {
 
     // Define Op
@@ -37893,7 +52758,18 @@ inline std::vector<tensor> sparse_fill_empty_rows(const tensor& indices, const t
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
+/* # SparseFillEmptyRowsGrad
+# Inputs:
+*    reverse_index_map
+*    grad_values
 
+# Attributes:
+*    
+# Outputs:
+*    d_values
+*    d_default_value
+
+*/
 inline std::vector<tensor> sparse_fill_empty_rows_grad(const tensor& reverse_index_map, const tensor& grad_values) {
 
     // Define Op
@@ -37921,7 +52797,23 @@ inline std::vector<tensor> sparse_fill_empty_rows_grad(const tensor& reverse_ind
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseMatMul
+# Inputs:
+*    a
+*    b
 
+# Attributes:
+*    transpose_a
+*    transpose_b
+*    a_is_sparse
+*    b_is_sparse
+*    Ta
+*    Tb
+
+# Outputs:
+*    product
+
+*/
 inline tensor sparse_mat_mul(const tensor& a, const tensor& b, bool transpose_a=false, bool transpose_b=false, bool a_is_sparse=false, bool b_is_sparse=false, datatype Ta=static_cast<datatype>(1), datatype Tb=static_cast<datatype>(1)) {
 
     // Define Op
@@ -37954,7 +52846,19 @@ inline tensor sparse_mat_mul(const tensor& a, const tensor& b, bool transpose_a=
     return tensor(res[0]);
 }
 
+/* # SparseMatrixAdd
+# Inputs:
+*    a
+*    b
+*    alpha
+*    beta
 
+# Attributes:
+*    
+# Outputs:
+*    c
+
+*/
 inline tensor sparse_matrix_add(const tensor& a, const tensor& b, const tensor& alpha, const tensor& beta) {
 
     // Define Op
@@ -37990,7 +52894,23 @@ inline tensor sparse_matrix_add(const tensor& a, const tensor& b, const tensor& 
     return tensor(res[0]);
 }
 
+/* # SparseMatrixMatMul
+# Inputs:
+*    a
+*    b
 
+# Attributes:
+*    transpose_a
+*    transpose_b
+*    adjoint_a
+*    adjoint_b
+*    transpose_output
+*    conjugate_output
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_matrix_mat_mul(const tensor& a, const tensor& b, bool transpose_a=false, bool transpose_b=false, bool adjoint_a=false, bool adjoint_b=false, bool transpose_output=false, bool conjugate_output=false) {
 
     // Define Op
@@ -38023,7 +52943,17 @@ inline tensor sparse_matrix_mat_mul(const tensor& a, const tensor& b, bool trans
     return tensor(res[0]);
 }
 
+/* # SparseMatrixMul
+# Inputs:
+*    a
+*    b
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_matrix_mul(const tensor& a, const tensor& b) {
 
     // Define Op
@@ -38051,7 +52981,16 @@ inline tensor sparse_matrix_mul(const tensor& a, const tensor& b) {
     return tensor(res[0]);
 }
 
+/* # SparseMatrixNNZ
+# Inputs:
+*    sparse_matrix
 
+# Attributes:
+*    
+# Outputs:
+*    nnz
+
+*/
 inline tensor sparse_matrix_n_n_z(const tensor& sparse_matrix) {
 
     // Define Op
@@ -38075,7 +53014,16 @@ inline tensor sparse_matrix_n_n_z(const tensor& sparse_matrix) {
     return tensor(res[0]);
 }
 
+/* # SparseMatrixOrderingAMD
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_matrix_ordering_a_m_d(const tensor& input) {
 
     // Define Op
@@ -38099,7 +53047,17 @@ inline tensor sparse_matrix_ordering_a_m_d(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # SparseMatrixSoftmax
+# Inputs:
+*    logits
 
+# Attributes:
+*    type
+
+# Outputs:
+*    softmax
+
+*/
 inline tensor sparse_matrix_softmax(const tensor& logits, datatype type) {
 
     // Define Op
@@ -38123,7 +53081,18 @@ inline tensor sparse_matrix_softmax(const tensor& logits, datatype type) {
     return tensor(res[0]);
 }
 
+/* # SparseMatrixSoftmaxGrad
+# Inputs:
+*    softmax
+*    grad_softmax
 
+# Attributes:
+*    type
+
+# Outputs:
+*    gradient
+
+*/
 inline tensor sparse_matrix_softmax_grad(const tensor& softmax, const tensor& grad_softmax, datatype type) {
 
     // Define Op
@@ -38151,7 +53120,18 @@ inline tensor sparse_matrix_softmax_grad(const tensor& softmax, const tensor& gr
     return tensor(res[0]);
 }
 
+/* # SparseMatrixSparseCholesky
+# Inputs:
+*    input
+*    permutation
 
+# Attributes:
+*    type
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_matrix_sparse_cholesky(const tensor& input, const tensor& permutation, datatype type) {
 
     // Define Op
@@ -38179,7 +53159,22 @@ inline tensor sparse_matrix_sparse_cholesky(const tensor& input, const tensor& p
     return tensor(res[0]);
 }
 
+/* # SparseMatrixSparseMatMul
+# Inputs:
+*    a
+*    b
 
+# Attributes:
+*    type
+*    transpose_a
+*    transpose_b
+*    adjoint_a
+*    adjoint_b
+
+# Outputs:
+*    c
+
+*/
 inline tensor sparse_matrix_sparse_mat_mul(const tensor& a, const tensor& b, datatype type, bool transpose_a=false, bool transpose_b=false, bool adjoint_a=false, bool adjoint_b=false) {
 
     // Define Op
@@ -38211,7 +53206,18 @@ inline tensor sparse_matrix_sparse_mat_mul(const tensor& a, const tensor& b, dat
     return tensor(res[0]);
 }
 
+/* # SparseMatrixTranspose
+# Inputs:
+*    input
 
+# Attributes:
+*    type
+*    conjugate
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_matrix_transpose(const tensor& input, datatype type, bool conjugate=false) {
 
     // Define Op
@@ -38236,7 +53242,17 @@ inline tensor sparse_matrix_transpose(const tensor& input, datatype type, bool c
     return tensor(res[0]);
 }
 
+/* # SparseMatrixZeros
+# Inputs:
+*    dense_shape
 
+# Attributes:
+*    type
+
+# Outputs:
+*    sparse_matrix
+
+*/
 inline tensor sparse_matrix_zeros(const tensor& dense_shape, datatype type) {
 
     // Define Op
@@ -38260,7 +53276,20 @@ inline tensor sparse_matrix_zeros(const tensor& dense_shape, datatype type) {
     return tensor(res[0]);
 }
 
+/* # SparseReduceMax
+# Inputs:
+*    input_indices
+*    input_values
+*    input_shape
+*    reduction_axes
 
+# Attributes:
+*    keep_dims
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_reduce_max(const tensor& input_indices, const tensor& input_values, const tensor& input_shape, const tensor& reduction_axes, bool keep_dims=false) {
 
     // Define Op
@@ -38296,7 +53325,22 @@ inline tensor sparse_reduce_max(const tensor& input_indices, const tensor& input
     return tensor(res[0]);
 }
 
+/* # SparseReduceMaxSparse
+# Inputs:
+*    input_indices
+*    input_values
+*    input_shape
+*    reduction_axes
 
+# Attributes:
+*    keep_dims
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_reduce_max_sparse(const tensor& input_indices, const tensor& input_values, const tensor& input_shape, const tensor& reduction_axes, bool keep_dims=false) {
 
     // Define Op
@@ -38332,7 +53376,20 @@ inline std::vector<tensor> sparse_reduce_max_sparse(const tensor& input_indices,
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseReduceSum
+# Inputs:
+*    input_indices
+*    input_values
+*    input_shape
+*    reduction_axes
 
+# Attributes:
+*    keep_dims
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_reduce_sum(const tensor& input_indices, const tensor& input_values, const tensor& input_shape, const tensor& reduction_axes, bool keep_dims=false) {
 
     // Define Op
@@ -38368,7 +53425,22 @@ inline tensor sparse_reduce_sum(const tensor& input_indices, const tensor& input
     return tensor(res[0]);
 }
 
+/* # SparseReduceSumSparse
+# Inputs:
+*    input_indices
+*    input_values
+*    input_shape
+*    reduction_axes
 
+# Attributes:
+*    keep_dims
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_reduce_sum_sparse(const tensor& input_indices, const tensor& input_values, const tensor& input_shape, const tensor& reduction_axes, bool keep_dims=false) {
 
     // Define Op
@@ -38404,7 +53476,19 @@ inline std::vector<tensor> sparse_reduce_sum_sparse(const tensor& input_indices,
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseReorder
+# Inputs:
+*    input_indices
+*    input_values
+*    input_shape
 
+# Attributes:
+*    
+# Outputs:
+*    output_indices
+*    output_values
+
+*/
 inline std::vector<tensor> sparse_reorder(const tensor& input_indices, const tensor& input_values, const tensor& input_shape) {
 
     // Define Op
@@ -38436,7 +53520,19 @@ inline std::vector<tensor> sparse_reorder(const tensor& input_indices, const ten
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseReshape
+# Inputs:
+*    input_indices
+*    input_shape
+*    new_shape
 
+# Attributes:
+*    
+# Outputs:
+*    output_indices
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_reshape(const tensor& input_indices, const tensor& input_shape, const tensor& new_shape) {
 
     // Define Op
@@ -38468,7 +53564,21 @@ inline std::vector<tensor> sparse_reshape(const tensor& input_indices, const ten
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseSegmentMean
+# Inputs:
+*    data
+*    indices
+*    segment_ids
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+*    sparse_gradient
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_mean(const tensor& data, const tensor& indices, const tensor& segment_ids, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3), bool sparse_gradient=false) {
 
     // Define Op
@@ -38502,7 +53612,21 @@ inline tensor sparse_segment_mean(const tensor& data, const tensor& indices, con
     return tensor(res[0]);
 }
 
+/* # SparseSegmentMeanGrad
+# Inputs:
+*    grad
+*    indices
+*    segment_ids
+*    output_dim0
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_mean_grad(const tensor& grad, const tensor& indices, const tensor& segment_ids, const tensor& output_dim0, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3)) {
 
     // Define Op
@@ -38539,7 +53663,22 @@ inline tensor sparse_segment_mean_grad(const tensor& grad, const tensor& indices
     return tensor(res[0]);
 }
 
+/* # SparseSegmentMeanGradV2
+# Inputs:
+*    grad
+*    indices
+*    segment_ids
+*    dense_output_dim0
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+
+# Outputs:
+*    output
+*    sorted_unique_indices
+
+*/
 inline std::vector<tensor> sparse_segment_mean_grad_v2(const tensor& grad, const tensor& indices, const tensor& segment_ids, const tensor& dense_output_dim0, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3)) {
 
     // Define Op
@@ -38576,7 +53715,23 @@ inline std::vector<tensor> sparse_segment_mean_grad_v2(const tensor& grad, const
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseSegmentMeanWithNumSegments
+# Inputs:
+*    data
+*    indices
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tidx
+*    Tnumsegments
+*    Tsegmentids
+*    sparse_gradient
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_mean_with_num_segments(const tensor& data, const tensor& indices, const tensor& segment_ids, const tensor& num_segments, datatype Tidx=static_cast<datatype>(3), datatype Tnumsegments=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3), bool sparse_gradient=false) {
 
     // Define Op
@@ -38615,7 +53770,21 @@ inline tensor sparse_segment_mean_with_num_segments(const tensor& data, const te
     return tensor(res[0]);
 }
 
+/* # SparseSegmentSqrtN
+# Inputs:
+*    data
+*    indices
+*    segment_ids
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+*    sparse_gradient
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_sqrt_n(const tensor& data, const tensor& indices, const tensor& segment_ids, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3), bool sparse_gradient=false) {
 
     // Define Op
@@ -38649,7 +53818,21 @@ inline tensor sparse_segment_sqrt_n(const tensor& data, const tensor& indices, c
     return tensor(res[0]);
 }
 
+/* # SparseSegmentSqrtNGrad
+# Inputs:
+*    grad
+*    indices
+*    segment_ids
+*    output_dim0
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_sqrt_n_grad(const tensor& grad, const tensor& indices, const tensor& segment_ids, const tensor& output_dim0, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3)) {
 
     // Define Op
@@ -38686,7 +53869,22 @@ inline tensor sparse_segment_sqrt_n_grad(const tensor& grad, const tensor& indic
     return tensor(res[0]);
 }
 
+/* # SparseSegmentSqrtNGradV2
+# Inputs:
+*    grad
+*    indices
+*    segment_ids
+*    dense_output_dim0
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+
+# Outputs:
+*    output
+*    sorted_unique_indices
+
+*/
 inline std::vector<tensor> sparse_segment_sqrt_n_grad_v2(const tensor& grad, const tensor& indices, const tensor& segment_ids, const tensor& dense_output_dim0, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3)) {
 
     // Define Op
@@ -38723,7 +53921,23 @@ inline std::vector<tensor> sparse_segment_sqrt_n_grad_v2(const tensor& grad, con
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseSegmentSqrtNWithNumSegments
+# Inputs:
+*    data
+*    indices
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tidx
+*    Tnumsegments
+*    Tsegmentids
+*    sparse_gradient
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_sqrt_n_with_num_segments(const tensor& data, const tensor& indices, const tensor& segment_ids, const tensor& num_segments, datatype Tidx=static_cast<datatype>(3), datatype Tnumsegments=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3), bool sparse_gradient=false) {
 
     // Define Op
@@ -38762,7 +53976,21 @@ inline tensor sparse_segment_sqrt_n_with_num_segments(const tensor& data, const 
     return tensor(res[0]);
 }
 
+/* # SparseSegmentSum
+# Inputs:
+*    data
+*    indices
+*    segment_ids
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+*    sparse_gradient
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_sum(const tensor& data, const tensor& indices, const tensor& segment_ids, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3), bool sparse_gradient=false) {
 
     // Define Op
@@ -38796,7 +54024,21 @@ inline tensor sparse_segment_sum(const tensor& data, const tensor& indices, cons
     return tensor(res[0]);
 }
 
+/* # SparseSegmentSumGrad
+# Inputs:
+*    grad
+*    indices
+*    segment_ids
+*    output_dim0
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_sum_grad(const tensor& grad, const tensor& indices, const tensor& segment_ids, const tensor& output_dim0, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3)) {
 
     // Define Op
@@ -38833,7 +54075,22 @@ inline tensor sparse_segment_sum_grad(const tensor& grad, const tensor& indices,
     return tensor(res[0]);
 }
 
+/* # SparseSegmentSumGradV2
+# Inputs:
+*    grad
+*    indices
+*    segment_ids
+*    dense_output_dim0
 
+# Attributes:
+*    Tidx
+*    Tsegmentids
+
+# Outputs:
+*    output
+*    sorted_unique_indices
+
+*/
 inline std::vector<tensor> sparse_segment_sum_grad_v2(const tensor& grad, const tensor& indices, const tensor& segment_ids, const tensor& dense_output_dim0, datatype Tidx=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3)) {
 
     // Define Op
@@ -38870,7 +54127,23 @@ inline std::vector<tensor> sparse_segment_sum_grad_v2(const tensor& grad, const 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseSegmentSumWithNumSegments
+# Inputs:
+*    data
+*    indices
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tidx
+*    Tnumsegments
+*    Tsegmentids
+*    sparse_gradient
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_segment_sum_with_num_segments(const tensor& data, const tensor& indices, const tensor& segment_ids, const tensor& num_segments, datatype Tidx=static_cast<datatype>(3), datatype Tnumsegments=static_cast<datatype>(3), datatype Tsegmentids=static_cast<datatype>(3), bool sparse_gradient=false) {
 
     // Define Op
@@ -38909,7 +54182,22 @@ inline tensor sparse_segment_sum_with_num_segments(const tensor& data, const ten
     return tensor(res[0]);
 }
 
+/* # SparseSlice
+# Inputs:
+*    indices
+*    values
+*    shape
+*    start
+*    size
 
+# Attributes:
+*    
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_slice(const tensor& indices, const tensor& values, const tensor& shape, const tensor& start, const tensor& size) {
 
     // Define Op
@@ -38949,7 +54237,19 @@ inline std::vector<tensor> sparse_slice(const tensor& indices, const tensor& val
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseSliceGrad
+# Inputs:
+*    backprop_val_grad
+*    input_indices
+*    input_start
+*    output_indices
 
+# Attributes:
+*    
+# Outputs:
+*    val_grad
+
+*/
 inline tensor sparse_slice_grad(const tensor& backprop_val_grad, const tensor& input_indices, const tensor& input_start, const tensor& output_indices) {
 
     // Define Op
@@ -38985,7 +54285,18 @@ inline tensor sparse_slice_grad(const tensor& backprop_val_grad, const tensor& i
     return tensor(res[0]);
 }
 
+/* # SparseSoftmax
+# Inputs:
+*    sp_indices
+*    sp_values
+*    sp_shape
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_softmax(const tensor& sp_indices, const tensor& sp_values, const tensor& sp_shape) {
 
     // Define Op
@@ -39017,7 +54328,19 @@ inline tensor sparse_softmax(const tensor& sp_indices, const tensor& sp_values, 
     return tensor(res[0]);
 }
 
+/* # SparseSoftmaxCrossEntropyWithLogits
+# Inputs:
+*    features
+*    labels
 
+# Attributes:
+*    Tlabels
+
+# Outputs:
+*    loss
+*    backprop
+
+*/
 inline std::vector<tensor> sparse_softmax_cross_entropy_with_logits(const tensor& features, const tensor& labels, datatype Tlabels=static_cast<datatype>(9)) {
 
     // Define Op
@@ -39045,7 +54368,22 @@ inline std::vector<tensor> sparse_softmax_cross_entropy_with_logits(const tensor
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseSparseMaximum
+# Inputs:
+*    a_indices
+*    a_values
+*    a_shape
+*    b_indices
+*    b_values
+*    b_shape
 
+# Attributes:
+*    
+# Outputs:
+*    output_indices
+*    output_values
+
+*/
 inline std::vector<tensor> sparse_sparse_maximum(const tensor& a_indices, const tensor& a_values, const tensor& a_shape, const tensor& b_indices, const tensor& b_values, const tensor& b_shape) {
 
     // Define Op
@@ -39089,7 +54427,22 @@ inline std::vector<tensor> sparse_sparse_maximum(const tensor& a_indices, const 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseSparseMinimum
+# Inputs:
+*    a_indices
+*    a_values
+*    a_shape
+*    b_indices
+*    b_values
+*    b_shape
 
+# Attributes:
+*    
+# Outputs:
+*    output_indices
+*    output_values
+
+*/
 inline std::vector<tensor> sparse_sparse_minimum(const tensor& a_indices, const tensor& a_values, const tensor& a_shape, const tensor& b_indices, const tensor& b_values, const tensor& b_shape) {
 
     // Define Op
@@ -39133,7 +54486,22 @@ inline std::vector<tensor> sparse_sparse_minimum(const tensor& a_indices, const 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SparseSplit
+# Inputs:
+*    split_dim
+*    indices
+*    values
+*    shape
 
+# Attributes:
+*    num_split
+
+# Outputs:
+*    output_indices
+*    output_values
+*    output_shape
+
+*/
 inline std::vector<tensor> sparse_split(const tensor& split_dim, const tensor& indices, const tensor& values, const tensor& shape, int64_t num_split) {
 
     // Define Op
@@ -39169,7 +54537,20 @@ inline std::vector<tensor> sparse_split(const tensor& split_dim, const tensor& i
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # SparseTensorDenseAdd
+# Inputs:
+*    a_indices
+*    a_values
+*    a_shape
+*    b
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor sparse_tensor_dense_add(const tensor& a_indices, const tensor& a_values, const tensor& a_shape, const tensor& b, datatype Tindices) {
 
     // Define Op
@@ -39205,7 +54586,22 @@ inline tensor sparse_tensor_dense_add(const tensor& a_indices, const tensor& a_v
     return tensor(res[0]);
 }
 
+/* # SparseTensorDenseMatMul
+# Inputs:
+*    a_indices
+*    a_values
+*    a_shape
+*    b
 
+# Attributes:
+*    Tindices
+*    adjoint_a
+*    adjoint_b
+
+# Outputs:
+*    product
+
+*/
 inline tensor sparse_tensor_dense_mat_mul(const tensor& a_indices, const tensor& a_values, const tensor& a_shape, const tensor& b, datatype Tindices=static_cast<datatype>(9), bool adjoint_a=false, bool adjoint_b=false) {
 
     // Define Op
@@ -39243,7 +54639,19 @@ inline tensor sparse_tensor_dense_mat_mul(const tensor& a_indices, const tensor&
     return tensor(res[0]);
 }
 
+/* # SparseTensorSliceDataset
+# Inputs:
+*    indices
+*    values
+*    dense_shape
 
+# Attributes:
+*    Tvalues
+
+# Outputs:
+*    handle
+
+*/
 inline tensor sparse_tensor_slice_dataset(const tensor& indices, const tensor& values, const tensor& dense_shape, datatype Tvalues) {
 
     // Define Op
@@ -39275,7 +54683,18 @@ inline tensor sparse_tensor_slice_dataset(const tensor& indices, const tensor& v
     return tensor(res[0]);
 }
 
+/* # SparseTensorToCSRSparseMatrix
+# Inputs:
+*    indices
+*    values
+*    dense_shape
 
+# Attributes:
+*    
+# Outputs:
+*    sparse_matrix
+
+*/
 inline tensor sparse_tensor_to_c_s_r_sparse_matrix(const tensor& indices, const tensor& values, const tensor& dense_shape) {
 
     // Define Op
@@ -39307,7 +54726,21 @@ inline tensor sparse_tensor_to_c_s_r_sparse_matrix(const tensor& indices, const 
     return tensor(res[0]);
 }
 
+/* # SparseToDense
+# Inputs:
+*    sparse_indices
+*    output_shape
+*    sparse_values
+*    default_value
 
+# Attributes:
+*    Tindices
+*    validate_indices
+
+# Outputs:
+*    dense
+
+*/
 inline tensor sparse_to_dense(const tensor& sparse_indices, const tensor& output_shape, const tensor& sparse_values, const tensor& default_value, datatype Tindices, bool validate_indices=true) {
 
     // Define Op
@@ -39344,7 +54777,25 @@ inline tensor sparse_to_dense(const tensor& sparse_indices, const tensor& output
     return tensor(res[0]);
 }
 
+/* # SparseToSparseSetOperation
+# Inputs:
+*    set1_indices
+*    set1_values
+*    set1_shape
+*    set2_indices
+*    set2_values
+*    set2_shape
 
+# Attributes:
+*    set_operation
+*    validate_indices
+
+# Outputs:
+*    result_indices
+*    result_values
+*    result_shape
+
+*/
 inline std::vector<tensor> sparse_to_sparse_set_operation(const tensor& set1_indices, const tensor& set1_values, const tensor& set1_shape, const tensor& set2_indices, const tensor& set2_values, const tensor& set2_shape, const std::string& set_operation, bool validate_indices=true) {
 
     // Define Op
@@ -39389,7 +54840,16 @@ inline std::vector<tensor> sparse_to_sparse_set_operation(const tensor& set1_ind
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # Spence
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor spence(const tensor& x) {
 
     // Define Op
@@ -39413,7 +54873,18 @@ inline tensor spence(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Split
+# Inputs:
+*    split_dim
+*    value
 
+# Attributes:
+*    num_split
+
+# Outputs:
+*    output
+
+*/
 inline tensor split(const tensor& split_dim, const tensor& value, int64_t num_split) {
 
     // Define Op
@@ -39441,7 +54912,20 @@ inline tensor split(const tensor& split_dim, const tensor& value, int64_t num_sp
     return tensor(res[0]);
 }
 
+/* # SplitV
+# Inputs:
+*    value
+*    size_splits
+*    split_dim
 
+# Attributes:
+*    num_split
+*    Tlen
+
+# Outputs:
+*    output
+
+*/
 inline tensor split_v(const tensor& value, const tensor& size_splits, const tensor& split_dim, int64_t num_split, datatype Tlen=static_cast<datatype>(9)) {
 
     // Define Op
@@ -39474,7 +54958,20 @@ inline tensor split_v(const tensor& value, const tensor& size_splits, const tens
     return tensor(res[0]);
 }
 
+/* # SqlDataset
+# Inputs:
+*    driver_name
+*    data_source_name
+*    query
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor sql_dataset(const tensor& driver_name, const tensor& data_source_name, const tensor& query, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -39514,7 +55011,16 @@ inline tensor sql_dataset(const tensor& driver_name, const tensor& data_source_n
     return tensor(res[0]);
 }
 
+/* # Sqrt
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor sqrt(const tensor& x) {
 
     // Define Op
@@ -39538,7 +55044,17 @@ inline tensor sqrt(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # SqrtGrad
+# Inputs:
+*    y
+*    dy
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor sqrt_grad(const tensor& y, const tensor& dy) {
 
     // Define Op
@@ -39566,7 +55082,16 @@ inline tensor sqrt_grad(const tensor& y, const tensor& dy) {
     return tensor(res[0]);
 }
 
+/* # Square
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor square(const tensor& x) {
 
     // Define Op
@@ -39590,7 +55115,17 @@ inline tensor square(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # SquaredDifference
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor squared_difference(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -39618,7 +55153,17 @@ inline tensor squared_difference(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # Squeeze
+# Inputs:
+*    input
 
+# Attributes:
+*    squeeze_dims
+
+# Outputs:
+*    output
+
+*/
 inline tensor squeeze(const tensor& input, const std::vector<int64_t>& squeeze_dims) {
 
     // Define Op
@@ -39642,7 +55187,17 @@ inline tensor squeeze(const tensor& input, const std::vector<int64_t>& squeeze_d
     return tensor(res[0]);
 }
 
+/* # Stack
+# Inputs:
+*    
+# Attributes:
+*    elem_type
+*    stack_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor stack(datatype elem_type, const std::string& stack_name="") {
 
     // Define Op
@@ -39664,7 +55219,15 @@ inline tensor stack(datatype elem_type, const std::string& stack_name="") {
     return tensor(res[0]);
 }
 
+/* # StackClose
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void stack_close(const tensor& handle) {
 
     // Define Op
@@ -39687,7 +55250,15 @@ inline void stack_close(const tensor& handle) {
     status_check(context::get_status());
 }
 
+/* # StackCloseV2
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void stack_close_v2(const tensor& handle) {
 
     // Define Op
@@ -39710,7 +55281,17 @@ inline void stack_close_v2(const tensor& handle) {
     status_check(context::get_status());
 }
 
+/* # StackPop
+# Inputs:
+*    handle
 
+# Attributes:
+*    elem_type
+
+# Outputs:
+*    elem
+
+*/
 inline tensor stack_pop(const tensor& handle, datatype elem_type) {
 
     // Define Op
@@ -39734,7 +55315,17 @@ inline tensor stack_pop(const tensor& handle, datatype elem_type) {
     return tensor(res[0]);
 }
 
+/* # StackPopV2
+# Inputs:
+*    handle
 
+# Attributes:
+*    elem_type
+
+# Outputs:
+*    elem
+
+*/
 inline tensor stack_pop_v2(const tensor& handle, datatype elem_type) {
 
     // Define Op
@@ -39758,7 +55349,18 @@ inline tensor stack_pop_v2(const tensor& handle, datatype elem_type) {
     return tensor(res[0]);
 }
 
+/* # StackPush
+# Inputs:
+*    handle
+*    elem
 
+# Attributes:
+*    swap_memory
+
+# Outputs:
+*    output
+
+*/
 inline tensor stack_push(const tensor& handle, const tensor& elem, bool swap_memory=false) {
 
     // Define Op
@@ -39786,7 +55388,18 @@ inline tensor stack_push(const tensor& handle, const tensor& elem, bool swap_mem
     return tensor(res[0]);
 }
 
+/* # StackPushV2
+# Inputs:
+*    handle
+*    elem
 
+# Attributes:
+*    swap_memory
+
+# Outputs:
+*    output
+
+*/
 inline tensor stack_push_v2(const tensor& handle, const tensor& elem, bool swap_memory=false) {
 
     // Define Op
@@ -39814,7 +55427,18 @@ inline tensor stack_push_v2(const tensor& handle, const tensor& elem, bool swap_
     return tensor(res[0]);
 }
 
+/* # StackV2
+# Inputs:
+*    max_size
 
+# Attributes:
+*    elem_type
+*    stack_name
+
+# Outputs:
+*    handle
+
+*/
 inline tensor stack_v2(const tensor& max_size, datatype elem_type, const std::string& stack_name="") {
 
     // Define Op
@@ -39839,7 +55463,20 @@ inline tensor stack_v2(const tensor& max_size, datatype elem_type, const std::st
     return tensor(res[0]);
 }
 
+/* # Stage
+# Inputs:
+*    values
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    
+*/
 inline void stage(const std::vector<tensor>&values, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -39868,7 +55505,19 @@ inline void stage(const std::vector<tensor>&values, const std::vector<datatype>&
     status_check(context::get_status());
 }
 
+/* # StageClear
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    
+*/
 inline void stage_clear(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -39892,7 +55541,21 @@ inline void stage_clear(const std::vector<datatype>& dtypes, int64_t capacity=0,
     status_check(context::get_status());
 }
 
+/* # StagePeek
+# Inputs:
+*    index
 
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
+
+# Outputs:
+*    values
+
+*/
 inline tensor stage_peek(const tensor& index, const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -39920,7 +55583,20 @@ inline tensor stage_peek(const tensor& index, const std::vector<datatype>& dtype
     return tensor(res[0]);
 }
 
+/* # StageSize
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    size
+
+*/
 inline tensor stage_size(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -39945,7 +55621,22 @@ inline tensor stage_size(const std::vector<datatype>& dtypes, int64_t capacity=0
     return tensor(res[0]);
 }
 
+/* # StatefulPartitionedCall
+# Inputs:
+*    args
 
+# Attributes:
+*    Tin
+*    Tout
+*    f
+*    config
+*    config_proto
+*    executor_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_partitioned_call(const std::vector<tensor>&args, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, int64_t f, const std::string& config="", const std::string& config_proto="", const std::string& executor_type="") {
 
     // Define Op
@@ -39976,7 +55667,22 @@ inline tensor stateful_partitioned_call(const std::vector<tensor>&args, const st
     return tensor(res[0]);
 }
 
+/* # StatefulRandomBinomial
+# Inputs:
+*    resource
+*    algorithm
+*    shape
+*    counts
+*    probs
 
+# Attributes:
+*    S
+*    dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_random_binomial(const tensor& resource, const tensor& algorithm, const tensor& shape, const tensor& counts, const tensor& probs, datatype S, datatype dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40017,7 +55723,19 @@ inline tensor stateful_random_binomial(const tensor& resource, const tensor& alg
     return tensor(res[0]);
 }
 
+/* # StatefulStandardNormal
+# Inputs:
+*    resource
+*    shape
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_standard_normal(const tensor& resource, const tensor& shape, datatype dtype=static_cast<datatype>(1), datatype shape_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40046,7 +55764,20 @@ inline tensor stateful_standard_normal(const tensor& resource, const tensor& sha
     return tensor(res[0]);
 }
 
+/* # StatefulStandardNormalV2
+# Inputs:
+*    resource
+*    algorithm
+*    shape
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_standard_normal_v2(const tensor& resource, const tensor& algorithm, const tensor& shape, datatype dtype=static_cast<datatype>(1), datatype shape_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40079,7 +55810,20 @@ inline tensor stateful_standard_normal_v2(const tensor& resource, const tensor& 
     return tensor(res[0]);
 }
 
+/* # StatefulTruncatedNormal
+# Inputs:
+*    resource
+*    algorithm
+*    shape
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_truncated_normal(const tensor& resource, const tensor& algorithm, const tensor& shape, datatype dtype=static_cast<datatype>(1), datatype shape_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40112,7 +55856,20 @@ inline tensor stateful_truncated_normal(const tensor& resource, const tensor& al
     return tensor(res[0]);
 }
 
+/* # StatefulUniform
+# Inputs:
+*    resource
+*    algorithm
+*    shape
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_uniform(const tensor& resource, const tensor& algorithm, const tensor& shape, datatype dtype=static_cast<datatype>(1), datatype shape_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40145,7 +55902,20 @@ inline tensor stateful_uniform(const tensor& resource, const tensor& algorithm, 
     return tensor(res[0]);
 }
 
+/* # StatefulUniformFullInt
+# Inputs:
+*    resource
+*    algorithm
+*    shape
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_uniform_full_int(const tensor& resource, const tensor& algorithm, const tensor& shape, datatype dtype=static_cast<datatype>(23), datatype shape_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40178,7 +55948,22 @@ inline tensor stateful_uniform_full_int(const tensor& resource, const tensor& al
     return tensor(res[0]);
 }
 
+/* # StatefulUniformInt
+# Inputs:
+*    resource
+*    algorithm
+*    shape
+*    minval
+*    maxval
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateful_uniform_int(const tensor& resource, const tensor& algorithm, const tensor& shape, const tensor& minval, const tensor& maxval, datatype dtype=static_cast<datatype>(9), datatype shape_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40219,7 +56004,21 @@ inline tensor stateful_uniform_int(const tensor& resource, const tensor& algorit
     return tensor(res[0]);
 }
 
+/* # StatelessCase
+# Inputs:
+*    branch_index
+*    input
 
+# Attributes:
+*    Tin
+*    Tout
+*    branches
+*    output_shapes
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_case(const tensor& branch_index, const std::vector<tensor>&input, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, const std::vector<int64_t>& branches, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -40259,7 +56058,23 @@ inline tensor stateless_case(const tensor& branch_index, const std::vector<tenso
     return tensor(res[0]);
 }
 
+/* # StatelessIf
+# Inputs:
+*    cond
+*    input
 
+# Attributes:
+*    Tcond
+*    Tin
+*    Tout
+*    then_branch
+*    else_branch
+*    output_shapes
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_if(const tensor& cond, const std::vector<tensor>&input, datatype Tcond, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, int64_t then_branch, int64_t else_branch, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -40301,7 +56116,20 @@ inline tensor stateless_if(const tensor& cond, const std::vector<tensor>&input, 
     return tensor(res[0]);
 }
 
+/* # StatelessMultinomial
+# Inputs:
+*    logits
+*    num_samples
+*    seed
 
+# Attributes:
+*    Tseed
+*    output_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_multinomial(const tensor& logits, const tensor& num_samples, const tensor& seed, datatype Tseed=static_cast<datatype>(9), datatype output_dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40334,7 +56162,24 @@ inline tensor stateless_multinomial(const tensor& logits, const tensor& num_samp
     return tensor(res[0]);
 }
 
+/* # StatelessParameterizedTruncatedNormal
+# Inputs:
+*    shape
+*    seed
+*    means
+*    stddevs
+*    minvals
+*    maxvals
 
+# Attributes:
+*    S
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_parameterized_truncated_normal(const tensor& shape, const tensor& seed, const tensor& means, const tensor& stddevs, const tensor& minvals, const tensor& maxvals, datatype S, datatype dtype, datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40380,7 +56225,22 @@ inline tensor stateless_parameterized_truncated_normal(const tensor& shape, cons
     return tensor(res[0]);
 }
 
+/* # StatelessRandomBinomial
+# Inputs:
+*    shape
+*    seed
+*    counts
+*    probs
 
+# Attributes:
+*    S
+*    Tseed
+*    dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_binomial(const tensor& shape, const tensor& seed, const tensor& counts, const tensor& probs, datatype S, datatype Tseed=static_cast<datatype>(9), datatype dtype=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40418,7 +56278,20 @@ inline tensor stateless_random_binomial(const tensor& shape, const tensor& seed,
     return tensor(res[0]);
 }
 
+/* # StatelessRandomGammaV2
+# Inputs:
+*    shape
+*    seed
+*    alpha
 
+# Attributes:
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_gamma_v2(const tensor& shape, const tensor& seed, const tensor& alpha, datatype dtype, datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40451,7 +56324,22 @@ inline tensor stateless_random_gamma_v2(const tensor& shape, const tensor& seed,
     return tensor(res[0]);
 }
 
+/* # StatelessRandomGammaV3
+# Inputs:
+*    shape
+*    key
+*    counter
+*    alg
+*    alpha
 
+# Attributes:
+*    dtype
+*    shape_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_gamma_v3(const tensor& shape, const tensor& key, const tensor& counter, const tensor& alg, const tensor& alpha, datatype dtype, datatype shape_dtype=static_cast<datatype>(3)) {
 
     // Define Op
@@ -40492,7 +56380,15 @@ inline tensor stateless_random_gamma_v3(const tensor& shape, const tensor& key, 
     return tensor(res[0]);
 }
 
+/* # StatelessRandomGetAlg
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    alg
 
+*/
 inline tensor stateless_random_get_alg() {
 
     // Define Op
@@ -40513,7 +56409,18 @@ inline tensor stateless_random_get_alg() {
     return tensor(res[0]);
 }
 
+/* # StatelessRandomGetKeyCounter
+# Inputs:
+*    seed
 
+# Attributes:
+*    Tseed
+
+# Outputs:
+*    key
+*    counter
+
+*/
 inline std::vector<tensor> stateless_random_get_key_counter(const tensor& seed, datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40537,7 +56444,19 @@ inline std::vector<tensor> stateless_random_get_key_counter(const tensor& seed, 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # StatelessRandomGetKeyCounterAlg
+# Inputs:
+*    seed
 
+# Attributes:
+*    Tseed
+
+# Outputs:
+*    key
+*    counter
+*    alg
+
+*/
 inline std::vector<tensor> stateless_random_get_key_counter_alg(const tensor& seed, datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40561,7 +56480,19 @@ inline std::vector<tensor> stateless_random_get_key_counter_alg(const tensor& se
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # StatelessRandomNormal
+# Inputs:
+*    shape
+*    seed
 
+# Attributes:
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_normal(const tensor& shape, const tensor& seed, datatype dtype=static_cast<datatype>(1), datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40590,7 +56521,21 @@ inline tensor stateless_random_normal(const tensor& shape, const tensor& seed, d
     return tensor(res[0]);
 }
 
+/* # StatelessRandomNormalV2
+# Inputs:
+*    shape
+*    key
+*    counter
+*    alg
 
+# Attributes:
+*    dtype
+*    Tshape
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_normal_v2(const tensor& shape, const tensor& key, const tensor& counter, const tensor& alg, datatype dtype=static_cast<datatype>(1), datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -40627,7 +56572,21 @@ inline tensor stateless_random_normal_v2(const tensor& shape, const tensor& key,
     return tensor(res[0]);
 }
 
+/* # StatelessRandomPoisson
+# Inputs:
+*    shape
+*    seed
+*    lam
 
+# Attributes:
+*    Rtype
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_poisson(const tensor& shape, const tensor& seed, const tensor& lam, datatype Rtype, datatype dtype, datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40661,7 +56620,19 @@ inline tensor stateless_random_poisson(const tensor& shape, const tensor& seed, 
     return tensor(res[0]);
 }
 
+/* # StatelessRandomUniform
+# Inputs:
+*    shape
+*    seed
 
+# Attributes:
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_uniform(const tensor& shape, const tensor& seed, datatype dtype=static_cast<datatype>(1), datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40690,7 +56661,19 @@ inline tensor stateless_random_uniform(const tensor& shape, const tensor& seed, 
     return tensor(res[0]);
 }
 
+/* # StatelessRandomUniformFullInt
+# Inputs:
+*    shape
+*    seed
 
+# Attributes:
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_uniform_full_int(const tensor& shape, const tensor& seed, datatype dtype=static_cast<datatype>(23), datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40719,7 +56702,21 @@ inline tensor stateless_random_uniform_full_int(const tensor& shape, const tenso
     return tensor(res[0]);
 }
 
+/* # StatelessRandomUniformFullIntV2
+# Inputs:
+*    shape
+*    key
+*    counter
+*    alg
 
+# Attributes:
+*    dtype
+*    Tshape
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_uniform_full_int_v2(const tensor& shape, const tensor& key, const tensor& counter, const tensor& alg, datatype dtype=static_cast<datatype>(23), datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -40756,7 +56753,21 @@ inline tensor stateless_random_uniform_full_int_v2(const tensor& shape, const te
     return tensor(res[0]);
 }
 
+/* # StatelessRandomUniformInt
+# Inputs:
+*    shape
+*    seed
+*    minval
+*    maxval
 
+# Attributes:
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_uniform_int(const tensor& shape, const tensor& seed, const tensor& minval, const tensor& maxval, datatype dtype, datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40793,7 +56804,23 @@ inline tensor stateless_random_uniform_int(const tensor& shape, const tensor& se
     return tensor(res[0]);
 }
 
+/* # StatelessRandomUniformIntV2
+# Inputs:
+*    shape
+*    key
+*    counter
+*    alg
+*    minval
+*    maxval
 
+# Attributes:
+*    dtype
+*    Tshape
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_uniform_int_v2(const tensor& shape, const tensor& key, const tensor& counter, const tensor& alg, const tensor& minval, const tensor& maxval, datatype dtype, datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -40838,7 +56865,21 @@ inline tensor stateless_random_uniform_int_v2(const tensor& shape, const tensor&
     return tensor(res[0]);
 }
 
+/* # StatelessRandomUniformV2
+# Inputs:
+*    shape
+*    key
+*    counter
+*    alg
 
+# Attributes:
+*    dtype
+*    Tshape
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_random_uniform_v2(const tensor& shape, const tensor& key, const tensor& counter, const tensor& alg, datatype dtype=static_cast<datatype>(1), datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -40875,7 +56916,26 @@ inline tensor stateless_random_uniform_v2(const tensor& shape, const tensor& key
     return tensor(res[0]);
 }
 
+/* # StatelessSampleDistortedBoundingBox
+# Inputs:
+*    image_size
+*    bounding_boxes
+*    min_object_covered
+*    seed
 
+# Attributes:
+*    Tseed
+*    aspect_ratio_range
+*    area_range
+*    max_attempts
+*    use_image_if_no_bounding_boxes
+
+# Outputs:
+*    begin
+*    size
+*    bboxes
+
+*/
 inline std::vector<tensor> stateless_sample_distorted_bounding_box(const tensor& image_size, const tensor& bounding_boxes, const tensor& min_object_covered, const tensor& seed, datatype Tseed, const std::vector<float>& aspect_ratio_range, const std::vector<float>& area_range, int64_t max_attempts=100, bool use_image_if_no_bounding_boxes=false) {
 
     // Define Op
@@ -40915,7 +56975,19 @@ inline std::vector<tensor> stateless_sample_distorted_bounding_box(const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # StatelessShuffle
+# Inputs:
+*    value
+*    key
+*    counter
+*    alg
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_shuffle(const tensor& value, const tensor& key, const tensor& counter, const tensor& alg) {
 
     // Define Op
@@ -40951,7 +57023,19 @@ inline tensor stateless_shuffle(const tensor& value, const tensor& key, const te
     return tensor(res[0]);
 }
 
+/* # StatelessTruncatedNormal
+# Inputs:
+*    shape
+*    seed
 
+# Attributes:
+*    dtype
+*    Tseed
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_truncated_normal(const tensor& shape, const tensor& seed, datatype dtype=static_cast<datatype>(1), datatype Tseed=static_cast<datatype>(9)) {
 
     // Define Op
@@ -40980,7 +57064,21 @@ inline tensor stateless_truncated_normal(const tensor& shape, const tensor& seed
     return tensor(res[0]);
 }
 
+/* # StatelessTruncatedNormalV2
+# Inputs:
+*    shape
+*    key
+*    counter
+*    alg
 
+# Attributes:
+*    dtype
+*    Tshape
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_truncated_normal_v2(const tensor& shape, const tensor& key, const tensor& counter, const tensor& alg, datatype dtype=static_cast<datatype>(1), datatype Tshape=static_cast<datatype>(3)) {
 
     // Define Op
@@ -41017,7 +57115,20 @@ inline tensor stateless_truncated_normal_v2(const tensor& shape, const tensor& k
     return tensor(res[0]);
 }
 
+/* # StatelessWhile
+# Inputs:
+*    input
 
+# Attributes:
+*    cond
+*    body
+*    output_shapes
+*    parallel_iterations
+
+# Outputs:
+*    output
+
+*/
 inline tensor stateless_while(const std::vector<tensor>&input, int64_t cond, int64_t body, const std::vector< std::vector<int64_t>>& output_shapes, int64_t parallel_iterations=10) {
 
     // Define Op
@@ -41053,7 +57164,17 @@ inline tensor stateless_while(const std::vector<tensor>&input, int64_t cond, int
     return tensor(res[0]);
 }
 
+/* # StaticRegexFullMatch
+# Inputs:
+*    input
 
+# Attributes:
+*    pattern
+
+# Outputs:
+*    output
+
+*/
 inline tensor static_regex_full_match(const tensor& input, const std::string& pattern) {
 
     // Define Op
@@ -41077,7 +57198,19 @@ inline tensor static_regex_full_match(const tensor& input, const std::string& pa
     return tensor(res[0]);
 }
 
+/* # StaticRegexReplace
+# Inputs:
+*    input
 
+# Attributes:
+*    pattern
+*    rewrite
+*    replace_global
+
+# Outputs:
+*    output
+
+*/
 inline tensor static_regex_replace(const tensor& input, const std::string& pattern, const std::string& rewrite, bool replace_global=true) {
 
     // Define Op
@@ -41103,7 +57236,17 @@ inline tensor static_regex_replace(const tensor& input, const std::string& patte
     return tensor(res[0]);
 }
 
+/* # StatsAggregatorHandle
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor stats_aggregator_handle(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -41125,7 +57268,17 @@ inline tensor stats_aggregator_handle(const std::string& container="", const std
     return tensor(res[0]);
 }
 
+/* # StatsAggregatorHandleV2
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor stats_aggregator_handle_v2(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -41147,7 +57300,16 @@ inline tensor stats_aggregator_handle_v2(const std::string& container="", const 
     return tensor(res[0]);
 }
 
+/* # StatsAggregatorSetSummaryWriter
+# Inputs:
+*    stats_aggregator
+*    summary
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void stats_aggregator_set_summary_writer(const tensor& stats_aggregator, const tensor& summary) {
 
     // Define Op
@@ -41174,7 +57336,16 @@ inline void stats_aggregator_set_summary_writer(const tensor& stats_aggregator, 
     status_check(context::get_status());
 }
 
+/* # StatsAggregatorSummary
+# Inputs:
+*    iterator
 
+# Attributes:
+*    
+# Outputs:
+*    summary
+
+*/
 inline tensor stats_aggregator_summary(const tensor& iterator) {
 
     // Define Op
@@ -41198,7 +57369,16 @@ inline tensor stats_aggregator_summary(const tensor& iterator) {
     return tensor(res[0]);
 }
 
+/* # StopGradient
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor stop_gradient(const tensor& input) {
 
     // Define Op
@@ -41222,7 +57402,23 @@ inline tensor stop_gradient(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # StoreMinibatchStatisticsInFdo
+# Inputs:
+*    program_key
+*    max_ids
+*    max_uniques
 
+# Attributes:
+*    sample_count
+*    num_replica
+*    feature_width
+*    num_sc_per_chip
+*    table_name
+*    mini_batch_splits
+
+# Outputs:
+*    
+*/
 inline void store_minibatch_statistics_in_fdo(const tensor& program_key, const tensor& max_ids, const tensor& max_uniques, int64_t sample_count, int64_t num_replica, int64_t feature_width, int64_t num_sc_per_chip, const std::string& table_name, const std::string& mini_batch_splits) {
 
     // Define Op
@@ -41258,7 +57454,25 @@ inline void store_minibatch_statistics_in_fdo(const tensor& program_key, const t
     status_check(context::get_status());
 }
 
+/* # StridedSlice
+# Inputs:
+*    input
+*    begin
+*    end
+*    strides
 
+# Attributes:
+*    Index
+*    begin_mask
+*    end_mask
+*    ellipsis_mask
+*    new_axis_mask
+*    shrink_axis_mask
+
+# Outputs:
+*    output
+
+*/
 inline tensor strided_slice(const tensor& input, const tensor& begin, const tensor& end, const tensor& strides, datatype Index, int64_t begin_mask=0, int64_t end_mask=0, int64_t ellipsis_mask=0, int64_t new_axis_mask=0, int64_t shrink_axis_mask=0) {
 
     // Define Op
@@ -41299,7 +57513,26 @@ inline tensor strided_slice(const tensor& input, const tensor& begin, const tens
     return tensor(res[0]);
 }
 
+/* # StridedSliceAssign
+# Inputs:
+*    ref
+*    begin
+*    end
+*    strides
+*    value
 
+# Attributes:
+*    Index
+*    begin_mask
+*    end_mask
+*    ellipsis_mask
+*    new_axis_mask
+*    shrink_axis_mask
+
+# Outputs:
+*    output_ref
+
+*/
 inline tensor strided_slice_assign(const tensor& ref, const tensor& begin, const tensor& end, const tensor& strides, const tensor& value, datatype Index, int64_t begin_mask=0, int64_t end_mask=0, int64_t ellipsis_mask=0, int64_t new_axis_mask=0, int64_t shrink_axis_mask=0) {
 
     // Define Op
@@ -41344,7 +57577,26 @@ inline tensor strided_slice_assign(const tensor& ref, const tensor& begin, const
     return tensor(res[0]);
 }
 
+/* # StridedSliceGrad
+# Inputs:
+*    shape
+*    begin
+*    end
+*    strides
+*    dy
 
+# Attributes:
+*    Index
+*    begin_mask
+*    end_mask
+*    ellipsis_mask
+*    new_axis_mask
+*    shrink_axis_mask
+
+# Outputs:
+*    output
+
+*/
 inline tensor strided_slice_grad(const tensor& shape, const tensor& begin, const tensor& end, const tensor& strides, const tensor& dy, datatype Index, int64_t begin_mask=0, int64_t end_mask=0, int64_t ellipsis_mask=0, int64_t new_axis_mask=0, int64_t shrink_axis_mask=0) {
 
     // Define Op
@@ -41389,7 +57641,19 @@ inline tensor strided_slice_grad(const tensor& shape, const tensor& begin, const
     return tensor(res[0]);
 }
 
+/* # StringFormat
+# Inputs:
+*    inputs
 
+# Attributes:
+*    template
+*    placeholder
+*    summarize
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_format(const std::vector<tensor>&inputs, const std::string& template_arg="%s", const std::string& placeholder="%s", int64_t summarize=3) {
 
     // Define Op
@@ -41417,7 +57681,18 @@ inline tensor string_format(const std::vector<tensor>&inputs, const std::string&
     return tensor(res[0]);
 }
 
+/* # StringJoin
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+*    separator
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_join(const std::vector<tensor>&inputs, const std::string& separator="") {
 
     // Define Op
@@ -41444,7 +57719,17 @@ inline tensor string_join(const std::vector<tensor>&inputs, const std::string& s
     return tensor(res[0]);
 }
 
+/* # StringLength
+# Inputs:
+*    input
 
+# Attributes:
+*    unit
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_length(const tensor& input, const std::string& unit="BYTE") {
 
     // Define Op
@@ -41468,7 +57753,17 @@ inline tensor string_length(const tensor& input, const std::string& unit="BYTE")
     return tensor(res[0]);
 }
 
+/* # StringLower
+# Inputs:
+*    input
 
+# Attributes:
+*    encoding
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_lower(const tensor& input, const std::string& encoding="") {
 
     // Define Op
@@ -41492,7 +57787,25 @@ inline tensor string_lower(const tensor& input, const std::string& encoding="") 
     return tensor(res[0]);
 }
 
+/* # StringNGrams
+# Inputs:
+*    data
+*    data_splits
 
+# Attributes:
+*    separator
+*    ngram_widths
+*    left_pad
+*    right_pad
+*    pad_width
+*    preserve_short_sequences
+*    Tsplits
+
+# Outputs:
+*    ngrams
+*    ngrams_splits
+
+*/
 inline std::vector<tensor> string_n_grams(const tensor& data, const tensor& data_splits, const std::string& separator, const std::vector<int64_t>& ngram_widths, const std::string& left_pad, const std::string& right_pad, int64_t pad_width, bool preserve_short_sequences, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -41526,7 +57839,20 @@ inline std::vector<tensor> string_n_grams(const tensor& data, const tensor& data
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # StringSplit
+# Inputs:
+*    input
+*    delimiter
 
+# Attributes:
+*    skip_empty
+
+# Outputs:
+*    indices
+*    values
+*    shape
+
+*/
 inline std::vector<tensor> string_split(const tensor& input, const tensor& delimiter, bool skip_empty=true) {
 
     // Define Op
@@ -41554,7 +57880,20 @@ inline std::vector<tensor> string_split(const tensor& input, const tensor& delim
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # StringSplitV2
+# Inputs:
+*    input
+*    sep
 
+# Attributes:
+*    maxsplit
+
+# Outputs:
+*    indices
+*    values
+*    shape
+
+*/
 inline std::vector<tensor> string_split_v2(const tensor& input, const tensor& sep, int64_t maxsplit=-1) {
 
     // Define Op
@@ -41582,7 +57921,16 @@ inline std::vector<tensor> string_split_v2(const tensor& input, const tensor& se
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # StringStrip
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor string_strip(const tensor& input) {
 
     // Define Op
@@ -41606,7 +57954,17 @@ inline tensor string_strip(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # StringToHashBucket
+# Inputs:
+*    string_tensor
 
+# Attributes:
+*    num_buckets
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_to_hash_bucket(const tensor& string_input_tensor, int64_t num_buckets) {
 
     // Define Op
@@ -41630,7 +57988,17 @@ inline tensor string_to_hash_bucket(const tensor& string_input_tensor, int64_t n
     return tensor(res[0]);
 }
 
+/* # StringToHashBucketFast
+# Inputs:
+*    input
 
+# Attributes:
+*    num_buckets
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_to_hash_bucket_fast(const tensor& input, int64_t num_buckets) {
 
     // Define Op
@@ -41654,7 +58022,18 @@ inline tensor string_to_hash_bucket_fast(const tensor& input, int64_t num_bucket
     return tensor(res[0]);
 }
 
+/* # StringToHashBucketStrong
+# Inputs:
+*    input
 
+# Attributes:
+*    num_buckets
+*    key
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_to_hash_bucket_strong(const tensor& input, int64_t num_buckets, const std::vector<int64_t>& key) {
 
     // Define Op
@@ -41679,7 +58058,17 @@ inline tensor string_to_hash_bucket_strong(const tensor& input, int64_t num_buck
     return tensor(res[0]);
 }
 
+/* # StringToNumber
+# Inputs:
+*    string_tensor
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_to_number(const tensor& string_input_tensor, datatype out_type=static_cast<datatype>(1)) {
 
     // Define Op
@@ -41703,7 +58092,17 @@ inline tensor string_to_number(const tensor& string_input_tensor, datatype out_t
     return tensor(res[0]);
 }
 
+/* # StringUpper
+# Inputs:
+*    input
 
+# Attributes:
+*    encoding
+
+# Outputs:
+*    output
+
+*/
 inline tensor string_upper(const tensor& input, const std::string& encoding="") {
 
     // Define Op
@@ -41727,7 +58126,17 @@ inline tensor string_upper(const tensor& input, const std::string& encoding="") 
     return tensor(res[0]);
 }
 
+/* # Sub
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor sub(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -41755,7 +58164,19 @@ inline tensor sub(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # Substr
+# Inputs:
+*    input
+*    pos
+*    len
 
+# Attributes:
+*    unit
+
+# Outputs:
+*    output
+
+*/
 inline tensor substr(const tensor& input, const tensor& pos, const tensor& len, const std::string& unit="BYTE") {
 
     // Define Op
@@ -41787,7 +58208,19 @@ inline tensor substr(const tensor& input, const tensor& pos, const tensor& len, 
     return tensor(res[0]);
 }
 
+/* # Sum
+# Inputs:
+*    input
+*    reduction_indices
 
+# Attributes:
+*    keep_dims
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor sum(const tensor& input, const tensor& reduction_indices, bool keep_dims=false, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -41816,7 +58249,17 @@ inline tensor sum(const tensor& input, const tensor& reduction_indices, bool kee
     return tensor(res[0]);
 }
 
+/* # SummaryWriter
+# Inputs:
+*    
+# Attributes:
+*    shared_name
+*    container
 
+# Outputs:
+*    writer
+
+*/
 inline tensor summary_writer(const std::string& shared_name="", const std::string& container="") {
 
     // Define Op
@@ -41838,7 +58281,20 @@ inline tensor summary_writer(const std::string& shared_name="", const std::strin
     return tensor(res[0]);
 }
 
+/* # Svd
+# Inputs:
+*    input
 
+# Attributes:
+*    compute_uv
+*    full_matrices
+
+# Outputs:
+*    s
+*    u
+*    v
+
+*/
 inline std::vector<tensor> svd(const tensor& input, bool compute_uv=true, bool full_matrices=false) {
 
     // Define Op
@@ -41863,7 +58319,18 @@ inline std::vector<tensor> svd(const tensor& input, bool compute_uv=true, bool f
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # Switch
+# Inputs:
+*    data
+*    pred
 
+# Attributes:
+*    
+# Outputs:
+*    output_false
+*    output_true
+
+*/
 inline std::vector<tensor> tfe_switch(const tensor& data, const tensor& pred) {
 
     // Define Op
@@ -41891,7 +58358,19 @@ inline std::vector<tensor> tfe_switch(const tensor& data, const tensor& pred) {
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # SymbolicGradient
+# Inputs:
+*    input
 
+# Attributes:
+*    Tin
+*    Tout
+*    f
+
+# Outputs:
+*    output
+
+*/
 inline tensor symbolic_gradient(const std::vector<tensor>&input, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, int64_t f) {
 
     // Define Op
@@ -41919,7 +58398,14 @@ inline tensor symbolic_gradient(const std::vector<tensor>&input, const std::vect
     return tensor(res[0]);
 }
 
-
+/* # SyncDevice
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void sync_device() {
 
     // Define Op
@@ -41939,7 +58425,19 @@ inline void sync_device() {
     status_check(context::get_status());
 }
 
+/* # TFRecordDataset
+# Inputs:
+*    filenames
+*    compression_type
+*    buffer_size
 
+# Attributes:
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor t_f_record_dataset(const tensor& filenames, const tensor& compression_type, const tensor& buffer_size, const std::string& metadata="") {
 
     // Define Op
@@ -41971,7 +58469,20 @@ inline tensor t_f_record_dataset(const tensor& filenames, const tensor& compress
     return tensor(res[0]);
 }
 
+/* # TFRecordDatasetV2
+# Inputs:
+*    filenames
+*    compression_type
+*    buffer_size
+*    byte_offsets
 
+# Attributes:
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor t_f_record_dataset_v2(const tensor& filenames, const tensor& compression_type, const tensor& buffer_size, const tensor& byte_offsets, const std::string& metadata="") {
 
     // Define Op
@@ -42007,7 +58518,18 @@ inline tensor t_f_record_dataset_v2(const tensor& filenames, const tensor& compr
     return tensor(res[0]);
 }
 
+/* # TFRecordReader
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
+*    compression_type
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor t_f_record_reader(const std::string& container="", const std::string& shared_name="", const std::string& compression_type="") {
 
     // Define Op
@@ -42030,7 +58552,18 @@ inline tensor t_f_record_reader(const std::string& container="", const std::stri
     return tensor(res[0]);
 }
 
+/* # TFRecordReaderV2
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
+*    compression_type
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor t_f_record_reader_v2(const std::string& container="", const std::string& shared_name="", const std::string& compression_type="") {
 
     // Define Op
@@ -42053,7 +58586,16 @@ inline tensor t_f_record_reader_v2(const std::string& container="", const std::s
     return tensor(res[0]);
 }
 
+/* # TPUAnnotateTensorsWithDynamicShape
+# Inputs:
+*    tensors
 
+# Attributes:
+*    
+# Outputs:
+*    tpu_tensors
+
+*/
 inline tensor t_p_u_annotate_tensors_with_dynamic_shape(const std::vector<tensor>&tensors) {
 
     // Define Op
@@ -42079,7 +58621,15 @@ inline tensor t_p_u_annotate_tensors_with_dynamic_shape(const std::vector<tensor
     return tensor(res[0]);
 }
 
+/* # TPUCompilationResult
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    output
 
+*/
 inline tensor t_p_u_compilation_result() {
 
     // Define Op
@@ -42100,7 +58650,18 @@ inline tensor t_p_u_compilation_result() {
     return tensor(res[0]);
 }
 
+/* # TPUCopyWithDynamicShape
+# Inputs:
+*    tensors
+*    unpadded_sizes
 
+# Attributes:
+*    N
+
+# Outputs:
+*    tpu_tensors
+
+*/
 inline tensor t_p_u_copy_with_dynamic_shape(const std::vector<tensor>&tensors, const std::vector<tensor>&unpadded_sizes) {
 
     // Define Op
@@ -42132,7 +58693,19 @@ inline tensor t_p_u_copy_with_dynamic_shape(const std::vector<tensor>&tensors, c
     return tensor(res[0]);
 }
 
+/* # TPUEmbeddingActivations
+# Inputs:
+*    embedding_variable
+*    sliced_activations
 
+# Attributes:
+*    table_id
+*    lookup_id
+
+# Outputs:
+*    output
+
+*/
 inline tensor t_p_u_embedding_activations(const tensor& embedding_variable, const tensor& sliced_activations, int64_t table_id, int64_t lookup_id) {
 
     // Define Op
@@ -42161,7 +58734,15 @@ inline tensor t_p_u_embedding_activations(const tensor& embedding_variable, cons
     return tensor(res[0]);
 }
 
+/* # TPUOrdinalSelector
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    device_ordinals
 
+*/
 inline tensor t_p_u_ordinal_selector() {
 
     // Define Op
@@ -42182,7 +58763,21 @@ inline tensor t_p_u_ordinal_selector() {
     return tensor(res[0]);
 }
 
+/* # TPUPartitionedCall
+# Inputs:
+*    args
+*    device_ordinal
 
+# Attributes:
+*    Tin
+*    Tout
+*    f
+*    autotuner_thresh
+
+# Outputs:
+*    output
+
+*/
 inline tensor t_p_u_partitioned_call(const std::vector<tensor>&args, const tensor& device_ordinal, const std::vector<datatype>& Tin, const std::vector<datatype>& Tout, int64_t f, int64_t autotuner_thresh=0) {
 
     // Define Op
@@ -42215,7 +58810,18 @@ inline tensor t_p_u_partitioned_call(const std::vector<tensor>&args, const tenso
     return tensor(res[0]);
 }
 
+/* # TPUPartitionedInput
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+*    partition_dim
+
+# Outputs:
+*    output
+
+*/
 inline tensor t_p_u_partitioned_input(const std::vector<tensor>&inputs, int64_t partition_dim=0) {
 
     // Define Op
@@ -42242,7 +58848,19 @@ inline tensor t_p_u_partitioned_input(const std::vector<tensor>&inputs, int64_t 
     return tensor(res[0]);
 }
 
+/* # TPUPartitionedInputV2
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+*    partition_dims
+*    is_packed
+
+# Outputs:
+*    output
+
+*/
 inline tensor t_p_u_partitioned_input_v2(const std::vector<tensor>&inputs, const std::vector<int64_t>& partition_dims, bool is_packed=false) {
 
     // Define Op
@@ -42270,7 +58888,18 @@ inline tensor t_p_u_partitioned_input_v2(const std::vector<tensor>&inputs, const
     return tensor(res[0]);
 }
 
+/* # TPUPartitionedOutput
+# Inputs:
+*    inputs
 
+# Attributes:
+*    num_splits
+*    partition_dim
+
+# Outputs:
+*    output
+
+*/
 inline tensor t_p_u_partitioned_output(const tensor& inputs, int64_t num_splits, int64_t partition_dim=0) {
 
     // Define Op
@@ -42295,7 +58924,18 @@ inline tensor t_p_u_partitioned_output(const tensor& inputs, int64_t num_splits,
     return tensor(res[0]);
 }
 
+/* # TPUPartitionedOutputV2
+# Inputs:
+*    inputs
 
+# Attributes:
+*    num_splits
+*    partition_dims
+
+# Outputs:
+*    output
+
+*/
 inline tensor t_p_u_partitioned_output_v2(const tensor& inputs, int64_t num_splits, const std::vector<int64_t>& partition_dims) {
 
     // Define Op
@@ -42320,7 +58960,26 @@ inline tensor t_p_u_partitioned_output_v2(const tensor& inputs, int64_t num_spli
     return tensor(res[0]);
 }
 
+/* # TPUReplicateMetadata
+# Inputs:
+*    
+# Attributes:
+*    num_replicas
+*    device_assignment
+*    computation_shape
+*    host_compute_core
+*    padding_map
+*    num_cores_per_replica
+*    topology
+*    use_tpu
+*    step_marker_location
+*    allow_soft_placement
+*    use_spmd_for_xla_partitioning
+*    tpu_compile_options_proto
 
+# Outputs:
+*    
+*/
 inline void t_p_u_replicate_metadata(int64_t num_replicas, const std::vector<int64_t>& device_assignment, const std::vector<int64_t>& computation_shape, const std::vector< std::string>& host_compute_core, const std::vector< std::string>& padding_map, int64_t num_cores_per_replica=1, const std::string& topology="", bool use_tpu=true, const std::string& step_marker_location="STEP_MARK_AT_ENTRY", bool allow_soft_placement=false, bool use_spmd_for_xla_partitioning=false, const std::string& tpu_compile_options_proto="") {
 
     // Define Op
@@ -42359,7 +59018,20 @@ inline void t_p_u_replicate_metadata(int64_t num_replicas, const std::vector<int
     status_check(context::get_status());
 }
 
+/* # TPUReplicatedInput
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+*    is_mirrored_variable
+*    index
+*    is_packed
+
+# Outputs:
+*    output
+
+*/
 inline tensor t_p_u_replicated_input(const std::vector<tensor>&inputs, bool is_mirrored_variable=false, int64_t index=-1, bool is_packed=false) {
 
     // Define Op
@@ -42388,7 +59060,17 @@ inline tensor t_p_u_replicated_input(const std::vector<tensor>&inputs, bool is_m
     return tensor(res[0]);
 }
 
+/* # TPUReplicatedOutput
+# Inputs:
+*    input
 
+# Attributes:
+*    num_replicas
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor t_p_u_replicated_output(const tensor& input, int64_t num_replicas) {
 
     // Define Op
@@ -42412,7 +59094,20 @@ inline tensor t_p_u_replicated_output(const tensor& input, int64_t num_replicas)
     return tensor(res[0]);
 }
 
+/* # TakeDataset
+# Inputs:
+*    input_dataset
+*    count
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor take_dataset(const tensor& input_dataset, const tensor& count, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -42449,7 +59144,21 @@ inline tensor take_dataset(const tensor& input_dataset, const tensor& count, con
     return tensor(res[0]);
 }
 
+/* # TakeManySparseFromTensorsMap
+# Inputs:
+*    sparse_handles
 
+# Attributes:
+*    dtype
+*    container
+*    shared_name
+
+# Outputs:
+*    sparse_indices
+*    sparse_values
+*    sparse_shape
+
+*/
 inline std::vector<tensor> take_many_sparse_from_tensors_map(const tensor& sparse_handles, datatype dtype, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -42475,7 +59184,22 @@ inline std::vector<tensor> take_many_sparse_from_tensors_map(const tensor& spars
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # TakeWhileDataset
+# Inputs:
+*    input_dataset
+*    other_arguments
 
+# Attributes:
+*    predicate
+*    Targuments
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor take_while_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t predicate, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -42516,7 +59240,16 @@ inline tensor take_while_dataset(const tensor& input_dataset, const std::vector<
     return tensor(res[0]);
 }
 
+/* # Tan
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor tan(const tensor& x) {
 
     // Define Op
@@ -42540,7 +59273,16 @@ inline tensor tan(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Tanh
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor tanh(const tensor& x) {
 
     // Define Op
@@ -42564,7 +59306,17 @@ inline tensor tanh(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # TanhGrad
+# Inputs:
+*    y
+*    dy
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor tanh_grad(const tensor& y, const tensor& dy) {
 
     // Define Op
@@ -42592,7 +59344,18 @@ inline tensor tanh_grad(const tensor& y, const tensor& dy) {
     return tensor(res[0]);
 }
 
+/* # TemporaryVariable
+# Inputs:
+*    
+# Attributes:
+*    shape
+*    dtype
+*    var_name
 
+# Outputs:
+*    ref
+
+*/
 inline tensor temporary_variable(const std::vector<int64_t>& shape, datatype dtype, const std::string& var_name="") {
 
     // Define Op
@@ -42618,7 +59381,21 @@ inline tensor temporary_variable(const std::vector<int64_t>& shape, datatype dty
     return tensor(res[0]);
 }
 
+/* # TensorArray
+# Inputs:
+*    size
 
+# Attributes:
+*    dtype
+*    element_shape
+*    dynamic_size
+*    clear_after_read
+*    tensor_array_name
+
+# Outputs:
+*    handle
+
+*/
 inline tensor tensor_array(const tensor& size, datatype dtype, const std::vector<int64_t>& element_shape, bool dynamic_size=false, bool clear_after_read=true, const std::string& tensor_array_name="") {
 
     // Define Op
@@ -42649,7 +59426,15 @@ inline tensor tensor_array(const tensor& size, datatype dtype, const std::vector
     return tensor(res[0]);
 }
 
+/* # TensorArrayClose
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void tensor_array_close(const tensor& handle) {
 
     // Define Op
@@ -42672,7 +59457,15 @@ inline void tensor_array_close(const tensor& handle) {
     status_check(context::get_status());
 }
 
+/* # TensorArrayCloseV2
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void tensor_array_close_v2(const tensor& handle) {
 
     // Define Op
@@ -42695,7 +59488,15 @@ inline void tensor_array_close_v2(const tensor& handle) {
     status_check(context::get_status());
 }
 
+/* # TensorArrayCloseV3
+# Inputs:
+*    handle
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void tensor_array_close_v3(const tensor& handle) {
 
     // Define Op
@@ -42718,7 +59519,20 @@ inline void tensor_array_close_v3(const tensor& handle) {
     status_check(context::get_status());
 }
 
+/* # TensorArrayConcat
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    dtype
+*    element_shape_except0
+
+# Outputs:
+*    value
+*    lengths
+
+*/
 inline std::vector<tensor> tensor_array_concat(const tensor& handle, const tensor& flow_in, datatype dtype, const std::vector<int64_t>& element_shape_except0) {
 
     // Define Op
@@ -42750,7 +59564,20 @@ inline std::vector<tensor> tensor_array_concat(const tensor& handle, const tenso
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorArrayConcatV2
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    dtype
+*    element_shape_except0
+
+# Outputs:
+*    value
+*    lengths
+
+*/
 inline std::vector<tensor> tensor_array_concat_v2(const tensor& handle, const tensor& flow_in, datatype dtype, const std::vector<int64_t>& element_shape_except0) {
 
     // Define Op
@@ -42782,7 +59609,20 @@ inline std::vector<tensor> tensor_array_concat_v2(const tensor& handle, const te
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorArrayConcatV3
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    dtype
+*    element_shape_except0
+
+# Outputs:
+*    value
+*    lengths
+
+*/
 inline std::vector<tensor> tensor_array_concat_v3(const tensor& handle, const tensor& flow_in, datatype dtype, const std::vector<int64_t>& element_shape_except0) {
 
     // Define Op
@@ -42814,7 +59654,20 @@ inline std::vector<tensor> tensor_array_concat_v3(const tensor& handle, const te
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorArrayGather
+# Inputs:
+*    handle
+*    indices
+*    flow_in
 
+# Attributes:
+*    dtype
+*    element_shape
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_array_gather(const tensor& handle, const tensor& indices, const tensor& flow_in, datatype dtype, const std::vector<int64_t>& element_shape) {
 
     // Define Op
@@ -42850,7 +59703,20 @@ inline tensor tensor_array_gather(const tensor& handle, const tensor& indices, c
     return tensor(res[0]);
 }
 
+/* # TensorArrayGatherV2
+# Inputs:
+*    handle
+*    indices
+*    flow_in
 
+# Attributes:
+*    dtype
+*    element_shape
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_array_gather_v2(const tensor& handle, const tensor& indices, const tensor& flow_in, datatype dtype, const std::vector<int64_t>& element_shape) {
 
     // Define Op
@@ -42886,7 +59752,20 @@ inline tensor tensor_array_gather_v2(const tensor& handle, const tensor& indices
     return tensor(res[0]);
 }
 
+/* # TensorArrayGatherV3
+# Inputs:
+*    handle
+*    indices
+*    flow_in
 
+# Attributes:
+*    dtype
+*    element_shape
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_array_gather_v3(const tensor& handle, const tensor& indices, const tensor& flow_in, datatype dtype, const std::vector<int64_t>& element_shape) {
 
     // Define Op
@@ -42922,7 +59801,18 @@ inline tensor tensor_array_gather_v3(const tensor& handle, const tensor& indices
     return tensor(res[0]);
 }
 
+/* # TensorArrayGrad
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    source
+
+# Outputs:
+*    grad_handle
+
+*/
 inline tensor tensor_array_grad(const tensor& handle, const tensor& flow_in, const std::string& source) {
 
     // Define Op
@@ -42950,7 +59840,18 @@ inline tensor tensor_array_grad(const tensor& handle, const tensor& flow_in, con
     return tensor(res[0]);
 }
 
+/* # TensorArrayGradV2
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    source
+
+# Outputs:
+*    grad_handle
+
+*/
 inline tensor tensor_array_grad_v2(const tensor& handle, const tensor& flow_in, const std::string& source) {
 
     // Define Op
@@ -42978,7 +59879,19 @@ inline tensor tensor_array_grad_v2(const tensor& handle, const tensor& flow_in, 
     return tensor(res[0]);
 }
 
+/* # TensorArrayGradV3
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    source
+
+# Outputs:
+*    grad_handle
+*    flow_out
+
+*/
 inline std::vector<tensor> tensor_array_grad_v3(const tensor& handle, const tensor& flow_in, const std::string& source) {
 
     // Define Op
@@ -43006,7 +59919,20 @@ inline std::vector<tensor> tensor_array_grad_v3(const tensor& handle, const tens
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorArrayGradWithShape
+# Inputs:
+*    handle
+*    flow_in
+*    shape_to_prepend
 
+# Attributes:
+*    source
+
+# Outputs:
+*    grad_handle
+*    flow_out
+
+*/
 inline std::vector<tensor> tensor_array_grad_with_shape(const tensor& handle, const tensor& flow_in, const tensor& shape_to_prepend, const std::string& source) {
 
     // Define Op
@@ -43038,7 +59964,19 @@ inline std::vector<tensor> tensor_array_grad_with_shape(const tensor& handle, co
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorArrayPack
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    dtype
+*    element_shape
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_array_pack(const tensor& handle, const tensor& flow_in, datatype dtype, const std::vector<int64_t>& element_shape) {
 
     // Define Op
@@ -43070,7 +60008,19 @@ inline tensor tensor_array_pack(const tensor& handle, const tensor& flow_in, dat
     return tensor(res[0]);
 }
 
+/* # TensorArrayRead
+# Inputs:
+*    handle
+*    index
+*    flow_in
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_array_read(const tensor& handle, const tensor& index, const tensor& flow_in, datatype dtype) {
 
     // Define Op
@@ -43102,7 +60052,19 @@ inline tensor tensor_array_read(const tensor& handle, const tensor& index, const
     return tensor(res[0]);
 }
 
+/* # TensorArrayReadV2
+# Inputs:
+*    handle
+*    index
+*    flow_in
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_array_read_v2(const tensor& handle, const tensor& index, const tensor& flow_in, datatype dtype) {
 
     // Define Op
@@ -43134,7 +60096,19 @@ inline tensor tensor_array_read_v2(const tensor& handle, const tensor& index, co
     return tensor(res[0]);
 }
 
+/* # TensorArrayReadV3
+# Inputs:
+*    handle
+*    index
+*    flow_in
 
+# Attributes:
+*    dtype
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_array_read_v3(const tensor& handle, const tensor& index, const tensor& flow_in, datatype dtype) {
 
     // Define Op
@@ -43166,7 +60140,19 @@ inline tensor tensor_array_read_v3(const tensor& handle, const tensor& index, co
     return tensor(res[0]);
 }
 
+/* # TensorArrayScatter
+# Inputs:
+*    handle
+*    indices
+*    value
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_scatter(const tensor& handle, const tensor& indices, const tensor& value, const tensor& flow_in) {
 
     // Define Op
@@ -43202,7 +60188,19 @@ inline tensor tensor_array_scatter(const tensor& handle, const tensor& indices, 
     return tensor(res[0]);
 }
 
+/* # TensorArrayScatterV2
+# Inputs:
+*    handle
+*    indices
+*    value
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_scatter_v2(const tensor& handle, const tensor& indices, const tensor& value, const tensor& flow_in) {
 
     // Define Op
@@ -43238,7 +60236,19 @@ inline tensor tensor_array_scatter_v2(const tensor& handle, const tensor& indice
     return tensor(res[0]);
 }
 
+/* # TensorArrayScatterV3
+# Inputs:
+*    handle
+*    indices
+*    value
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_scatter_v3(const tensor& handle, const tensor& indices, const tensor& value, const tensor& flow_in) {
 
     // Define Op
@@ -43274,7 +60284,17 @@ inline tensor tensor_array_scatter_v3(const tensor& handle, const tensor& indice
     return tensor(res[0]);
 }
 
+/* # TensorArraySize
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor tensor_array_size(const tensor& handle, const tensor& flow_in) {
 
     // Define Op
@@ -43302,7 +60322,17 @@ inline tensor tensor_array_size(const tensor& handle, const tensor& flow_in) {
     return tensor(res[0]);
 }
 
+/* # TensorArraySizeV2
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor tensor_array_size_v2(const tensor& handle, const tensor& flow_in) {
 
     // Define Op
@@ -43330,7 +60360,17 @@ inline tensor tensor_array_size_v2(const tensor& handle, const tensor& flow_in) 
     return tensor(res[0]);
 }
 
+/* # TensorArraySizeV3
+# Inputs:
+*    handle
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor tensor_array_size_v3(const tensor& handle, const tensor& flow_in) {
 
     // Define Op
@@ -43358,7 +60398,19 @@ inline tensor tensor_array_size_v3(const tensor& handle, const tensor& flow_in) 
     return tensor(res[0]);
 }
 
+/* # TensorArraySplit
+# Inputs:
+*    handle
+*    value
+*    lengths
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_split(const tensor& handle, const tensor& value, const tensor& lengths, const tensor& flow_in) {
 
     // Define Op
@@ -43394,7 +60446,19 @@ inline tensor tensor_array_split(const tensor& handle, const tensor& value, cons
     return tensor(res[0]);
 }
 
+/* # TensorArraySplitV2
+# Inputs:
+*    handle
+*    value
+*    lengths
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_split_v2(const tensor& handle, const tensor& value, const tensor& lengths, const tensor& flow_in) {
 
     // Define Op
@@ -43430,7 +60494,19 @@ inline tensor tensor_array_split_v2(const tensor& handle, const tensor& value, c
     return tensor(res[0]);
 }
 
+/* # TensorArraySplitV3
+# Inputs:
+*    handle
+*    value
+*    lengths
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_split_v3(const tensor& handle, const tensor& value, const tensor& lengths, const tensor& flow_in) {
 
     // Define Op
@@ -43466,7 +60542,18 @@ inline tensor tensor_array_split_v3(const tensor& handle, const tensor& value, c
     return tensor(res[0]);
 }
 
+/* # TensorArrayUnpack
+# Inputs:
+*    handle
+*    value
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_unpack(const tensor& handle, const tensor& value, const tensor& flow_in) {
 
     // Define Op
@@ -43498,7 +60585,21 @@ inline tensor tensor_array_unpack(const tensor& handle, const tensor& value, con
     return tensor(res[0]);
 }
 
+/* # TensorArrayV2
+# Inputs:
+*    size
 
+# Attributes:
+*    dtype
+*    element_shape
+*    dynamic_size
+*    clear_after_read
+*    tensor_array_name
+
+# Outputs:
+*    handle
+
+*/
 inline tensor tensor_array_v2(const tensor& size, datatype dtype, const std::vector<int64_t>& element_shape, bool dynamic_size=false, bool clear_after_read=true, const std::string& tensor_array_name="") {
 
     // Define Op
@@ -43529,7 +60630,23 @@ inline tensor tensor_array_v2(const tensor& size, datatype dtype, const std::vec
     return tensor(res[0]);
 }
 
+/* # TensorArrayV3
+# Inputs:
+*    size
 
+# Attributes:
+*    dtype
+*    element_shape
+*    dynamic_size
+*    clear_after_read
+*    identical_element_shapes
+*    tensor_array_name
+
+# Outputs:
+*    handle
+*    flow
+
+*/
 inline std::vector<tensor> tensor_array_v3(const tensor& size, datatype dtype, const std::vector<int64_t>& element_shape, bool dynamic_size=false, bool clear_after_read=true, bool identical_element_shapes=false, const std::string& tensor_array_name="") {
 
     // Define Op
@@ -43561,7 +60678,19 @@ inline std::vector<tensor> tensor_array_v3(const tensor& size, datatype dtype, c
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorArrayWrite
+# Inputs:
+*    handle
+*    index
+*    value
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_write(const tensor& handle, const tensor& index, const tensor& value, const tensor& flow_in) {
 
     // Define Op
@@ -43597,7 +60726,19 @@ inline tensor tensor_array_write(const tensor& handle, const tensor& index, cons
     return tensor(res[0]);
 }
 
+/* # TensorArrayWriteV2
+# Inputs:
+*    handle
+*    index
+*    value
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_write_v2(const tensor& handle, const tensor& index, const tensor& value, const tensor& flow_in) {
 
     // Define Op
@@ -43633,7 +60774,19 @@ inline tensor tensor_array_write_v2(const tensor& handle, const tensor& index, c
     return tensor(res[0]);
 }
 
+/* # TensorArrayWriteV3
+# Inputs:
+*    handle
+*    index
+*    value
+*    flow_in
 
+# Attributes:
+*    
+# Outputs:
+*    flow_out
+
+*/
 inline tensor tensor_array_write_v3(const tensor& handle, const tensor& index, const tensor& value, const tensor& flow_in) {
 
     // Define Op
@@ -43669,7 +60822,19 @@ inline tensor tensor_array_write_v3(const tensor& handle, const tensor& index, c
     return tensor(res[0]);
 }
 
+/* # TensorDataset
+# Inputs:
+*    components
 
+# Attributes:
+*    Toutput_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor tensor_dataset(const std::vector<tensor>&components, const std::vector<datatype>& Toutput_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -43704,7 +60869,19 @@ inline tensor tensor_dataset(const std::vector<tensor>&components, const std::ve
     return tensor(res[0]);
 }
 
+/* # TensorListConcat
+# Inputs:
+*    input_handle
 
+# Attributes:
+*    element_dtype
+*    element_shape
+
+# Outputs:
+*    tensor
+*    lengths
+
+*/
 inline std::vector<tensor> tensor_list_concat(const tensor& input_handle, datatype element_dtype, const std::vector<int64_t>& element_shape) {
 
     // Define Op
@@ -43732,7 +60909,18 @@ inline std::vector<tensor> tensor_list_concat(const tensor& input_handle, dataty
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorListConcatLists
+# Inputs:
+*    input_a
+*    input_b
 
+# Attributes:
+*    element_dtype
+
+# Outputs:
+*    output
+
+*/
 inline tensor tensor_list_concat_lists(const tensor& input_a, const tensor& input_b, datatype element_dtype) {
 
     // Define Op
@@ -43760,7 +60948,21 @@ inline tensor tensor_list_concat_lists(const tensor& input_a, const tensor& inpu
     return tensor(res[0]);
 }
 
+/* # TensorListConcatV2
+# Inputs:
+*    input_handle
+*    element_shape
+*    leading_dims
 
+# Attributes:
+*    element_dtype
+*    shape_type
+
+# Outputs:
+*    tensor
+*    lengths
+
+*/
 inline std::vector<tensor> tensor_list_concat_v2(const tensor& input_handle, const tensor& element_shape, const tensor& leading_dims, datatype element_dtype, datatype shape_type) {
 
     // Define Op
@@ -43793,7 +60995,17 @@ inline std::vector<tensor> tensor_list_concat_v2(const tensor& input_handle, con
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorListElementShape
+# Inputs:
+*    input_handle
 
+# Attributes:
+*    shape_type
+
+# Outputs:
+*    element_shape
+
+*/
 inline tensor tensor_list_element_shape(const tensor& input_handle, datatype shape_type) {
 
     // Define Op
@@ -43817,7 +61029,19 @@ inline tensor tensor_list_element_shape(const tensor& input_handle, datatype sha
     return tensor(res[0]);
 }
 
+/* # TensorListFromTensor
+# Inputs:
+*    tensor
+*    element_shape
 
+# Attributes:
+*    element_dtype
+*    shape_type
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_from_tensor(const tensor& input_tensor, const tensor& element_shape, datatype element_dtype, datatype shape_type) {
 
     // Define Op
@@ -43846,7 +61070,19 @@ inline tensor tensor_list_from_tensor(const tensor& input_tensor, const tensor& 
     return tensor(res[0]);
 }
 
+/* # TensorListGather
+# Inputs:
+*    input_handle
+*    indices
+*    element_shape
 
+# Attributes:
+*    element_dtype
+
+# Outputs:
+*    values
+
+*/
 inline tensor tensor_list_gather(const tensor& input_handle, const tensor& indices, const tensor& element_shape, datatype element_dtype) {
 
     // Define Op
@@ -43878,7 +61114,19 @@ inline tensor tensor_list_gather(const tensor& input_handle, const tensor& indic
     return tensor(res[0]);
 }
 
+/* # TensorListGetItem
+# Inputs:
+*    input_handle
+*    index
+*    element_shape
 
+# Attributes:
+*    element_dtype
+
+# Outputs:
+*    item
+
+*/
 inline tensor tensor_list_get_item(const tensor& input_handle, const tensor& index, const tensor& element_shape, datatype element_dtype) {
 
     // Define Op
@@ -43910,7 +61158,16 @@ inline tensor tensor_list_get_item(const tensor& input_handle, const tensor& ind
     return tensor(res[0]);
 }
 
+/* # TensorListLength
+# Inputs:
+*    input_handle
 
+# Attributes:
+*    
+# Outputs:
+*    length
+
+*/
 inline tensor tensor_list_length(const tensor& input_handle) {
 
     // Define Op
@@ -43934,7 +61191,19 @@ inline tensor tensor_list_length(const tensor& input_handle) {
     return tensor(res[0]);
 }
 
+/* # TensorListPopBack
+# Inputs:
+*    input_handle
+*    element_shape
 
+# Attributes:
+*    element_dtype
+
+# Outputs:
+*    output_handle
+*    tensor
+
+*/
 inline std::vector<tensor> tensor_list_pop_back(const tensor& input_handle, const tensor& element_shape, datatype element_dtype) {
 
     // Define Op
@@ -43962,7 +61231,18 @@ inline std::vector<tensor> tensor_list_pop_back(const tensor& input_handle, cons
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TensorListPushBack
+# Inputs:
+*    input_handle
+*    tensor
 
+# Attributes:
+*    element_dtype
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_push_back(const tensor& input_handle, const tensor& input_tensor, datatype element_dtype) {
 
     // Define Op
@@ -43990,7 +61270,18 @@ inline tensor tensor_list_push_back(const tensor& input_handle, const tensor& in
     return tensor(res[0]);
 }
 
+/* # TensorListPushBackBatch
+# Inputs:
+*    input_handles
+*    tensor
 
+# Attributes:
+*    element_dtype
+
+# Outputs:
+*    output_handles
+
+*/
 inline tensor tensor_list_push_back_batch(const tensor& input_handles, const tensor& input_tensor, datatype element_dtype) {
 
     // Define Op
@@ -44018,7 +61309,19 @@ inline tensor tensor_list_push_back_batch(const tensor& input_handles, const ten
     return tensor(res[0]);
 }
 
+/* # TensorListReserve
+# Inputs:
+*    element_shape
+*    num_elements
 
+# Attributes:
+*    element_dtype
+*    shape_type
+
+# Outputs:
+*    handle
+
+*/
 inline tensor tensor_list_reserve(const tensor& element_shape, const tensor& num_elements, datatype element_dtype, datatype shape_type) {
 
     // Define Op
@@ -44047,7 +61350,17 @@ inline tensor tensor_list_reserve(const tensor& element_shape, const tensor& num
     return tensor(res[0]);
 }
 
+/* # TensorListResize
+# Inputs:
+*    input_handle
+*    size
 
+# Attributes:
+*    
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_resize(const tensor& input_handle, const tensor& size) {
 
     // Define Op
@@ -44075,7 +61388,20 @@ inline tensor tensor_list_resize(const tensor& input_handle, const tensor& size)
     return tensor(res[0]);
 }
 
+/* # TensorListScatter
+# Inputs:
+*    tensor
+*    indices
+*    element_shape
 
+# Attributes:
+*    element_dtype
+*    shape_type
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_scatter(const tensor& input_tensor, const tensor& indices, const tensor& element_shape, datatype element_dtype, datatype shape_type) {
 
     // Define Op
@@ -44108,7 +61434,19 @@ inline tensor tensor_list_scatter(const tensor& input_tensor, const tensor& indi
     return tensor(res[0]);
 }
 
+/* # TensorListScatterIntoExistingList
+# Inputs:
+*    input_handle
+*    tensor
+*    indices
 
+# Attributes:
+*    element_dtype
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_scatter_into_existing_list(const tensor& input_handle, const tensor& input_tensor, const tensor& indices, datatype element_dtype) {
 
     // Define Op
@@ -44140,7 +61478,21 @@ inline tensor tensor_list_scatter_into_existing_list(const tensor& input_handle,
     return tensor(res[0]);
 }
 
+/* # TensorListScatterV2
+# Inputs:
+*    tensor
+*    indices
+*    element_shape
+*    num_elements
 
+# Attributes:
+*    element_dtype
+*    shape_type
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_scatter_v2(const tensor& input_tensor, const tensor& indices, const tensor& element_shape, const tensor& num_elements, datatype element_dtype, datatype shape_type) {
 
     // Define Op
@@ -44177,7 +61529,20 @@ inline tensor tensor_list_scatter_v2(const tensor& input_tensor, const tensor& i
     return tensor(res[0]);
 }
 
+/* # TensorListSetItem
+# Inputs:
+*    input_handle
+*    index
+*    item
 
+# Attributes:
+*    element_dtype
+*    resize_if_index_out_of_bounds
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_set_item(const tensor& input_handle, const tensor& index, const tensor& item, datatype element_dtype, bool resize_if_index_out_of_bounds=false) {
 
     // Define Op
@@ -44210,7 +61575,20 @@ inline tensor tensor_list_set_item(const tensor& input_handle, const tensor& ind
     return tensor(res[0]);
 }
 
+/* # TensorListSplit
+# Inputs:
+*    tensor
+*    element_shape
+*    lengths
 
+# Attributes:
+*    element_dtype
+*    shape_type
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_list_split(const tensor& input_tensor, const tensor& element_shape, const tensor& lengths, datatype element_dtype, datatype shape_type) {
 
     // Define Op
@@ -44243,7 +61621,19 @@ inline tensor tensor_list_split(const tensor& input_tensor, const tensor& elemen
     return tensor(res[0]);
 }
 
+/* # TensorListStack
+# Inputs:
+*    input_handle
+*    element_shape
 
+# Attributes:
+*    element_dtype
+*    num_elements
+
+# Outputs:
+*    tensor
+
+*/
 inline tensor tensor_list_stack(const tensor& input_handle, const tensor& element_shape, datatype element_dtype, int64_t num_elements=-1) {
 
     // Define Op
@@ -44272,7 +61662,19 @@ inline tensor tensor_list_stack(const tensor& input_handle, const tensor& elemen
     return tensor(res[0]);
 }
 
+/* # TensorMapErase
+# Inputs:
+*    input_handle
+*    key
 
+# Attributes:
+*    key_dtype
+*    value_dtype
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_map_erase(const tensor& input_handle, const tensor& key, datatype key_dtype, datatype value_dtype) {
 
     // Define Op
@@ -44301,7 +61703,18 @@ inline tensor tensor_map_erase(const tensor& input_handle, const tensor& key, da
     return tensor(res[0]);
 }
 
+/* # TensorMapHasKey
+# Inputs:
+*    input_handle
+*    key
 
+# Attributes:
+*    key_dtype
+
+# Outputs:
+*    has_key
+
+*/
 inline tensor tensor_map_has_key(const tensor& input_handle, const tensor& key, datatype key_dtype) {
 
     // Define Op
@@ -44329,7 +61742,20 @@ inline tensor tensor_map_has_key(const tensor& input_handle, const tensor& key, 
     return tensor(res[0]);
 }
 
+/* # TensorMapInsert
+# Inputs:
+*    input_handle
+*    key
+*    value
 
+# Attributes:
+*    key_dtype
+*    value_dtype
+
+# Outputs:
+*    output_handle
+
+*/
 inline tensor tensor_map_insert(const tensor& input_handle, const tensor& key, const tensor& value, datatype key_dtype, datatype value_dtype) {
 
     // Define Op
@@ -44362,7 +61788,19 @@ inline tensor tensor_map_insert(const tensor& input_handle, const tensor& key, c
     return tensor(res[0]);
 }
 
+/* # TensorMapLookup
+# Inputs:
+*    input_handle
+*    key
 
+# Attributes:
+*    key_dtype
+*    value_dtype
+
+# Outputs:
+*    value
+
+*/
 inline tensor tensor_map_lookup(const tensor& input_handle, const tensor& key, datatype key_dtype, datatype value_dtype) {
 
     // Define Op
@@ -44391,7 +61829,16 @@ inline tensor tensor_map_lookup(const tensor& input_handle, const tensor& key, d
     return tensor(res[0]);
 }
 
+/* # TensorMapSize
+# Inputs:
+*    input_handle
 
+# Attributes:
+*    
+# Outputs:
+*    size
+
+*/
 inline tensor tensor_map_size(const tensor& input_handle) {
 
     // Define Op
@@ -44415,7 +61862,17 @@ inline tensor tensor_map_size(const tensor& input_handle) {
     return tensor(res[0]);
 }
 
+/* # TensorMapStackKeys
+# Inputs:
+*    input_handle
 
+# Attributes:
+*    key_dtype
+
+# Outputs:
+*    keys
+
+*/
 inline tensor tensor_map_stack_keys(const tensor& input_handle, datatype key_dtype) {
 
     // Define Op
@@ -44439,7 +61896,19 @@ inline tensor tensor_map_stack_keys(const tensor& input_handle, datatype key_dty
     return tensor(res[0]);
 }
 
+/* # TensorScatterAdd
+# Inputs:
+*    tensor
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor tensor_scatter_add(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
 
     // Define Op
@@ -44471,7 +61940,19 @@ inline tensor tensor_scatter_add(const tensor& input_tensor, const tensor& indic
     return tensor(res[0]);
 }
 
+/* # TensorScatterMax
+# Inputs:
+*    tensor
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor tensor_scatter_max(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
 
     // Define Op
@@ -44503,7 +61984,19 @@ inline tensor tensor_scatter_max(const tensor& input_tensor, const tensor& indic
     return tensor(res[0]);
 }
 
+/* # TensorScatterMin
+# Inputs:
+*    tensor
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor tensor_scatter_min(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
 
     // Define Op
@@ -44535,7 +62028,19 @@ inline tensor tensor_scatter_min(const tensor& input_tensor, const tensor& indic
     return tensor(res[0]);
 }
 
+/* # TensorScatterSub
+# Inputs:
+*    tensor
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor tensor_scatter_sub(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
 
     // Define Op
@@ -44567,7 +62072,19 @@ inline tensor tensor_scatter_sub(const tensor& input_tensor, const tensor& indic
     return tensor(res[0]);
 }
 
+/* # TensorScatterUpdate
+# Inputs:
+*    tensor
+*    indices
+*    updates
 
+# Attributes:
+*    Tindices
+
+# Outputs:
+*    output
+
+*/
 inline tensor tensor_scatter_update(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
 
     // Define Op
@@ -44599,7 +62116,21 @@ inline tensor tensor_scatter_update(const tensor& input_tensor, const tensor& in
     return tensor(res[0]);
 }
 
+/* # TensorSliceDataset
+# Inputs:
+*    components
 
+# Attributes:
+*    Toutput_types
+*    output_shapes
+*    is_files
+*    metadata
+*    replicate_on_split
+
+# Outputs:
+*    handle
+
+*/
 inline tensor tensor_slice_dataset(const std::vector<tensor>&components, const std::vector<datatype>& Toutput_types, const std::vector< std::vector<int64_t>>& output_shapes, bool is_files=false, const std::string& metadata="", bool replicate_on_split=false) {
 
     // Define Op
@@ -44636,7 +62167,26 @@ inline tensor tensor_slice_dataset(const std::vector<tensor>&components, const s
     return tensor(res[0]);
 }
 
+/* # TensorStridedSliceUpdate
+# Inputs:
+*    input
+*    begin
+*    end
+*    strides
+*    value
 
+# Attributes:
+*    Index
+*    begin_mask
+*    end_mask
+*    ellipsis_mask
+*    new_axis_mask
+*    shrink_axis_mask
+
+# Outputs:
+*    output
+
+*/
 inline tensor tensor_strided_slice_update(const tensor& input, const tensor& begin, const tensor& end, const tensor& strides, const tensor& value, datatype Index, int64_t begin_mask=0, int64_t end_mask=0, int64_t ellipsis_mask=0, int64_t new_axis_mask=0, int64_t shrink_axis_mask=0) {
 
     // Define Op
@@ -44681,7 +62231,19 @@ inline tensor tensor_strided_slice_update(const tensor& input, const tensor& beg
     return tensor(res[0]);
 }
 
+/* # TensorSummary
+# Inputs:
+*    tensor
 
+# Attributes:
+*    labels
+*    description
+*    display_name
+
+# Outputs:
+*    summary
+
+*/
 inline tensor tensor_summary(const tensor& input_tensor, const std::vector< std::string>& labels, const std::string& description="", const std::string& display_name="") {
 
     // Define Op
@@ -44711,7 +62273,18 @@ inline tensor tensor_summary(const tensor& input_tensor, const std::vector< std:
     return tensor(res[0]);
 }
 
+/* # TensorSummaryV2
+# Inputs:
+*    tag
+*    tensor
+*    serialized_summary_metadata
 
+# Attributes:
+*    
+# Outputs:
+*    summary
+
+*/
 inline tensor tensor_summary_v2(const tensor& tag, const tensor& input_tensor, const tensor& serialized_summary_metadata) {
 
     // Define Op
@@ -44743,7 +62316,19 @@ inline tensor tensor_summary_v2(const tensor& tag, const tensor& input_tensor, c
     return tensor(res[0]);
 }
 
+/* # TextLineDataset
+# Inputs:
+*    filenames
+*    compression_type
+*    buffer_size
 
+# Attributes:
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor text_line_dataset(const tensor& filenames, const tensor& compression_type, const tensor& buffer_size, const std::string& metadata="") {
 
     // Define Op
@@ -44775,7 +62360,18 @@ inline tensor text_line_dataset(const tensor& filenames, const tensor& compressi
     return tensor(res[0]);
 }
 
+/* # TextLineReader
+# Inputs:
+*    
+# Attributes:
+*    skip_header_lines
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor text_line_reader(int64_t skip_header_lines=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -44798,7 +62394,18 @@ inline tensor text_line_reader(int64_t skip_header_lines=0, const std::string& c
     return tensor(res[0]);
 }
 
+/* # TextLineReaderV2
+# Inputs:
+*    
+# Attributes:
+*    skip_header_lines
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor text_line_reader_v2(int64_t skip_header_lines=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -44821,7 +62428,19 @@ inline tensor text_line_reader_v2(int64_t skip_header_lines=0, const std::string
     return tensor(res[0]);
 }
 
+/* # ThreadPoolDataset
+# Inputs:
+*    input_dataset
+*    thread_pool
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    handle
+
+*/
 inline tensor thread_pool_dataset(const tensor& input_dataset, const tensor& thread_pool, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -44857,7 +62476,20 @@ inline tensor thread_pool_dataset(const tensor& input_dataset, const tensor& thr
     return tensor(res[0]);
 }
 
+/* # ThreadPoolHandle
+# Inputs:
+*    
+# Attributes:
+*    num_threads
+*    display_name
+*    max_intra_op_parallelism
+*    container
+*    shared_name
 
+# Outputs:
+*    handle
+
+*/
 inline tensor thread_pool_handle(int64_t num_threads, const std::string& display_name, int64_t max_intra_op_parallelism=1, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -44882,7 +62514,24 @@ inline tensor thread_pool_handle(int64_t num_threads, const std::string& display
     return tensor(res[0]);
 }
 
+/* # ThreadUnsafeUnigramCandidateSampler
+# Inputs:
+*    true_classes
 
+# Attributes:
+*    num_true
+*    num_sampled
+*    unique
+*    range_max
+*    seed
+*    seed2
+
+# Outputs:
+*    sampled_candidates
+*    true_expected_count
+*    sampled_expected_count
+
+*/
 inline std::vector<tensor> thread_unsafe_unigram_candidate_sampler(const tensor& true_classes, int64_t num_true, int64_t num_sampled, bool unique, int64_t range_max, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -44911,7 +62560,18 @@ inline std::vector<tensor> thread_unsafe_unigram_candidate_sampler(const tensor&
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # Tile
+# Inputs:
+*    input
+*    multiples
 
+# Attributes:
+*    Tmultiples
+
+# Outputs:
+*    output
+
+*/
 inline tensor tile(const tensor& input, const tensor& multiples, datatype Tmultiples=static_cast<datatype>(3)) {
 
     // Define Op
@@ -44939,7 +62599,17 @@ inline tensor tile(const tensor& input, const tensor& multiples, datatype Tmulti
     return tensor(res[0]);
 }
 
+/* # TileGrad
+# Inputs:
+*    input
+*    multiples
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor tile_grad(const tensor& input, const tensor& multiples) {
 
     // Define Op
@@ -44967,7 +62637,15 @@ inline tensor tile_grad(const tensor& input, const tensor& multiples) {
     return tensor(res[0]);
 }
 
+/* # Timestamp
+# Inputs:
+*    
+# Attributes:
+*    
+# Outputs:
+*    ts
 
+*/
 inline tensor timestamp() {
 
     // Define Op
@@ -44988,7 +62666,16 @@ inline tensor timestamp() {
     return tensor(res[0]);
 }
 
+/* # ToBool
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor to_bool(const tensor& input) {
 
     // Define Op
@@ -45012,7 +62699,19 @@ inline tensor to_bool(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # TopK
+# Inputs:
+*    input
 
+# Attributes:
+*    k
+*    sorted
+
+# Outputs:
+*    values
+*    indices
+
+*/
 inline std::vector<tensor> top_k(const tensor& input, int64_t k, bool sorted=true) {
 
     // Define Op
@@ -45037,7 +62736,21 @@ inline std::vector<tensor> top_k(const tensor& input, int64_t k, bool sorted=tru
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # TopKV2
+# Inputs:
+*    input
+*    k
 
+# Attributes:
+*    sorted
+*    Tk
+*    index_type
+
+# Outputs:
+*    values
+*    indices
+
+*/
 inline std::vector<tensor> top_k_v2(const tensor& input, const tensor& k, bool sorted=true, datatype Tk=static_cast<datatype>(3), datatype index_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -45067,7 +62780,18 @@ inline std::vector<tensor> top_k_v2(const tensor& input, const tensor& k, bool s
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # Transpose
+# Inputs:
+*    x
+*    perm
 
+# Attributes:
+*    Tperm
+
+# Outputs:
+*    y
+
+*/
 inline tensor transpose(const tensor& x, const tensor& perm, datatype Tperm=static_cast<datatype>(3)) {
 
     // Define Op
@@ -45095,7 +62819,19 @@ inline tensor transpose(const tensor& x, const tensor& perm, datatype Tperm=stat
     return tensor(res[0]);
 }
 
+/* # TridiagonalMatMul
+# Inputs:
+*    superdiag
+*    maindiag
+*    subdiag
+*    rhs
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor tridiagonal_mat_mul(const tensor& superdiag, const tensor& maindiag, const tensor& subdiag, const tensor& rhs) {
 
     // Define Op
@@ -45131,7 +62867,19 @@ inline tensor tridiagonal_mat_mul(const tensor& superdiag, const tensor& maindia
     return tensor(res[0]);
 }
 
+/* # TridiagonalSolve
+# Inputs:
+*    diagonals
+*    rhs
 
+# Attributes:
+*    partial_pivoting
+*    perturb_singular
+
+# Outputs:
+*    output
+
+*/
 inline tensor tridiagonal_solve(const tensor& diagonals, const tensor& rhs, bool partial_pivoting=true, bool perturb_singular=false) {
 
     // Define Op
@@ -45160,7 +62908,17 @@ inline tensor tridiagonal_solve(const tensor& diagonals, const tensor& rhs, bool
     return tensor(res[0]);
 }
 
+/* # TruncateDiv
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor truncate_div(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -45188,7 +62946,17 @@ inline tensor truncate_div(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # TruncateMod
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor truncate_mod(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -45216,7 +62984,19 @@ inline tensor truncate_mod(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # TruncatedNormal
+# Inputs:
+*    shape
 
+# Attributes:
+*    dtype
+*    seed
+*    seed2
+
+# Outputs:
+*    output
+
+*/
 inline tensor truncated_normal(const tensor& shape, datatype dtype, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -45242,7 +63022,21 @@ inline tensor truncated_normal(const tensor& shape, datatype dtype, int64_t seed
     return tensor(res[0]);
 }
 
+/* # Unbatch
+# Inputs:
+*    batched_tensor
+*    batch_index
+*    id
 
+# Attributes:
+*    timeout_micros
+*    container
+*    shared_name
+
+# Outputs:
+*    unbatched_tensor
+
+*/
 inline tensor unbatch(const tensor& batched_input_tensor, const tensor& batch_index, const tensor& id, int64_t timeout_micros, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -45276,7 +63070,19 @@ inline tensor unbatch(const tensor& batched_input_tensor, const tensor& batch_in
     return tensor(res[0]);
 }
 
+/* # UnbatchDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor unbatch_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -45309,7 +63115,21 @@ inline tensor unbatch_dataset(const tensor& input_dataset, const std::vector<dat
     return tensor(res[0]);
 }
 
+/* # UnbatchGrad
+# Inputs:
+*    original_input
+*    batch_index
+*    grad
+*    id
 
+# Attributes:
+*    container
+*    shared_name
+
+# Outputs:
+*    batched_grad
+
+*/
 inline tensor unbatch_grad(const tensor& original_input, const tensor& batch_index, const tensor& grad, const tensor& id, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -45346,7 +63166,18 @@ inline tensor unbatch_grad(const tensor& original_input, const tensor& batch_ind
     return tensor(res[0]);
 }
 
+/* # UncompressElement
+# Inputs:
+*    compressed
 
+# Attributes:
+*    output_types
+*    output_shapes
+
+# Outputs:
+*    components
+
+*/
 inline tensor uncompress_element(const tensor& compressed, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes) {
 
     // Define Op
@@ -45378,7 +63209,22 @@ inline tensor uncompress_element(const tensor& compressed, const std::vector<dat
     return tensor(res[0]);
 }
 
+/* # UnicodeDecode
+# Inputs:
+*    input
 
+# Attributes:
+*    input_encoding
+*    errors
+*    replacement_char
+*    replace_control_characters
+*    Tsplits
+
+# Outputs:
+*    row_splits
+*    char_values
+
+*/
 inline std::vector<tensor> unicode_decode(const tensor& input, const std::string& input_encoding, const std::string& errors="replace", int64_t replacement_char=65533, bool replace_control_characters=false, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -45406,7 +63252,23 @@ inline std::vector<tensor> unicode_decode(const tensor& input, const std::string
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # UnicodeDecodeWithOffsets
+# Inputs:
+*    input
 
+# Attributes:
+*    input_encoding
+*    errors
+*    replacement_char
+*    replace_control_characters
+*    Tsplits
+
+# Outputs:
+*    row_splits
+*    char_values
+*    char_to_byte_starts
+
+*/
 inline std::vector<tensor> unicode_decode_with_offsets(const tensor& input, const std::string& input_encoding, const std::string& errors="replace", int64_t replacement_char=65533, bool replace_control_characters=false, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -45434,7 +63296,21 @@ inline std::vector<tensor> unicode_decode_with_offsets(const tensor& input, cons
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # UnicodeEncode
+# Inputs:
+*    input_values
+*    input_splits
 
+# Attributes:
+*    output_encoding
+*    errors
+*    replacement_char
+*    Tsplits
+
+# Outputs:
+*    output
+
+*/
 inline tensor unicode_encode(const tensor& input_values, const tensor& input_splits, const std::string& output_encoding, const std::string& errors="replace", int64_t replacement_char=65533, datatype Tsplits=static_cast<datatype>(9)) {
 
     // Define Op
@@ -45465,7 +63341,16 @@ inline tensor unicode_encode(const tensor& input_values, const tensor& input_spl
     return tensor(res[0]);
 }
 
+/* # UnicodeScript
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    output
+
+*/
 inline tensor unicode_script(const tensor& input) {
 
     // Define Op
@@ -45489,7 +63374,21 @@ inline tensor unicode_script(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # UnicodeTranscode
+# Inputs:
+*    input
 
+# Attributes:
+*    input_encoding
+*    output_encoding
+*    errors
+*    replacement_char
+*    replace_control_characters
+
+# Outputs:
+*    output
+
+*/
 inline tensor unicode_transcode(const tensor& input, const std::string& input_encoding, const std::string& output_encoding, const std::string& errors="replace", int64_t replacement_char=65533, bool replace_control_characters=false) {
 
     // Define Op
@@ -45517,7 +63416,24 @@ inline tensor unicode_transcode(const tensor& input, const std::string& input_en
     return tensor(res[0]);
 }
 
+/* # UniformCandidateSampler
+# Inputs:
+*    true_classes
 
+# Attributes:
+*    num_true
+*    num_sampled
+*    unique
+*    range_max
+*    seed
+*    seed2
+
+# Outputs:
+*    sampled_candidates
+*    true_expected_count
+*    sampled_expected_count
+
+*/
 inline std::vector<tensor> uniform_candidate_sampler(const tensor& true_classes, int64_t num_true, int64_t num_sampled, bool unique, int64_t range_max, int64_t seed=0, int64_t seed2=0) {
 
     // Define Op
@@ -45546,7 +63462,23 @@ inline std::vector<tensor> uniform_candidate_sampler(const tensor& true_classes,
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # UniformDequantize
+# Inputs:
+*    input
+*    scales
+*    zero_points
 
+# Attributes:
+*    Tin
+*    Tout
+*    quantization_min_val
+*    quantization_max_val
+*    quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_dequantize(const tensor& input, const tensor& scales, const tensor& zero_points, datatype Tin, datatype Tout, int64_t quantization_min_val, int64_t quantization_max_val, int64_t quantization_axis=-1) {
 
     // Define Op
@@ -45582,7 +63514,23 @@ inline tensor uniform_dequantize(const tensor& input, const tensor& scales, cons
     return tensor(res[0]);
 }
 
+/* # UniformQuantize
+# Inputs:
+*    input
+*    scales
+*    zero_points
 
+# Attributes:
+*    Tin
+*    Tout
+*    quantization_min_val
+*    quantization_max_val
+*    quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_quantize(const tensor& input, const tensor& scales, const tensor& zero_points, datatype Tin, datatype Tout, int64_t quantization_min_val, int64_t quantization_max_val, int64_t quantization_axis=-1) {
 
     // Define Op
@@ -45618,7 +63566,32 @@ inline tensor uniform_quantize(const tensor& input, const tensor& scales, const 
     return tensor(res[0]);
 }
 
+/* # UniformQuantizedAdd
+# Inputs:
+*    lhs
+*    rhs
+*    lhs_scales
+*    lhs_zero_points
+*    rhs_scales
+*    rhs_zero_points
+*    output_scales
+*    output_zero_points
 
+# Attributes:
+*    lhs_quantization_min_val
+*    lhs_quantization_max_val
+*    rhs_quantization_min_val
+*    rhs_quantization_max_val
+*    output_quantization_min_val
+*    output_quantization_max_val
+*    lhs_quantization_axis
+*    rhs_quantization_axis
+*    output_quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_quantized_add(const tensor& lhs, const tensor& rhs, const tensor& lhs_scales, const tensor& lhs_zero_points, const tensor& rhs_scales, const tensor& rhs_zero_points, const tensor& output_scales, const tensor& output_zero_points, int64_t lhs_quantization_min_val, int64_t lhs_quantization_max_val, int64_t rhs_quantization_min_val, int64_t rhs_quantization_max_val, int64_t output_quantization_min_val, int64_t output_quantization_max_val, int64_t lhs_quantization_axis=-1, int64_t rhs_quantization_axis=-1, int64_t output_quantization_axis=-1) {
 
     // Define Op
@@ -45678,7 +63651,23 @@ inline tensor uniform_quantized_add(const tensor& lhs, const tensor& rhs, const 
     return tensor(res[0]);
 }
 
+/* # UniformQuantizedClipByValue
+# Inputs:
+*    operand
+*    min
+*    max
+*    scales
+*    zero_points
 
+# Attributes:
+*    quantization_min_val
+*    quantization_max_val
+*    quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_quantized_clip_by_value(const tensor& operand, const tensor& min, const tensor& max, const tensor& scales, const tensor& zero_points, int64_t quantization_min_val, int64_t quantization_max_val, int64_t quantization_axis=-1) {
 
     // Define Op
@@ -45720,7 +63709,42 @@ inline tensor uniform_quantized_clip_by_value(const tensor& operand, const tenso
     return tensor(res[0]);
 }
 
+/* # UniformQuantizedConvolution
+# Inputs:
+*    lhs
+*    rhs
+*    lhs_scales
+*    lhs_zero_points
+*    rhs_scales
+*    rhs_zero_points
+*    output_scales
+*    output_zero_points
 
+# Attributes:
+*    Tin
+*    Tout
+*    window_strides
+*    padding
+*    explicit_padding
+*    lhs_dilation
+*    rhs_dilation
+*    lhs_quantization_min_val
+*    lhs_quantization_max_val
+*    rhs_quantization_min_val
+*    rhs_quantization_max_val
+*    output_quantization_min_val
+*    output_quantization_max_val
+*    batch_group_count
+*    feature_group_count
+*    dimension_numbers
+*    lhs_quantization_axis
+*    rhs_quantization_axis
+*    output_quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_quantized_convolution(const tensor& lhs, const tensor& rhs, const tensor& lhs_scales, const tensor& lhs_zero_points, const tensor& rhs_scales, const tensor& rhs_zero_points, const tensor& output_scales, const tensor& output_zero_points, datatype Tin, datatype Tout, const std::vector<int64_t>& window_strides, const std::string& padding, const std::vector<int64_t>& explicit_padding, const std::vector<int64_t>& lhs_dilation, const std::vector<int64_t>& rhs_dilation, int64_t lhs_quantization_min_val, int64_t lhs_quantization_max_val, int64_t rhs_quantization_min_val, int64_t rhs_quantization_max_val, int64_t output_quantization_min_val, int64_t output_quantization_max_val, int64_t batch_group_count=1, int64_t feature_group_count=1, const std::string& dimension_numbers="", int64_t lhs_quantization_axis=-1, int64_t rhs_quantization_axis=-1, int64_t output_quantization_axis=-1) {
 
     // Define Op
@@ -45790,7 +63814,33 @@ inline tensor uniform_quantized_convolution(const tensor& lhs, const tensor& rhs
     return tensor(res[0]);
 }
 
+/* # UniformQuantizedConvolutionHybrid
+# Inputs:
+*    lhs
+*    rhs
+*    rhs_scales
+*    rhs_zero_points
 
+# Attributes:
+*    Tlhs
+*    Trhs
+*    Tout
+*    window_strides
+*    padding
+*    explicit_padding
+*    lhs_dilation
+*    rhs_dilation
+*    rhs_quantization_min_val
+*    rhs_quantization_max_val
+*    batch_group_count
+*    feature_group_count
+*    dimension_numbers
+*    rhs_quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_quantized_convolution_hybrid(const tensor& lhs, const tensor& rhs, const tensor& rhs_scales, const tensor& rhs_zero_points, datatype Tlhs, datatype Trhs, datatype Tout, const std::vector<int64_t>& window_strides, const std::string& padding, const std::vector<int64_t>& explicit_padding, const std::vector<int64_t>& lhs_dilation, const std::vector<int64_t>& rhs_dilation, int64_t rhs_quantization_min_val, int64_t rhs_quantization_max_val, int64_t batch_group_count=1, int64_t feature_group_count=1, const std::string& dimension_numbers="", int64_t rhs_quantization_axis=-1) {
 
     // Define Op
@@ -45839,7 +63889,34 @@ inline tensor uniform_quantized_convolution_hybrid(const tensor& lhs, const tens
     return tensor(res[0]);
 }
 
+/* # UniformQuantizedDot
+# Inputs:
+*    lhs
+*    rhs
+*    lhs_scales
+*    lhs_zero_points
+*    rhs_scales
+*    rhs_zero_points
+*    output_scales
+*    output_zero_points
 
+# Attributes:
+*    Tin
+*    Tout
+*    lhs_quantization_min_val
+*    lhs_quantization_max_val
+*    rhs_quantization_min_val
+*    rhs_quantization_max_val
+*    output_quantization_min_val
+*    output_quantization_max_val
+*    lhs_quantization_axis
+*    rhs_quantization_axis
+*    output_quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_quantized_dot(const tensor& lhs, const tensor& rhs, const tensor& lhs_scales, const tensor& lhs_zero_points, const tensor& rhs_scales, const tensor& rhs_zero_points, const tensor& output_scales, const tensor& output_zero_points, datatype Tin, datatype Tout, int64_t lhs_quantization_min_val, int64_t lhs_quantization_max_val, int64_t rhs_quantization_min_val, int64_t rhs_quantization_max_val, int64_t output_quantization_min_val, int64_t output_quantization_max_val, int64_t lhs_quantization_axis=-1, int64_t rhs_quantization_axis=-1, int64_t output_quantization_axis=-1) {
 
     // Define Op
@@ -45901,7 +63978,25 @@ inline tensor uniform_quantized_dot(const tensor& lhs, const tensor& rhs, const 
     return tensor(res[0]);
 }
 
+/* # UniformQuantizedDotHybrid
+# Inputs:
+*    lhs
+*    rhs
+*    rhs_scales
+*    rhs_zero_points
 
+# Attributes:
+*    Tlhs
+*    Trhs
+*    Tout
+*    rhs_quantization_min_val
+*    rhs_quantization_max_val
+*    rhs_quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_quantized_dot_hybrid(const tensor& lhs, const tensor& rhs, const tensor& rhs_scales, const tensor& rhs_zero_points, datatype Tlhs, datatype Trhs, datatype Tout, int64_t rhs_quantization_min_val, int64_t rhs_quantization_max_val, int64_t rhs_quantization_axis=-1) {
 
     // Define Op
@@ -45942,7 +64037,28 @@ inline tensor uniform_quantized_dot_hybrid(const tensor& lhs, const tensor& rhs,
     return tensor(res[0]);
 }
 
+/* # UniformRequantize
+# Inputs:
+*    input
+*    input_scales
+*    input_zero_points
+*    output_scales
+*    output_zero_points
 
+# Attributes:
+*    Tin
+*    Tout
+*    input_quantization_min_val
+*    input_quantization_max_val
+*    output_quantization_min_val
+*    output_quantization_max_val
+*    input_quantization_axis
+*    output_quantization_axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor uniform_requantize(const tensor& input, const tensor& input_scales, const tensor& input_zero_points, const tensor& output_scales, const tensor& output_zero_points, datatype Tin, datatype Tout, int64_t input_quantization_min_val, int64_t input_quantization_max_val, int64_t output_quantization_min_val, int64_t output_quantization_max_val, int64_t input_quantization_axis=-1, int64_t output_quantization_axis=-1) {
 
     // Define Op
@@ -45989,7 +64105,18 @@ inline tensor uniform_requantize(const tensor& input, const tensor& input_scales
     return tensor(res[0]);
 }
 
+/* # Unique
+# Inputs:
+*    x
 
+# Attributes:
+*    out_idx
+
+# Outputs:
+*    y
+*    idx
+
+*/
 inline std::vector<tensor> unique(const tensor& x, datatype out_idx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46013,7 +64140,19 @@ inline std::vector<tensor> unique(const tensor& x, datatype out_idx=static_cast<
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # UniqueDataset
+# Inputs:
+*    input_dataset
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor unique_dataset(const tensor& input_dataset, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -46046,7 +64185,20 @@ inline tensor unique_dataset(const tensor& input_dataset, const std::vector<data
     return tensor(res[0]);
 }
 
+/* # UniqueV2
+# Inputs:
+*    x
+*    axis
 
+# Attributes:
+*    Taxis
+*    out_idx
+
+# Outputs:
+*    y
+*    idx
+
+*/
 inline std::vector<tensor> unique_v2(const tensor& x, const tensor& axis, datatype Taxis=static_cast<datatype>(9), datatype out_idx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46075,7 +64227,19 @@ inline std::vector<tensor> unique_v2(const tensor& x, const tensor& axis, dataty
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # UniqueWithCounts
+# Inputs:
+*    x
 
+# Attributes:
+*    out_idx
+
+# Outputs:
+*    y
+*    idx
+*    count
+
+*/
 inline std::vector<tensor> unique_with_counts(const tensor& x, datatype out_idx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46099,7 +64263,21 @@ inline std::vector<tensor> unique_with_counts(const tensor& x, datatype out_idx=
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # UniqueWithCountsV2
+# Inputs:
+*    x
+*    axis
 
+# Attributes:
+*    Taxis
+*    out_idx
+
+# Outputs:
+*    y
+*    idx
+*    count
+
+*/
 inline std::vector<tensor> unique_with_counts_v2(const tensor& x, const tensor& axis, datatype Taxis=static_cast<datatype>(9), datatype out_idx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46128,7 +64306,18 @@ inline std::vector<tensor> unique_with_counts_v2(const tensor& x, const tensor& 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # Unpack
+# Inputs:
+*    value
 
+# Attributes:
+*    num
+*    axis
+
+# Outputs:
+*    output
+
+*/
 inline tensor unpack(const tensor& value, int64_t num, int64_t axis=0) {
 
     // Define Op
@@ -46153,7 +64342,18 @@ inline tensor unpack(const tensor& value, int64_t num, int64_t axis=0) {
     return tensor(res[0]);
 }
 
+/* # UnravelIndex
+# Inputs:
+*    indices
+*    dims
 
+# Attributes:
+*    Tidx
+
+# Outputs:
+*    output
+
+*/
 inline tensor unravel_index(const tensor& indices, const tensor& dims, datatype Tidx=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46181,7 +64381,21 @@ inline tensor unravel_index(const tensor& indices, const tensor& dims, datatype 
     return tensor(res[0]);
 }
 
+/* # UnsortedSegmentJoin
+# Inputs:
+*    inputs
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    separator
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor unsorted_segment_join(const tensor& inputs, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, const std::string& separator="", datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46215,7 +64429,20 @@ inline tensor unsorted_segment_join(const tensor& inputs, const tensor& segment_
     return tensor(res[0]);
 }
 
+/* # UnsortedSegmentMax
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor unsorted_segment_max(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46248,7 +64475,20 @@ inline tensor unsorted_segment_max(const tensor& data, const tensor& segment_ids
     return tensor(res[0]);
 }
 
+/* # UnsortedSegmentMin
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor unsorted_segment_min(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46281,7 +64521,20 @@ inline tensor unsorted_segment_min(const tensor& data, const tensor& segment_ids
     return tensor(res[0]);
 }
 
+/* # UnsortedSegmentProd
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor unsorted_segment_prod(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46314,7 +64567,20 @@ inline tensor unsorted_segment_prod(const tensor& data, const tensor& segment_id
     return tensor(res[0]);
 }
 
+/* # UnsortedSegmentSum
+# Inputs:
+*    data
+*    segment_ids
+*    num_segments
 
+# Attributes:
+*    Tindices
+*    Tnumsegments
+
+# Outputs:
+*    output
+
+*/
 inline tensor unsorted_segment_sum(const tensor& data, const tensor& segment_ids, const tensor& num_segments, datatype Tindices, datatype Tnumsegments=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46347,7 +64613,20 @@ inline tensor unsorted_segment_sum(const tensor& data, const tensor& segment_ids
     return tensor(res[0]);
 }
 
+/* # Unstage
+# Inputs:
+*    
+# Attributes:
+*    dtypes
+*    capacity
+*    memory_limit
+*    container
+*    shared_name
 
+# Outputs:
+*    values
+
+*/
 inline tensor unstage(const std::vector<datatype>& dtypes, int64_t capacity=0, int64_t memory_limit=0, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -46372,7 +64651,16 @@ inline tensor unstage(const std::vector<datatype>& dtypes, int64_t capacity=0, i
     return tensor(res[0]);
 }
 
+/* # UnwrapDatasetVariant
+# Inputs:
+*    input_handle
 
+# Attributes:
+*    
+# Outputs:
+*    output_handle
+
+*/
 inline tensor unwrap_dataset_variant(const tensor& input_handle) {
 
     // Define Op
@@ -46396,7 +64684,18 @@ inline tensor unwrap_dataset_variant(const tensor& input_handle) {
     return tensor(res[0]);
 }
 
+/* # UpperBound
+# Inputs:
+*    sorted_inputs
+*    values
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor upper_bound(const tensor& sorted_inputs, const tensor& values, datatype out_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46424,7 +64723,21 @@ inline tensor upper_bound(const tensor& sorted_inputs, const tensor& values, dat
     return tensor(res[0]);
 }
 
+/* # VarHandleOp
+# Inputs:
+*    
+# Attributes:
+*    dtype
+*    shape
+*    allowed_devices
+*    container
+*    shared_name
+*    debug_name
 
+# Outputs:
+*    resource
+
+*/
 inline tensor var_handle_op(datatype dtype, const std::vector<int64_t>& shape, const std::vector< std::string>& allowed_devices, const std::string& container="", const std::string& shared_name="", const std::string& debug_name="") {
 
     // Define Op
@@ -46457,7 +64770,16 @@ inline tensor var_handle_op(datatype dtype, const std::vector<int64_t>& shape, c
     return tensor(res[0]);
 }
 
+/* # VarIsInitializedOp
+# Inputs:
+*    resource
 
+# Attributes:
+*    
+# Outputs:
+*    is_initialized
+
+*/
 inline tensor var_is_initialized_op(const tensor& resource) {
 
     // Define Op
@@ -46481,7 +64803,19 @@ inline tensor var_is_initialized_op(const tensor& resource) {
     return tensor(res[0]);
 }
 
+/* # Variable
+# Inputs:
+*    
+# Attributes:
+*    shape
+*    dtype
+*    container
+*    shared_name
 
+# Outputs:
+*    ref
+
+*/
 inline tensor variable(const std::vector<int64_t>& shape, datatype dtype, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -46508,7 +64842,17 @@ inline tensor variable(const std::vector<int64_t>& shape, datatype dtype, const 
     return tensor(res[0]);
 }
 
+/* # VariableShape
+# Inputs:
+*    input
 
+# Attributes:
+*    out_type
+
+# Outputs:
+*    output
+
+*/
 inline tensor variable_shape(const tensor& input, datatype out_type=static_cast<datatype>(3)) {
 
     // Define Op
@@ -46532,7 +64876,19 @@ inline tensor variable_shape(const tensor& input, datatype out_type=static_cast<
     return tensor(res[0]);
 }
 
+/* # VariableV2
+# Inputs:
+*    
+# Attributes:
+*    shape
+*    dtype
+*    container
+*    shared_name
 
+# Outputs:
+*    ref
+
+*/
 inline tensor variable_v2(const std::vector<int64_t>& shape, datatype dtype, const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -46559,7 +64915,16 @@ inline tensor variable_v2(const std::vector<int64_t>& shape, datatype dtype, con
     return tensor(res[0]);
 }
 
+/* # Where
+# Inputs:
+*    input
 
+# Attributes:
+*    
+# Outputs:
+*    index
+
+*/
 inline tensor where(const tensor& input) {
 
     // Define Op
@@ -46583,7 +64948,20 @@ inline tensor where(const tensor& input) {
     return tensor(res[0]);
 }
 
+/* # While
+# Inputs:
+*    input
 
+# Attributes:
+*    cond
+*    body
+*    output_shapes
+*    parallel_iterations
+
+# Outputs:
+*    output
+
+*/
 inline tensor tfe_while(const std::vector<tensor>&input, int64_t cond, int64_t body, const std::vector< std::vector<int64_t>>& output_shapes, int64_t parallel_iterations=10) {
 
     // Define Op
@@ -46619,7 +64997,17 @@ inline tensor tfe_while(const std::vector<tensor>&input, int64_t cond, int64_t b
     return tensor(res[0]);
 }
 
+/* # WholeFileReader
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor whole_file_reader(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -46641,7 +65029,17 @@ inline tensor whole_file_reader(const std::string& container="", const std::stri
     return tensor(res[0]);
 }
 
+/* # WholeFileReaderV2
+# Inputs:
+*    
+# Attributes:
+*    container
+*    shared_name
 
+# Outputs:
+*    reader_handle
+
+*/
 inline tensor whole_file_reader_v2(const std::string& container="", const std::string& shared_name="") {
 
     // Define Op
@@ -46663,7 +65061,23 @@ inline tensor whole_file_reader_v2(const std::string& container="", const std::s
     return tensor(res[0]);
 }
 
+/* # WindowDataset
+# Inputs:
+*    input_dataset
+*    size
+*    shift
+*    stride
+*    drop_remainder
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor window_dataset(const tensor& input_dataset, const tensor& size, const tensor& shift, const tensor& stride, const tensor& drop_remainder, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op
@@ -46712,7 +65126,19 @@ inline tensor window_dataset(const tensor& input_dataset, const tensor& size, co
     return tensor(res[0]);
 }
 
+/* # WindowOp
+# Inputs:
+*    inputs
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    Tinputs
+
+# Outputs:
+*    handle
+
+*/
 inline tensor window_op(const std::vector<tensor>&inputs, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::vector<datatype>& Tinputs) {
 
     // Define Op
@@ -46747,7 +65173,16 @@ inline tensor window_op(const std::vector<tensor>&inputs, const std::vector<data
     return tensor(res[0]);
 }
 
+/* # WorkerHeartbeat
+# Inputs:
+*    request
 
+# Attributes:
+*    
+# Outputs:
+*    response
+
+*/
 inline tensor worker_heartbeat(const tensor& request) {
 
     // Define Op
@@ -46771,7 +65206,16 @@ inline tensor worker_heartbeat(const tensor& request) {
     return tensor(res[0]);
 }
 
+/* # WrapDatasetVariant
+# Inputs:
+*    input_handle
 
+# Attributes:
+*    
+# Outputs:
+*    output_handle
+
+*/
 inline tensor wrap_dataset_variant(const tensor& input_handle) {
 
     // Define Op
@@ -46795,7 +65239,20 @@ inline tensor wrap_dataset_variant(const tensor& input_handle) {
     return tensor(res[0]);
 }
 
+/* # WriteAudioSummary
+# Inputs:
+*    writer
+*    step
+*    tag
+*    tensor
+*    sample_rate
 
+# Attributes:
+*    max_outputs
+
+# Outputs:
+*    
+*/
 inline void write_audio_summary(const tensor& writer, const tensor& step, const tensor& tag, const tensor& input_tensor, const tensor& sample_rate, int64_t max_outputs=3) {
 
     // Define Op
@@ -46834,7 +65291,16 @@ inline void write_audio_summary(const tensor& writer, const tensor& step, const 
     status_check(context::get_status());
 }
 
+/* # WriteFile
+# Inputs:
+*    filename
+*    contents
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void write_file(const tensor& filename, const tensor& contents) {
 
     // Define Op
@@ -46861,7 +65327,17 @@ inline void write_file(const tensor& filename, const tensor& contents) {
     status_check(context::get_status());
 }
 
+/* # WriteGraphSummary
+# Inputs:
+*    writer
+*    step
+*    tensor
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void write_graph_summary(const tensor& writer, const tensor& step, const tensor& input_tensor) {
 
     // Define Op
@@ -46892,7 +65368,18 @@ inline void write_graph_summary(const tensor& writer, const tensor& step, const 
     status_check(context::get_status());
 }
 
+/* # WriteHistogramSummary
+# Inputs:
+*    writer
+*    step
+*    tag
+*    values
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void write_histogram_summary(const tensor& writer, const tensor& step, const tensor& tag, const tensor& values) {
 
     // Define Op
@@ -46927,7 +65414,20 @@ inline void write_histogram_summary(const tensor& writer, const tensor& step, co
     status_check(context::get_status());
 }
 
+/* # WriteImageSummary
+# Inputs:
+*    writer
+*    step
+*    tag
+*    tensor
+*    bad_color
 
+# Attributes:
+*    max_images
+
+# Outputs:
+*    
+*/
 inline void write_image_summary(const tensor& writer, const tensor& step, const tensor& tag, const tensor& input_tensor, const tensor& bad_color, int64_t max_images=3) {
 
     // Define Op
@@ -46966,7 +65466,17 @@ inline void write_image_summary(const tensor& writer, const tensor& step, const 
     status_check(context::get_status());
 }
 
+/* # WriteRawProtoSummary
+# Inputs:
+*    writer
+*    step
+*    tensor
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void write_raw_proto_summary(const tensor& writer, const tensor& step, const tensor& input_tensor) {
 
     // Define Op
@@ -46997,7 +65507,18 @@ inline void write_raw_proto_summary(const tensor& writer, const tensor& step, co
     status_check(context::get_status());
 }
 
+/* # WriteScalarSummary
+# Inputs:
+*    writer
+*    step
+*    tag
+*    value
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void write_scalar_summary(const tensor& writer, const tensor& step, const tensor& tag, const tensor& value) {
 
     // Define Op
@@ -47032,7 +65553,19 @@ inline void write_scalar_summary(const tensor& writer, const tensor& step, const
     status_check(context::get_status());
 }
 
+/* # WriteSummary
+# Inputs:
+*    writer
+*    step
+*    tensor
+*    tag
+*    summary_metadata
 
+# Attributes:
+*    
+# Outputs:
+*    
+*/
 inline void write_summary(const tensor& writer, const tensor& step, const tensor& input_tensor, const tensor& tag, const tensor& summary_metadata) {
 
     // Define Op
@@ -47071,7 +65604,17 @@ inline void write_summary(const tensor& writer, const tensor& step, const tensor
     status_check(context::get_status());
 }
 
+/* # Xdivy
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor xdivy(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -47099,7 +65642,19 @@ inline tensor xdivy(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # XlaConcatND
+# Inputs:
+*    inputs
 
+# Attributes:
+*    N
+*    num_concats
+*    paddings
+
+# Outputs:
+*    output
+
+*/
 inline tensor xla_concat_n_d(const std::vector<tensor>&inputs, const std::vector<int64_t>& num_concats, const std::vector<int64_t>& paddings) {
 
     // Define Op
@@ -47127,7 +65682,22 @@ inline tensor xla_concat_n_d(const std::vector<tensor>&inputs, const std::vector
     return tensor(res[0]);
 }
 
+/* # XlaSparseCoreAdagrad
+# Inputs:
+*    indices
+*    gradient
+*    learning_rate
+*    accumulator
+*    embedding_table
 
+# Attributes:
+*    feature_width
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+
+*/
 inline std::vector<tensor> xla_sparse_core_adagrad(const tensor& indices, const tensor& gradient, const tensor& learning_rate, const tensor& accumulator, const tensor& embedding_table, int64_t feature_width) {
 
     // Define Op
@@ -47167,7 +65737,29 @@ inline std::vector<tensor> xla_sparse_core_adagrad(const tensor& indices, const 
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # XlaSparseCoreAdagradMomentum
+# Inputs:
+*    indices
+*    gradient
+*    learning_rate
+*    beta_1
+*    epsilon
+*    accumulator
+*    momentum
+*    embedding_table
 
+# Attributes:
+*    feature_width
+*    use_nesterov
+*    beta_2
+*    exponent
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+*    updated_momentum
+
+*/
 inline std::vector<tensor> xla_sparse_core_adagrad_momentum(const tensor& indices, const tensor& gradient, const tensor& learning_rate, const tensor& beta_1, const tensor& epsilon, const tensor& accumulator, const tensor& momentum, const tensor& embedding_table, int64_t feature_width, bool use_nesterov, float beta_2, float exponent) {
 
     // Define Op
@@ -47222,7 +65814,28 @@ inline std::vector<tensor> xla_sparse_core_adagrad_momentum(const tensor& indice
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseCoreAdam
+# Inputs:
+*    embedding_table
+*    indices
+*    gradient
+*    learning_rate
+*    momentum
+*    velocity
+*    beta_1
+*    beta_2
+*    epsilon
 
+# Attributes:
+*    feature_width
+*    use_sum_inside_sqrt
+
+# Outputs:
+*    updated_embedding_table
+*    updated_velocity
+*    updated_momentum
+
+*/
 inline std::vector<tensor> xla_sparse_core_adam(const tensor& embedding_table, const tensor& indices, const tensor& gradient, const tensor& learning_rate, const tensor& momentum, const tensor& velocity, const tensor& beta_1, const tensor& beta_2, const tensor& epsilon, int64_t feature_width, bool use_sum_inside_sqrt) {
 
     // Define Op
@@ -47279,7 +65892,29 @@ inline std::vector<tensor> xla_sparse_core_adam(const tensor& embedding_table, c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseCoreFtrl
+# Inputs:
+*    embedding_table
+*    accumulator
+*    linear
+*    learning_rate
+*    indices
+*    gradient
+*    beta
+*    learning_rate_power
+*    l2_regularization_strength
 
+# Attributes:
+*    feature_width
+*    multiply_linear_by_learning_rate
+*    l1_regularization_strength
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+*    updated_linear
+
+*/
 inline std::vector<tensor> xla_sparse_core_ftrl(const tensor& embedding_table, const tensor& accumulator, const tensor& linear, const tensor& learning_rate, const tensor& indices, const tensor& gradient, const tensor& beta, const tensor& learning_rate_power, const tensor& l2_regularization_strength, int64_t feature_width, bool multiply_linear_by_learning_rate, float l1_regularization_strength) {
 
     // Define Op
@@ -47337,7 +65972,20 @@ inline std::vector<tensor> xla_sparse_core_ftrl(const tensor& embedding_table, c
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseCoreSgd
+# Inputs:
+*    indices
+*    gradient
+*    learning_rate
+*    embedding_table
 
+# Attributes:
+*    feature_width
+
+# Outputs:
+*    updated_embedding_table
+
+*/
 inline tensor xla_sparse_core_sgd(const tensor& indices, const tensor& gradient, const tensor& learning_rate, const tensor& embedding_table, int64_t feature_width) {
 
     // Define Op
@@ -47373,7 +66021,27 @@ inline tensor xla_sparse_core_sgd(const tensor& indices, const tensor& gradient,
     return tensor(res[0]);
 }
 
+/* # XlaSparseDenseMatmul
+# Inputs:
+*    row_ids
+*    col_ids
+*    values
+*    offsets
+*    embedding_table
 
+# Attributes:
+*    max_ids_per_partition
+*    max_unique_ids_per_partition
+*    input_size
+
+# Outputs:
+*    activations
+*    row_pointers
+*    sorted_embedding_ids
+*    sorted_sample_ids
+*    sorted_gains
+
+*/
 inline std::vector<tensor> xla_sparse_dense_matmul(const tensor& row_ids, const tensor& col_ids, const tensor& values, const tensor& offsets, const tensor& embedding_table, int64_t max_ids_per_partition, int64_t max_unique_ids_per_partition, int64_t input_size) {
 
     // Define Op
@@ -47415,7 +66083,28 @@ inline std::vector<tensor> xla_sparse_dense_matmul(const tensor& row_ids, const 
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithAdagradAndCsrInput
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    accumulator
+*    num_minibatches_per_physical_sparse_core
 
+# Attributes:
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+
+*/
 inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_and_csr_input(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& accumulator, const tensor& num_minibatches_per_physical_sparse_core, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
 
     // Define Op
@@ -47473,7 +66162,35 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_and_csr_inp
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithAdagradMomentumAndCsrInput
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    accumulator
+*    momenta
+*    num_minibatches_per_physical_sparse_core
 
+# Attributes:
+*    use_nesterov
+*    exponent
+*    beta1
+*    beta2
+*    epsilon
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+*    updated_momenta
+
+*/
 inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_momentum_and_csr_input(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& accumulator, const tensor& momenta, const tensor& num_minibatches_per_physical_sparse_core, bool use_nesterov, float exponent, float beta1, float beta2, float epsilon, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
 
     // Define Op
@@ -47540,7 +66257,34 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_momentum_an
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithAdamAndCsrInput
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    momenta
+*    velocity
+*    num_minibatches_per_physical_sparse_core
 
+# Attributes:
+*    use_sum_inside_sqrt
+*    beta1
+*    beta2
+*    epsilon
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_momenta
+*    updated_velocity
+
+*/
 inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adam_and_csr_input(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& momenta, const tensor& velocity, const tensor& num_minibatches_per_physical_sparse_core, bool use_sum_inside_sqrt, float beta1, float beta2, float epsilon, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
 
     // Define Op
@@ -47606,7 +66350,35 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adam_and_csr_input(
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithFtrlAndCsrInput
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    accumulator
+*    linear
+*    num_minibatches_per_physical_sparse_core
 
+# Attributes:
+*    multiply_linear_by_learning_rate
+*    beta
+*    learning_rate_power
+*    l1_regularization_strength
+*    l2_regularization_strength
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+*    updated_linear
+
+*/
 inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_ftrl_and_csr_input(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& accumulator, const tensor& linear, const tensor& num_minibatches_per_physical_sparse_core, bool multiply_linear_by_learning_rate, float beta, float learning_rate_power, float l1_regularization_strength, float l2_regularization_strength, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
 
     // Define Op
@@ -47673,7 +66445,26 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_ftrl_and_csr_input(
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithSgdAndCsrInput
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    num_minibatches_per_physical_sparse_core
 
+# Attributes:
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+
+*/
 inline tensor xla_sparse_dense_matmul_grad_with_sgd_and_csr_input(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& num_minibatches_per_physical_sparse_core, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
 
     // Define Op
@@ -47727,7 +66518,26 @@ inline tensor xla_sparse_dense_matmul_grad_with_sgd_and_csr_input(const tensor& 
     return tensor(res[0]);
 }
 
+/* # XlaSparseDenseMatmulWithCsrInput
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    embedding_table
+*    num_minibatches_per_physical_sparse_core
 
+# Attributes:
+*    input_size
+*    quantization_config_low
+*    quantization_config_high
+*    quantization_config_num_buckets
+*    table_name
+
+# Outputs:
+*    activations
+
+*/
 inline tensor xla_sparse_dense_matmul_with_csr_input(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& embedding_table, const tensor& num_minibatches_per_physical_sparse_core, int64_t input_size, float quantization_config_low, float quantization_config_high, int64_t quantization_config_num_buckets, const std::string& table_name) {
 
     // Define Op
@@ -47775,7 +66585,19 @@ inline tensor xla_sparse_dense_matmul_with_csr_input(const tensor& row_pointers,
     return tensor(res[0]);
 }
 
+/* # XlaSplitND
+# Inputs:
+*    input
 
+# Attributes:
+*    N
+*    num_splits
+*    paddings
+
+# Outputs:
+*    outputs
+
+*/
 inline tensor xla_split_n_d(const tensor& input, int64_t N, const std::vector<int64_t>& num_splits, const std::vector<int64_t>& paddings) {
 
     // Define Op
@@ -47801,7 +66623,17 @@ inline tensor xla_split_n_d(const tensor& input, int64_t N, const std::vector<in
     return tensor(res[0]);
 }
 
+/* # Xlog1py
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor xlog1py(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -47829,7 +66661,17 @@ inline tensor xlog1py(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # Xlogy
+# Inputs:
+*    x
+*    y
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor xlogy(const tensor& x, const tensor& y) {
 
     // Define Op
@@ -47857,7 +66699,16 @@ inline tensor xlogy(const tensor& x, const tensor& y) {
     return tensor(res[0]);
 }
 
+/* # ZerosLike
+# Inputs:
+*    x
 
+# Attributes:
+*    
+# Outputs:
+*    y
+
+*/
 inline tensor zeros_like(const tensor& x) {
 
     // Define Op
@@ -47881,7 +66732,17 @@ inline tensor zeros_like(const tensor& x) {
     return tensor(res[0]);
 }
 
+/* # Zeta
+# Inputs:
+*    x
+*    q
 
+# Attributes:
+*    
+# Outputs:
+*    z
+
+*/
 inline tensor zeta(const tensor& x, const tensor& q) {
 
     // Define Op
@@ -47909,7 +66770,20 @@ inline tensor zeta(const tensor& x, const tensor& q) {
     return tensor(res[0]);
 }
 
+/* # ZipDataset
+# Inputs:
+*    input_datasets
 
+# Attributes:
+*    output_types
+*    output_shapes
+*    N
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
 inline tensor zip_dataset(const std::vector<tensor>&input_datasets, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
 
     // Define Op

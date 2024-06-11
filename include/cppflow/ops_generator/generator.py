@@ -183,8 +183,12 @@ class Attribute:
 
 
 
+def camel_to_snake(camel_str):
+    if not re.search(r'[a-z]', camel_str) or not re.search(r'[A-Z]', camel_str):
+        return camel_str
 
-
+    snake_str = re.sub(r'(?<!^)(?=[A-Z])', '_', camel_str).lower()
+    return snake_str
 
 class Operation:
     """Class that describes the operation.
@@ -203,6 +207,7 @@ class Operation:
             #raise Exception('More than one or no output not yet supported')
 
         self.inputs = [inp for inp in op.input_arg]
+        self.outputs = [out for out in op.output_arg]
 
         # Number attributes define the length of an input list
         number_attr = [
@@ -259,7 +264,8 @@ class Operation:
         out = 'tensor' if output_arg_len == 1 else 'std::vector<tensor>' if output_arg_len > 1 else 'void'
 
         # snake_case name of the operation
-        snk = re.sub(r'(?<!^)(?=[A-Z])', '_', self.op.name).lower()
+        snk = camel_to_snake(self.op.name)
+
         snk = snk.replace('const', 'const_tensor')
         if snk == "assert":
             snk = "tfe_assert"
@@ -314,7 +320,22 @@ class Operation:
                 for resinx in range(output_arg_len):
                     res += f'tensor(res[{resinx}]),'
                 return_code = f'\n    return {{ {res} }};'
-        return template.format('', out, snk, inp, atr, opn, inp_code, atr_code, output_arg_len, output_arg_code, return_code)
+
+        Annotations = textwrap.dedent('''\
+            /* # {}
+            # Inputs:
+            *    {}
+            # Attributes:
+            *    {}
+            # Outputs:
+            *    {}
+            */''')
+        ann_inp_code = '*    '.join(f'{n.name}\n' for n in self.inputs)
+        att_inp_code = '*    '.join(f'{n.name}\n' for n in self.attr_list if len(n.code()))
+        ann_out_code = '*    '.join(f'{n.name}\n' for n in self.outputs)
+        Anns = Annotations.format(opn, ann_inp_code, att_inp_code, ann_out_code)
+
+        return template.format(Anns, out, snk, inp, atr, opn, inp_code, atr_code, output_arg_len, output_arg_code, return_code)
 
 
 
