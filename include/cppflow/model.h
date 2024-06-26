@@ -62,9 +62,10 @@ class model {
   enum TYPE {
     SAVED_MODEL,
     FROZEN_GRAPH,
+    FROZEN_GRAPH_BUFF,
   };  // enum TYPE
 
-  explicit model(const std::string& filename,
+  explicit model(const std::string& filedata,
                  const TYPE type = TYPE::SAVED_MODEL);
   model(const model &model) = default;
   model(model &&model) = default;
@@ -93,7 +94,7 @@ class model {
 
 namespace cppflow {
 
-inline model::model(const std::string &filename, const TYPE type) {
+inline model::model(const std::string &filedata, const TYPE type) {
   this->status = {TF_NewStatus(), &TF_DeleteStatus};
   this->graph = {TF_NewGraph(), TF_DeleteGraph};
 
@@ -116,7 +117,7 @@ inline model::model(const std::string &filename, const TYPE type) {
     const char* tag = "serve";
     this->session = {
         TF_LoadSessionFromSavedModel(session_options.get(), run_options.get(),
-                                     filename.c_str(), &tag, tag_len,
+                                     filedata.c_str(), &tag, tag_len,
                                      this->graph.get(), meta_graph.get(),
                                      this->status.get()), session_deleter};
   } else if (type == TYPE::FROZEN_GRAPH)  {
@@ -126,7 +127,25 @@ inline model::model(const std::string &filename, const TYPE type) {
     status_check(this->status.get());
 
     // Import the graph definition
-    TF_Buffer* def = readGraph(filename);
+    TF_Buffer* def = readGraph(filedata);
+    if (def == nullptr) {
+      throw std::runtime_error("Failed to import graph def from file");
+    }
+
+    std::unique_ptr<TF_ImportGraphDefOptions,
+                    decltype(&TF_DeleteImportGraphDefOptions)> graph_opts = {
+        TF_NewImportGraphDefOptions(), TF_DeleteImportGraphDefOptions};
+    TF_GraphImportGraphDef(this->graph.get(), def, graph_opts.get(),
+                           this->status.get());
+    TF_DeleteBuffer(def);
+  } else if (type == TYPE::FROZEN_GRAPH_BUFF)  {
+    this->session = {TF_NewSession(this->graph.get(), session_options.get(),
+                                   this->status.get()),
+                     session_deleter};
+    status_check(this->status.get());
+
+    // Import the graph definition
+    TF_Buffer* def = TF_NewBufferFromString(filedata.data(), filedata.size());
     if (def == nullptr) {
       throw std::runtime_error("Failed to import graph def from file");
     }
