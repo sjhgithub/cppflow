@@ -4252,13 +4252,14 @@ inline tensor batch_f_f_t3_d(const tensor& input) {
 *    low_priority_batch_timeout_micros
 *    low_priority_max_enqueued_batches
 *    mixed_priority_policy
+*    batch_padding_policy
 *    enable_large_batch_splitting
 
 # Outputs:
 *    out_tensors
 
 */
-inline tensor batch_function(const std::vector<tensor>&in_tensors, const std::vector<tensor>&captured_tensors, int64_t f, int64_t num_batch_threads, int64_t max_batch_size, int64_t batch_timeout_micros, const std::vector<int64_t>& allowed_batch_sizes, const std::vector<int64_t>& low_priority_allowed_batch_sizes, const std::vector<datatype>& Tin, const std::vector<datatype>& Tcaptured, const std::vector<datatype>& Tout, int64_t max_enqueued_batches=10, const std::string& container="", const std::string& shared_name="", const std::string& batching_queue="", int64_t low_priority_max_batch_size=0, int64_t low_priority_batch_timeout_micros=0, int64_t low_priority_max_enqueued_batches=0, const std::string& mixed_priority_policy="low_priority_padding_with_max_batch_size", bool enable_large_batch_splitting=false) {
+inline tensor batch_function(const std::vector<tensor>&in_tensors, const std::vector<tensor>&captured_tensors, int64_t f, int64_t num_batch_threads, int64_t max_batch_size, int64_t batch_timeout_micros, const std::vector<int64_t>& allowed_batch_sizes, const std::vector<int64_t>& low_priority_allowed_batch_sizes, const std::vector<datatype>& Tin, const std::vector<datatype>& Tcaptured, const std::vector<datatype>& Tout, int64_t max_enqueued_batches=10, const std::string& container="", const std::string& shared_name="", const std::string& batching_queue="", int64_t low_priority_max_batch_size=0, int64_t low_priority_batch_timeout_micros=0, int64_t low_priority_max_enqueued_batches=0, const std::string& mixed_priority_policy="low_priority_padding_with_max_batch_size", const std::string& batch_padding_policy="PAD_UP", bool enable_large_batch_splitting=false) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "BatchFunction", context::get_status()), &TFE_DeleteOp);
@@ -4296,6 +4297,7 @@ inline tensor batch_function(const std::vector<tensor>&in_tensors, const std::ve
     TFE_OpSetAttrInt(op.get(), "low_priority_batch_timeout_micros", low_priority_batch_timeout_micros);
     TFE_OpSetAttrInt(op.get(), "low_priority_max_enqueued_batches", low_priority_max_enqueued_batches);
     TFE_OpSetAttrString(op.get(), "mixed_priority_policy", (void*) mixed_priority_policy.c_str(), mixed_priority_policy.size());
+    TFE_OpSetAttrString(op.get(), "batch_padding_policy", (void*) batch_padding_policy.c_str(), batch_padding_policy.size());
     TFE_OpSetAttrBool(op.get(), "enable_large_batch_splitting", (unsigned char)enable_large_batch_splitting);
 
     // Execute Op
@@ -11120,6 +11122,150 @@ inline std::vector<tensor> convert_to_coo_tensor(const tensor& indices_or_row_sp
     TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
     status_check(context::get_status());
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
+}
+
+/* # ConvertToListOfSparseCoreCooTensors
+# Inputs:
+*    indices_or_row_splits
+*    values
+*    weights
+
+# Attributes:
+*    sample_count
+*    num_sc_per_chip
+*    row_offset
+*    col_offset
+*    col_shift
+*    num_sc_shards
+*    stacked_table_sample_count
+*    combiner
+
+# Outputs:
+*    row_ids_list
+*    col_ids_list
+*    gains_list
+
+*/
+inline std::vector<tensor> convert_to_list_of_sparse_core_coo_tensors(const tensor& indices_or_row_splits, const tensor& values, const tensor& weights, int64_t sample_count, int64_t num_sc_per_chip, int64_t row_offset, int64_t col_offset, int64_t col_shift, int64_t num_sc_shards, int64_t stacked_table_sample_count, const std::string& combiner) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ConvertToListOfSparseCoreCooTensors", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), indices_or_row_splits.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), values.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), weights.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrInt(op.get(), "sample_count", sample_count);
+    TFE_OpSetAttrInt(op.get(), "num_sc_per_chip", num_sc_per_chip);
+    TFE_OpSetAttrInt(op.get(), "row_offset", row_offset);
+    TFE_OpSetAttrInt(op.get(), "col_offset", col_offset);
+    TFE_OpSetAttrInt(op.get(), "col_shift", col_shift);
+    TFE_OpSetAttrInt(op.get(), "num_sc_shards", num_sc_shards);
+    TFE_OpSetAttrInt(op.get(), "stacked_table_sample_count", stacked_table_sample_count);
+    TFE_OpSetAttrString(op.get(), "combiner", (void*) combiner.c_str(), combiner.size());
+
+    // Execute Op
+    int num_outputs_op = 3;
+    TFE_TensorHandle* res[3] = { nullptr,nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
+}
+
+/* # ConvertToSparseCoreCsrWrappedCooTensor
+# Inputs:
+*    sorted_row_ids_list
+*    sorted_col_ids_list
+*    sorted_gains_list
+*    id_counts_list
+*    splits
+
+# Attributes:
+*    sample_count_per_sc
+*    num_replica
+*    max_minibatches_per_sc
+*    max_ids_per_chip_per_sample
+*    table_vocab_size
+*    feature_width
+*    num_sc_per_chip
+*    table_name
+*    allow_id_dropping
+
+# Outputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    row_pointers_unpadded_size
+*    ids_unpadded_size
+*    num_minibatches_per_sc
+
+*/
+inline std::vector<tensor> convert_to_sparse_core_csr_wrapped_coo_tensor(const std::vector<tensor>&sorted_row_ids_list, const std::vector<tensor>&sorted_col_ids_list, const std::vector<tensor>&sorted_gains_list, const std::vector<tensor>&id_counts_list, const tensor& splits, int64_t sample_count_per_sc, int64_t num_replica, int64_t max_minibatches_per_sc, int64_t max_ids_per_chip_per_sample, int64_t table_vocab_size, int64_t feature_width, const std::string& table_name, bool allow_id_dropping) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ConvertToSparseCoreCsrWrappedCooTensor", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    std::vector<TFE_TensorHandle*> sorted_row_ids_list_handles; sorted_row_ids_list_handles.reserve(sorted_row_ids_list.size());
+    std::transform(sorted_row_ids_list.begin(), sorted_row_ids_list.end(), std::back_inserter(sorted_row_ids_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), sorted_row_ids_list_handles.data(), static_cast<int>(sorted_row_ids_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> sorted_col_ids_list_handles; sorted_col_ids_list_handles.reserve(sorted_col_ids_list.size());
+    std::transform(sorted_col_ids_list.begin(), sorted_col_ids_list.end(), std::back_inserter(sorted_col_ids_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), sorted_col_ids_list_handles.data(), static_cast<int>(sorted_col_ids_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> sorted_gains_list_handles; sorted_gains_list_handles.reserve(sorted_gains_list.size());
+    std::transform(sorted_gains_list.begin(), sorted_gains_list.end(), std::back_inserter(sorted_gains_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), sorted_gains_list_handles.data(), static_cast<int>(sorted_gains_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> id_counts_list_handles; id_counts_list_handles.reserve(id_counts_list.size());
+    std::transform(id_counts_list.begin(), id_counts_list.end(), std::back_inserter(id_counts_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), id_counts_list_handles.data(), static_cast<int>(id_counts_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), splits.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrInt(op.get(), "sample_count_per_sc", sample_count_per_sc);
+    TFE_OpSetAttrInt(op.get(), "num_replica", num_replica);
+    TFE_OpSetAttrInt(op.get(), "max_minibatches_per_sc", max_minibatches_per_sc);
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_chip_per_sample", max_ids_per_chip_per_sample);
+    TFE_OpSetAttrInt(op.get(), "table_vocab_size", table_vocab_size);
+    TFE_OpSetAttrInt(op.get(), "feature_width", feature_width);
+    TFE_OpSetAttrInt(op.get(), "num_sc_per_chip", sorted_row_ids_list.size());
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrBool(op.get(), "allow_id_dropping", (unsigned char)allow_id_dropping);
+
+    // Execute Op
+    int num_outputs_op = 7;
+    TFE_TensorHandle* res[7] = { nullptr,nullptr,nullptr,nullptr,nullptr,nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]),tensor(res[4]),tensor(res[5]),tensor(res[6]), };
 }
 
 /* # Copy
@@ -18193,12 +18339,13 @@ inline tensor experimental_map_and_batch_dataset(const tensor& input_dataset, co
 *    output_shapes
 *    use_inter_op_parallelism
 *    preserve_cardinality
+*    force_synchronous
 
 # Outputs:
 *    handle
 
 */
-inline tensor experimental_map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, bool preserve_cardinality=false) {
+inline tensor experimental_map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, bool preserve_cardinality=false, bool force_synchronous=false) {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ExperimentalMapDataset", context::get_status()), &TFE_DeleteOp);
@@ -18230,6 +18377,7 @@ inline tensor experimental_map_dataset(const tensor& input_dataset, const std::v
     
     TFE_OpSetAttrBool(op.get(), "use_inter_op_parallelism", (unsigned char)use_inter_op_parallelism);
     TFE_OpSetAttrBool(op.get(), "preserve_cardinality", (unsigned char)preserve_cardinality);
+    TFE_OpSetAttrBool(op.get(), "force_synchronous", (unsigned char)force_synchronous);
 
     // Execute Op
     int num_outputs_op = 1;
@@ -22444,6 +22592,71 @@ inline tensor get_session_tensor(const tensor& handle, datatype dtype) {
     return tensor(res[0]);
 }
 
+/* # GetStatsFromListOfSparseCoreCooTensors
+# Inputs:
+*    row_ids_list
+*    col_ids_list
+*    gains_list
+
+# Attributes:
+*    sample_count_list
+*    col_offset_list
+*    num_replica
+*    table_vocab_size
+*    feature_width
+*    num_sc_per_chip
+*    table_name
+*    N
+
+# Outputs:
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+
+*/
+inline std::vector<tensor> get_stats_from_list_of_sparse_core_coo_tensors(const std::vector<tensor>&row_ids_list, const std::vector<tensor>&col_ids_list, const std::vector<tensor>&gains_list, const std::vector<int64_t>& sample_count_list, const std::vector<int64_t>& col_offset_list, int64_t num_replica, int64_t table_vocab_size, int64_t feature_width, int64_t num_sc_per_chip, const std::string& table_name) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "GetStatsFromListOfSparseCoreCooTensors", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    std::vector<TFE_TensorHandle*> row_ids_list_handles; row_ids_list_handles.reserve(row_ids_list.size());
+    std::transform(row_ids_list.begin(), row_ids_list.end(), std::back_inserter(row_ids_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), row_ids_list_handles.data(), static_cast<int>(row_ids_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> col_ids_list_handles; col_ids_list_handles.reserve(col_ids_list.size());
+    std::transform(col_ids_list.begin(), col_ids_list.end(), std::back_inserter(col_ids_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), col_ids_list_handles.data(), static_cast<int>(col_ids_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> gains_list_handles; gains_list_handles.reserve(gains_list.size());
+    std::transform(gains_list.begin(), gains_list.end(), std::back_inserter(gains_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), gains_list_handles.data(), static_cast<int>(gains_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrIntList(op.get(), "sample_count_list", sample_count_list.data(), static_cast<int>(sample_count_list.size()));
+    TFE_OpSetAttrIntList(op.get(), "col_offset_list", col_offset_list.data(), static_cast<int>(col_offset_list.size()));
+    TFE_OpSetAttrInt(op.get(), "num_replica", num_replica);
+    TFE_OpSetAttrInt(op.get(), "table_vocab_size", table_vocab_size);
+    TFE_OpSetAttrInt(op.get(), "feature_width", feature_width);
+    TFE_OpSetAttrInt(op.get(), "num_sc_per_chip", num_sc_per_chip);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrInt(op.get(), "N", row_ids_list.size());
+
+    // Execute Op
+    int num_outputs_op = 2;
+    TFE_TensorHandle* res[2] = { nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]), };
+}
+
 /* # GlobalIterId
 # Inputs:
 *    
@@ -22464,6 +22677,68 @@ inline tensor global_iter_id() {
 
     // Attributes
     
+
+    // Execute Op
+    int num_outputs_op = 1;
+    TFE_TensorHandle* res[1] = { nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return tensor(res[0]);
+}
+
+/* # GlobalShuffleDataset
+# Inputs:
+*    input_dataset
+*    seed
+*    seed2
+*    seed_generator
+
+# Attributes:
+*    output_types
+*    output_shapes
+*    reshuffle_each_iteration
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
+inline tensor global_shuffle_dataset(const tensor& input_dataset, const tensor& seed, const tensor& seed2, const tensor& seed_generator, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool reshuffle_each_iteration=true, const std::string& metadata="") {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "GlobalShuffleDataset", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), input_dataset.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), seed.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), seed2.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), seed_generator.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrTypeList(op.get(), "output_types", reinterpret_cast<const enum TF_DataType *>(output_types.data()), static_cast<int>(output_types.size()));
+    
+    std::vector<const int64_t*> output_shapes_values; output_shapes_values.reserve(output_shapes.size());
+    std::vector<int> output_shapes_ndims; output_shapes_ndims.reserve(output_shapes.size());
+    std::transform(output_shapes.begin(), output_shapes.end(), std::back_inserter(output_shapes_values), [](const auto& v) { return v.data();});
+    std::transform(output_shapes.begin(), output_shapes.end(), std::back_inserter(output_shapes_ndims), [](const auto& v) { return static_cast<int>(v.size());});
+    TFE_OpSetAttrShapeList(op.get(), "output_shapes", output_shapes_values.data(), output_shapes_ndims.data(), static_cast<int>(output_shapes.size()), context::get_status());
+    status_check(context::get_status());
+    
+    TFE_OpSetAttrBool(op.get(), "reshuffle_each_iteration", (unsigned char)reshuffle_each_iteration);
+    TFE_OpSetAttrString(op.get(), "metadata", (void*) metadata.c_str(), metadata.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -23936,6 +24211,78 @@ inline tensor in_top_k_v2(const tensor& predictions, const tensor& targets, cons
     return tensor(res[0]);
 }
 
+/* # IndexFlatMapDataset
+# Inputs:
+*    input_dataset
+*    map_func_other_args
+*    index_map_func_other_args
+*    output_cardinality
+
+# Attributes:
+*    map_func
+*    index_map_func
+*    Tmap_func_args
+*    Tindex_map_func_args
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
+inline tensor index_flat_map_dataset(const tensor& input_dataset, const std::vector<tensor>&map_func_other_args, const std::vector<tensor>&index_map_func_other_args, const tensor& output_cardinality, int64_t map_func, int64_t index_map_func, const std::vector<datatype>& Tmap_func_args, const std::vector<datatype>& Tindex_map_func_args, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IndexFlatMapDataset", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), input_dataset.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> map_func_other_args_handles; map_func_other_args_handles.reserve(map_func_other_args.size());
+    std::transform(map_func_other_args.begin(), map_func_other_args.end(), std::back_inserter(map_func_other_args_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), map_func_other_args_handles.data(), static_cast<int>(map_func_other_args.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> index_map_func_other_args_handles; index_map_func_other_args_handles.reserve(index_map_func_other_args.size());
+    std::transform(index_map_func_other_args.begin(), index_map_func_other_args.end(), std::back_inserter(index_map_func_other_args_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), index_map_func_other_args_handles.data(), static_cast<int>(index_map_func_other_args.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), output_cardinality.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrInt(op.get(), "map_func", map_func);
+    TFE_OpSetAttrInt(op.get(), "index_map_func", index_map_func);
+    TFE_OpSetAttrTypeList(op.get(), "Tmap_func_args", reinterpret_cast<const enum TF_DataType *>(Tmap_func_args.data()), static_cast<int>(Tmap_func_args.size()));
+    TFE_OpSetAttrTypeList(op.get(), "Tindex_map_func_args", reinterpret_cast<const enum TF_DataType *>(Tindex_map_func_args.data()), static_cast<int>(Tindex_map_func_args.size()));
+    TFE_OpSetAttrTypeList(op.get(), "output_types", reinterpret_cast<const enum TF_DataType *>(output_types.data()), static_cast<int>(output_types.size()));
+    
+    std::vector<const int64_t*> output_shapes_values; output_shapes_values.reserve(output_shapes.size());
+    std::vector<int> output_shapes_ndims; output_shapes_ndims.reserve(output_shapes.size());
+    std::transform(output_shapes.begin(), output_shapes.end(), std::back_inserter(output_shapes_values), [](const auto& v) { return v.data();});
+    std::transform(output_shapes.begin(), output_shapes.end(), std::back_inserter(output_shapes_ndims), [](const auto& v) { return static_cast<int>(v.size());});
+    TFE_OpSetAttrShapeList(op.get(), "output_shapes", output_shapes_values.data(), output_shapes_ndims.data(), static_cast<int>(output_shapes.size()), context::get_status());
+    status_check(context::get_status());
+    
+    TFE_OpSetAttrString(op.get(), "metadata", (void*) metadata.c_str(), metadata.size());
+
+    // Execute Op
+    int num_outputs_op = 1;
+    TFE_TensorHandle* res[1] = { nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return tensor(res[0]);
+}
+
 /* # InfeedDequeue
 # Inputs:
 *    
@@ -25088,6 +25435,39 @@ inline tensor iterator_get_device(const tensor& resource) {
     // Required input arguments
     
     TFE_OpAddInput(op.get(), resource.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    
+
+    // Execute Op
+    int num_outputs_op = 1;
+    TFE_TensorHandle* res[1] = { nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return tensor(res[0]);
+}
+
+/* # IteratorGetModelProto
+# Inputs:
+*    iterator
+
+# Attributes:
+*    
+# Outputs:
+*    model_proto
+
+*/
+inline tensor iterator_get_model_proto(const tensor& iterator) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "IteratorGetModelProto", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), iterator.tfe_handle.get(), context::get_status());
     status_check(context::get_status());
     
 
@@ -28092,13 +28472,14 @@ inline void map_clear(const std::vector<datatype>& dtypes, int64_t capacity=0, i
 *    output_shapes
 *    use_inter_op_parallelism
 *    preserve_cardinality
+*    force_synchronous
 *    metadata
 
 # Outputs:
 *    handle
 
 */
-inline tensor map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, bool preserve_cardinality=false, const std::string& metadata="") {
+inline tensor map_dataset(const tensor& input_dataset, const std::vector<tensor>&other_arguments, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, bool preserve_cardinality=false, bool force_synchronous=false, const std::string& metadata="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "MapDataset", context::get_status()), &TFE_DeleteOp);
@@ -28130,6 +28511,7 @@ inline tensor map_dataset(const tensor& input_dataset, const std::vector<tensor>
     
     TFE_OpSetAttrBool(op.get(), "use_inter_op_parallelism", (unsigned char)use_inter_op_parallelism);
     TFE_OpSetAttrBool(op.get(), "preserve_cardinality", (unsigned char)preserve_cardinality);
+    TFE_OpSetAttrBool(op.get(), "force_synchronous", (unsigned char)force_synchronous);
     TFE_OpSetAttrString(op.get(), "metadata", (void*) metadata.c_str(), metadata.size());
 
     // Execute Op
@@ -33847,13 +34229,14 @@ inline tensor parallel_map_dataset(const tensor& input_dataset, const std::vecto
 *    use_inter_op_parallelism
 *    deterministic
 *    preserve_cardinality
+*    use_unbounded_threadpool
 *    metadata
 
 # Outputs:
 *    handle
 
 */
-inline tensor parallel_map_dataset_v2(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& num_parallel_calls, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, const std::string& deterministic="default", bool preserve_cardinality=false, const std::string& metadata="") {
+inline tensor parallel_map_dataset_v2(const tensor& input_dataset, const std::vector<tensor>&other_arguments, const tensor& num_parallel_calls, int64_t f, const std::vector<datatype>& Targuments, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, bool use_inter_op_parallelism=true, const std::string& deterministic="default", bool preserve_cardinality=false, bool use_unbounded_threadpool=false, const std::string& metadata="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ParallelMapDatasetV2", context::get_status()), &TFE_DeleteOp);
@@ -33890,6 +34273,7 @@ inline tensor parallel_map_dataset_v2(const tensor& input_dataset, const std::ve
     TFE_OpSetAttrBool(op.get(), "use_inter_op_parallelism", (unsigned char)use_inter_op_parallelism);
     TFE_OpSetAttrString(op.get(), "deterministic", (void*) deterministic.c_str(), deterministic.size());
     TFE_OpSetAttrBool(op.get(), "preserve_cardinality", (unsigned char)preserve_cardinality);
+    TFE_OpSetAttrBool(op.get(), "use_unbounded_threadpool", (unsigned char)use_unbounded_threadpool);
     TFE_OpSetAttrString(op.get(), "metadata", (void*) metadata.c_str(), metadata.size());
 
     // Execute Op
@@ -44662,11 +45046,12 @@ inline void resource_scatter_mul(const tensor& resource, const tensor& indices, 
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    
 */
-inline void resource_scatter_nd_add(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
+inline void resource_scatter_nd_add(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ResourceScatterNdAdd", context::get_status()), &TFE_DeleteOp);
@@ -44689,6 +45074,7 @@ inline void resource_scatter_nd_add(const tensor& ref, const tensor& indices, co
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 0;
@@ -44706,11 +45092,12 @@ inline void resource_scatter_nd_add(const tensor& ref, const tensor& indices, co
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    
 */
-inline void resource_scatter_nd_max(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
+inline void resource_scatter_nd_max(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ResourceScatterNdMax", context::get_status()), &TFE_DeleteOp);
@@ -44733,6 +45120,7 @@ inline void resource_scatter_nd_max(const tensor& ref, const tensor& indices, co
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 0;
@@ -44750,11 +45138,12 @@ inline void resource_scatter_nd_max(const tensor& ref, const tensor& indices, co
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    
 */
-inline void resource_scatter_nd_min(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
+inline void resource_scatter_nd_min(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ResourceScatterNdMin", context::get_status()), &TFE_DeleteOp);
@@ -44777,6 +45166,7 @@ inline void resource_scatter_nd_min(const tensor& ref, const tensor& indices, co
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 0;
@@ -44794,11 +45184,12 @@ inline void resource_scatter_nd_min(const tensor& ref, const tensor& indices, co
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    
 */
-inline void resource_scatter_nd_sub(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
+inline void resource_scatter_nd_sub(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ResourceScatterNdSub", context::get_status()), &TFE_DeleteOp);
@@ -44821,6 +45212,7 @@ inline void resource_scatter_nd_sub(const tensor& ref, const tensor& indices, co
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 0;
@@ -44838,11 +45230,12 @@ inline void resource_scatter_nd_sub(const tensor& ref, const tensor& indices, co
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    
 */
-inline void resource_scatter_nd_update(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
+inline void resource_scatter_nd_update(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ResourceScatterNdUpdate", context::get_status()), &TFE_DeleteOp);
@@ -44865,6 +45258,7 @@ inline void resource_scatter_nd_update(const tensor& ref, const tensor& indices,
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 0;
@@ -47872,12 +48266,13 @@ inline tensor scatter_nd(const tensor& indices, const tensor& updates, const ten
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    output_ref
 
 */
-inline tensor scatter_nd_add(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
+inline tensor scatter_nd_add(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ScatterNdAdd", context::get_status()), &TFE_DeleteOp);
@@ -47900,6 +48295,7 @@ inline tensor scatter_nd_add(const tensor& ref, const tensor& indices, const ten
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -47918,12 +48314,13 @@ inline tensor scatter_nd_add(const tensor& ref, const tensor& indices, const ten
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    output_ref
 
 */
-inline tensor scatter_nd_max(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
+inline tensor scatter_nd_max(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ScatterNdMax", context::get_status()), &TFE_DeleteOp);
@@ -47946,6 +48343,7 @@ inline tensor scatter_nd_max(const tensor& ref, const tensor& indices, const ten
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -47964,12 +48362,13 @@ inline tensor scatter_nd_max(const tensor& ref, const tensor& indices, const ten
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    output_ref
 
 */
-inline tensor scatter_nd_min(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
+inline tensor scatter_nd_min(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ScatterNdMin", context::get_status()), &TFE_DeleteOp);
@@ -47992,6 +48391,7 @@ inline tensor scatter_nd_min(const tensor& ref, const tensor& indices, const ten
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -48009,12 +48409,13 @@ inline tensor scatter_nd_min(const tensor& ref, const tensor& indices, const ten
 
 # Attributes:
 *    Tindices
+*    bad_indices_policy
 
 # Outputs:
 *    output
 
 */
-inline tensor scatter_nd_non_aliasing_add(const tensor& input, const tensor& indices, const tensor& updates, datatype Tindices) {
+inline tensor scatter_nd_non_aliasing_add(const tensor& input, const tensor& indices, const tensor& updates, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ScatterNdNonAliasingAdd", context::get_status()), &TFE_DeleteOp);
@@ -48036,6 +48437,7 @@ inline tensor scatter_nd_non_aliasing_add(const tensor& input, const tensor& ind
 
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -48054,12 +48456,13 @@ inline tensor scatter_nd_non_aliasing_add(const tensor& input, const tensor& ind
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    output_ref
 
 */
-inline tensor scatter_nd_sub(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false) {
+inline tensor scatter_nd_sub(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=false, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ScatterNdSub", context::get_status()), &TFE_DeleteOp);
@@ -48082,6 +48485,7 @@ inline tensor scatter_nd_sub(const tensor& ref, const tensor& indices, const ten
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -48100,12 +48504,13 @@ inline tensor scatter_nd_sub(const tensor& ref, const tensor& indices, const ten
 # Attributes:
 *    Tindices
 *    use_locking
+*    bad_indices_policy
 
 # Outputs:
 *    output_ref
 
 */
-inline tensor scatter_nd_update(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true) {
+inline tensor scatter_nd_update(const tensor& ref, const tensor& indices, const tensor& updates, datatype Tindices, bool use_locking=true, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "ScatterNdUpdate", context::get_status()), &TFE_DeleteOp);
@@ -48128,6 +48533,7 @@ inline tensor scatter_nd_update(const tensor& ref, const tensor& indices, const 
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
     TFE_OpSetAttrBool(op.get(), "use_locking", (unsigned char)use_locking);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -51025,6 +51431,77 @@ inline tensor softsign_grad(const tensor& gradients, const tensor& features) {
     TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
     status_check(context::get_status());
     return tensor(res[0]);
+}
+
+/* # SortListOfSparseCoreCooTensors
+# Inputs:
+*    row_ids_list
+*    col_ids_list
+*    gains_list
+
+# Attributes:
+*    sample_count_list
+*    col_offset_list
+*    num_replica
+*    table_vocab_size
+*    feature_width
+*    num_sc_per_chip
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+*    table_name
+*    N
+
+# Outputs:
+*    sorted_row_ids
+*    sorted_col_ids
+*    sorted_gains
+*    id_counts
+
+*/
+inline std::vector<tensor> sort_list_of_sparse_core_coo_tensors(const std::vector<tensor>&row_ids_list, const std::vector<tensor>&col_ids_list, const std::vector<tensor>&gains_list, const std::vector<int64_t>& sample_count_list, const std::vector<int64_t>& col_offset_list, int64_t num_replica, int64_t table_vocab_size, int64_t feature_width, int64_t num_sc_per_chip, int64_t max_ids_per_sparse_core, int64_t max_unique_ids_per_sparse_core, const std::string& table_name) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "SortListOfSparseCoreCooTensors", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    std::vector<TFE_TensorHandle*> row_ids_list_handles; row_ids_list_handles.reserve(row_ids_list.size());
+    std::transform(row_ids_list.begin(), row_ids_list.end(), std::back_inserter(row_ids_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), row_ids_list_handles.data(), static_cast<int>(row_ids_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> col_ids_list_handles; col_ids_list_handles.reserve(col_ids_list.size());
+    std::transform(col_ids_list.begin(), col_ids_list.end(), std::back_inserter(col_ids_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), col_ids_list_handles.data(), static_cast<int>(col_ids_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> gains_list_handles; gains_list_handles.reserve(gains_list.size());
+    std::transform(gains_list.begin(), gains_list.end(), std::back_inserter(gains_list_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), gains_list_handles.data(), static_cast<int>(gains_list.size()), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrIntList(op.get(), "sample_count_list", sample_count_list.data(), static_cast<int>(sample_count_list.size()));
+    TFE_OpSetAttrIntList(op.get(), "col_offset_list", col_offset_list.data(), static_cast<int>(col_offset_list.size()));
+    TFE_OpSetAttrInt(op.get(), "num_replica", num_replica);
+    TFE_OpSetAttrInt(op.get(), "table_vocab_size", table_vocab_size);
+    TFE_OpSetAttrInt(op.get(), "feature_width", feature_width);
+    TFE_OpSetAttrInt(op.get(), "num_sc_per_chip", num_sc_per_chip);
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_sparse_core", max_ids_per_sparse_core);
+    TFE_OpSetAttrInt(op.get(), "max_unique_ids_per_sparse_core", max_unique_ids_per_sparse_core);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrInt(op.get(), "N", row_ids_list.size());
+
+    // Execute Op
+    int num_outputs_op = 4;
+    TFE_TensorHandle* res[4] = { nullptr,nullptr,nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]),tensor(res[2]),tensor(res[3]), };
 }
 
 /* # SpaceToBatch
@@ -61904,12 +62381,13 @@ inline tensor tensor_map_stack_keys(const tensor& input_handle, datatype key_dty
 
 # Attributes:
 *    Tindices
+*    bad_indices_policy
 
 # Outputs:
 *    output
 
 */
-inline tensor tensor_scatter_add(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
+inline tensor tensor_scatter_add(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "TensorScatterAdd", context::get_status()), &TFE_DeleteOp);
@@ -61931,6 +62409,7 @@ inline tensor tensor_scatter_add(const tensor& input_tensor, const tensor& indic
 
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -61948,12 +62427,13 @@ inline tensor tensor_scatter_add(const tensor& input_tensor, const tensor& indic
 
 # Attributes:
 *    Tindices
+*    bad_indices_policy
 
 # Outputs:
 *    output
 
 */
-inline tensor tensor_scatter_max(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
+inline tensor tensor_scatter_max(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "TensorScatterMax", context::get_status()), &TFE_DeleteOp);
@@ -61975,6 +62455,7 @@ inline tensor tensor_scatter_max(const tensor& input_tensor, const tensor& indic
 
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -61992,12 +62473,13 @@ inline tensor tensor_scatter_max(const tensor& input_tensor, const tensor& indic
 
 # Attributes:
 *    Tindices
+*    bad_indices_policy
 
 # Outputs:
 *    output
 
 */
-inline tensor tensor_scatter_min(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
+inline tensor tensor_scatter_min(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "TensorScatterMin", context::get_status()), &TFE_DeleteOp);
@@ -62019,6 +62501,7 @@ inline tensor tensor_scatter_min(const tensor& input_tensor, const tensor& indic
 
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -62036,12 +62519,13 @@ inline tensor tensor_scatter_min(const tensor& input_tensor, const tensor& indic
 
 # Attributes:
 *    Tindices
+*    bad_indices_policy
 
 # Outputs:
 *    output
 
 */
-inline tensor tensor_scatter_sub(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
+inline tensor tensor_scatter_sub(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "TensorScatterSub", context::get_status()), &TFE_DeleteOp);
@@ -62063,6 +62547,7 @@ inline tensor tensor_scatter_sub(const tensor& input_tensor, const tensor& indic
 
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -62080,12 +62565,13 @@ inline tensor tensor_scatter_sub(const tensor& input_tensor, const tensor& indic
 
 # Attributes:
 *    Tindices
+*    bad_indices_policy
 
 # Outputs:
 *    output
 
 */
-inline tensor tensor_scatter_update(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices) {
+inline tensor tensor_scatter_update(const tensor& input_tensor, const tensor& indices, const tensor& updates, datatype Tindices, const std::string& bad_indices_policy="") {
 
     // Define Op
     std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "TensorScatterUpdate", context::get_status()), &TFE_DeleteOp);
@@ -62107,6 +62593,7 @@ inline tensor tensor_scatter_update(const tensor& input_tensor, const tensor& in
 
     // Attributes
     TFE_OpSetAttrType(op.get(), "Tindices", Tindices);
+    TFE_OpSetAttrString(op.get(), "bad_indices_policy", (void*) bad_indices_policy.c_str(), bad_indices_policy.size());
 
     // Execute Op
     int num_outputs_op = 1;
@@ -64915,6 +65402,64 @@ inline tensor variable_v2(const std::vector<int64_t>& shape, datatype dtype, con
     return tensor(res[0]);
 }
 
+/* # WeightedFlatMapDataset
+# Inputs:
+*    input_datasets
+*    weights
+
+# Attributes:
+*    N
+*    M
+*    output_types
+*    output_shapes
+*    metadata
+
+# Outputs:
+*    handle
+
+*/
+inline tensor weighted_flat_map_dataset(const std::vector<tensor>&input_datasets, const std::vector<tensor>&weights, const std::vector<datatype>& output_types, const std::vector< std::vector<int64_t>>& output_shapes, const std::string& metadata="") {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "WeightedFlatMapDataset", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    std::vector<TFE_TensorHandle*> input_datasets_handles; input_datasets_handles.reserve(input_datasets.size());
+    std::transform(input_datasets.begin(), input_datasets.end(), std::back_inserter(input_datasets_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), input_datasets_handles.data(), static_cast<int>(input_datasets.size()), context::get_status());
+    status_check(context::get_status());
+    
+    
+    std::vector<TFE_TensorHandle*> weights_handles; weights_handles.reserve(weights.size());
+    std::transform(weights.begin(), weights.end(), std::back_inserter(weights_handles), [](const auto& t) { return t.tfe_handle.get();});
+    TFE_OpAddInputList(op.get(), weights_handles.data(), static_cast<int>(weights.size()), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrInt(op.get(), "N", input_datasets.size());
+    TFE_OpSetAttrInt(op.get(), "M", weights.size());
+    TFE_OpSetAttrTypeList(op.get(), "output_types", reinterpret_cast<const enum TF_DataType *>(output_types.data()), static_cast<int>(output_types.size()));
+    
+    std::vector<const int64_t*> output_shapes_values; output_shapes_values.reserve(output_shapes.size());
+    std::vector<int> output_shapes_ndims; output_shapes_ndims.reserve(output_shapes.size());
+    std::transform(output_shapes.begin(), output_shapes.end(), std::back_inserter(output_shapes_values), [](const auto& v) { return v.data();});
+    std::transform(output_shapes.begin(), output_shapes.end(), std::back_inserter(output_shapes_ndims), [](const auto& v) { return static_cast<int>(v.size());});
+    TFE_OpSetAttrShapeList(op.get(), "output_shapes", output_shapes_values.data(), output_shapes_ndims.data(), static_cast<int>(output_shapes.size()), context::get_status());
+    status_check(context::get_status());
+    
+    TFE_OpSetAttrString(op.get(), "metadata", (void*) metadata.c_str(), metadata.size());
+
+    // Execute Op
+    int num_outputs_op = 1;
+    TFE_TensorHandle* res[1] = { nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return tensor(res[0]);
+}
+
 /* # Where
 # Inputs:
 *    input
@@ -66162,6 +66707,89 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_and_csr_inp
     return { tensor(res[0]),tensor(res[1]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithAdagradAndStaticBufferSize
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    accumulator
+*    num_minibatches_per_physical_sparse_core
+
+# Attributes:
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+
+*/
+inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_and_static_buffer_size(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& accumulator, const tensor& num_minibatches_per_physical_sparse_core, int64_t max_ids_per_sparse_core, int64_t max_unique_ids_per_sparse_core, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "XlaSparseDenseMatmulGradWithAdagradAndStaticBufferSize", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), row_pointers.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_sample_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_token_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_gains.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), activation_gradients.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), learning_rate.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), embedding_table.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), accumulator.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), num_minibatches_per_physical_sparse_core.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_sparse_core", max_ids_per_sparse_core);
+    TFE_OpSetAttrInt(op.get(), "max_unique_ids_per_sparse_core", max_unique_ids_per_sparse_core);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_min", clip_weight_min);
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_max", clip_weight_max);
+
+    // Execute Op
+    int num_outputs_op = 2;
+    TFE_TensorHandle* res[2] = { nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]), };
+}
+
 /* # XlaSparseDenseMatmulGradWithAdagradMomentumAndCsrInput
 # Inputs:
 *    row_pointers
@@ -66257,6 +66885,105 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_momentum_an
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithAdagradMomentumAndStaticBufferSize
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    accumulator
+*    momenta
+*    num_minibatches_per_physical_sparse_core
+
+# Attributes:
+*    use_nesterov
+*    exponent
+*    beta1
+*    beta2
+*    epsilon
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+*    updated_momenta
+
+*/
+inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adagrad_momentum_and_static_buffer_size(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& accumulator, const tensor& momenta, const tensor& num_minibatches_per_physical_sparse_core, bool use_nesterov, float exponent, float beta1, float beta2, float epsilon, int64_t max_ids_per_sparse_core, int64_t max_unique_ids_per_sparse_core, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "XlaSparseDenseMatmulGradWithAdagradMomentumAndStaticBufferSize", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), row_pointers.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_sample_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_token_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_gains.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), activation_gradients.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), learning_rate.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), embedding_table.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), accumulator.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), momenta.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), num_minibatches_per_physical_sparse_core.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrBool(op.get(), "use_nesterov", (unsigned char)use_nesterov);
+    TFE_OpSetAttrFloat(op.get(), "exponent", exponent);
+    TFE_OpSetAttrFloat(op.get(), "beta1", beta1);
+    TFE_OpSetAttrFloat(op.get(), "beta2", beta2);
+    TFE_OpSetAttrFloat(op.get(), "epsilon", epsilon);
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_sparse_core", max_ids_per_sparse_core);
+    TFE_OpSetAttrInt(op.get(), "max_unique_ids_per_sparse_core", max_unique_ids_per_sparse_core);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_min", clip_weight_min);
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_max", clip_weight_max);
+
+    // Execute Op
+    int num_outputs_op = 3;
+    TFE_TensorHandle* res[3] = { nullptr,nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
+}
+
 /* # XlaSparseDenseMatmulGradWithAdamAndCsrInput
 # Inputs:
 *    row_pointers
@@ -66338,6 +67065,103 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adam_and_csr_input(
     TFE_OpSetAttrFloat(op.get(), "beta1", beta1);
     TFE_OpSetAttrFloat(op.get(), "beta2", beta2);
     TFE_OpSetAttrFloat(op.get(), "epsilon", epsilon);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_min", clip_weight_min);
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_max", clip_weight_max);
+
+    // Execute Op
+    int num_outputs_op = 3;
+    TFE_TensorHandle* res[3] = { nullptr,nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
+}
+
+/* # XlaSparseDenseMatmulGradWithAdamAndStaticBufferSize
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    momenta
+*    velocity
+*    num_minibatches_per_physical_sparse_core
+
+# Attributes:
+*    use_sum_inside_sqrt
+*    beta1
+*    beta2
+*    epsilon
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_momenta
+*    updated_velocity
+
+*/
+inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_adam_and_static_buffer_size(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& momenta, const tensor& velocity, const tensor& num_minibatches_per_physical_sparse_core, bool use_sum_inside_sqrt, float beta1, float beta2, float epsilon, int64_t max_ids_per_sparse_core, int64_t max_unique_ids_per_sparse_core, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "XlaSparseDenseMatmulGradWithAdamAndStaticBufferSize", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), row_pointers.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_sample_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_token_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_gains.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), activation_gradients.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), learning_rate.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), embedding_table.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), momenta.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), velocity.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), num_minibatches_per_physical_sparse_core.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrBool(op.get(), "use_sum_inside_sqrt", (unsigned char)use_sum_inside_sqrt);
+    TFE_OpSetAttrFloat(op.get(), "beta1", beta1);
+    TFE_OpSetAttrFloat(op.get(), "beta2", beta2);
+    TFE_OpSetAttrFloat(op.get(), "epsilon", epsilon);
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_sparse_core", max_ids_per_sparse_core);
+    TFE_OpSetAttrInt(op.get(), "max_unique_ids_per_sparse_core", max_unique_ids_per_sparse_core);
     TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
     TFE_OpSetAttrFloat(op.get(), "clip_weight_min", clip_weight_min);
     TFE_OpSetAttrFloat(op.get(), "clip_weight_max", clip_weight_max);
@@ -66445,6 +67269,105 @@ inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_ftrl_and_csr_input(
     return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
 }
 
+/* # XlaSparseDenseMatmulGradWithFtrlAndStaticBufferSize
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    accumulator
+*    linear
+*    num_minibatches_per_physical_sparse_core
+
+# Attributes:
+*    multiply_linear_by_learning_rate
+*    beta
+*    learning_rate_power
+*    l1_regularization_strength
+*    l2_regularization_strength
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+*    updated_accumulator
+*    updated_linear
+
+*/
+inline std::vector<tensor> xla_sparse_dense_matmul_grad_with_ftrl_and_static_buffer_size(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& accumulator, const tensor& linear, const tensor& num_minibatches_per_physical_sparse_core, bool multiply_linear_by_learning_rate, float beta, float learning_rate_power, float l1_regularization_strength, float l2_regularization_strength, int64_t max_ids_per_sparse_core, int64_t max_unique_ids_per_sparse_core, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "XlaSparseDenseMatmulGradWithFtrlAndStaticBufferSize", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), row_pointers.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_sample_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_token_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_gains.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), activation_gradients.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), learning_rate.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), embedding_table.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), accumulator.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), linear.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), num_minibatches_per_physical_sparse_core.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrBool(op.get(), "multiply_linear_by_learning_rate", (unsigned char)multiply_linear_by_learning_rate);
+    TFE_OpSetAttrFloat(op.get(), "beta", beta);
+    TFE_OpSetAttrFloat(op.get(), "learning_rate_power", learning_rate_power);
+    TFE_OpSetAttrFloat(op.get(), "l1_regularization_strength", l1_regularization_strength);
+    TFE_OpSetAttrFloat(op.get(), "l2_regularization_strength", l2_regularization_strength);
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_sparse_core", max_ids_per_sparse_core);
+    TFE_OpSetAttrInt(op.get(), "max_unique_ids_per_sparse_core", max_unique_ids_per_sparse_core);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_min", clip_weight_min);
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_max", clip_weight_max);
+
+    // Execute Op
+    int num_outputs_op = 3;
+    TFE_TensorHandle* res[3] = { nullptr,nullptr,nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return { tensor(res[0]),tensor(res[1]),tensor(res[2]), };
+}
+
 /* # XlaSparseDenseMatmulGradWithSgdAndCsrInput
 # Inputs:
 *    row_pointers
@@ -66518,6 +67441,83 @@ inline tensor xla_sparse_dense_matmul_grad_with_sgd_and_csr_input(const tensor& 
     return tensor(res[0]);
 }
 
+/* # XlaSparseDenseMatmulGradWithSgdAndStaticBufferSize
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    activation_gradients
+*    learning_rate
+*    embedding_table
+*    num_minibatches_per_physical_sparse_core
+
+# Attributes:
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+*    table_name
+*    clip_weight_min
+*    clip_weight_max
+
+# Outputs:
+*    updated_embedding_table
+
+*/
+inline tensor xla_sparse_dense_matmul_grad_with_sgd_and_static_buffer_size(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& activation_gradients, const tensor& learning_rate, const tensor& embedding_table, const tensor& num_minibatches_per_physical_sparse_core, int64_t max_ids_per_sparse_core, int64_t max_unique_ids_per_sparse_core, const std::string& table_name, float clip_weight_min=-std::numeric_limits<float>::infinity(), float clip_weight_max=std::numeric_limits<float>::infinity()) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "XlaSparseDenseMatmulGradWithSgdAndStaticBufferSize", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), row_pointers.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_sample_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_token_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_gains.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), activation_gradients.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), learning_rate.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), embedding_table.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), num_minibatches_per_physical_sparse_core.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_sparse_core", max_ids_per_sparse_core);
+    TFE_OpSetAttrInt(op.get(), "max_unique_ids_per_sparse_core", max_unique_ids_per_sparse_core);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_min", clip_weight_min);
+    TFE_OpSetAttrFloat(op.get(), "clip_weight_max", clip_weight_max);
+
+    // Execute Op
+    int num_outputs_op = 1;
+    TFE_TensorHandle* res[1] = { nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return tensor(res[0]);
+}
+
 /* # XlaSparseDenseMatmulWithCsrInput
 # Inputs:
 *    row_pointers
@@ -66575,6 +67575,77 @@ inline tensor xla_sparse_dense_matmul_with_csr_input(const tensor& row_pointers,
     TFE_OpSetAttrFloat(op.get(), "quantization_config_low", quantization_config_low);
     TFE_OpSetAttrFloat(op.get(), "quantization_config_high", quantization_config_high);
     TFE_OpSetAttrInt(op.get(), "quantization_config_num_buckets", quantization_config_num_buckets);
+    TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
+
+    // Execute Op
+    int num_outputs_op = 1;
+    TFE_TensorHandle* res[1] = { nullptr };
+    TFE_Execute(op.get(), res, &num_outputs_op, context::get_status());
+    status_check(context::get_status());
+    return tensor(res[0]);
+}
+
+/* # XlaSparseDenseMatmulWithStaticBufferSize
+# Inputs:
+*    row_pointers
+*    sorted_sample_ids
+*    sorted_token_ids
+*    sorted_gains
+*    embedding_table
+*    num_minibatches_per_physical_sparse_core
+
+# Attributes:
+*    input_size
+*    quantization_config_low
+*    quantization_config_high
+*    quantization_config_num_buckets
+*    max_ids_per_sparse_core
+*    max_unique_ids_per_sparse_core
+*    table_name
+
+# Outputs:
+*    activations
+
+*/
+inline tensor xla_sparse_dense_matmul_with_static_buffer_size(const tensor& row_pointers, const tensor& sorted_sample_ids, const tensor& sorted_token_ids, const tensor& sorted_gains, const tensor& embedding_table, const tensor& num_minibatches_per_physical_sparse_core, int64_t input_size, float quantization_config_low, float quantization_config_high, int64_t quantization_config_num_buckets, int64_t max_ids_per_sparse_core, int64_t max_unique_ids_per_sparse_core, const std::string& table_name) {
+
+    // Define Op
+    std::unique_ptr<TFE_Op, decltype(&TFE_DeleteOp)> op(TFE_NewOp(context::get_context(), "XlaSparseDenseMatmulWithStaticBufferSize", context::get_status()), &TFE_DeleteOp);
+    status_check(context::get_status());
+
+    // Required input arguments
+    
+    TFE_OpAddInput(op.get(), row_pointers.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_sample_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_token_ids.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), sorted_gains.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), embedding_table.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+    
+    TFE_OpAddInput(op.get(), num_minibatches_per_physical_sparse_core.tfe_handle.get(), context::get_status());
+    status_check(context::get_status());
+    
+
+    // Attributes
+    TFE_OpSetAttrInt(op.get(), "input_size", input_size);
+    TFE_OpSetAttrFloat(op.get(), "quantization_config_low", quantization_config_low);
+    TFE_OpSetAttrFloat(op.get(), "quantization_config_high", quantization_config_high);
+    TFE_OpSetAttrInt(op.get(), "quantization_config_num_buckets", quantization_config_num_buckets);
+    TFE_OpSetAttrInt(op.get(), "max_ids_per_sparse_core", max_ids_per_sparse_core);
+    TFE_OpSetAttrInt(op.get(), "max_unique_ids_per_sparse_core", max_unique_ids_per_sparse_core);
     TFE_OpSetAttrString(op.get(), "table_name", (void*) table_name.c_str(), table_name.size());
 
     // Execute Op
